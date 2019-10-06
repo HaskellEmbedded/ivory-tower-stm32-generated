@@ -1,0 +1,44 @@
+module Ivory.BSP.STM32L485.USART (
+    usart1
+  , usart2
+  , usart3
+  ) where
+
+import Ivory.Language
+import Ivory.HW
+
+import Ivory.BSP.STM32.ClockConfig
+
+import Ivory.BSP.STM32L485.RCC
+import Ivory.BSP.STM32L485.MemoryMap
+import qualified Ivory.BSP.STM32L485.Interrupt as L485
+
+import Ivory.BSP.STM32.Peripheral.UART
+
+usart1 :: UART
+usart1 = mkUARTVersion V3 usart1_periph_base
+                rccenable rccdisable
+                L485.USART1
+                PClk1 "usart1"
+  where
+  rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_usart1en
+  rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_usart1en
+
+usart2 :: UART
+usart2 = mkUARTVersion V3 usart2_periph_base
+                rccenable rccdisable
+                L485.USART2
+                PClk1 "usart2"
+  where
+  rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_usart2en
+  rccdisable = modifyReg rcc_reg_apb1enr1 $ clearBit rcc_apb1enr1_usart2en
+
+usart3 :: UART
+usart3 = mkUARTVersion V3 usart3_periph_base
+                rccenable rccdisable
+                L485.USART3
+                PClk1 "usart3"
+  where
+  rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_usart3en
+  rccdisable = modifyReg rcc_reg_apb1enr1 $ clearBit rcc_apb1enr1_usart3en
+

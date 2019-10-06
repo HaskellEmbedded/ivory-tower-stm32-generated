@@ -1,7 +1,6 @@
 module Ivory.BSP.STM32L4A6.UART (
-    usart1
-  , usart2
-  , usart3
+    uart4
+  , uart5
   ) where
 
 import Ivory.Language
@@ -15,30 +14,21 @@ import qualified Ivory.BSP.STM32L4A6.Interrupt as L4A6
 
 import Ivory.BSP.STM32.Peripheral.UART
 
-usart1 :: UART
-usart1 = mkUARTVersion V3 usart1_periph_base
+uart4 :: UART
+uart4 = mkUARTVersion V3 uart4_periph_base
                 rccenable rccdisable
-                L4A6.USART1
-                PClk1 "usart1"
+                L4A6.UART4
+                PClk1 "uart4"
   where
-  rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_usart1en
-  rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_usart1en
+  rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_uart4en
+  rccdisable = modifyReg rcc_reg_apb1enr1 $ clearBit rcc_apb1enr1_uart4en
 
-usart2 :: UART
-usart2 = mkUARTVersion V3 usart2_periph_base
+uart5 :: UART
+uart5 = mkUARTVersion V3 uart5_periph_base
                 rccenable rccdisable
-                L4A6.USART2
-                PClk1 "usart2"
+                L4A6.UART5
+                PClk1 "uart5"
   where
-  rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_usart2en
-  rccdisable = modifyReg rcc_reg_apb1enr1 $ clearBit rcc_apb1enr1_usart2en
-
-usart3 :: UART
-usart3 = mkUARTVersion V3 usart3_periph_base
-                rccenable rccdisable
-                L4A6.USART3
-                PClk1 "usart3"
-  where
-  rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_usart3en
-  rccdisable = modifyReg rcc_reg_apb1enr1 $ clearBit rcc_apb1enr1_usart3en
+  rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_uart5en
+  rccdisable = modifyReg rcc_reg_apb1enr1 $ clearBit rcc_apb1enr1_uart5en
 

@@ -1,8 +1,8 @@
 module Ivory.BSP.STM32F723.UART (
-    usart1
-  , usart2
-  , usart3
-  , usart6
+    uart4
+  , uart5
+  , uart7
+  , uart8
   ) where
 
 import Ivory.Language
@@ -16,39 +16,39 @@ import qualified Ivory.BSP.STM32F723.Interrupt as F723
 
 import Ivory.BSP.STM32.Peripheral.UART
 
-usart1 :: UART
-usart1 = mkUARTVersion V3 usart1_periph_base
+uart4 :: UART
+uart4 = mkUARTVersion V3 uart4_periph_base
                 rccenable rccdisable
-                F723.USART1
-                PClk1 "usart1"
+                F723.UART4
+                PClk1 "uart4"
   where
-  rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_usart1en
-  rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_usart1en
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_uart4en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_uart4en
 
-usart2 :: UART
-usart2 = mkUARTVersion V3 usart2_periph_base
+uart5 :: UART
+uart5 = mkUARTVersion V3 uart5_periph_base
                 rccenable rccdisable
-                F723.USART2
-                PClk1 "usart2"
+                F723.UART5
+                PClk1 "uart5"
   where
-  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_usart2en
-  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_usart2en
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_uart5en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_uart5en
 
-usart3 :: UART
-usart3 = mkUARTVersion V3 usart3_periph_base
+uart7 :: UART
+uart7 = mkUARTVersion V3 uart7_periph_base
                 rccenable rccdisable
-                F723.USART3
-                PClk1 "usart3"
+                F723.UART7
+                PClk1 "uart7"
   where
-  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_usart3en
-  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_usart3en
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_uart7en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_uart7en
 
-usart6 :: UART
-usart6 = mkUARTVersion V3 usart6_periph_base
+uart8 :: UART
+uart8 = mkUARTVersion V3 uart8_periph_base
                 rccenable rccdisable
-                F723.USART6
-                PClk1 "usart6"
+                F723.UART8
+                PClk1 "uart8"
   where
-  rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_usart6en
-  rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_usart6en
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_uart8en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_uart8en
 
