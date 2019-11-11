@@ -82,14 +82,19 @@ mkI2C base rccenable rccdisable rccreset evtint errint pclk afLookup n = I2C
   reg offs name = mkBitDataRegNamed (base + offs) (n ++ "->" ++ name)
 
 i2cInit :: (GetAlloc eff ~ 'Scope cs)
-        => I2C -> GPIOPin -> GPIOPin -> ClockConfig -> Ivory eff ()
-i2cInit periph sda scl clockconfig = do
+        => I2C
+        -> GPIOPin
+        -> GPIOPin
+        -> ClockConfig
+        -> Integer
+        -> Ivory eff ()
+i2cInit periph sda scl clockconfig freq = do
   i2cRCCEnable periph
   pinsetup sda
   pinsetup scl
 
   let fpclk = clockPClkHz (i2cPClk periph) clockconfig
-      ts@I2CTiming{..} = getTimings (fromIntegral fpclk) 100000
+      ts@I2CTiming{..} = getTimings (fromIntegral fpclk) (fromIntegral freq)
 
   -- Reset and clear peripheral
   setReg (i2cRegCR1 periph) clear
@@ -131,8 +136,13 @@ i2cDeinit periph sda scl = do
 i2cReset
   :: (GetBreaks (AllowBreak eff) ~ 'Break,
       GetAlloc eff ~ 'Scope cs) =>
-     I2C -> GPIOPin -> GPIOPin -> ClockConfig -> Ivory eff ()
-i2cReset periph sda scl clockconfig = do
+     I2C
+     -> GPIOPin
+     -> GPIOPin
+     -> ClockConfig
+     -> Integer
+     -> Ivory eff ()
+i2cReset periph sda scl clockconfig freq = do
   i2cDeinit periph sda scl
   let pinSetup p = do
         pinEnable        p
@@ -160,4 +170,4 @@ i2cReset periph sda scl clockconfig = do
   -- let go of the GPIOs and reinit the peripheral
   pinUnconfigure sda
   pinUnconfigure scl
-  i2cInit periph sda scl clockconfig
+  i2cInit periph sda scl clockconfig freq
