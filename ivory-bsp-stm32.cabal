@@ -112,6 +112,7 @@ library
                        Ivory.BSP.STM32.Peripheral.I2C,
                        Ivory.BSP.STM32.Peripheral.I2C.Pins,
                        Ivory.BSP.STM32.Peripheral.I2C.RegTypes,
+                       Ivory.BSP.STM32.Peripheral.I2C.Timings,
                        Ivory.BSP.STM32.Peripheral.I2Cv1.Peripheral,
                        Ivory.BSP.STM32.Peripheral.I2Cv1.Regs,
                        Ivory.BSP.STM32.Peripheral.I2Cv2.Peripheral,

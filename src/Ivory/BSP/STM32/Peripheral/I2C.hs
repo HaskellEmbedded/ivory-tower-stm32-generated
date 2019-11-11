@@ -34,7 +34,9 @@ mkI2CVersion
        -> (forall eff . Ivory eff ()) -- RCC Reset
        -> i -- event interrupt
        -> i -- error interrupt
+       -> PClk   -- Clock source
+       -> ([GPIOPin] -> GPIO_AF)
        -> String -- Name
        -> I2C
-mkI2CVersion V1 i e1 e2 e3 j k s = WrappedV1 $ P1.mkI2C i e1 e2 e3 j k s
-mkI2CVersion V2 i e1 e2 e3 j k s = WrappedV2 $ P2.mkI2C i e1 e2 e3 j k s
+mkI2CVersion V1 i e1 e2 e3 j k pclk afLookup name = WrappedV1 $ P1.mkI2C i e1 e2 e3 j k pclk afLookup name
+mkI2CVersion V2 i e1 e2 e3 j k pclk afLookup name = WrappedV2 $ P2.mkI2C i e1 e2 e3 j k pclk afLookup name
