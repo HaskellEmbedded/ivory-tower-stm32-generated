@@ -1,0 +1,11 @@
+module Ivory.BSP.STM32F328 (
+    module Ivory.BSP.STM32F328.CAN
+  , module Ivory.BSP.STM32F328.GPIO
+  , module Ivory.BSP.STM32F328.I2C
+  , module Ivory.BSP.STM32F328.SPI
+  ) where
+
+import Ivory.BSP.STM32F328.CAN
+import Ivory.BSP.STM32F328.GPIO
+import Ivory.BSP.STM32F328.I2C
+import Ivory.BSP.STM32F328.SPI
