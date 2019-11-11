@@ -5,6 +5,7 @@ module Ivory.BSP.STM32G483 (
   , module Ivory.BSP.STM32G483.RNG
   , module Ivory.BSP.STM32G483.SPI
   , module Ivory.BSP.STM32G483.USART
+  , module Ivory.BSP.STM32G483.IWDG
   ) where
 
 import Ivory.BSP.STM32G483.UART
@@ -13,3 +14,4 @@ import Ivory.BSP.STM32G483.I2C
 import Ivory.BSP.STM32G483.RNG
 import Ivory.BSP.STM32G483.SPI
 import Ivory.BSP.STM32G483.USART
+import Ivory.BSP.STM32G483.IWDG

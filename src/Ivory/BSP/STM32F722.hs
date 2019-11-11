@@ -6,6 +6,7 @@ module Ivory.BSP.STM32F722 (
   , module Ivory.BSP.STM32F722.RNG
   , module Ivory.BSP.STM32F722.SPI
   , module Ivory.BSP.STM32F722.USART
+  , module Ivory.BSP.STM32F722.IWDG
   ) where
 
 import Ivory.BSP.STM32F722.UART
@@ -15,3 +16,4 @@ import Ivory.BSP.STM32F722.I2C
 import Ivory.BSP.STM32F722.RNG
 import Ivory.BSP.STM32F722.SPI
 import Ivory.BSP.STM32F722.USART
+import Ivory.BSP.STM32F722.IWDG

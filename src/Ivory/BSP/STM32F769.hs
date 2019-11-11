@@ -6,6 +6,7 @@ module Ivory.BSP.STM32F769 (
   , module Ivory.BSP.STM32F769.RNG
   , module Ivory.BSP.STM32F769.SPI
   , module Ivory.BSP.STM32F769.USART
+  , module Ivory.BSP.STM32F769.IWDG
   ) where
 
 import Ivory.BSP.STM32F769.UART
@@ -15,3 +16,4 @@ import Ivory.BSP.STM32F769.I2C
 import Ivory.BSP.STM32F769.RNG
 import Ivory.BSP.STM32F769.SPI
 import Ivory.BSP.STM32F769.USART
+import Ivory.BSP.STM32F769.IWDG

@@ -2,8 +2,10 @@ module Ivory.BSP.STM32F031 (
     module Ivory.BSP.STM32F031.GPIO
   , module Ivory.BSP.STM32F031.I2C
   , module Ivory.BSP.STM32F031.SPI
+  , module Ivory.BSP.STM32F031.IWDG
   ) where
 
 import Ivory.BSP.STM32F031.GPIO
 import Ivory.BSP.STM32F031.I2C
 import Ivory.BSP.STM32F031.SPI
+import Ivory.BSP.STM32F031.IWDG

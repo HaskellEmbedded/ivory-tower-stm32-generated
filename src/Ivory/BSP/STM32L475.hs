@@ -6,6 +6,7 @@ module Ivory.BSP.STM32L475 (
   , module Ivory.BSP.STM32L475.RNG
   , module Ivory.BSP.STM32L475.SPI
   , module Ivory.BSP.STM32L475.USART
+  , module Ivory.BSP.STM32L475.IWDG
   ) where
 
 import Ivory.BSP.STM32L475.UART
@@ -15,3 +16,4 @@ import Ivory.BSP.STM32L475.I2C
 import Ivory.BSP.STM32L475.RNG
 import Ivory.BSP.STM32L475.SPI
 import Ivory.BSP.STM32L475.USART
+import Ivory.BSP.STM32L475.IWDG
