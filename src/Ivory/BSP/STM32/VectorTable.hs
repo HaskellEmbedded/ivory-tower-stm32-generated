@@ -81,6 +81,7 @@ import qualified Ivory.BSP.STM32G441.Interrupt as G441
 import qualified Ivory.BSP.STM32G471.Interrupt as G471
 import qualified Ivory.BSP.STM32G473.Interrupt as G473
 import qualified Ivory.BSP.STM32G474.Interrupt as G474
+import qualified Ivory.BSP.STM32G483.Interrupt as G483
 import qualified Ivory.BSP.STM32G484.Interrupt as G484
 import qualified Ivory.BSP.STM32L412.Interrupt as L412
 import qualified Ivory.BSP.STM32L422.Interrupt as L422
@@ -173,6 +174,7 @@ byDevice (n, _d) | shortName n == "G441" = attrs G441.WWDG
 byDevice (n, _d) | shortName n == "G471" = attrs G471.WWDG
 byDevice (n, _d) | shortName n == "G473" = attrs G473.WWDG
 byDevice (n, _d) | shortName n == "G474" = attrs G474.WWDG
+byDevice (n, _d) | shortName n == "G483" = attrs G483.WWDG
 byDevice (n, _d) | shortName n == "G484" = attrs G484.WWDG
 byDevice (n, _d) | shortName n == "L412" = attrs L412.WWDG
 byDevice (n, _d) | shortName n == "L422" = attrs L422.WWDG
