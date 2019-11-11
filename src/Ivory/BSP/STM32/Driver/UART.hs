@@ -10,12 +10,9 @@ module Ivory.BSP.STM32.Driver.UART
   ) where
 
 import Ivory.Language
-import Ivory.Stdlib
 import Ivory.Tower
 import Ivory.Tower.HAL.Bus.Interface
-import Ivory.HW
 
-import Ivory.BSP.STM32.Interrupt
 import Ivory.BSP.STM32.ClockConfig
 
 import Ivory.BSP.STM32.Peripheral.UART
@@ -23,10 +20,6 @@ import Ivory.BSP.STM32.Peripheral.UART
 import qualified Ivory.BSP.STM32.Driver.UARTv1 as V1
 import qualified Ivory.BSP.STM32.Driver.UARTv2 as V2
 import qualified Ivory.BSP.STM32.Driver.UARTv3 as V3
-
-import qualified Ivory.BSP.STM32.Peripheral.UARTv1.Peripheral as P1
-import qualified Ivory.BSP.STM32.Peripheral.UARTv2.Peripheral as P2
-import qualified Ivory.BSP.STM32.Peripheral.UARTv3.Peripheral as P3
 
 uartTower :: IvoryString s
           => (e -> ClockConfig)

@@ -12,23 +12,17 @@ module Ivory.BSP.STM32.Driver.I2C
   ) where
 
 import Ivory.Language
-import Ivory.Stdlib
 import Ivory.Tower
 import Ivory.Tower.HAL.Bus.I2C
 import Ivory.Tower.HAL.Bus.I2C.DeviceAddr
 import Ivory.Tower.HAL.Bus.Interface
-import Ivory.HW
 
-import Ivory.BSP.STM32.Interrupt
 import Ivory.BSP.STM32.ClockConfig
 
 import Ivory.BSP.STM32.Peripheral.I2C
 
 import qualified Ivory.BSP.STM32.Driver.I2Cv1 as V1
 import qualified Ivory.BSP.STM32.Driver.I2Cv2 as V2
-
-import qualified Ivory.BSP.STM32.Peripheral.I2Cv1.Peripheral as P1
-import qualified Ivory.BSP.STM32.Peripheral.I2Cv2.Peripheral as P2
 
 i2cTower :: (e -> ClockConfig)
           -> I2C

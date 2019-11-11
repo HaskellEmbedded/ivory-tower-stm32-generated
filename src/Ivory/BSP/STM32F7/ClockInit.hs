@@ -11,14 +11,10 @@ import Ivory.Stdlib
 import Ivory.HW
 
 import Ivory.BSP.STM32.ClockConfig
-{-
-import Ivory.BSP.STM32.Peripheral.Flash
-import Ivory.BSP.STM32.Peripheral.PWR
--}
 import Ivory.BSP.STM32.Peripheral.RCC.RegTypes
 
 import Ivory.BSP.STM32F7.FLASH
-import Ivory.BSP.STM32F7.PWR
+--import Ivory.BSP.STM32F7.PWR
 import Ivory.BSP.STM32F7.RCC
 
 init_clocks :: ClockConfig -> Def('[]':->())
