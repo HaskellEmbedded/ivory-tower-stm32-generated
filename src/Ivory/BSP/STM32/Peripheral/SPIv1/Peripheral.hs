@@ -33,6 +33,7 @@ data SPI = SPI
   , spiRCCDisable  :: forall eff . Ivory eff ()
   , spiInterrupt   :: HasSTM32Interrupt
   , spiPClk        :: PClk
+  , spiAFLookup    :: GPIOPin -> GPIO_AF
   , spiName        :: String
   }
 
@@ -42,9 +43,10 @@ mkSPI :: (STM32Interrupt i)
             -> (forall eff . Ivory eff ())
             -> i
             -> PClk
+            -> (GPIOPin -> GPIO_AF)
             -> String
             -> SPI
-mkSPI base rccen rccdis inter pclk n = SPI
+mkSPI base rccen rccdis inter pclk afLookup n = SPI
   { spiRegCR1     = reg 0x0 "cr1"
   , spiRegCR2     = reg 0x4 "cr2"
   , spiRegSR      = reg 0x8 "sr"
@@ -57,26 +59,27 @@ mkSPI base rccen rccdis inter pclk n = SPI
     , spiRCCDisable  = rccdis
     , spiInterrupt   = HasSTM32Interrupt inter
     , spiPClk        = pclk
+    , spiAFLookup    = afLookup
     , spiName        = n
     }
   where
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d
   reg offs name = mkBitDataRegNamed (base + offs) (n ++ "->" ++ name)
 
-initInPin :: GPIOPin -> GPIO_AF -> Ivory eff ()
-initInPin pin af = do
+initInPin :: SPI -> GPIOPin -> Ivory eff ()
+initInPin periph pin = do
   comment ("init spi input pin " ++ pinName pin)
   pinEnable  pin
-  pinSetAF   pin af
+  pinSetAF   pin (spiAFLookup periph pin)
   pinSetMode pin gpio_mode_af
   pinSetPUPD pin gpio_pupd_none
   pinSetSpeed pin gpio_speed_50mhz
 
-initOutPin :: GPIOPin -> GPIO_AF -> Ivory eff ()
-initOutPin pin af = do
+initOutPin :: SPI -> GPIOPin -> Ivory eff ()
+initOutPin periph pin = do
   comment ("init spi output pin " ++ pinName pin)
   pinEnable        pin
-  pinSetAF         pin af
+  pinSetAF         pin (spiAFLookup periph pin)
   pinSetMode       pin gpio_mode_af
   pinSetOutputType pin gpio_outputtype_pushpull
   pinSetSpeed      pin gpio_speed_50mhz
@@ -88,9 +91,9 @@ spiInit spi pins = do
   spiRCCEnable spi
   spiClearCr1 spi
   spiClearCr2 spi
-  initInPin  (spiPinMiso pins) (spiPinAF pins)
-  initOutPin (spiPinMosi pins) (spiPinAF pins)
-  initOutPin (spiPinSck  pins) (spiPinAF pins)
+  initInPin  spi (spiPinMiso pins)
+  initOutPin spi (spiPinMosi pins)
+  initOutPin spi (spiPinSck  pins)
 
 spiInitISR :: (GetAlloc eff ~ 'Scope s)
            => SPI -> Ivory eff ()

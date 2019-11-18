@@ -20,6 +20,7 @@ module Ivory.BSP.STM32.Peripheral.SPI
   ) where
 
 
+import Ivory.BSP.STM32.Peripheral.GPIO (GPIOPin, GPIO_AF)
 import Ivory.BSP.STM32.Peripheral.SPI.Pins
 
 import qualified Ivory.BSP.STM32.Peripheral.SPIv1.Peripheral as P1
@@ -45,9 +46,10 @@ mkSPIVersion
        -> (forall eff . Ivory eff ())
        -> i
        -> PClk
+       -> (GPIOPin -> GPIO_AF)
        -> String
        -> SPI
-mkSPIVersion V1 i e1 e2 j c s = WrappedV1 $ P1.mkSPI i e1 e2 j c s
-mkSPIVersion V2 i e1 e2 j c s = WrappedV2 $ P2.mkSPI i e1 e2 j c s
-mkSPIVersion V3 i e1 e2 j c s = WrappedV3 $ P3.mkSPI i e1 e2 j c s
+mkSPIVersion V1 i e1 e2 j c af s = WrappedV1 $ P1.mkSPI i e1 e2 j c af s
+mkSPIVersion V2 i e1 e2 j c af s = WrappedV2 $ P2.mkSPI i e1 e2 j c af s
+mkSPIVersion V3 i e1 e2 j c af s = WrappedV3 $ P3.mkSPI i e1 e2 j c af s
 --}

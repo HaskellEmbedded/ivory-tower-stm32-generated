@@ -35,6 +35,7 @@ data UART = UART
   , uartRCCDisable :: forall eff . Ivory eff ()
   , uartInterrupt  :: HasSTM32Interrupt
   , uartPClk       :: PClk
+  , uartAFLookup   :: GPIOPin -> GPIO_AF
   , uartName       :: String
   }
 
@@ -44,9 +45,10 @@ mkUART :: (STM32Interrupt i)
        -> (forall eff . Ivory eff ())
        -> i
        -> PClk
+       -> (GPIOPin -> GPIO_AF)
        -> String
        -> UART
-mkUART base rccen rccdis interrupt pclk n = UART
+mkUART base rccen rccdis interrupt pclk afLookup n = UART
   { uartRegSR      = reg 0x0 "sr"
   , uartRegDR      = reg 0x4 "dr"
   , uartRegBRR     = reg 0x8 "brr"
@@ -58,6 +60,7 @@ mkUART base rccen rccdis interrupt pclk n = UART
   , uartRCCDisable = rccdis
   , uartInterrupt  = HasSTM32Interrupt interrupt
   , uartPClk       = pclk
+  , uartAFLookup   = afLookup
   , uartName       = n
   }
   where
@@ -66,13 +69,13 @@ mkUART base rccen rccdis interrupt pclk n = UART
 
 
 -- | Initialize GPIO pins for a UART.
-initPin :: GPIOPin -> GPIO_AF -> Ivory eff ()
-initPin p af = do
+initPin :: UART -> GPIOPin -> Ivory eff ()
+initPin uart p = do
   pinEnable        p
   pinSetSpeed      p gpio_speed_50mhz
   pinSetOutputType p gpio_outputtype_pushpull
   pinSetPUPD       p gpio_pupd_pullup
-  pinSetAF         p af
+  pinSetAF         p (uartAFLookup uart p)
   pinSetMode       p gpio_mode_af
 
 -- | Set the BRR register of a UART given a baud rate.
@@ -118,8 +121,8 @@ uartInit :: (GetAlloc eff ~ 'Scope s)
 uartInit uart pins clockconfig baud useinterrupts = do
   -- Enable the peripheral clock and set up GPIOs.
   uartRCCEnable uart
-  initPin (uartPinTx pins) (uartPinAF pins)
-  initPin (uartPinRx pins) (uartPinAF pins)
+  initPin uart (uartPinTx pins)
+  initPin uart (uartPinRx pins)
 
   -- Initialize the baud rate and other settings.
   setBaudRate uart clockconfig baud

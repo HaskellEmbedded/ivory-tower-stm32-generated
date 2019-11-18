@@ -20,7 +20,7 @@ i2c1 = mkI2CVersion V1 i2c1_periph_base
                 rccenable rccdisable rccreset
                 F102.I2C1_EV F102.I2C1_ER
                 PClk1
-                (\pins -> findAFByPins pins "i2c1" afDB)
+                (\pin -> findAFByPin pin "i2c1" afDB)
                 "i2c1"
 
   where

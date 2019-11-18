@@ -35,6 +35,7 @@ data UART = UART
   , uartRCCDisable :: forall eff . Ivory eff ()
   , uartInterrupt  :: HasSTM32Interrupt
   , uartPClk       :: PClk
+  , uartAFLookup   :: GPIOPin -> GPIO_AF
   , uartName       :: String
   }
 
@@ -44,9 +45,10 @@ mkUART :: (STM32Interrupt i)
        -> (forall eff . Ivory eff ())
        -> i
        -> PClk
+       -> (GPIOPin -> GPIO_AF)
        -> String
        -> UART
-mkUART base rccen rccdis interrupt pclk n = UART
+mkUART base rccen rccdis interrupt pclk afLookup n = UART
   { uartRegSR      = reg 0x0 "sr"
   , uartRegDR      = reg 0x4 "dr"
   , uartRegBRR     = reg 0x8 "brr"
@@ -58,6 +60,7 @@ mkUART base rccen rccdis interrupt pclk n = UART
   , uartRCCDisable = rccdis
   , uartInterrupt  = HasSTM32Interrupt interrupt
   , uartPClk       = pclk
+  , uartAFLookup   = afLookup
   , uartName       = n
   }
   where
@@ -65,8 +68,8 @@ mkUART base rccen rccdis interrupt pclk n = UART
   reg offs name = mkBitDataRegNamed (base + offs) (n ++ "->" ++ name)
 
 -- | Initialize GPIO pins for a UART.
-initTxPin :: GPIOPin -> GPIO_AF -> Ivory eff ()
-initTxPin p _af = do
+initTxPin :: UART -> GPIOPin -> Ivory eff ()
+initTxPin _uart p = do
   pinEnable        p
   pinSetSpeed      p gpio_speed_50mhz
   pinSetOutputType p gpio_outputtype_pushpull
@@ -75,8 +78,8 @@ initTxPin p _af = do
   -- pinSetAF         p af
   pinSetMode       p gpio_mode_af
 
-initRxPin :: GPIOPin -> GPIO_AF -> Ivory eff ()
-initRxPin p _af = do
+initRxPin :: UART -> GPIOPin -> Ivory eff ()
+initRxPin _uart p = do
   pinEnable        p
   pinSetSpeed      p gpio_speed_50mhz
   pinSetMode       p gpio_mode_input
@@ -119,8 +122,8 @@ uartInit :: (GetAlloc eff ~ 'Scope s)
 uartInit uart pins clockconfig baud useinterrupts = do
   -- Enable the peripheral clock and set up GPIOs.
   uartRCCEnable uart
-  initTxPin (uartPinTx pins) (uartPinAF pins)
-  initRxPin (uartPinRx pins) (uartPinAF pins)
+  initTxPin uart (uartPinTx pins)
+  initRxPin uart (uartPinRx pins)
 
   -- Initialize the baud rate and other settings.
   setBaudRate uart clockconfig baud

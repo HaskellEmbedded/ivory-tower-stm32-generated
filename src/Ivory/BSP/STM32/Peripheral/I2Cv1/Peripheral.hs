@@ -37,7 +37,7 @@ data I2C = I2C
   , i2cIntEvent    :: HasSTM32Interrupt
   , i2cIntError    :: HasSTM32Interrupt
   , i2cPClk        :: PClk
-  , i2cAFLookup    :: [GPIOPin] -> GPIO_AF
+  , i2cAFLookup    :: GPIOPin -> GPIO_AF
   , i2cName        :: String
   }
 
@@ -49,7 +49,7 @@ mkI2C :: (STM32Interrupt i)
             -> i -- event interrupt
             -> i -- error interrupt
             -> PClk   -- Clock source
-            -> ([GPIOPin] -> GPIO_AF)
+            -> (GPIOPin -> GPIO_AF)
             -> String -- Name
             -> I2C
 mkI2C base rccenable rccdisable rccreset evtint errint pclk afLookup n = I2C
@@ -126,7 +126,7 @@ i2cInit periph sda scl clockconfig freq = do
     pinEnable        p
     pinSetOutputType p gpio_outputtype_opendrain
     pinSetPUPD       p gpio_pupd_none
-    pinSetAF         p (i2cAFLookup periph [sda, scl])
+    pinSetAF         p (i2cAFLookup periph p)
     pinSetMode       p gpio_mode_af
 
 i2cDeinit :: I2C -> GPIOPin -> GPIOPin -> Ivory eff ()

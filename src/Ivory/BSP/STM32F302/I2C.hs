@@ -21,7 +21,7 @@ i2c1 = mkI2CVersion V2 i2c1_periph_base
                 rccenable rccdisable rccreset
                 F302.I2C1_EV_EXTI23 F302.I2C1_ER
                 PClk1
-                (\pins -> findAFByPins pins "i2c1" afDB)
+                (\pin -> findAFByPin pin "i2c1" afDB)
                 "i2c1"
 
   where
@@ -34,7 +34,7 @@ i2c2 = mkI2CVersion V2 i2c2_periph_base
                 rccenable rccdisable rccreset
                 F302.I2C2_EV_EXTI24 F302.I2C2_ER
                 PClk1
-                (\pins -> findAFByPins pins "i2c2" afDB)
+                (\pin -> findAFByPin pin "i2c2" afDB)
                 "i2c2"
 
   where

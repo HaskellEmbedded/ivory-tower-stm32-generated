@@ -35,7 +35,7 @@ mkI2CVersion
        -> i -- event interrupt
        -> i -- error interrupt
        -> PClk   -- Clock source
-       -> ([GPIOPin] -> GPIO_AF)
+       -> (GPIOPin -> GPIO_AF)
        -> String -- Name
        -> I2C
 mkI2CVersion V1 i e1 e2 e3 j k pclk afLookup name = WrappedV1 $ P1.mkI2C i e1 e2 e3 j k pclk afLookup name
