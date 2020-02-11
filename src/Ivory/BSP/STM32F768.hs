@@ -7,6 +7,7 @@ module Ivory.BSP.STM32F768 (
   , module Ivory.BSP.STM32F768.SPI
   , module Ivory.BSP.STM32F768.USART
   , module Ivory.BSP.STM32F768.IWDG
+  , module Ivory.BSP.STM32F768.EXTI
   ) where
 
 import Ivory.BSP.STM32F768.UART
@@ -17,3 +18,4 @@ import Ivory.BSP.STM32F768.RNG
 import Ivory.BSP.STM32F768.SPI
 import Ivory.BSP.STM32F768.USART
 import Ivory.BSP.STM32F768.IWDG
+import Ivory.BSP.STM32F768.EXTI

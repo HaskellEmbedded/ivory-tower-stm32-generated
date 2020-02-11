@@ -1,5 +1,7 @@
 module Ivory.BSP.STM32G071.MemoryMap where
 
+syscfg_periph_base :: Integer
+syscfg_periph_base = 0x40010000
 iwdg_periph_base :: Integer
 iwdg_periph_base = 0x40003000
 wwdg_periph_base :: Integer
@@ -70,8 +72,8 @@ lptim1_periph_base :: Integer
 lptim1_periph_base = 0x40007c00
 lptim2_periph_base :: Integer
 lptim2_periph_base = 0x40009400
-lpuart_periph_base :: Integer
-lpuart_periph_base = 0x40008000
+lpuart1_periph_base :: Integer
+lpuart1_periph_base = 0x40008000
 hdmi_cec_periph_base :: Integer
 hdmi_cec_periph_base = 0x40007800
 dac_periph_base :: Integer

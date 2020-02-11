@@ -118,8 +118,8 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 --  | address: 0x4000480c
 [ivory|
  bitdata UART_BRR :: Bits 32 = uart_brr
-  { _           :: Bits 16  -- (Reserved)
-  , uart_brr_brr  :: Bits 16  -- USARTDIV
+  { _           :: Bits 12  -- (Reserved)
+  , uart_brr_brr  :: Bits 20  -- brr divider
   }
 |]
 

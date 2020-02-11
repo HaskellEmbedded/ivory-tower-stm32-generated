@@ -7,6 +7,7 @@ module Ivory.BSP.STM32F427 (
   , module Ivory.BSP.STM32F427.SPI
   , module Ivory.BSP.STM32F427.USART
   , module Ivory.BSP.STM32F427.IWDG
+  , module Ivory.BSP.STM32F427.EXTI
   ) where
 
 import Ivory.BSP.STM32F427.UART
@@ -17,3 +18,4 @@ import Ivory.BSP.STM32F427.RNG
 import Ivory.BSP.STM32F427.SPI
 import Ivory.BSP.STM32F427.USART
 import Ivory.BSP.STM32F427.IWDG
+import Ivory.BSP.STM32F427.EXTI

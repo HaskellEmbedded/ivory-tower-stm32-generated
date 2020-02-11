@@ -1,5 +1,7 @@
 module Ivory.BSP.STM32F048.MemoryMap where
 
+syscfg_periph_base :: Integer
+syscfg_periph_base = 0x40010000
 crc_periph_base :: Integer
 crc_periph_base = 0x40023000
 gpiof_periph_base :: Integer

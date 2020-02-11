@@ -7,6 +7,7 @@ module Ivory.BSP.STM32F746 (
   , module Ivory.BSP.STM32F746.SPI
   , module Ivory.BSP.STM32F746.USART
   , module Ivory.BSP.STM32F746.IWDG
+  , module Ivory.BSP.STM32F746.EXTI
   ) where
 
 import Ivory.BSP.STM32F746.UART
@@ -17,3 +18,4 @@ import Ivory.BSP.STM32F746.RNG
 import Ivory.BSP.STM32F746.SPI
 import Ivory.BSP.STM32F746.USART
 import Ivory.BSP.STM32F746.IWDG
+import Ivory.BSP.STM32F746.EXTI

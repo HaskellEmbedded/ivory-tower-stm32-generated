@@ -95,7 +95,7 @@ data Interrupt
   | Undefined88 -- 88 Undefined interrupt (padding only)
   | Undefined89 -- 89 Undefined interrupt (padding only)
   | RNG -- 90 RNG
-  | LPUART -- 91 LPUART
+  | LPUART1 -- 91 LPUART
   | I2C3_EV -- 92 I2C3_EV
   | I2C3_ER -- 93 I2C3_ER
   | DMAMUX_OVR -- 94 DMAMUX_OVR

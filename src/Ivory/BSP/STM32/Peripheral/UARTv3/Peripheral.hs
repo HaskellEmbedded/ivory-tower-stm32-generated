@@ -11,6 +11,8 @@
 
 module Ivory.BSP.STM32.Peripheral.UARTv3.Peripheral where
 
+import qualified Data.List as L
+
 import Ivory.Language
 
 import Ivory.HW
@@ -90,20 +92,31 @@ initPin uart p = do
 setBaudRate :: (GetAlloc eff ~ 'Scope s)
             => UART -> ClockConfig -> Uint32 -> Ivory eff ()
 setBaudRate uart clockconfig baud = do
-  --pclk    <- assign =<< getFreqPClk platform (uartPClk uart)
-  pclk    <- assign (fromIntegral (clockPClkHz (uartPClk uart)
-                                    clockconfig))
-  cr1     <- getReg (uartRegCR1 uart)
-  isOver8 <- assign (bitToBool (cr1 #. uart_cr1_over8))
-  ipart   <- assign ((25 * pclk) `iDiv` (baud * (isOver8 ? (2, 4))))
-  mask    <- assign ((ipart `iDiv` 100) `iShiftL` 4)
-  fpart   <- assign (ipart - (100 * (mask `iShiftR` 4)))
-  brr     <- assign (mask .|
-                     (isOver8 ?
-                      ( (((fpart * 8)  + 50) `iDiv` 100) .& 0x07
-                      , (((fpart * 16) + 50) `iDiv` 100) .& 0x0f)))
-  setReg (uartRegBRR uart) $ do
-    setField uart_brr_brr (fromRep (lbits brr))
+  case "lpuart" `L.isPrefixOf` (uartName uart) of
+    False -> do
+      -- simplified without over8 this is just
+      -- (pclk + baud `iDiv` 2 ) `iDiv` baud
+      pclk    <- assign (fromIntegral (clockPClkHz (uartPClk uart) clockconfig))
+      cr1     <- getReg (uartRegCR1 uart)
+      isOver8 <- assign (bitToBool (cr1 #. uart_cr1_over8))
+      ipart   <- assign ((25 * pclk) `iDiv` (baud * (isOver8 ? (2, 4))))
+      mask    <- assign ((ipart `iDiv` 100) `iShiftL` 4)
+      fpart   <- assign (ipart - (100 * (mask `iShiftR` 4)))
+      brr     <- assign (mask .|
+                         (isOver8 ?
+                          ( (((fpart * 8)  + 50) `iDiv` 100) .& 0x07
+                          , (((fpart * 16) + 50) `iDiv` 100) .& 0x0f)))
+      setReg (uartRegBRR uart) $ do
+        setField uart_brr_brr (fromRep (safeCast $ lbits brr))
+    True -> do
+      -- for LPUART BRR formula is the only difference
+      pclk <- assign (fromIntegral (clockPClkHz (uartPClk uart) clockconfig))
+      brr  <- assign $
+        (pclk `iDiv` baud) * 256
+        + ((pclk .% baud) * 256 + baud `iDiv` 2) `iDiv` baud
+
+      setReg (uartRegBRR uart) $ do
+        setField uart_brr_brr (fromRep brr)
 
 -- | Configure the stop bits for a UART.
 setStopBits :: UART -> UART_StopBits -> Ivory eff ()

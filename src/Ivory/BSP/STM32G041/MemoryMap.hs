@@ -56,8 +56,8 @@ lptim1_periph_base :: Integer
 lptim1_periph_base = 0x40007c00
 lptim2_periph_base :: Integer
 lptim2_periph_base = 0x40009400
-lpuart_periph_base :: Integer
-lpuart_periph_base = 0x40008000
+lpuart1_periph_base :: Integer
+lpuart1_periph_base = 0x40008000
 i2c1_periph_base :: Integer
 i2c1_periph_base = 0x40005400
 i2c2_periph_base :: Integer
