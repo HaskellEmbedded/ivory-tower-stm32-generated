@@ -23,6 +23,7 @@ spi2 = mkSPI spi2_periph_base
           F301.SPI2
           PClk1
           (\pin -> findAFByPin pin "spi2" afDB)
+          3
           "spi2"
   where
   rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_spi2en
@@ -34,6 +35,7 @@ spi3 = mkSPI spi3_periph_base
           F301.SPI3
           PClk1
           (\pin -> findAFByPin pin "spi3" afDB)
+          3
           "spi3"
   where
   rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_spi3en

@@ -5,8 +5,9 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeFamilies #-}
 
-module Ivory.BSP.STM32.Peripheral.SPIv1.Peripheral where
+module Ivory.BSP.STM32.Peripheral.SPI.Peripheral where
 
+import Control.Monad (when)
 import Ivory.Language
 
 import Ivory.HW
@@ -15,8 +16,8 @@ import Ivory.BSP.STM32.Interrupt
 import Ivory.BSP.STM32.ClockConfig
 
 import Ivory.BSP.STM32.Peripheral.SPI.Pins
+import Ivory.BSP.STM32.Peripheral.SPI.Regs
 import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
-import Ivory.BSP.STM32.Peripheral.SPIv1.Regs
 
 import Ivory.BSP.STM32.Peripheral.GPIO
 
@@ -28,12 +29,15 @@ data SPI = SPI
   , spiRegCRCPR   :: BitDataReg SPI_CRCPR
   , spiRegRXCRCR  :: BitDataReg SPI_RXCRCR
   , spiRegTXCRCR  :: BitDataReg SPI_TXCRCR
+  , spiRegI2SCFGR :: BitDataReg SPI_I2SCFGR
+  , spiRegI2SPR   :: BitDataReg SPI_I2SPR
   , spiRegDR16    :: BitDataReg SPI_DR16
   , spiRCCEnable   :: forall eff . Ivory eff ()
   , spiRCCDisable  :: forall eff . Ivory eff ()
   , spiInterrupt   :: HasSTM32Interrupt
   , spiPClk        :: PClk
   , spiAFLookup    :: GPIOPin -> GPIO_AF
+  , spiVersion     :: Int
   , spiName        :: String
   }
 
@@ -44,9 +48,10 @@ mkSPI :: (STM32Interrupt i)
             -> i
             -> PClk
             -> (GPIOPin -> GPIO_AF)
+            -> Int
             -> String
             -> SPI
-mkSPI base rccen rccdis inter pclk afLookup n = SPI
+mkSPI base rccen rccdis inter pclk afLookup version n = SPI
   { spiRegCR1     = reg 0x0 "cr1"
   , spiRegCR2     = reg 0x4 "cr2"
   , spiRegSR      = reg 0x8 "sr"
@@ -54,17 +59,21 @@ mkSPI base rccen rccdis inter pclk afLookup n = SPI
   , spiRegCRCPR   = reg 0x10 "crcpr"
   , spiRegRXCRCR  = reg 0x14 "rxcrcr"
   , spiRegTXCRCR  = reg 0x18 "txcrcr"
+  , spiRegI2SCFGR = reg 0x1c "i2scfgr"
+  , spiRegI2SPR   = reg 0x20 "i2spr"
   , spiRegDR16    = reg 0xc "dr16"
     , spiRCCEnable   = rccen
     , spiRCCDisable  = rccdis
     , spiInterrupt   = HasSTM32Interrupt inter
     , spiPClk        = pclk
     , spiAFLookup    = afLookup
+    , spiVersion     = version
     , spiName        = n
     }
   where
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d
   reg offs name = mkBitDataRegNamed (base + offs) (n ++ "->" ++ name)
+
 
 initInPin :: SPI -> GPIOPin -> Ivory eff ()
 initInPin periph pin = do
@@ -147,6 +156,12 @@ spiBusBegin clockconfig dev = do
       LSBFirst -> setBit   spi_cr1_lsbfirst
       MSBFirst -> clearBit spi_cr1_lsbfirst
 
+
+  -- FIFO reception threshold to 8 bits (default is 16)
+  when (spiVersion periph > 2) $ do
+    modifyReg (spiRegCR2 periph) $ setBit   spi_cr2_frxth
+
+  -- Enable SPI
   modifyReg (spiRegCR1 periph) $ setBit   spi_cr1_spe
   where
   periph = spiDevPeripheral dev
@@ -180,10 +195,20 @@ spiGetDR spi = do
   r <- getReg (spiRegDR spi)
   return (toRep (r #. spi_dr_dr))
 
+spiGetDR16 :: SPI -> Ivory eff Uint16
+spiGetDR16 spi = do
+  r <- getReg (spiRegDR16 spi)
+  return (toRep (r #. spi_dr16_dr))
+
 spiSetDR :: SPI -> Uint8 -> Ivory eff ()
 spiSetDR spi b =
   setReg (spiRegDR spi) $
     setField spi_dr_dr (fromRep b)
+
+spiSetDR16 :: SPI -> Uint16 -> Ivory eff ()
+spiSetDR16 spi b =
+  setReg (spiRegDR16 spi) $
+    setField spi_dr16_dr (fromRep b)
 
 -- Internal Helper Functions ---------------------------------------------------
 

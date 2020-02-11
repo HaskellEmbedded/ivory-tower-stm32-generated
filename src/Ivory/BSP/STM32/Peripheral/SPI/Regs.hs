@@ -4,18 +4,18 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
-module Ivory.BSP.STM32.Peripheral.SPIv2.Regs where
+module Ivory.BSP.STM32.Peripheral.SPI.Regs where
 
 import Ivory.Language
 import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- SPI Serial peripheral interface
 
--- Base address: 0x40003400
+-- Base address: 0x40013000
 
 -- control register 1
 --  | offset : 0x0
---  | address: 0x40003400
+--  | address: 0x40013000
 [ivory|
  bitdata SPI_CR1 :: Bits 32 = spi_cr1
   { _               :: Bits 16  -- (Reserved)
@@ -39,15 +39,19 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- control register 2
 --  | offset : 0x4
---  | address: 0x40003404
+--  | address: 0x40013004
 [ivory|
  bitdata SPI_CR2 :: Bits 32 = spi_cr2
-  { _              :: Bits 24  -- (Reserved)
+  { _              :: Bits 17  -- (Reserved)
+  , spi_cr2_ldma_tx  :: Bit      -- Last DMA transfer for transmission
+  , spi_cr2_ldma_rx  :: Bit      -- Last DMA transfer for reception
+  , spi_cr2_frxth    :: Bit      -- FIFO reception threshold
+  , spi_cr2_ds       :: Bits 4   -- Data size
   , spi_cr2_txeie    :: Bit      -- Tx buffer empty interrupt enable
   , spi_cr2_rxneie   :: Bit      -- RX buffer not empty interrupt enable
   , spi_cr2_errie    :: Bit      -- Error interrupt enable
   , spi_cr2_frf      :: Bit      -- Frame format
-  , _              :: Bit      -- (Reserved)
+  , spi_cr2_nssp     :: Bit      -- NSS pulse management
   , spi_cr2_ssoe     :: Bit      -- SS output enable
   , spi_cr2_txdmaen  :: Bit      -- Tx buffer DMA enable
   , spi_cr2_rxdmaen  :: Bit      -- Rx buffer DMA enable
@@ -57,10 +61,12 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- status register
 --  | offset : 0x8
---  | address: 0x40003408
+--  | address: 0x40013008
 [ivory|
  bitdata SPI_SR :: Bits 32 = spi_sr
-  { _            :: Bits 23  -- (Reserved)
+  { _            :: Bits 19  -- (Reserved)
+  , spi_sr_ftlvl   :: Bits 2   -- FIFO transmission level
+  , spi_sr_frlvl   :: Bits 2   -- FIFO reception level
   , spi_sr_tifrfe  :: Bit      -- TI frame format error
   , spi_sr_bsy     :: Bit      -- Busy flag
   , spi_sr_ovr     :: Bit      -- Overrun flag
@@ -76,7 +82,7 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- data register
 --  | offset : 0xc
---  | address: 0x4000340c
+--  | address: 0x4001300c
 [ivory|
  bitdata SPI_DR :: Bits 8 = spi_dr
   { spi_dr_dr  :: Bits 8   -- Data register
@@ -86,7 +92,7 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- CRC polynomial register
 --  | offset : 0x10
---  | address: 0x40003410
+--  | address: 0x40013010
 [ivory|
  bitdata SPI_CRCPR :: Bits 32 = spi_crcpr
   { _                :: Bits 16  -- (Reserved)
@@ -97,7 +103,7 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- RX CRC register
 --  | offset : 0x14
---  | address: 0x40003414
+--  | address: 0x40013014
 [ivory|
  bitdata SPI_RXCRCR :: Bits 32 = spi_rxcrcr
   { _               :: Bits 16  -- (Reserved)
@@ -108,7 +114,7 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- TX CRC register
 --  | offset : 0x18
---  | address: 0x40003418
+--  | address: 0x40013018
 [ivory|
  bitdata SPI_TXCRCR :: Bits 32 = spi_txcrcr
   { _               :: Bits 16  -- (Reserved)
@@ -119,7 +125,7 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- I2S configuration register
 --  | offset : 0x1c
---  | address: 0x4000341c
+--  | address: 0x4001301c
 [ivory|
  bitdata SPI_I2SCFGR :: Bits 32 = spi_i2scfgr
   { _                  :: Bits 20  -- (Reserved)
@@ -138,7 +144,7 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- I2S prescaler register
 --  | offset : 0x20
---  | address: 0x40003420
+--  | address: 0x40013020
 [ivory|
  bitdata SPI_I2SPR :: Bits 32 = spi_i2spr
   { _               :: Bits 22  -- (Reserved)
@@ -151,7 +157,7 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
 
 -- DR register with 16 bit DR field
 --  | offset : 0xc
---  | address: 0x4000340c
+--  | address: 0x4001300c
 [ivory|
  bitdata SPI_DR16 :: Bits 32 = spi_dr16
   { _          :: Bits 16  -- (Reserved)

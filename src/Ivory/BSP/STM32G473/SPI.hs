@@ -24,6 +24,7 @@ spi1 = mkSPI spi1_periph_base
           G473.SPI1
           PClk1
           (\pin -> findAFByPin pin "spi1" afDB)
+          3
           "spi1"
   where
   rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_spi1en
@@ -35,6 +36,7 @@ spi2 = mkSPI spi2_periph_base
           G473.SPI2
           PClk1
           (\pin -> findAFByPin pin "spi2" afDB)
+          3
           "spi2"
   where
   rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_spi2en
@@ -46,6 +48,7 @@ spi4 = mkSPI spi4_periph_base
           G473.SPI4
           PClk1
           (\pin -> findAFByPin pin "spi4" afDB)
+          3
           "spi4"
   where
   rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_spi4en
