@@ -73,6 +73,7 @@ library
                        Ivory.BSP.STM32.AF.L47x,
                        Ivory.BSP.STM32.AF.L49x,
                        Ivory.BSP.STM32.AF.L4Rx,
+                       Ivory.BSP.STM32.AF.L55x,
                        Ivory.BSP.STM32.AF.MPU,
                        Ivory.BSP.STM32.AF.WB55x,
                        Ivory.BSP.STM32.ClockConfig,
