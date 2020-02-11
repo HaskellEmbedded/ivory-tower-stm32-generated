@@ -6,6 +6,7 @@ Please [report issues](https://github.com/HaskellEmbedded/data-stm32/issues) to 
 ## Compatibility matrix
 
 Device|CAN|EXTI|GPIO|I2C|IWDG|RNG|RTC|SPI|UART|USART|LPUART
+--|--|--|--|--|--|--|--|--|--|--|--
 F030| |✓|✓|✓|✓| |✓|✓| | | 
 F031| |✓|✓|✓|✓| |✓|✓| | | 
 F038| |✓|✓|✓|✓| |✓|✓| | | 
