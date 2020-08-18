@@ -1626,6 +1626,22 @@ STM32F479ZITx
 STM32GBK1CBTx
 
 Toplevel
+Representative for CAN chosen STM32F091CBTx IP bxcan1_v1_1
+Representative for GPIO1 chosen STM32F101C8Tx IP STM32F103x8_gpio_v1_0
+Representative for GPIO2 chosen STM32F765BGTx IP STM32F76x_gpio_v1_0
+Representative for I2C1 chosen STM32F100C4Tx IP i2c1_v1_5
+Representative for I2C2 chosen STM32F030C6Tx IP i2c2_v1_1
+Representative for RNG chosen STM32F405OEYx IP rng1_v1_1
+Representative for RTC chosen STM32F030C6Tx IP rtc2_v2_4
+Representative for SPI1 chosen STM32F100C4Tx IP spi2s1_v1_0
+Representative for SPI2 chosen STM32F401CBUx IP spi2s1_v2_2
+Representative for SPI3 chosen STM32F030C6Tx IP spi2s1_v3_0
+Representative for USART1 chosen STM32F101C4Tx IP sci2_v1_1
+Representative for USART2 chosen STM32F401CBUx IP sci2_v1_2
+Representative for USART3 chosen STM32F730I8Kx IP sci3_v1_1
+Representative for IWDG chosen STM32F030C6Tx IP iwdg1_v2_0
+Representative for EXTI1 chosen STM32F030C6Tx IP exti_common
+Representative for EXTI2 chosen STM32G030C6Tx IP exti_g0
 Processing device "STM32F0x0"
 Processing instances for F030
 - UART hasPeriph = False
