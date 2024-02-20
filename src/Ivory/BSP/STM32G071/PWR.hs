@@ -351,6 +351,60 @@ pwr_reg_pucrd = mkBitDataRegNamed (pwr_periph_base + 0x38) "pucrd"
 pwr_reg_pdcrd :: BitDataReg PWR_PDCRD
 pwr_reg_pdcrd = mkBitDataRegNamed (pwr_periph_base + 0x3c) "pdcrd"
 
+-- Power Port E pull-UP control register
+--  | offset : 0x40
+--  | address: 0x40007040
+[ivory|
+ bitdata PWR_PUCRE :: Bits 32 = pwr_pucre
+  { _             :: Bits 16  -- (Reserved)
+  , pwr_pucre_pu15  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu14  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu13  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu12  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu11  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu10  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu9   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu8   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu7   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu6   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu5   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu4   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu3   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu2   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu1   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu0   :: Bit      -- Port E pull-up bit y (y=0..15)
+  }
+|]
+pwr_reg_pucre :: BitDataReg PWR_PUCRE
+pwr_reg_pucre = mkBitDataRegNamed (pwr_periph_base + 0x40) "pucre"
+
+-- Power Port E pull-down control register
+--  | offset : 0x44
+--  | address: 0x40007044
+[ivory|
+ bitdata PWR_PDCRE :: Bits 32 = pwr_pdcre
+  { _             :: Bits 16  -- (Reserved)
+  , pwr_pdcre_pd15  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd14  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd13  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd12  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd11  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd10  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd9   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd8   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd7   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd6   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd5   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd4   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd3   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd2   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd1   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd0   :: Bit      -- Port E pull-down bit y (y=0..15)
+  }
+|]
+pwr_reg_pdcre :: BitDataReg PWR_PDCRE
+pwr_reg_pdcre = mkBitDataRegNamed (pwr_periph_base + 0x44) "pdcre"
+
 -- Power Port F pull-up control register
 --  | offset : 0x48
 --  | address: 0x40007048

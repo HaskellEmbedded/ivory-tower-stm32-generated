@@ -51,7 +51,7 @@ data Interrupt
   | TIM8_UP -- 44 TIM8 update interrupt
   | TIM8_TRG_COM -- 45 TIM8 Trigger and commutation interrupts
   | TIM8_CC -- 46 TIM8 capture compare interrupt
-  | ADC3 -- 47 ADC3 global interrupt
+  | Undefined47 -- 47 Undefined interrupt (padding only)
   | FMC -- 48 FSMC global interrupt
   | Undefined49 -- 49 Undefined interrupt (padding only)
   | Undefined50 -- 50 Undefined interrupt (padding only)
@@ -65,11 +65,11 @@ data Interrupt
   | DMA2_CH3 -- 58 DMA2 channel3 global interrupt
   | DMA2_CH4 -- 59 DMA2 channel4 global interrupt
   | DMA2_CH5 -- 60 DMA2 channel5 global interrupt
-  | ADC4 -- 61 ADC4 global interrupt
+  | Undefined61 -- 61 Undefined interrupt (padding only)
   | Undefined62 -- 62 Undefined interrupt (padding only)
   | Undefined63 -- 63 Undefined interrupt (padding only)
-  | Undefined64 -- 64 Undefined interrupt (padding only)
-  | Undefined65 -- 65 Undefined interrupt (padding only)
+  | COMP1_2_3 -- 64 COMP1_2_3 interrupt combined with EXTI lines 21, 22, 29
+  | COMP4_5_6 -- 65 COMP4_5_6 interrupt combined with EXTI lines 30, 31, 32
   | Undefined66 -- 66 Undefined interrupt (padding only)
   | Undefined67 -- 67 Undefined interrupt (padding only)
   | Undefined68 -- 68 Undefined interrupt (padding only)

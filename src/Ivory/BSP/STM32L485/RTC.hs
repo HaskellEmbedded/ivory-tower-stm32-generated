@@ -7,7 +7,8 @@ import Ivory.HW
 
 import Ivory.BSP.STM32L485.RCC
 import Ivory.BSP.STM32L485.MemoryMap
-import qualified Ivory.BSP.STM32L485.Interrupt as L485
+-- we don't use RTC interrupts for now
+--import qualified Ivory.BSP.STM32L485.Interrupt as L485
 
 import Ivory.BSP.STM32.Peripheral.RTC
 

@@ -182,8 +182,7 @@ rcc_reg_ahb3rstr = mkBitDataRegNamed (rcc_periph_base + 0x18) "ahb3rstr"
   , rcc_apb1rstr_uart7rst   :: Bit      -- UART7 reset
   , rcc_apb1rstr_dacrst     :: Bit      -- DAC reset
   , rcc_apb1rstr_pwrrst     :: Bit      -- Power interface reset
-  , rcc_apb1rstr_cecrst     :: Bit      -- HDMI-CEC reset
-  , _                     :: Bit      -- (Reserved)
+  , _                     :: Bits 2   -- (Reserved)
   , rcc_apb1rstr_can1rst    :: Bit      -- CAN1 reset
   , _                     :: Bit      -- (Reserved)
   , rcc_apb1rstr_i2c3rst    :: Bit      -- I2C3 reset
@@ -191,8 +190,8 @@ rcc_reg_ahb3rstr = mkBitDataRegNamed (rcc_periph_base + 0x18) "ahb3rstr"
   , rcc_apb1rstr_i2c1rst    :: Bit      -- I2C 1 reset
   , rcc_apb1rstr_uart5rst   :: Bit      -- USART 5 reset
   , rcc_apb1rstr_uart4rst   :: Bit      -- USART 4 reset
-  , rcc_apb1rstr_uart3rst   :: Bit      -- USART 3 reset
-  , rcc_apb1rstr_uart2rst   :: Bit      -- USART 2 reset
+  , rcc_apb1rstr_usart3rst  :: Bit      -- USART 3 reset
+  , rcc_apb1rstr_usart2rst  :: Bit      -- USART 2 reset
   , _                     :: Bit      -- (Reserved)
   , rcc_apb1rstr_spi3rst    :: Bit      -- SPI 3 reset
   , rcc_apb1rstr_spi2rst    :: Bit      -- SPI 2 reset
@@ -391,12 +390,7 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x44) "apb2enr"
   { _                          :: Bit      -- (Reserved)
   , rcc_ahb1lpenr_otghsulpilpen  :: Bit      -- USB OTG HS ULPI clock enable during Sleep mode
   , rcc_ahb1lpenr_otghslpen      :: Bit      -- USB OTG HS clock enable during Sleep mode
-  , rcc_ahb1lpenr_ethmacptplpen  :: Bit      -- Ethernet PTP clock enable during Sleep mode
-  , rcc_ahb1lpenr_ethmacrxlpen   :: Bit      -- Ethernet reception clock enable during Sleep mode
-  , rcc_ahb1lpenr_ethmactxlpen   :: Bit      -- Ethernet transmission clock enable during Sleep mode
-  , rcc_ahb1lpenr_ethmaclpen     :: Bit      -- Ethernet MAC clock enable during Sleep mode
-  , _                          :: Bit      -- (Reserved)
-  , rcc_ahb1lpenr_dma2dlpen      :: Bit      -- DMA2D clock enable during Sleep mode
+  , _                          :: Bits 6   -- (Reserved)
   , rcc_ahb1lpenr_dma2lpen       :: Bit      -- DMA2 clock enable during Sleep mode
   , rcc_ahb1lpenr_dma1lpen       :: Bit      -- DMA1 clock enable during Sleep mode
   , rcc_ahb1lpenr_dtcmlpen       :: Bit      -- DTCM RAM interface clock enable during Sleep mode
@@ -408,9 +402,7 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x44) "apb2enr"
   , _                          :: Bit      -- (Reserved)
   , rcc_ahb1lpenr_axilpen        :: Bit      -- AXI to AHB bridge clock enable during Sleep mode
   , rcc_ahb1lpenr_crclpen        :: Bit      -- CRC clock enable during Sleep mode
-  , _                          :: Bit      -- (Reserved)
-  , rcc_ahb1lpenr_gpioklpen      :: Bit      -- IO port K clock enable during Sleep mode
-  , rcc_ahb1lpenr_gpiojlpen      :: Bit      -- IO port J clock enable during Sleep mode
+  , _                          :: Bits 3   -- (Reserved)
   , rcc_ahb1lpenr_gpioilpen      :: Bit      -- IO port I clock enable during Sleep mode
   , rcc_ahb1lpenr_gpiohlpen      :: Bit      -- IO port H clock enable during Sleep mode
   , rcc_ahb1lpenr_gpioglpen      :: Bit      -- IO port G clock enable during Sleep mode
@@ -463,8 +455,7 @@ rcc_reg_ahb3lpenr = mkBitDataRegNamed (rcc_periph_base + 0x58) "ahb3lpenr"
   , rcc_apb1lpenr_uart7lpen   :: Bit      -- UART7 clock enable during Sleep mode
   , rcc_apb1lpenr_daclpen     :: Bit      -- DAC interface clock enable during Sleep mode
   , rcc_apb1lpenr_pwrlpen     :: Bit      -- Power interface clock enable during Sleep mode
-  , _                       :: Bit      -- (Reserved)
-  , rcc_apb1lpenr_can2lpen    :: Bit      -- CAN 2 clock enable during Sleep mode
+  , _                       :: Bits 2   -- (Reserved)
   , rcc_apb1lpenr_can1lpen    :: Bit      -- CAN 1 clock enable during Sleep mode
   , _                       :: Bit      -- (Reserved)
   , rcc_apb1lpenr_i2c3lpen    :: Bit      -- I2C3 clock enable during Sleep mode
@@ -479,7 +470,7 @@ rcc_reg_ahb3lpenr = mkBitDataRegNamed (rcc_periph_base + 0x58) "ahb3lpenr"
   , rcc_apb1lpenr_spi2lpen    :: Bit      -- SPI2 clock enable during Sleep mode
   , _                       :: Bits 2   -- (Reserved)
   , rcc_apb1lpenr_wwdglpen    :: Bit      -- Window watchdog clock enable during Sleep mode
-  , _                       :: Bit      -- (Reserved)
+  , rcc_apb1lpenr_rtcapblpen  :: Bit      -- RTCAPB clock enable during Sleep mode
   , rcc_apb1lpenr_lptim1lpen  :: Bit      -- low power timer 1 clock enable during Sleep mode
   , rcc_apb1lpenr_tim14lpen   :: Bit      -- TIM14 clock enable during Sleep mode
   , rcc_apb1lpenr_tim13lpen   :: Bit      -- TIM13 clock enable during Sleep mode
@@ -534,16 +525,16 @@ rcc_reg_apb2lpenr = mkBitDataRegNamed (rcc_periph_base + 0x64) "apb2lpenr"
 --  | address: 0x40023870
 [ivory|
  bitdata RCC_BDCR :: Bits 32 = rcc_bdcr
-  { _               :: Bits 15  -- (Reserved)
-  , rcc_bdcr_bdrst    :: Bit      -- Backup domain software reset
-  , rcc_bdcr_rtcen    :: Bit      -- RTC clock enable
-  , _               :: Bits 5   -- (Reserved)
-  , rcc_bdcr_rtcsel1  :: Bit      -- RTC clock source selection
-  , rcc_bdcr_rtcsel0  :: Bit      -- RTC clock source selection
-  , _               :: Bits 5   -- (Reserved)
-  , rcc_bdcr_lsebyp   :: Bit      -- External low-speed oscillator bypass
-  , rcc_bdcr_lserdy   :: Bit      -- External low-speed oscillator ready
-  , rcc_bdcr_lseon    :: Bit      -- External low-speed oscillator enable
+  { _              :: Bits 15  -- (Reserved)
+  , rcc_bdcr_bdrst   :: Bit      -- Backup domain software reset
+  , rcc_bdcr_rtcen   :: Bit      -- RTC clock enable
+  , _              :: Bits 5   -- (Reserved)
+  , rcc_bdcr_rtcsel  :: Bits 2   -- RTC clock source selection
+  , _              :: Bits 3   -- (Reserved)
+  , rcc_bdcr_lsedrv  :: Bits 2   -- LSE oscillator drive capability
+  , rcc_bdcr_lsebyp  :: Bit      -- External low-speed oscillator bypass
+  , rcc_bdcr_lserdy  :: Bit      -- External low-speed oscillator ready
+  , rcc_bdcr_lseon   :: Bit      -- External low-speed oscillator enable
   }
 |]
 rcc_reg_bdcr :: BitDataReg RCC_BDCR
@@ -630,7 +621,7 @@ rcc_reg_pllsaicfgr = mkBitDataRegNamed (rcc_periph_base + 0x88) "pllsaicfgr"
   , _                      :: Bits 7   -- (Reserved)
   , rcc_dckcfgr1_pllsaidivq  :: Bits 5   -- PLLSAI division factor for SAI1 clock
   , _                      :: Bits 3   -- (Reserved)
-  , rcc_dckcfgr1_plli2sdiv   :: Bits 5   -- PLLI2S division factor for SAI1 clock
+  , rcc_dckcfgr1_plli2sdivq  :: Bits 5   -- PLLI2S division factor for SAI1 clock
   }
 |]
 rcc_reg_dckcfgr1 :: BitDataReg RCC_DCKCFGR1
@@ -653,12 +644,12 @@ rcc_reg_dckcfgr1 = mkBitDataRegNamed (rcc_periph_base + 0x8c) "dckcfgr1"
   , rcc_dckcfgr2_i2c1sel    :: Bits 2   -- I2C1 clock source selection
   , rcc_dckcfgr2_uart8sel   :: Bits 2   -- UART 8 clock source selection
   , rcc_dckcfgr2_uart7sel   :: Bits 2   -- UART 7 clock source selection
-  , rcc_dckcfgr2_uart6sel   :: Bits 2   -- USART 6 clock source selection
+  , rcc_dckcfgr2_usart6sel  :: Bits 2   -- USART 6 clock source selection
   , rcc_dckcfgr2_uart5sel   :: Bits 2   -- UART 5 clock source selection
   , rcc_dckcfgr2_uart4sel   :: Bits 2   -- UART 4 clock source selection
-  , rcc_dckcfgr2_uart3sel   :: Bits 2   -- USART 3 clock source selection
-  , rcc_dckcfgr2_uart2sel   :: Bits 2   -- USART 2 clock source selection
-  , rcc_dckcfgr2_uart1sel   :: Bits 2   -- USART 1 clock source selection
+  , rcc_dckcfgr2_usart3sel  :: Bits 2   -- USART 3 clock source selection
+  , rcc_dckcfgr2_usart2sel  :: Bits 2   -- USART 2 clock source selection
+  , rcc_dckcfgr2_usart1sel  :: Bits 2   -- USART 1 clock source selection
   }
 |]
 rcc_reg_dckcfgr2 :: BitDataReg RCC_DCKCFGR2

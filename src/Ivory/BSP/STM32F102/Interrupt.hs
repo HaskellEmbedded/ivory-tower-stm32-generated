@@ -25,8 +25,8 @@ data Interrupt
   | ADC1_2 -- 18 ADC1 and ADC2 global interrupt
   | USB_HP_CAN_TX -- 19 USB High Priority or CAN TX interrupts
   | USB_LP_CAN_RX0 -- 20 USB Low Priority or CAN RX0 interrupts
-  | CAN_RX1 -- 21 CAN RX1 interrupt
-  | CAN_SCE -- 22 CAN SCE interrupt
+  | Undefined21 -- 21 Undefined interrupt (padding only)
+  | Undefined22 -- 22 Undefined interrupt (padding only)
   | EXTI9_5 -- 23 EXTI Line[9:5] interrupts
   | TIM1_BRK -- 24 TIM1 Break interrupt
   | TIM1_UP -- 25 TIM1 Update interrupt
@@ -43,7 +43,7 @@ data Interrupt
   | SPI2 -- 36 SPI2 global interrupt
   | USART1 -- 37 USART1 global interrupt
   | USART2 -- 38 USART2 global interrupt
-  | Undefined39 -- 39 Undefined interrupt (padding only)
+  | USART3 -- 39 USART3 global interrupt
   | EXTI15_10 -- 40 EXTI Line[15:10] interrupts
   | RTCALARM -- 41 RTC Alarms through EXTI line interrupt
   | USBWAKEUP -- 42 USB wakeup from suspend through EXTI line interrupt

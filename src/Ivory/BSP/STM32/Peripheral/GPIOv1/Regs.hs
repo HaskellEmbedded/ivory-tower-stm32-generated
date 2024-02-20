@@ -149,7 +149,7 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   , gpio_bsrr_bs5   :: Bit      -- Set bit 5
   , gpio_bsrr_bs4   :: Bit      -- Set bit 4
   , gpio_bsrr_bs3   :: Bit      -- Set bit 3
-  , gpio_bsrr_bs2   :: Bit      -- Set bit 1
+  , gpio_bsrr_bs2   :: Bit      -- Set bit 2
   , gpio_bsrr_bs1   :: Bit      -- Set bit 1
   , gpio_bsrr_bs0   :: Bit      -- Set bit 0
   }
@@ -175,7 +175,7 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   , gpio_brr_br5   :: Bit      -- Reset bit 5
   , gpio_brr_br4   :: Bit      -- Reset bit 4
   , gpio_brr_br3   :: Bit      -- Reset bit 3
-  , gpio_brr_br2   :: Bit      -- Reset bit 1
+  , gpio_brr_br2   :: Bit      -- Reset bit 2
   , gpio_brr_br1   :: Bit      -- Reset bit 1
   , gpio_brr_br0   :: Bit      -- Reset bit 0
   }

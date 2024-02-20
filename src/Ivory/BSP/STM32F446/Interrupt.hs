@@ -53,7 +53,7 @@ data Interrupt
   | TIM8_CC -- 46 TIM8 Capture Compare interrupt
   | DMA1_STREAM7 -- 47 DMA1 Stream7 global interrupt
   | FMC -- 48 FMC global interrupt
-  | Undefined49 -- 49 Undefined interrupt (padding only)
+  | SDIO -- 49 SDIO global interrupt
   | TIM5 -- 50 TIM5 global interrupt
   | SPI3 -- 51 SPI3 global interrupt
   | UART4 -- 52 UART4 global interrupt

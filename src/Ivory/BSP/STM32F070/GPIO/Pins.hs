@@ -9,4 +9,5 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.TH
 mkGPIOPins 'gpioA "pinA"
 mkGPIOPins 'gpioB "pinB"
 mkGPIOPins 'gpioC "pinC"
+mkGPIOPins 'gpioD "pinD"
 mkGPIOPins 'gpioF "pinF"

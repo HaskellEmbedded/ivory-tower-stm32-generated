@@ -8,6 +8,9 @@ module Ivory.BSP.STM32G441 (
   , module Ivory.BSP.STM32G441.LPUART
   , module Ivory.BSP.STM32G441.IWDG
   , module Ivory.BSP.STM32G441.EXTI
+  , module Ivory.BSP.STM32G441.SYSCFG
+  , module Ivory.BSP.STM32G441.ATIM
+  , module Ivory.BSP.STM32G441.GTIM
   ) where
 
 import Ivory.BSP.STM32G441.UART
@@ -19,3 +22,6 @@ import Ivory.BSP.STM32G441.USART
 import Ivory.BSP.STM32G441.LPUART
 import Ivory.BSP.STM32G441.IWDG
 import Ivory.BSP.STM32G441.EXTI
+import Ivory.BSP.STM32G441.SYSCFG
+import Ivory.BSP.STM32G441.ATIM
+import Ivory.BSP.STM32G441.GTIM

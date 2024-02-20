@@ -10,6 +10,9 @@ module Ivory.BSP.STM32L475 (
   , module Ivory.BSP.STM32L475.LPUART
   , module Ivory.BSP.STM32L475.IWDG
   , module Ivory.BSP.STM32L475.EXTI
+  , module Ivory.BSP.STM32L475.SYSCFG
+  , module Ivory.BSP.STM32L475.ATIM
+  , module Ivory.BSP.STM32L475.GTIM
   ) where
 
 import Ivory.BSP.STM32L475.UART
@@ -23,3 +26,6 @@ import Ivory.BSP.STM32L475.USART
 import Ivory.BSP.STM32L475.LPUART
 import Ivory.BSP.STM32L475.IWDG
 import Ivory.BSP.STM32L475.EXTI
+import Ivory.BSP.STM32L475.SYSCFG
+import Ivory.BSP.STM32L475.ATIM
+import Ivory.BSP.STM32L475.GTIM

@@ -92,8 +92,8 @@ data Interrupt
   | SPI5 -- 85 SPI 5 global interrupt
   | SPI6 -- 86 SPI 6 global interrupt
   | SAI1 -- 87 SAI1 global interrupt
-  | LCD_TFT -- 88 LTDC global interrupt
-  | LTDC_ER -- 89 LTDC Error global interrupt
+  | LTDC -- 88 LTDC global interrupt
+  | LTDC_ER -- 89 LTDC global error interrupt
   | DMA2D -- 90 DMA2D global interrupt
   | SAI2 -- 91 SAI2 global interrupt
   | QUADSPI -- 92 QuadSPI global interrupt

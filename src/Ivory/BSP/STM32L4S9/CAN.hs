@@ -6,10 +6,13 @@ module Ivory.BSP.STM32L4S9.CAN (
 import Ivory.Language
 import Ivory.HW
 
-import Ivory.BSP.STM32.Peripheral.CAN
+import Ivory.BSP.STM32L4S9.AF
 import Ivory.BSP.STM32L4S9.RCC
 import Ivory.BSP.STM32L4S9.MemoryMap
 import qualified Ivory.BSP.STM32L4S9.Interrupt as L4S9
+
+import Ivory.BSP.STM32.AF
+import Ivory.BSP.STM32.Peripheral.CAN
 
 canFilters :: CANPeriphFilters
 canFilters = mkCANPeriphFilters can1_periph_base
@@ -22,6 +25,7 @@ can1 :: CANPeriph
 can1 = mkCANPeriph can1_periph_base
                 rccenable rccdisable
                 L4S9.CAN1_TX L4S9.CAN1_RX0 L4S9.CAN1_RX1 L4S9.CAN1_SCE
+               (\pin -> findAFByPin pin "can1" afDB)
                "can1"
   where
   rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_can1en

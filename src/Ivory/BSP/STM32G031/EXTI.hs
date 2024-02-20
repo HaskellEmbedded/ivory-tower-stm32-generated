@@ -1,11 +1,6 @@
 {-# LANGUAGE DataKinds #-}
 module Ivory.BSP.STM32G031.EXTI (exti) where
 
-import Ivory.Language
-import Ivory.HW
-import Ivory.HW.BitData
-import Ivory.HW.Reg
-
 import Ivory.BSP.STM32G031.MemoryMap
 import qualified Ivory.BSP.STM32G031.Interrupt as G031
 

@@ -26,8 +26,8 @@ import Ivory.BSP.STM32L4R5.MemoryMap (flash_periph_base)
   , flash_acr_dcen      :: Bit      -- Data cache enable
   , flash_acr_icen      :: Bit      -- Instruction cache enable
   , flash_acr_prften    :: Bit      -- Prefetch enable
-  , _                 :: Bits 5   -- (Reserved)
-  , flash_acr_latency   :: Bits 3   -- Latency
+  , _                 :: Bits 4   -- (Reserved)
+  , flash_acr_latency   :: Bits 4   -- Latency
   }
 |]
 flash_reg_acr :: BitDataReg FLASH_ACR
@@ -71,7 +71,8 @@ flash_reg_optkeyr = mkBitDataRegNamed (flash_periph_base + 0xc) "optkeyr"
 --  | address: 0x40022010
 [ivory|
  bitdata FLASH_SR :: Bits 32 = flash_sr
-  { _               :: Bits 15  -- (Reserved)
+  { _               :: Bits 14  -- (Reserved)
+  , flash_sr_pempty   :: Bit      -- Program empty
   , flash_sr_bsy      :: Bit      -- Busy
   , flash_sr_optverr  :: Bit      -- Option validity error
   , flash_sr_rderr    :: Bit      -- PCROP read error
@@ -128,10 +129,10 @@ flash_reg_cr = mkBitDataRegNamed (flash_periph_base + 0x14) "cr"
   , flash_eccr_eccc      :: Bit      -- ECC correction
   , _                  :: Bits 5   -- (Reserved)
   , flash_eccr_eccie     :: Bit      -- ECC correction interrupt enable
-  , _                  :: Bits 3   -- (Reserved)
+  , _                  :: Bit      -- (Reserved)
   , flash_eccr_sysf_ecc  :: Bit      -- System Flash ECC fail
   , flash_eccr_bk_ecc    :: Bit      -- ECC fail bank
-  , flash_eccr_addr_ecc  :: Bits 19  -- ECC fail address
+  , flash_eccr_addr_ecc  :: Bits 21  -- ECC fail address
   }
 |]
 flash_reg_eccr :: BitDataReg FLASH_ECCR
@@ -142,7 +143,9 @@ flash_reg_eccr = mkBitDataRegNamed (flash_periph_base + 0x18) "eccr"
 --  | address: 0x40022020
 [ivory|
  bitdata FLASH_OPTR :: Bits 32 = flash_optr
-  { _                    :: Bits 6   -- (Reserved)
+  { _                    :: Bits 4   -- (Reserved)
+  , flash_optr_nboot0      :: Bit      -- nBOOT0 option bit
+  , flash_optr_nswboot0    :: Bit      -- Software BOOT0
   , flash_optr_sram2_rst   :: Bit      -- SRAM2 Erase when system reset
   , flash_optr_sram2_pe    :: Bit      -- SRAM2 parity check enable
   , flash_optr_nboot1      :: Bit      -- Boot configuration
@@ -209,9 +212,9 @@ flash_reg_wrp1ar = mkBitDataRegNamed (flash_periph_base + 0x2c) "wrp1ar"
 [ivory|
  bitdata FLASH_WRP1BR :: Bits 32 = flash_wrp1br
   { _                      :: Bits 8   -- (Reserved)
-  , flash_wrp1br_wrp1b_strt  :: Bits 8   -- Bank 1 WRP second area B end offset
+  , flash_wrp1br_wrp1b_end   :: Bits 8   -- Bank 1 WRP second area B end offset
   , _                      :: Bits 8   -- (Reserved)
-  , flash_wrp1br_wrp1b_end   :: Bits 8   -- Bank 1 WRP second area B start offset
+  , flash_wrp1br_wrp1b_strt  :: Bits 8   -- Bank 1 WRP second area B start offset
   }
 |]
 flash_reg_wrp1br :: BitDataReg FLASH_WRP1BR
@@ -268,4 +271,16 @@ flash_reg_wrp2ar = mkBitDataRegNamed (flash_periph_base + 0x4c) "wrp2ar"
 |]
 flash_reg_wrp2br :: BitDataReg FLASH_WRP2BR
 flash_reg_wrp2br = mkBitDataRegNamed (flash_periph_base + 0x50) "wrp2br"
+
+-- Flash configuration register
+--  | offset : 0x130
+--  | address: 0x40022130
+[ivory|
+ bitdata FLASH_CFGR :: Bits 32 = flash_cfgr
+  { _              :: Bits 31  -- (Reserved)
+  , flash_cfgr_lven  :: Bit      -- Low-voltage enable
+  }
+|]
+flash_reg_cfgr :: BitDataReg FLASH_CFGR
+flash_reg_cfgr = mkBitDataRegNamed (flash_periph_base + 0x130) "cfgr"
 

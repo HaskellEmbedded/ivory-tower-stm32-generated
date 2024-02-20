@@ -20,8 +20,8 @@ import Ivory.BSP.STM32.Peripheral.UART
 usart1 :: UART
 usart1 = mkUARTVersion V3 usart1_periph_base
                 rccenable rccdisable
-                F301.USART1
-                PClk1
+                F301.USART1_EXTI25
+                PClk2
                 (\pin -> findAFByPin pin "usart1" afDB)
                 "usart1"
   where

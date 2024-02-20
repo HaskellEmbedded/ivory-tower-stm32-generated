@@ -6,6 +6,8 @@ module Ivory.BSP.STM32F101 (
   , module Ivory.BSP.STM32F101.USART
   , module Ivory.BSP.STM32F101.IWDG
   , module Ivory.BSP.STM32F101.EXTI
+  , module Ivory.BSP.STM32F101.AFIO
+  , module Ivory.BSP.STM32F101.GTIM
   ) where
 
 import Ivory.BSP.STM32F101.UART
@@ -15,3 +17,5 @@ import Ivory.BSP.STM32F101.SPI
 import Ivory.BSP.STM32F101.USART
 import Ivory.BSP.STM32F101.IWDG
 import Ivory.BSP.STM32F101.EXTI
+import Ivory.BSP.STM32F101.AFIO
+import Ivory.BSP.STM32F101.GTIM

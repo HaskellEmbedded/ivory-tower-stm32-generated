@@ -24,7 +24,7 @@ spi1 :: SPI
 spi1 = mkSPI spi1_periph_base
           rccenable rccdisable
           F732.SPI1
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi1" afDB)
           3
           "spi1"
@@ -60,7 +60,7 @@ spi4 :: SPI
 spi4 = mkSPI spi4_periph_base
           rccenable rccdisable
           F732.SPI4
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi4" afDB)
           3
           "spi4"
@@ -72,7 +72,7 @@ spi5 :: SPI
 spi5 = mkSPI spi5_periph_base
           rccenable rccdisable
           F732.SPI5
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi5" afDB)
           3
           "spi5"

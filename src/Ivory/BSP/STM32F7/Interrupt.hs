@@ -5,7 +5,7 @@ import Ivory.BSP.STM32.Interrupt
 
 data Interrupt
   = WWDG -- 0 Window Watchdog interrupt
-  | PVD -- 1 PVD through EXTI line detection
+  | PVD -- 1 PVD through EXTI line detection interrupt
   | TAMP_STAMP -- 2 Tamper and TimeStamp interrupts through the EXTI line
   | RTC_WKUP -- 3 RTC Tamper or TimeStamp /CSS on LSE through EXTI line 19 interrupts
   | FLASH -- 4 Flash global interrupt
@@ -37,8 +37,8 @@ data Interrupt
   | TIM4 -- 30 TIM4 global interrupt
   | I2C1_EV -- 31 I2C1 event interrupt
   | I2C1_ER -- 32 I2C1 error interrupt
-  | I2C2_EV -- 33 I2C2_EV
-  | I2C2_ER -- 34 I2C2_ER
+  | I2C2_EV -- 33 I2C2 event interrupt
+  | I2C2_ER -- 34 I2C2 error interrupt
   | SPI1 -- 35 SPI1 global interrupt
   | SPI2 -- 36 SPI2 global interrupt
   | USART1 -- 37 USART1 global interrupt
@@ -83,7 +83,7 @@ data Interrupt
   | OTG_HS_WKUP -- 76 USB On The Go HS Wakeup through EXTI interrupt
   | OTG_HS -- 77 USB On The Go HS global interrupt
   | DCMI -- 78 DCMI global interrupt
-  | CRYP -- 79 CRYP crypto global interrupt
+  | CRYP -- 79 CRYP
   | HASH_RNG -- 80 Hash and Rng global interrupt
   | FPU -- 81 Floating point unit interrupt
   | UART7 -- 82 UART 7 global interrupt
@@ -92,16 +92,16 @@ data Interrupt
   | SPI5 -- 85 SPI 5 global interrupt
   | SPI6 -- 86 SPI 6 global interrupt
   | SAI1 -- 87 SAI1 global interrupt
-  | LCD_TFT -- 88 LTDC global interrupt
-  | LCD_TFT_ -- 89 LCD-TFT global Error interrupt
+  | LTDC -- 88 LTDC global interrupt
+  | LCD_TFT_1 -- 89 LCD-TFT global error interrupt
   | DMA2D -- 90 DMA2D global interrupt
   | SAI2 -- 91 SAI2 global interrupt
   | QUADSPI -- 92 QuadSPI global interrupt
-  | LPTIMER1 -- 93 LP Timer1 global interrupt
+  | LP_TIMER1 -- 93 LP Timer1 global interrupt
   | HDMI_CEC -- 94 HDMI-CEC global interrupt
   | I2C4_EV -- 95 I2C4 event interrupt
-  | I2C4_ER -- 96 I2C4 Error interrupt
-  | SPDIFRX -- 97 SPDIFRX
+  | I2C4_ER -- 96 I2C4 error interrupt
+  | SPDIFRX -- 97 SPDIFRX global interrupt
   | DSIHOST -- 98 DSI host global interrupt
   | DFSDM1_FLT0 -- 99 DFSDM1 Filter 0 global interrupt
   | DFSDM1_FLT1 -- 100 DFSDM1 Filter 1 global interrupt

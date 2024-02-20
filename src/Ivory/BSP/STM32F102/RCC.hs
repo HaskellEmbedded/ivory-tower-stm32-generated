@@ -121,13 +121,19 @@ rcc_reg_apb2rstr = mkBitDataRegNamed (rcc_periph_base + 0xc) "apb2rstr"
   { _                     :: Bits 3   -- (Reserved)
   , rcc_apb1rstr_pwrrst     :: Bit      -- Power interface reset
   , rcc_apb1rstr_bkprst     :: Bit      -- Backup interface reset
-  , _                     :: Bits 5   -- (Reserved)
-  , rcc_apb1rstr_i2c1rst    :: Bit      -- I2C1 reset
   , _                     :: Bits 3   -- (Reserved)
+  , rcc_apb1rstr_usbrst     :: Bit      -- USB reset
+  , rcc_apb1rstr_i2c2rst    :: Bit      -- I2C2 reset
+  , rcc_apb1rstr_i2c1rst    :: Bit      -- I2C1 reset
+  , _                     :: Bits 2   -- (Reserved)
+  , rcc_apb1rstr_usart3rst  :: Bit      -- USART3 reset
   , rcc_apb1rstr_usart2rst  :: Bit      -- USART 2 reset
-  , _                     :: Bits 5   -- (Reserved)
+  , _                     :: Bits 2   -- (Reserved)
+  , rcc_apb1rstr_spi2rst    :: Bit      -- SPI2 reset
+  , _                     :: Bits 2   -- (Reserved)
   , rcc_apb1rstr_wwdgrst    :: Bit      -- Window watchdog reset
-  , _                     :: Bits 9   -- (Reserved)
+  , _                     :: Bits 8   -- (Reserved)
+  , rcc_apb1rstr_tim4rst    :: Bit      -- TIM4 timer reset
   , rcc_apb1rstr_tim3rst    :: Bit      -- Timer 3 reset
   , rcc_apb1rstr_tim2rst    :: Bit      -- Timer 2 reset
   }
@@ -184,13 +190,19 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x18) "apb2enr"
   { _                   :: Bits 3   -- (Reserved)
   , rcc_apb1enr_pwren     :: Bit      -- Power interface clock enable
   , rcc_apb1enr_bkpen     :: Bit      -- Backup interface clock enable
-  , _                   :: Bits 5   -- (Reserved)
-  , rcc_apb1enr_i2c1en    :: Bit      -- I2C 1 clock enable
   , _                   :: Bits 3   -- (Reserved)
+  , rcc_apb1enr_usben     :: Bit      -- USB clock enable
+  , rcc_apb1enr_i2c2en    :: Bit      -- I2C2 clock enable
+  , rcc_apb1enr_i2c1en    :: Bit      -- I2C 1 clock enable
+  , _                   :: Bits 2   -- (Reserved)
+  , rcc_apb1enr_usart3en  :: Bit      -- USART3 clock enable
   , rcc_apb1enr_usart2en  :: Bit      -- USART 2 clock enable
-  , _                   :: Bits 5   -- (Reserved)
+  , _                   :: Bits 2   -- (Reserved)
+  , rcc_apb1enr_spi2en    :: Bit      -- SPI2 clock enable
+  , _                   :: Bits 2   -- (Reserved)
   , rcc_apb1enr_wwdgen    :: Bit      -- Window watchdog clock enable
-  , _                   :: Bits 9   -- (Reserved)
+  , _                   :: Bits 8   -- (Reserved)
+  , rcc_apb1enr_tim4en    :: Bit      -- TIM4 Timer clock enable
   , rcc_apb1enr_tim3en    :: Bit      -- Timer 3 clock enable
   , rcc_apb1enr_tim2en    :: Bit      -- Timer 2 clock enable
   }

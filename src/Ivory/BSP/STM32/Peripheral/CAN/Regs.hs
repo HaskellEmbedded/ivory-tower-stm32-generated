@@ -326,6 +326,26 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
 |]
 
 
+-- Filter bank x register 1
+--  | offset : 0x240
+--  | address: 0x40006640
+[ivory|
+ bitdata CAN_FR1 :: Bits 32 = can_fr1
+  { can_fr1_fb  :: Bits 32  -- Filter bits
+  }
+|]
+
+
+-- Filter bank x register 2
+--  | offset : 0x244
+--  | address: 0x40006644
+[ivory|
+ bitdata CAN_FR2 :: Bits 32 = can_fr2
+  { can_fr2_fb  :: Bits 32  -- Filter bits
+  }
+|]
+
+
 -- 
 --  | offset : 0x0
 --  | address: 0x40006400

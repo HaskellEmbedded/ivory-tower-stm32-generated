@@ -33,4 +33,3 @@ uartTower tocc uart pins baud = case uart of
     (WrappedV1 x) -> V1.uartTower tocc x pins baud
     (WrappedV2 x) -> V2.uartTower tocc x pins baud
     (WrappedV3 x) -> V3.uartTower tocc x pins baud
-  

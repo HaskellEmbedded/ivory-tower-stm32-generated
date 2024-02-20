@@ -51,7 +51,7 @@ data Interrupt
   | TIM8_UP -- 44 TIM8 Update Interrupt
   | TIM8_TRG_COM -- 45 TIM8 Trigger and Commutation Interrupt
   | TIM8_CC -- 46 TIM8 Capture Compare Interrupt
-  | ADC3 -- 47 ADC3 global interrupt
+  | Undefined47 -- 47 Undefined interrupt (padding only)
   | FMC -- 48 FMC global Interrupt
   | SDMMC1 -- 49 SDMMC global Interrupt
   | TIM5 -- 50 TIM5 global Interrupt
@@ -82,7 +82,7 @@ data Interrupt
   | SAI2 -- 75 SAI2 global interrupt
   | OCTOSPI2 -- 76 OCTOSPI2 global interrupt
   | TSC -- 77 TSC global interrupt
-  | DSIHSOT -- 78 DSI global interrupt
+  | Undefined78 -- 78 Undefined interrupt (padding only)
   | AES -- 79 AES global interrupt
   | RNG_HASH -- 80 RNG and HASH global interrupt
   | FPU -- 81 Floating point interrupt
@@ -98,7 +98,7 @@ data Interrupt
   | LCD_TFT -- 91 LTDC global interrupt
   | LCD_TFT_ER -- 92 LTDC global error interrupt
   | GFXMMU -- 93 GFXMMU global error interrupt
-  | DMAMUX_OVR -- 94 DMAMUX Overrun interrupt
+  | DMAMUX1_OVR -- 94 DMAMUX Overrun interrupt
   deriving (Eq, Show, Enum)
 
 instance STM32Interrupt Interrupt where

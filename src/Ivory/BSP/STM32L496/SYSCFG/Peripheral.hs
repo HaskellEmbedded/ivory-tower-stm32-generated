@@ -28,10 +28,11 @@ data SYSCFG = SYSCFG
   }
 
 -- | Create SYSCFG given the base register address.
-mkSYSCFG  :: Integer
-       -> (forall eff . Ivory eff ())
-       -> (forall eff . Ivory eff ())
-       -> SYSCFG
+mkSYSCFG
+  :: Integer
+  -> (forall eff . Ivory eff ())
+  -> (forall eff . Ivory eff ())
+  -> SYSCFG
 mkSYSCFG base rccen rccdis = SYSCFG
   { syscfgRegMEMRMP  = reg 0x0 "memrmp"
   , syscfgRegCFGR1   = reg 0x4 "cfgr1"
@@ -43,9 +44,9 @@ mkSYSCFG base rccen rccdis = SYSCFG
   , syscfgRegCFGR2   = reg 0x1c "cfgr2"
   , syscfgRegSWPR    = reg 0x20 "swpr"
   , syscfgRegSKR     = reg 0x24 "skr"
-    , syscfgRCCEnable      = rccen
-    , syscfgRCCDisable     = rccdis
-    }
+  , syscfgRCCEnable      = rccen
+  , syscfgRCCDisable     = rccdis
+  }
   where
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d
   reg offs name = mkBitDataRegNamed (base + offs) ("syscfg->" ++ name)

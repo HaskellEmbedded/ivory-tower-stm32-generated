@@ -9,6 +9,9 @@ module Ivory.BSP.STM32L431 (
   , module Ivory.BSP.STM32L431.LPUART
   , module Ivory.BSP.STM32L431.IWDG
   , module Ivory.BSP.STM32L431.EXTI
+  , module Ivory.BSP.STM32L431.SYSCFG
+  , module Ivory.BSP.STM32L431.ATIM
+  , module Ivory.BSP.STM32L431.GTIM
   ) where
 
 import Ivory.BSP.STM32L431.CAN
@@ -21,3 +24,6 @@ import Ivory.BSP.STM32L431.USART
 import Ivory.BSP.STM32L431.LPUART
 import Ivory.BSP.STM32L431.IWDG
 import Ivory.BSP.STM32L431.EXTI
+import Ivory.BSP.STM32L431.SYSCFG
+import Ivory.BSP.STM32L431.ATIM
+import Ivory.BSP.STM32L431.GTIM

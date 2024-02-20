@@ -17,10 +17,20 @@ import Ivory.Language
 --  | address: 0x50060800
 [ivory|
  bitdata RNG_CR :: Bits 32 = rng_cr
-  { _           :: Bits 28  -- (Reserved)
-  , rng_cr_ie     :: Bit      -- Interrupt enable
-  , rng_cr_rngen  :: Bit      -- Random number generator enable
-  , _           :: Bits 2   -- (Reserved)
+  { rng_cr_configlock   :: Bit      -- RNG Config lock
+  , rng_cr_condrst      :: Bit      -- Conditioning soft reset
+  , _                 :: Bits 4   -- (Reserved)
+  , rng_cr_rng_config1  :: Bits 6   -- RNG configuration 1
+  , rng_cr_clkdiv       :: Bits 4   -- Clock divider factor
+  , rng_cr_rng_config2  :: Bits 3   -- RNG configuration 2
+  , rng_cr_nistc        :: Bit      -- Non NIST compliant
+  , rng_cr_rng_config3  :: Bits 4   -- RNG configuration 3
+  , _                 :: Bits 2   -- (Reserved)
+  , rng_cr_ced          :: Bit      -- Clock error detection
+  , _                 :: Bit      -- (Reserved)
+  , rng_cr_ie           :: Bit      -- Interrupt enable
+  , rng_cr_rngen        :: Bit      -- Random number generator enable
+  , _                 :: Bits 2   -- (Reserved)
   }
 |]
 

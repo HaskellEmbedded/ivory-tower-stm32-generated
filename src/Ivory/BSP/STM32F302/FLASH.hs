@@ -21,7 +21,7 @@ import Ivory.BSP.STM32F302.MemoryMap (flash_periph_base)
   { _                :: Bits 26  -- (Reserved)
   , flash_acr_prftbs   :: Bit      -- PRFTBS
   , flash_acr_prftbe   :: Bit      -- PRFTBE
-  , _                :: Bit      -- (Reserved)
+  , flash_acr_hlfcya   :: Bit      -- Flash half cycle access enable
   , flash_acr_latency  :: Bits 3   -- LATENCY
   }
 |]
@@ -55,13 +55,13 @@ flash_reg_optkeyr = mkBitDataRegNamed (flash_periph_base + 0x8) "optkeyr"
 --  | address: 0x4002200c
 [ivory|
  bitdata FLASH_SR :: Bits 32 = flash_sr
-  { _             :: Bits 26  -- (Reserved)
-  , flash_sr_eop    :: Bit      -- End of operation
-  , flash_sr_wrprt  :: Bit      -- Write protection error
-  , _             :: Bit      -- (Reserved)
-  , flash_sr_pgerr  :: Bit      -- Programming error
-  , _             :: Bit      -- (Reserved)
-  , flash_sr_bsy    :: Bit      -- Busy
+  { _                :: Bits 26  -- (Reserved)
+  , flash_sr_eop       :: Bit      -- End of operation
+  , flash_sr_wrprterr  :: Bit      -- Write protection error
+  , _                :: Bit      -- (Reserved)
+  , flash_sr_pgerr     :: Bit      -- Programming error
+  , _                :: Bit      -- (Reserved)
+  , flash_sr_bsy       :: Bit      -- Busy
   }
 |]
 flash_reg_sr :: BitDataReg FLASH_SR
@@ -72,21 +72,21 @@ flash_reg_sr = mkBitDataRegNamed (flash_periph_base + 0xc) "sr"
 --  | address: 0x40022010
 [ivory|
  bitdata FLASH_CR :: Bits 32 = flash_cr
-  { _                     :: Bits 18  -- (Reserved)
-  , flash_cr_force_optload  :: Bit      -- Force option byte loading
-  , flash_cr_eopie          :: Bit      -- End of operation interrupt enable
-  , _                     :: Bit      -- (Reserved)
-  , flash_cr_errie          :: Bit      -- Error interrupt enable
-  , flash_cr_optwre         :: Bit      -- Option bytes write enable
-  , _                     :: Bit      -- (Reserved)
-  , flash_cr_lock           :: Bit      -- Lock
-  , flash_cr_strt           :: Bit      -- Start
-  , flash_cr_opter          :: Bit      -- Option byte erase
-  , flash_cr_optpg          :: Bit      -- Option byte programming
-  , _                     :: Bit      -- (Reserved)
-  , flash_cr_mer            :: Bit      -- Mass erase
-  , flash_cr_per            :: Bit      -- Page erase
-  , flash_cr_pg             :: Bit      -- Programming
+  { _                  :: Bits 18  -- (Reserved)
+  , flash_cr_obl_launch  :: Bit      -- Force option byte loading
+  , flash_cr_eopie       :: Bit      -- End of operation interrupt enable
+  , _                  :: Bit      -- (Reserved)
+  , flash_cr_errie       :: Bit      -- Error interrupt enable
+  , flash_cr_optwre      :: Bit      -- Option bytes write enable
+  , _                  :: Bit      -- (Reserved)
+  , flash_cr_lock        :: Bit      -- Lock
+  , flash_cr_strt        :: Bit      -- Start
+  , flash_cr_opter       :: Bit      -- Option byte erase
+  , flash_cr_optpg       :: Bit      -- Option byte programming
+  , _                  :: Bit      -- (Reserved)
+  , flash_cr_mer         :: Bit      -- Mass erase
+  , flash_cr_per         :: Bit      -- Page erase
+  , flash_cr_pg          :: Bit      -- Programming
   }
 |]
 flash_reg_cr :: BitDataReg FLASH_CR
@@ -113,14 +113,13 @@ flash_reg_ar = mkBitDataRegNamed (flash_periph_base + 0x14) "ar"
   , _                          :: Bit      -- (Reserved)
   , flash_obr_sram_parity_check  :: Bit      -- SRAM_PARITY_CHECK
   , flash_obr_vdda_monitor       :: Bit      -- VDDA_MONITOR
-  , flash_obr_boot1              :: Bit      -- BOOT1
+  , flash_obr_nboot1             :: Bit      -- BOOT1
   , _                          :: Bit      -- (Reserved)
   , flash_obr_nrst_stdby         :: Bit      -- nRST_STDBY
   , flash_obr_nrst_stop          :: Bit      -- nRST_STOP
   , flash_obr_wdg_sw             :: Bit      -- WDG_SW
   , _                          :: Bits 5   -- (Reserved)
-  , flash_obr_level2_prot        :: Bit      -- Level 2 protection status
-  , flash_obr_level1_prot        :: Bit      -- Level 1 protection status
+  , flash_obr_rdprt              :: Bits 2   -- Read protection Level status
   , flash_obr_opterr             :: Bit      -- Option byte error
   }
 |]

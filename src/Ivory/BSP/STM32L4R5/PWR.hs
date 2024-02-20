@@ -553,3 +553,26 @@ pwr_reg_pucrh = mkBitDataRegNamed (pwr_periph_base + 0x58) "pucrh"
 pwr_reg_pdcrh :: BitDataReg PWR_PDCRH
 pwr_reg_pdcrh = mkBitDataRegNamed (pwr_periph_base + 0x5c) "pdcrh"
 
+-- Power Port I pull-down control register
+--  | offset : 0x64
+--  | address: 0x40007064
+[ivory|
+ bitdata PWR_PDCRI :: Bits 32 = pwr_pdcri
+  { _             :: Bits 20  -- (Reserved)
+  , pwr_pdcri_pd11  :: Bit      -- Port I pull-down bit 11
+  , pwr_pdcri_pd10  :: Bit      -- Port I pull-down bit 10
+  , pwr_pdcri_pd9   :: Bit      -- Port I pull-down bit 9
+  , pwr_pdcri_pd8   :: Bit      -- Port I pull-down bit 8
+  , pwr_pdcri_pd7   :: Bit      -- Port I pull-down bit 7
+  , pwr_pdcri_pd6   :: Bit      -- Port I pull-down bit 6
+  , pwr_pdcri_pd5   :: Bit      -- Port I pull-down bit 5
+  , pwr_pdcri_pd4   :: Bit      -- Port I pull-down bit 4
+  , pwr_pdcri_pd3   :: Bit      -- Port I pull-down bit 3
+  , pwr_pdcri_pd2   :: Bit      -- Port I pull-down bit 2
+  , pwr_pdcri_pd1   :: Bit      -- Port I pull-down bit 1
+  , pwr_pdcri_pd0   :: Bit      -- Port I pull-down bit 0
+  }
+|]
+pwr_reg_pdcri :: BitDataReg PWR_PDCRI
+pwr_reg_pdcri = mkBitDataRegNamed (pwr_periph_base + 0x64) "pdcri"
+

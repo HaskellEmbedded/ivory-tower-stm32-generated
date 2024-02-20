@@ -25,8 +25,8 @@ data Interrupt
   | ADC1_2 -- 18 ADC1 and ADC2 global interrupt
   | USB_HP_CAN_TX -- 19 USB High Priority or CAN TX
   | USB_LP_CAN_RX0 -- 20 USB Low Priority or CAN RX0
-  | CAN1_RX1 -- 21 CAN1 RX1 interrupts
-  | CAN1_SCE -- 22 CAN1 SCE interrupt
+  | Undefined21 -- 21 Undefined interrupt (padding only)
+  | Undefined22 -- 22 Undefined interrupt (padding only)
   | EXTI9_5 -- 23 EXTI Line[9:5] interrupts
   | TIM1_BRK -- 24 TIM1 Break interrupt
   | TIM1_UP -- 25 TIM1 Update interrupt

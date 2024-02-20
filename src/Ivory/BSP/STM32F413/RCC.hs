@@ -155,6 +155,19 @@ rcc_reg_ahb1rstr = mkBitDataRegNamed (rcc_periph_base + 0x10) "ahb1rstr"
 rcc_reg_ahb2rstr :: BitDataReg RCC_AHB2RSTR
 rcc_reg_ahb2rstr = mkBitDataRegNamed (rcc_periph_base + 0x14) "ahb2rstr"
 
+-- peripheral reset register
+--  | offset : 0x18
+--  | address: 0x40023818
+[ivory|
+ bitdata RCC_AHB3RSTR :: Bits 32 = rcc_ahb3rstr
+  { _                   :: Bits 30  -- (Reserved)
+  , rcc_ahb3rstr_qspirst  :: Bit      -- QUADSPI module reset
+  , rcc_ahb3rstr_fsmcrst  :: Bit      -- Flexible memory controller module reset
+  }
+|]
+rcc_reg_ahb3rstr :: BitDataReg RCC_AHB3RSTR
+rcc_reg_ahb3rstr = mkBitDataRegNamed (rcc_periph_base + 0x18) "ahb3rstr"
+
 -- APB1 peripheral reset register
 --  | offset : 0x20
 --  | address: 0x40023820
@@ -167,14 +180,14 @@ rcc_reg_ahb2rstr = mkBitDataRegNamed (rcc_periph_base + 0x14) "ahb2rstr"
   , rcc_apb1rstr_can3rst      :: Bit      -- CAN 3 reset
   , rcc_apb1rstr_can2rst      :: Bit      -- CAN2RST
   , rcc_apb1rstr_can1rst      :: Bit      -- CAN1RST
-  , rcc_apb1rstr_i2c4rst      :: Bit      -- I2C4RST
+  , rcc_apb1rstr_fmpi2c1rst   :: Bit      -- FMPI2C1 reset
   , rcc_apb1rstr_i2c3rst      :: Bit      -- I2C3 reset
   , rcc_apb1rstr_i2c2rst      :: Bit      -- I2C 2 reset
   , rcc_apb1rstr_i2c1rst      :: Bit      -- I2C 1 reset
-  , rcc_apb1rstr_usart5rst    :: Bit      -- USART5 reset
-  , rcc_apb1rstr_usart4rst    :: Bit      -- USART4 reset
+  , rcc_apb1rstr_uart5rst     :: Bit      -- UART5 reset
+  , rcc_apb1rstr_uart4rst     :: Bit      -- UART4 reset
   , rcc_apb1rstr_usart3rst    :: Bit      -- USART3RST
-  , rcc_apb1rstr_uart2rst     :: Bit      -- USART 2 reset
+  , rcc_apb1rstr_usart2rst    :: Bit      -- USART 2 reset
   , _                       :: Bit      -- (Reserved)
   , rcc_apb1rstr_spi3rst      :: Bit      -- SPI 3 reset
   , rcc_apb1rstr_spi2rst      :: Bit      -- SPI 2 reset
@@ -219,8 +232,8 @@ rcc_reg_apb1rstr = mkBitDataRegNamed (rcc_periph_base + 0x20) "apb1rstr"
   , rcc_apb2rstr_sdiorst    :: Bit      -- SDIO reset
   , _                     :: Bits 2   -- (Reserved)
   , rcc_apb2rstr_adcrst     :: Bit      -- ADC interface reset (common to all ADCs)
-  , rcc_apb2rstr_sart10rst  :: Bit      -- USART10 reset
-  , rcc_apb2rstr_usart9rst  :: Bit      -- USART9 reset
+  , rcc_apb2rstr_uart10rst  :: Bit      -- UART10 reset
+  , rcc_apb2rstr_uart9rst   :: Bit      -- UART9 reset
   , rcc_apb2rstr_usart6rst  :: Bit      -- USART6 reset
   , rcc_apb2rstr_usart1rst  :: Bit      -- USART1 reset
   , _                     :: Bits 2   -- (Reserved)
@@ -271,6 +284,19 @@ rcc_reg_ahb1enr = mkBitDataRegNamed (rcc_periph_base + 0x30) "ahb1enr"
 rcc_reg_ahb2enr :: BitDataReg RCC_AHB2ENR
 rcc_reg_ahb2enr = mkBitDataRegNamed (rcc_periph_base + 0x34) "ahb2enr"
 
+-- AHB3 peripheral clock enable register
+--  | offset : 0x38
+--  | address: 0x40023838
+[ivory|
+ bitdata RCC_AHB3ENR :: Bits 32 = rcc_ahb3enr
+  { _                 :: Bits 30  -- (Reserved)
+  , rcc_ahb3enr_qspien  :: Bit      -- QUADSPI memory controller module clock enable
+  , rcc_ahb3enr_fsmcen  :: Bit      -- Flexible memory controller module clock enable
+  }
+|]
+rcc_reg_ahb3enr :: BitDataReg RCC_AHB3ENR
+rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x38) "ahb3enr"
+
 -- APB1 peripheral clock enable register
 --  | offset : 0x40
 --  | address: 0x40023840
@@ -283,7 +309,7 @@ rcc_reg_ahb2enr = mkBitDataRegNamed (rcc_periph_base + 0x34) "ahb2enr"
   , rcc_apb1enr_can3en      :: Bit      -- CAN 3 clock enable
   , rcc_apb1enr_can2en      :: Bit      -- CAN2EN
   , rcc_apb1enr_can1en      :: Bit      -- CAN1EN
-  , rcc_apb1enr_i2c4en      :: Bit      -- I2C4EN
+  , rcc_apb1enr_fmpi2c1en   :: Bit      -- FMPI2C1 clock enable
   , rcc_apb1enr_i2c3en      :: Bit      -- I2C3 clock enable
   , rcc_apb1enr_i2c2en      :: Bit      -- I2C2 clock enable
   , rcc_apb1enr_i2c1en      :: Bit      -- I2C1 clock enable
@@ -296,7 +322,7 @@ rcc_reg_ahb2enr = mkBitDataRegNamed (rcc_periph_base + 0x34) "ahb2enr"
   , rcc_apb1enr_spi2en      :: Bit      -- SPI2 clock enable
   , _                     :: Bits 2   -- (Reserved)
   , rcc_apb1enr_wwdgen      :: Bit      -- Window watchdog clock enable
-  , rcc_apb1enr_rtcapb      :: Bit      -- clock enable
+  , rcc_apb1enr_rtcapben    :: Bit      -- clock enable
   , rcc_apb1enr_lptimer1en  :: Bit      -- LPTimer 1 clock enable
   , rcc_apb1enr_tim14en     :: Bit      -- TIM14EN
   , rcc_apb1enr_tim13en     :: Bit      -- TIM13EN
@@ -335,7 +361,8 @@ rcc_reg_apb1enr = mkBitDataRegNamed (rcc_periph_base + 0x40) "apb1enr"
   , rcc_apb2enr_sdioen    :: Bit      -- SDIO clock enable
   , _                   :: Bits 2   -- (Reserved)
   , rcc_apb2enr_adc1en    :: Bit      -- ADC1 clock enable
-  , _                   :: Bits 2   -- (Reserved)
+  , rcc_apb2enr_uart10en  :: Bit      -- UART10 clock enable
+  , rcc_apb2enr_uart9en   :: Bit      -- UART9 clock enable
   , rcc_apb2enr_usart6en  :: Bit      -- USART6 clock enable
   , rcc_apb2enr_usart1en  :: Bit      -- USART1 clock enable
   , _                   :: Bits 2   -- (Reserved)
@@ -390,6 +417,19 @@ rcc_reg_ahb1lpenr = mkBitDataRegNamed (rcc_periph_base + 0x50) "ahb1lpenr"
 rcc_reg_ahb2lpenr :: BitDataReg RCC_AHB2LPENR
 rcc_reg_ahb2lpenr = mkBitDataRegNamed (rcc_periph_base + 0x54) "ahb2lpenr"
 
+-- AHB3 peripheral clock enable in low power mode register
+--  | offset : 0x58
+--  | address: 0x40023858
+[ivory|
+ bitdata RCC_AHB3LPENR :: Bits 32 = rcc_ahb3lpenr
+  { _                     :: Bits 30  -- (Reserved)
+  , rcc_ahb3lpenr_qspilpen  :: Bit      -- QUADSPI memory controller module clock enable during Sleep mode
+  , rcc_ahb3lpenr_fsmclpen  :: Bit      -- Flexible memory controller module clock enable during Sleep mode
+  }
+|]
+rcc_reg_ahb3lpenr :: BitDataReg RCC_AHB3LPENR
+rcc_reg_ahb3lpenr = mkBitDataRegNamed (rcc_periph_base + 0x58) "ahb3lpenr"
+
 -- APB1 peripheral clock enable in low power mode register
 --  | offset : 0x60
 --  | address: 0x40023860
@@ -402,12 +442,12 @@ rcc_reg_ahb2lpenr = mkBitDataRegNamed (rcc_periph_base + 0x54) "ahb2lpenr"
   , rcc_apb1lpenr_can3lpen      :: Bit      -- CAN3 clock enable during Sleep mode
   , rcc_apb1lpenr_can2lpen      :: Bit      -- CAN2LPEN
   , rcc_apb1lpenr_can1lpen      :: Bit      -- CAN1LPEN
-  , rcc_apb1lpenr_i2c4lpen      :: Bit      -- I2C4LPEN
+  , rcc_apb1lpenr_fmpi2c1lpen   :: Bit      -- FMPI2C1 clock enable during Sleep
   , rcc_apb1lpenr_i2c3lpen      :: Bit      -- I2C3 clock enable during Sleep mode
   , rcc_apb1lpenr_i2c2lpen      :: Bit      -- I2C2 clock enable during Sleep mode
   , rcc_apb1lpenr_i2c1lpen      :: Bit      -- I2C1 clock enable during Sleep mode
-  , rcc_apb1lpenr_usart5lpen    :: Bit      -- USART5 clock enable during Sleep mode
-  , rcc_apb1lpenr_usart4lpen    :: Bit      -- USART4 clock enable during Sleep mode
+  , rcc_apb1lpenr_uart5lpen     :: Bit      -- UART5 clock enable during Sleep mode
+  , rcc_apb1lpenr_uart4lpen     :: Bit      -- UART4 clock enable during Sleep mode
   , rcc_apb1lpenr_usart3lpen    :: Bit      -- USART3LPEN
   , rcc_apb1lpenr_usart2lpen    :: Bit      -- USART2 clock enable during Sleep mode
   , _                         :: Bit      -- (Reserved)
@@ -415,7 +455,7 @@ rcc_reg_ahb2lpenr = mkBitDataRegNamed (rcc_periph_base + 0x54) "ahb2lpenr"
   , rcc_apb1lpenr_spi2lpen      :: Bit      -- SPI2 clock enable during Sleep mode
   , _                         :: Bits 2   -- (Reserved)
   , rcc_apb1lpenr_wwdglpen      :: Bit      -- Window watchdog clock enable during Sleep mode
-  , rcc_apb1lpenr_rtcapben      :: Bit      -- RTC APB clock enable during Sleep mode
+  , rcc_apb1lpenr_rtcapblpen    :: Bit      -- RTC APB clock enable during Sleep mode
   , rcc_apb1lpenr_lptimer1lpen  :: Bit      -- TIM14 clock enable during Sleep mode
   , rcc_apb1lpenr_tim14lpen     :: Bit      -- TIM14LPEN
   , rcc_apb1lpenr_tim13lpen     :: Bit      -- TIM13LPEN
@@ -436,31 +476,31 @@ rcc_reg_apb1lpenr = mkBitDataRegNamed (rcc_periph_base + 0x60) "apb1lpenr"
 --  | address: 0x40023864
 [ivory|
  bitdata RCC_APB2LPENR :: Bits 32 = rcc_apb2lpenr
-  { _                        :: Bits 6   -- (Reserved)
-  , rcc_apb2lpenr_dfsdm2lpen   :: Bit      -- DFSDM2 clock enable during Sleep mode
-  , rcc_apb2lpenr_dfsdmlpen    :: Bit      -- DFSDMLPEN
-  , _                        :: Bit      -- (Reserved)
-  , rcc_apb2lpenr_sai1lpen     :: Bit      -- SAI1 clock enable during Sleep mode
-  , _                        :: Bit      -- (Reserved)
-  , rcc_apb2lpenr_spi5lpen     :: Bit      -- SPI5 clock enable during Sleep mode
-  , _                        :: Bit      -- (Reserved)
-  , rcc_apb2lpenr_tim11lpen    :: Bit      -- TIM11 clock enable during Sleep mode
-  , rcc_apb2lpenr_tim10lpen    :: Bit      -- TIM10 clock enable during Sleep mode
-  , rcc_apb2lpenr_tim9lpen     :: Bit      -- TIM9 clock enable during sleep mode
-  , rcc_apb2lpenr_extiten      :: Bit      -- EXTIT APB and SYSCTRL PFREE clock enable during Sleep mode
-  , rcc_apb2lpenr_syscfglpen   :: Bit      -- System configuration controller clock enable during Sleep mode
-  , rcc_apb2lpenr_spi4lpen     :: Bit      -- SPI4 clock enable during Sleep mode
-  , rcc_apb2lpenr_spi1lpen     :: Bit      -- SPI 1 clock enable during Sleep mode
-  , rcc_apb2lpenr_sdiolpen     :: Bit      -- SDIO clock enable during Sleep mode
-  , _                        :: Bits 2   -- (Reserved)
-  , rcc_apb2lpenr_adc1lpen     :: Bit      -- ADC1 clock enable during Sleep mode
-  , rcc_apb2lpenr_usart10lpen  :: Bit      -- USART10 clock enable during Sleep mode
-  , rcc_apb2lpenr_usart9lpen   :: Bit      -- USART9 clock enable during Sleep mode
-  , rcc_apb2lpenr_usart6lpen   :: Bit      -- USART6 clock enable during Sleep mode
-  , rcc_apb2lpenr_usart1lpen   :: Bit      -- USART1 clock enable during Sleep mode
-  , _                        :: Bits 2   -- (Reserved)
-  , rcc_apb2lpenr_tim8lpen     :: Bit      -- TIM8LPEN
-  , rcc_apb2lpenr_tim1lpen     :: Bit      -- TIM1 clock enable during Sleep mode
+  { _                       :: Bits 6   -- (Reserved)
+  , rcc_apb2lpenr_dfsdm2lpen  :: Bit      -- DFSDM2 clock enable during Sleep mode
+  , rcc_apb2lpenr_dfsdmlpen   :: Bit      -- DFSDMLPEN
+  , _                       :: Bit      -- (Reserved)
+  , rcc_apb2lpenr_sai1lpen    :: Bit      -- SAI1 clock enable during Sleep mode
+  , _                       :: Bit      -- (Reserved)
+  , rcc_apb2lpenr_spi5lpen    :: Bit      -- SPI5 clock enable during Sleep mode
+  , _                       :: Bit      -- (Reserved)
+  , rcc_apb2lpenr_tim11lpen   :: Bit      -- TIM11 clock enable during Sleep mode
+  , rcc_apb2lpenr_tim10lpen   :: Bit      -- TIM10 clock enable during Sleep mode
+  , rcc_apb2lpenr_tim9lpen    :: Bit      -- TIM9 clock enable during sleep mode
+  , rcc_apb2lpenr_extitlpen   :: Bit      -- EXTIT APB and SYSCTRL PFREE clock enable during Sleep mode
+  , rcc_apb2lpenr_syscfglpen  :: Bit      -- System configuration controller clock enable during Sleep mode
+  , rcc_apb2lpenr_spi4lpen    :: Bit      -- SPI4 clock enable during Sleep mode
+  , rcc_apb2lpenr_spi1lpen    :: Bit      -- SPI 1 clock enable during Sleep mode
+  , rcc_apb2lpenr_sdiolpen    :: Bit      -- SDIO clock enable during Sleep mode
+  , _                       :: Bits 2   -- (Reserved)
+  , rcc_apb2lpenr_adc1lpen    :: Bit      -- ADC1 clock enable during Sleep mode
+  , rcc_apb2lpenr_uart10lpen  :: Bit      -- UART10 clock enable during Sleep mode
+  , rcc_apb2lpenr_uart9lpen   :: Bit      -- UART9 clock enable during Sleep mode
+  , rcc_apb2lpenr_usart6lpen  :: Bit      -- USART6 clock enable during Sleep mode
+  , rcc_apb2lpenr_usart1lpen  :: Bit      -- USART1 clock enable during Sleep mode
+  , _                       :: Bits 2   -- (Reserved)
+  , rcc_apb2lpenr_tim8lpen    :: Bit      -- TIM8LPEN
+  , rcc_apb2lpenr_tim1lpen    :: Bit      -- TIM1 clock enable during Sleep mode
   }
 |]
 rcc_reg_apb2lpenr :: BitDataReg RCC_APB2LPENR
@@ -471,17 +511,16 @@ rcc_reg_apb2lpenr = mkBitDataRegNamed (rcc_periph_base + 0x64) "apb2lpenr"
 --  | address: 0x40023870
 [ivory|
  bitdata RCC_BDCR :: Bits 32 = rcc_bdcr
-  { _               :: Bits 15  -- (Reserved)
-  , rcc_bdcr_bdrst    :: Bit      -- Backup domain software reset
-  , rcc_bdcr_rtcen    :: Bit      -- RTC clock enable
-  , _               :: Bits 5   -- (Reserved)
-  , rcc_bdcr_rtcsel1  :: Bit      -- RTC clock source selection
-  , rcc_bdcr_rtcsel0  :: Bit      -- RTC clock source selection
-  , _               :: Bits 4   -- (Reserved)
-  , rcc_bdcr_lsemod   :: Bit      -- External low-speed oscillator bypass
-  , rcc_bdcr_lsebyp   :: Bit      -- External low-speed oscillator bypass
-  , rcc_bdcr_lserdy   :: Bit      -- External low-speed oscillator ready
-  , rcc_bdcr_lseon    :: Bit      -- External low-speed oscillator enable
+  { _              :: Bits 15  -- (Reserved)
+  , rcc_bdcr_bdrst   :: Bit      -- Backup domain software reset
+  , rcc_bdcr_rtcen   :: Bit      -- RTC clock enable
+  , _              :: Bits 5   -- (Reserved)
+  , rcc_bdcr_rtcsel  :: Bits 2   -- RTC clock source selection
+  , _              :: Bits 4   -- (Reserved)
+  , rcc_bdcr_lsemod  :: Bit      -- External low-speed oscillator bypass
+  , rcc_bdcr_lsebyp  :: Bit      -- External low-speed oscillator bypass
+  , rcc_bdcr_lserdy  :: Bit      -- External low-speed oscillator ready
+  , rcc_bdcr_lseon   :: Bit      -- External low-speed oscillator enable
   }
 |]
 rcc_reg_bdcr :: BitDataReg RCC_BDCR
@@ -541,58 +580,25 @@ rcc_reg_sscgr = mkBitDataRegNamed (rcc_periph_base + 0x80) "sscgr"
 rcc_reg_plli2scfgr :: BitDataReg RCC_PLLI2SCFGR
 rcc_reg_plli2scfgr = mkBitDataRegNamed (rcc_periph_base + 0x84) "plli2scfgr"
 
--- peripheral reset register
---  | offset : 0x18
---  | address: 0x40023818
-[ivory|
- bitdata RCC_AHB3RSTR :: Bits 32 = rcc_ahb3rstr
-  { _                   :: Bits 30  -- (Reserved)
-  , rcc_ahb3rstr_qspirst  :: Bit      -- QUADSPI module reset
-  , rcc_ahb3rstr_fsmcrst  :: Bit      -- Flexible memory controller module reset
-  }
-|]
-rcc_reg_ahb3rstr :: BitDataReg RCC_AHB3RSTR
-rcc_reg_ahb3rstr = mkBitDataRegNamed (rcc_periph_base + 0x18) "ahb3rstr"
-
--- AHB3 peripheral clock enable register
---  | offset : 0x38
---  | address: 0x40023838
-[ivory|
- bitdata RCC_AHB3ENR :: Bits 32 = rcc_ahb3enr
-  { _                 :: Bits 30  -- (Reserved)
-  , rcc_ahb3enr_qspien  :: Bit      -- QUADSPI memory controller module clock enable
-  , rcc_ahb3enr_fsmcen  :: Bit      -- Flexible memory controller module clock enable
-  }
-|]
-rcc_reg_ahb3enr :: BitDataReg RCC_AHB3ENR
-rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x38) "ahb3enr"
-
--- AHB3 peripheral clock enable in low power mode register
---  | offset : 0x58
---  | address: 0x40023858
-[ivory|
- bitdata RCC_AHB3LPENR :: Bits 32 = rcc_ahb3lpenr
-  { _                     :: Bits 30  -- (Reserved)
-  , rcc_ahb3lpenr_qspilpen  :: Bit      -- QUADSPI memory controller module clock enable during Sleep mode
-  , rcc_ahb3lpenr_fsmclpen  :: Bit      -- Flexible memory controller module clock enable during Sleep mode
-  }
-|]
-rcc_reg_ahb3lpenr :: BitDataReg RCC_AHB3LPENR
-rcc_reg_ahb3lpenr = mkBitDataRegNamed (rcc_periph_base + 0x58) "ahb3lpenr"
-
 -- Dedicated Clocks Configuration Register
 --  | offset : 0x8c
 --  | address: 0x4002388c
 [ivory|
  bitdata RCC_DCKCFGR :: Bits 32 = rcc_dckcfgr
-  { rcc_dckcfgr_lptimer1sel   :: Bits 2   -- LPTIMER1 kernel clock selection.
-  , _                       :: Bit      -- (Reserved)
+  { rcc_dckcfgr_ckdfsdm1sel   :: Bit      -- DFSDM1 Kernel clock selection
+  , _                       :: Bits 2   -- (Reserved)
   , rcc_dckcfgr_i2s2src       :: Bits 2   -- I2S APB2 clocks source selection (I2S1/4/5)
   , rcc_dckcfgr_i2s1src       :: Bits 2   -- I2S APB1 clocks source selection (I2S2/3)
   , rcc_dckcfgr_timpre        :: Bit      -- Timers clocks prescalers selection
-  , _                       :: Bits 8   -- (Reserved)
+  , rcc_dckcfgr_sai1bsrc      :: Bits 2   -- SAI1-B clock source selection
+  , rcc_dckcfgr_sai1asrc      :: Bits 2   -- SAI1-A clock source selection
+  , _                       :: Bits 4   -- (Reserved)
   , rcc_dckcfgr_ckdfsdm1asel  :: Bit      -- DFSDM1 audio clock selection.
-  , _                       :: Bits 15  -- (Reserved)
+  , rcc_dckcfgr_ckdfsdm2asel  :: Bit      -- DFSDM2 audio clock selection
+  , _                       :: Bit      -- (Reserved)
+  , rcc_dckcfgr_plldivr       :: Bits 5   -- PLL division factor for SAI1 A/B clock
+  , _                       :: Bits 3   -- (Reserved)
+  , rcc_dckcfgr_plli2sdivr    :: Bits 5   -- PLLI2S division factor for SAI1 A/B clock
   }
 |]
 rcc_reg_dckcfgr :: BitDataReg RCC_DCKCFGR
@@ -622,11 +628,12 @@ rcc_reg_ckgatenr = mkBitDataRegNamed (rcc_periph_base + 0x90) "ckgatenr"
 --  | address: 0x40023894
 [ivory|
  bitdata RCC_DCKCFGR2 :: Bits 32 = rcc_dckcfgr2
-  { _                      :: Bits 3   -- (Reserved)
-  , rcc_dckcfgr2_cksdiosel   :: Bit      -- SDIO clock selection.
+  { rcc_dckcfgr2_lptim1sel   :: Bits 2   -- LPTIM1 kernel clock source selection
+  , _                      :: Bit      -- (Reserved)
+  , rcc_dckcfgr2_sdiosel     :: Bit      -- SDIO clock selection.
   , rcc_dckcfgr2_ck48msel    :: Bit      -- SDIO/USBFS clock selection.
-  , _                      :: Bits 4   -- (Reserved)
-  , rcc_dckcfgr2_i2cfmp1sel  :: Bit      -- I2CFMP1 kernel clock source selection
+  , _                      :: Bits 3   -- (Reserved)
+  , rcc_dckcfgr2_fmpi2c1sel  :: Bits 2   -- I2CFMP1 kernel clock source selection
   , _                      :: Bits 22  -- (Reserved)
   }
 |]

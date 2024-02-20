@@ -96,6 +96,7 @@ data Interrupt
   | LCD_TFT_1 -- 89 LTDC global error interrupt
   | DMA2D -- 90 DMA2D global interrupt
   | QUADSPI -- 91 QuadSPI global interrupt
+  | DSIHOST -- 92 DSI host global interrupt
   deriving (Eq, Show, Enum)
 
 instance STM32Interrupt Interrupt where

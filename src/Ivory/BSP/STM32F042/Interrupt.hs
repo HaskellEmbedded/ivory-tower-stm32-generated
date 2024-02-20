@@ -14,8 +14,8 @@ data Interrupt
   | EXTI4_15 -- 7 EXTI Line15 and EXTI4 interrupts
   | TSC -- 8 Touch sensing interrupt
   | DMA1_CH1 -- 9 DMA1 channel 1 interrupt
-  | Undefined10 -- 10 Undefined interrupt (padding only)
-  | Undefined11 -- 11 Undefined interrupt (padding only)
+  | DMA1_CH2_3 -- 10 DMA channel 2 and 3 interrupts
+  | DMA1_CH4_5_6_7 -- 11 DMA channel 4, 5, 6 and 7 interrupts
   | ADC_COMP -- 12 ADC and comparator interrupts
   | TIM1_BRK_UP_TRG_COM -- 13 TIM1 break, update, trigger and commutation interrupt
   | TIM1_CC -- 14 TIM1 Capture Compare interrupt

@@ -23,7 +23,7 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   , spi_cr1_bidioe    :: Bit      -- Output enable in bidirectional mode
   , spi_cr1_crcen     :: Bit      -- Hardware CRC calculation enable
   , spi_cr1_crcnext   :: Bit      -- CRC transfer next
-  , spi_cr1_dff       :: Bit      -- Data frame format
+  , spi_cr1_crcl      :: Bit      -- CRC length
   , spi_cr1_rxonly    :: Bit      -- Receive only
   , spi_cr1_ssm       :: Bit      -- Software slave management
   , spi_cr1_ssi       :: Bit      -- Internal slave select
@@ -67,13 +67,12 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   { _            :: Bits 19  -- (Reserved)
   , spi_sr_ftlvl   :: Bits 2   -- FIFO transmission level
   , spi_sr_frlvl   :: Bits 2   -- FIFO reception level
-  , spi_sr_tifrfe  :: Bit      -- TI frame format error
+  , spi_sr_fre     :: Bit      -- Frame format error
   , spi_sr_bsy     :: Bit      -- Busy flag
   , spi_sr_ovr     :: Bit      -- Overrun flag
   , spi_sr_modf    :: Bit      -- Mode fault
   , spi_sr_crcerr  :: Bit      -- CRC error flag
-  , spi_sr_udr     :: Bit      -- Underrun flag
-  , spi_sr_chside  :: Bit      -- Channel side
+  , _            :: Bits 2   -- (Reserved)
   , spi_sr_txe     :: Bit      -- Transmit buffer empty
   , spi_sr_rxne    :: Bit      -- Receive buffer not empty
   }

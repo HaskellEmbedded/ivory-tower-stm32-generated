@@ -39,7 +39,7 @@ flash_reg_acr = mkBitDataRegNamed (flash_periph_base + 0x0) "acr"
 --  | address: 0x40022008
 [ivory|
  bitdata FLASH_KEYR :: Bits 32 = flash_keyr
-  { flash_keyr_keyr  :: Bits 32  -- KEYR
+  { flash_keyr_key  :: Bits 32  -- KEYR
   }
 |]
 flash_reg_keyr :: BitDataReg FLASH_KEYR
@@ -50,7 +50,7 @@ flash_reg_keyr = mkBitDataRegNamed (flash_periph_base + 0x8) "keyr"
 --  | address: 0x4002200c
 [ivory|
  bitdata FLASH_OPTKEYR :: Bits 32 = flash_optkeyr
-  { flash_optkeyr_optkeyr  :: Bits 32  -- Option byte key
+  { flash_optkeyr_optkey  :: Bits 32  -- Option byte key
   }
 |]
 flash_reg_optkeyr :: BitDataReg FLASH_OPTKEYR
@@ -69,7 +69,7 @@ flash_reg_optkeyr = mkBitDataRegNamed (flash_periph_base + 0xc) "optkeyr"
   , flash_sr_rderr    :: Bit      -- PCROP read error
   , _               :: Bits 4   -- (Reserved)
   , flash_sr_fasterr  :: Bit      -- Fast programming error
-  , flash_sr_miserr   :: Bit      -- Fast programming data miss error
+  , flash_sr_misserr  :: Bit      -- Fast programming data miss error
   , flash_sr_pgserr   :: Bit      -- Programming sequence error
   , flash_sr_sizerr   :: Bit      -- Size error
   , flash_sr_pgaerr   :: Bit      -- Programming alignment error
@@ -121,12 +121,30 @@ flash_reg_cr = mkBitDataRegNamed (flash_periph_base + 0x14) "cr"
   , flash_eccr_eccie     :: Bit      -- ECC correction interrupt enable
   , _                  :: Bits 3   -- (Reserved)
   , flash_eccr_sysf_ecc  :: Bit      -- ECC fail for Corrected ECC Error or Double ECC Error in info block
-  , _                  :: Bits 6   -- (Reserved)
-  , flash_eccr_addr_ecc  :: Bits 14  -- ECC fail address
+  , _                  :: Bits 5   -- (Reserved)
+  , flash_eccr_addr_ecc  :: Bits 15  -- ECC fail address
   }
 |]
 flash_reg_eccr :: BitDataReg FLASH_ECCR
 flash_reg_eccr = mkBitDataRegNamed (flash_periph_base + 0x18) "eccr"
+
+-- Flash ECC register 2
+--  | offset : 0x1c
+--  | address: 0x4002201c
+[ivory|
+ bitdata FLASH_ECCR2 :: Bits 32 = flash_eccr2
+  { flash_eccr2_eccd      :: Bit      -- ECC detection
+  , flash_eccr2_eccc      :: Bit      -- ECC correction
+  , _                   :: Bits 5   -- (Reserved)
+  , flash_eccr2_eccie     :: Bit      -- ECC correction interrupt enable
+  , _                   :: Bits 3   -- (Reserved)
+  , flash_eccr2_sysf_ecc  :: Bit      -- ECC fail for Corrected ECC Error or Double ECC Error in info block
+  , _                   :: Bits 5   -- (Reserved)
+  , flash_eccr2_addr_ecc  :: Bits 15  -- ECC fail address
+  }
+|]
+flash_reg_eccr2 :: BitDataReg FLASH_ECCR2
+flash_reg_eccr2 = mkBitDataRegNamed (flash_periph_base + 0x1c) "eccr2"
 
 -- Flash option register
 --  | offset : 0x20
@@ -145,7 +163,7 @@ flash_reg_eccr = mkBitDataRegNamed (flash_periph_base + 0x18) "eccr"
   , flash_optr_wwdg_sw           :: Bit      -- Window watchdog selection
   , flash_optr_iwdg_stdby        :: Bit      -- Independent watchdog counter freeze in Standby mode
   , flash_optr_iwdg_stop         :: Bit      -- Independent watchdog counter freeze in Stop mode
-  , flash_optr_idwg_sw           :: Bit      -- Independent watchdog selection
+  , flash_optr_iwdg_sw           :: Bit      -- Independent watchdog selection
   , flash_optr_nrsts_hdw         :: Bit      -- nRSTS_HDW
   , flash_optr_nrst_stdby        :: Bit      -- nRST_STDBY
   , flash_optr_nrst_stop         :: Bit      -- nRST_STOP

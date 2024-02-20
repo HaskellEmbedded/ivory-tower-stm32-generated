@@ -103,8 +103,7 @@ rcc_reg_cir = mkBitDataRegNamed (rcc_periph_base + 0x8) "cir"
   , rcc_apb2rstr_usart1rst  :: Bit      -- USART1 reset
   , _                     :: Bit      -- (Reserved)
   , rcc_apb2rstr_spi1rst    :: Bit      -- SPI 1 reset
-  , _                     :: Bit      -- (Reserved)
-  , rcc_apb2rstr_adc2rst    :: Bit      -- ADC 2 interface reset
+  , _                     :: Bits 2   -- (Reserved)
   , rcc_apb2rstr_adc1rst    :: Bit      -- ADC 1 interface reset
   , rcc_apb2rstr_gpiogrst   :: Bit      -- IO port G reset
   , rcc_apb2rstr_gpiofrst   :: Bit      -- IO port F reset

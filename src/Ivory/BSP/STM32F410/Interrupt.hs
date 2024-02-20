@@ -41,9 +41,9 @@ data Interrupt
   | I2C2_ERR -- 34 I2C2 error interrupt
   | SPI1 -- 35 SPI1 global interrupt
   | SPI2 -- 36 SPI2 global interrupt
-  | USART1 -- 37 USART1 global interrupt
-  | USART2 -- 38 USART2 global interrupt
-  | USART3 -- 39 USART3 global interrupt
+  | USART1 -- 37 USART 1 global interrupt
+  | USART2 -- 38 USART 2 global interrupt
+  | USART3 -- 39 USART 3 global interrupt
   | EXTI15_10 -- 40 EXTI Line[15:10] interrupts
   | EXTI17_RTC_ALARM -- 41 RTC Alarms (A and B) through EXTI line interrupt
   | Undefined42 -- 42 Undefined interrupt (padding only)
@@ -55,9 +55,9 @@ data Interrupt
   | FSMC -- 48 FSMC global interrupt
   | SDIO -- 49 SDIO global interrupt
   | TIM5 -- 50 TIM5 global interrupt
-  | SPI3 -- 51 SPI3 global interrupt
-  | USART4 -- 52 UART 4 global interrupt
-  | UART5 -- 53 UART 5global interrupt
+  | Undefined51 -- 51 Undefined interrupt (padding only)
+  | UART4 -- 52 UART4 global interrupt
+  | UART5 -- 53 UART5 global interrupt
   | TIM6_GLB_IT_DAC1_DAC2 -- 54 TIM6 global and DAC12 underrun interrupts
   | TIM7 -- 55 TIM7 global interrupt
   | DMA2_STREAM0 -- 56 DMA2 Stream0 global interrupt
@@ -71,11 +71,11 @@ data Interrupt
   | CAN2_RX0 -- 64 BXCAN2 RX0 interrupt
   | CAN2_RX1 -- 65 BXCAN2 RX1 interrupt
   | CAN2_SCE -- 66 CAN2 SCE interrupt
-  | Undefined67 -- 67 Undefined interrupt (padding only)
+  | OTG_FS -- 67 USB OTG FS Interrupt
   | DMA2_STREAM5 -- 68 DMA2 Stream5 global interrupt
   | DMA2_STREAM6 -- 69 DMA2 Stream6 global interrupt
   | DMA2_STREAM7 -- 70 DMA2 Stream7 global interrupt
-  | USART6 -- 71 USART6 global interrupt
+  | USART6 -- 71 USART 6 global interrupt
   | I2C3_EV -- 72 I2C3 event interrupt
   | I2C3_ER -- 73 I2C3 error interrupt
   | CAN3_TX -- 74 CAN 3 TX interrupt
@@ -85,15 +85,15 @@ data Interrupt
   | Undefined78 -- 78 Undefined interrupt (padding only)
   | CRYPTO -- 79 AES global interrupt
   | RNG -- 80 Rng global interrupt
-  | FPU -- 81 FPU global interrupt
-  | USART7 -- 82 USART7 global interrupt
-  | USART8 -- 83 USART8 global interrupt
+  | FPU -- 81 FPU interrupt
+  | UART7 -- 82 UART 7 global interrupt
+  | UART8 -- 83 UART 8 global interrupt
   | SPI4 -- 84 SPI4 global interrupt
   | SPI5 -- 85 SPI5 global interrupt
   | Undefined86 -- 86 Undefined interrupt (padding only)
   | SAI1 -- 87 SAI1 global interrupt
-  | UART9 -- 88 UART9 global interrupt
-  | UART10 -- 89 UART10 global interrupt
+  | UART9 -- 88 UART 9 global interrupt
+  | UART10 -- 89 UART 10 global interrupt
   | Undefined90 -- 90 Undefined interrupt (padding only)
   | Undefined91 -- 91 Undefined interrupt (padding only)
   | QUADSPI -- 92 Quad-SPI global interrupt

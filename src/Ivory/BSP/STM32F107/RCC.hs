@@ -138,8 +138,8 @@ rcc_reg_apb2rstr = mkBitDataRegNamed (rcc_periph_base + 0xc) "apb2rstr"
   , _                     :: Bits 2   -- (Reserved)
   , rcc_apb1rstr_i2c2rst    :: Bit      -- I2C2 reset
   , rcc_apb1rstr_i2c1rst    :: Bit      -- I2C1 reset
-  , rcc_apb1rstr_usart5rst  :: Bit      -- USART 5 reset
-  , rcc_apb1rstr_usart4rst  :: Bit      -- USART 4 reset
+  , rcc_apb1rstr_uart5rst   :: Bit      -- USART 5 reset
+  , rcc_apb1rstr_uart4rst   :: Bit      -- USART 4 reset
   , rcc_apb1rstr_usart3rst  :: Bit      -- USART 3 reset
   , rcc_apb1rstr_usart2rst  :: Bit      -- USART 2 reset
   , _                     :: Bit      -- (Reserved)

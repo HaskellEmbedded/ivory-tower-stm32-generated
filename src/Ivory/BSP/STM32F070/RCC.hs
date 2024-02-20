@@ -44,13 +44,13 @@ rcc_reg_cr = mkBitDataRegNamed (rcc_periph_base + 0x0) "cr"
  bitdata RCC_CFGR :: Bits 32 = rcc_cfgr
   { rcc_cfgr_pllnodiv  :: Bit      -- PLL clock not divided for MCO
   , rcc_cfgr_mcopre    :: RCC_MCOxPre  -- Microcontroller Clock Output Prescaler
-  , _                :: Bit      -- (Reserved)
-  , rcc_cfgr_mco       :: Bits 3   -- Microcontroller clock output
+  , rcc_cfgr_mco       :: Bits 4   -- Microcontroller clock output
   , _                :: Bits 2   -- (Reserved)
   , rcc_cfgr_pllmul    :: Bits 4   -- PLL Multiplication Factor
-  , rcc_cfgr_pllxtpre  :: Bit      -- HSE divider for PLL entry
-  , rcc_cfgr_pllsrc    :: Bits 2   -- PLL input clock source
-  , rcc_cfgr_adcpre    :: Bit      -- ADC prescaler
+  , rcc_cfgr_pllxtpre  :: Bit      -- HSE divider for PLL entry. Same bit as PREDIC[0] from CFGR2 register. Refer to it for its meaning
+  , rcc_cfgr_pllsrc    :: Bit      -- PLL input clock source
+  , _                :: Bit      -- (Reserved)
+  , rcc_cfgr_adcpre    :: Bit      -- ADCPRE is deprecated. See ADC field in CFGR2 register.
   , _                :: Bits 3   -- (Reserved)
   , rcc_cfgr_ppre      :: RCC_PPREx  -- APB Low speed prescaler (APB1)
   , rcc_cfgr_hpre      :: RCC_HPRE  -- AHB prescaler
@@ -77,7 +77,7 @@ rcc_reg_cfgr = mkBitDataRegNamed (rcc_periph_base + 0x4) "cfgr"
   , rcc_cir_lsirdyc     :: Bit      -- LSI Ready Interrupt Clear
   , _                 :: Bit      -- (Reserved)
   , rcc_cir_hsi48rdyie  :: Bit      -- HSI48 ready interrupt enable
-  , rcc_cir_hsi14rdye   :: Bit      -- HSI14 ready interrupt enable
+  , rcc_cir_hsi14rdyie  :: Bit      -- HSI14 ready interrupt enable
   , rcc_cir_pllrdyie    :: Bit      -- PLL Ready Interrupt Enable
   , rcc_cir_hserdyie    :: Bit      -- HSE Ready Interrupt Enable
   , rcc_cir_hsirdyie    :: Bit      -- HSI Ready Interrupt Enable
@@ -114,7 +114,9 @@ rcc_reg_cir = mkBitDataRegNamed (rcc_periph_base + 0x8) "cir"
   , rcc_apb2rstr_tim1rst    :: Bit      -- TIM1 timer reset
   , _                     :: Bit      -- (Reserved)
   , rcc_apb2rstr_adcrst     :: Bit      -- ADC interface reset
-  , _                     :: Bits 8   -- (Reserved)
+  , _                     :: Bits 3   -- (Reserved)
+  , rcc_apb2rstr_usart6rst  :: Bit      -- USART6 reset
+  , _                     :: Bits 4   -- (Reserved)
   , rcc_apb2rstr_syscfgrst  :: Bit      -- SYSCFG and COMP reset
   }
 |]
@@ -160,7 +162,8 @@ rcc_reg_apb1rstr = mkBitDataRegNamed (rcc_periph_base + 0x10) "apb1rstr"
  bitdata RCC_AHBENR :: Bits 32 = rcc_ahbenr
   { _                 :: Bits 9   -- (Reserved)
   , rcc_ahbenr_gpiofen  :: Bit      -- I/O port F clock enable
-  , _                 :: Bits 2   -- (Reserved)
+  , _                 :: Bit      -- (Reserved)
+  , rcc_ahbenr_gpioden  :: Bit      -- I/O port D clock enable
   , rcc_ahbenr_gpiocen  :: Bit      -- I/O port C clock enable
   , rcc_ahbenr_gpioben  :: Bit      -- I/O port B clock enable
   , rcc_ahbenr_gpioaen  :: Bit      -- I/O port A clock enable
@@ -171,7 +174,7 @@ rcc_reg_apb1rstr = mkBitDataRegNamed (rcc_periph_base + 0x10) "apb1rstr"
   , _                 :: Bit      -- (Reserved)
   , rcc_ahbenr_sramen   :: Bit      -- SRAM interface clock enable
   , _                 :: Bit      -- (Reserved)
-  , rcc_ahbenr_dma1en   :: Bit      -- DMA1 clock enable
+  , rcc_ahbenr_dmaen    :: Bit      -- DMA clock enable
   }
 |]
 rcc_reg_ahbenr :: BitDataReg RCC_AHBENR
@@ -195,7 +198,9 @@ rcc_reg_ahbenr = mkBitDataRegNamed (rcc_periph_base + 0x14) "ahbenr"
   , rcc_apb2enr_tim1en    :: Bit      -- TIM1 Timer clock enable
   , _                   :: Bit      -- (Reserved)
   , rcc_apb2enr_adcen     :: Bit      -- ADC 1 interface clock enable
-  , _                   :: Bits 8   -- (Reserved)
+  , _                   :: Bits 3   -- (Reserved)
+  , rcc_apb2enr_usart6en  :: Bit      -- USART6 clock enable
+  , _                   :: Bits 4   -- (Reserved)
   , rcc_apb2enr_syscfgen  :: Bit      -- SYSCFG clock enable
   }
 |]
@@ -210,7 +215,7 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x18) "apb2enr"
   { _                   :: Bits 3   -- (Reserved)
   , rcc_apb1enr_pwren     :: Bit      -- Power interface clock enable
   , _                   :: Bits 4   -- (Reserved)
-  , rcc_apb1enr_usbrst    :: Bit      -- USB interface clock enable
+  , rcc_apb1enr_usben     :: Bit      -- USB interface clock enable
   , rcc_apb1enr_i2c2en    :: Bit      -- I2C 2 clock enable
   , rcc_apb1enr_i2c1en    :: Bit      -- I2C 1 clock enable
   , rcc_apb1enr_usart5en  :: Bit      -- USART5 clock enable
@@ -259,17 +264,18 @@ rcc_reg_bdcr = mkBitDataRegNamed (rcc_periph_base + 0x20) "bdcr"
 --  | address: 0x40021024
 [ivory|
  bitdata RCC_CSR :: Bits 32 = rcc_csr
-  { rcc_csr_lpwrrstf  :: Bit      -- Low-power reset flag
-  , rcc_csr_wwdgrstf  :: Bit      -- Window watchdog reset flag
-  , rcc_csr_iwdgrstf  :: Bit      -- Independent watchdog reset flag
-  , rcc_csr_sftrstf   :: Bit      -- Software reset flag
-  , rcc_csr_porrstf   :: Bit      -- POR/PDR reset flag
-  , rcc_csr_pinrstf   :: Bit      -- PIN reset flag
-  , rcc_csr_oblrstf   :: Bit      -- Option byte loader reset flag
-  , rcc_csr_rmvf      :: Bit      -- Remove reset flag
-  , _               :: Bits 22  -- (Reserved)
-  , rcc_csr_lsirdy    :: Bit      -- Internal low speed oscillator ready
-  , rcc_csr_lsion     :: Bit      -- Internal low speed oscillator enable
+  { rcc_csr_lpwrrstf    :: Bit      -- Low-power reset flag
+  , rcc_csr_wwdgrstf    :: Bit      -- Window watchdog reset flag
+  , rcc_csr_iwdgrstf    :: Bit      -- Independent watchdog reset flag
+  , rcc_csr_sftrstf     :: Bit      -- Software reset flag
+  , rcc_csr_porrstf     :: Bit      -- POR/PDR reset flag
+  , rcc_csr_pinrstf     :: Bit      -- PIN reset flag
+  , rcc_csr_oblrstf     :: Bit      -- Option byte loader reset flag
+  , rcc_csr_rmvf        :: Bit      -- Remove reset flag
+  , rcc_csr_v18pwrrstf  :: Bit      -- 1.8 V domain reset flag
+  , _                 :: Bits 21  -- (Reserved)
+  , rcc_csr_lsirdy      :: Bit      -- Internal low speed oscillator ready
+  , rcc_csr_lsion       :: Bit      -- Internal low speed oscillator enable
   }
 |]
 rcc_reg_csr :: BitDataReg RCC_CSR
@@ -310,13 +316,13 @@ rcc_reg_cfgr2 = mkBitDataRegNamed (rcc_periph_base + 0x2c) "cfgr2"
 --  | address: 0x40021030
 [ivory|
  bitdata RCC_CFGR3 :: Bits 32 = rcc_cfgr3
-  { _                 :: Bits 14  -- (Reserved)
+  { _                 :: Bits 12  -- (Reserved)
+  , rcc_cfgr3_usart3sw  :: Bits 2   -- USART3 clock source
   , rcc_cfgr3_usart2sw  :: Bits 2   -- USART2 clock source selection
   , _                 :: Bits 7   -- (Reserved)
-  , rcc_cfgr3_adcsw     :: Bit      -- ADC clock source selection
+  , rcc_cfgr3_adcsw     :: Bit      -- ADCSW is deprecated. See ADC field in CFGR2 register.
   , rcc_cfgr3_usbsw     :: Bit      -- USB clock source selection
-  , rcc_cfgr3_cecsw     :: Bit      -- HDMI CEC clock source selection
-  , _                 :: Bit      -- (Reserved)
+  , _                 :: Bits 2   -- (Reserved)
   , rcc_cfgr3_i2c1sw    :: Bit      -- I2C1 clock source selection
   , _                 :: Bits 2   -- (Reserved)
   , rcc_cfgr3_usart1sw  :: Bits 2   -- USART1 clock source selection
@@ -330,8 +336,7 @@ rcc_reg_cfgr3 = mkBitDataRegNamed (rcc_periph_base + 0x30) "cfgr3"
 --  | address: 0x40021034
 [ivory|
  bitdata RCC_CR2 :: Bits 32 = rcc_cr2
-  { _                :: Bits 7   -- (Reserved)
-  , rcc_cr2_hsi48cal   :: Bit      -- HSI48 factory clock calibration
+  { rcc_cr2_hsi48cal   :: Bits 8   -- HSI48 factory clock calibration
   , _                :: Bits 6   -- (Reserved)
   , rcc_cr2_hsi48rdy   :: Bit      -- HSI48 clock ready flag
   , rcc_cr2_hsi48on    :: Bit      -- HSI48 clock enable

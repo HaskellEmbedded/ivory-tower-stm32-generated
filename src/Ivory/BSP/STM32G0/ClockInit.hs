@@ -17,7 +17,7 @@ import Ivory.BSP.STM32G0.FLASH
 import Ivory.BSP.STM32G0.PWR
 import Ivory.BSP.STM32G0.RCC
 
-init_clocks :: ClockConfig -> Def('[]':->())
+init_clocks :: ClockConfig -> Def('[]:->())
 init_clocks clockconfig = proc "init_clocks" $ body $ do
   comment ("platformClockConfig: " ++ (show cc)      ++ "\n" ++
            "sysclk: "  ++ (show (clockSysClkHz cc))  ++ "\n" ++

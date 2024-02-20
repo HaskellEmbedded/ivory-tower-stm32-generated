@@ -39,7 +39,7 @@ import Ivory.Language
   , afio_mapr_adc1_etrginj_remap  :: Bit      -- ADC 1 External trigger injected conversion remapping
   , afio_mapr_tim5ch4_iremap      :: Bit      -- Set and cleared by software
   , afio_mapr_pd01_remap          :: Bit      -- Port D0/Port D1 mapping on OSCIN/OSCOUT
-  , afio_mapr_can_remap           :: Bits 2   -- CAN1 remapping
+  , afio_mapr_can_remap           :: Bits 2   -- CAN remapping
   , afio_mapr_tim4_remap          :: Bit      -- TIM4 remapping
   , afio_mapr_tim3_remap          :: Bits 2   -- TIM3 remapping
   , afio_mapr_tim2_remap          :: Bits 2   -- TIM2 remapping

@@ -8,6 +8,9 @@ module Ivory.BSP.STM32G471 (
   , module Ivory.BSP.STM32G471.LPUART
   , module Ivory.BSP.STM32G471.IWDG
   , module Ivory.BSP.STM32G471.EXTI
+  , module Ivory.BSP.STM32G471.SYSCFG
+  , module Ivory.BSP.STM32G471.ATIM
+  , module Ivory.BSP.STM32G471.GTIM
   ) where
 
 import Ivory.BSP.STM32G471.UART
@@ -19,3 +22,6 @@ import Ivory.BSP.STM32G471.USART
 import Ivory.BSP.STM32G471.LPUART
 import Ivory.BSP.STM32G471.IWDG
 import Ivory.BSP.STM32G471.EXTI
+import Ivory.BSP.STM32G471.SYSCFG
+import Ivory.BSP.STM32G471.ATIM
+import Ivory.BSP.STM32G471.GTIM

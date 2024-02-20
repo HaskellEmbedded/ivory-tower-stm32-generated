@@ -1,6 +1,8 @@
 module Ivory.BSP.STM32F429.UART (
     uart4
   , uart5
+  , uart7
+  , uart8
   ) where
 
 import Ivory.Language
@@ -37,4 +39,26 @@ uart5 = mkUARTVersion V2 uart5_periph_base
   where
   rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_uart5en
   rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_uart5en
+
+uart7 :: UART
+uart7 = mkUARTVersion V2 uart7_periph_base
+                rccenable rccdisable
+                F429.UART7
+                PClk1
+                (\pin -> findAFByPin pin "uart7" afDB)
+                "uart7"
+  where
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_uart7en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_uart7en
+
+uart8 :: UART
+uart8 = mkUARTVersion V2 uart8_periph_base
+                rccenable rccdisable
+                F429.UART8
+                PClk1
+                (\pin -> findAFByPin pin "uart8" afDB)
+                "uart8"
+  where
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_uart8en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_uart8en
 

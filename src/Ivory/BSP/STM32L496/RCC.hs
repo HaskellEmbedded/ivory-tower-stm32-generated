@@ -440,7 +440,7 @@ rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x50) "ahb3enr"
   , rcc_apb1enr1_usart3en  :: Bit      -- USART3 clock enable
   , rcc_apb1enr1_usart2en  :: Bit      -- USART2 clock enable
   , _                    :: Bit      -- (Reserved)
-  , rcc_apb1enr1_sp3en     :: Bit      -- SPI3 clock enable
+  , rcc_apb1enr1_spi3en    :: Bit      -- SPI peripheral 3 clock enable
   , rcc_apb1enr1_spi2en    :: Bit      -- SPI2 clock enable
   , _                    :: Bits 2   -- (Reserved)
   , rcc_apb1enr1_wwdgen    :: Bit      -- Window watchdog clock enable

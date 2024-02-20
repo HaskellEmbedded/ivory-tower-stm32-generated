@@ -13,9 +13,9 @@ data Interrupt
   | EXTI2_3 -- 6 EXTI line 2 & 3 interrupt
   | EXTI4_15 -- 7 EXTI line 4 to 15 interrupt
   | Undefined8 -- 8 Undefined interrupt (padding only)
-  | DMA_CHANNEL1 -- 9 DMA channel 1 interrupt
-  | DMA_CHANNEL2_3 -- 10 DMA channel 2 & 3 interrupts
-  | DMA_CHANNEL4_5_6_7 -- 11 DMA channel 4, 5, 6 & 7 and DMAMUX
+  | DMA1_CHANNEL1 -- 9 DMA channel 1 interrupt
+  | DMA1_CHANNEL2_3 -- 10 DMA channel 2 and 3 interrupts
+  | DMA1_CHANNEL4_5_DMAMUX -- 11 interrupts for DMA1 channels 4-5 and DMAMUX
   | ADC_COMP -- 12 ADC and COMP interrupts
   | TIM1_BRK_UP_TRG_COM -- 13 TIM1 break, update, trigger
   | TIM1_CC -- 14 TIM1 Capture Compare interrupt

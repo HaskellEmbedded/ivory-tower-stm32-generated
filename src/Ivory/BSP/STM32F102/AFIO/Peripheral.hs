@@ -25,10 +25,11 @@ data AFIO = AFIO
   }
 
 -- | Create AFIO given the base register address.
-mkAFIO  :: Integer
-       -> (forall eff . Ivory eff ())
-       -> (forall eff . Ivory eff ())
-       -> AFIO
+mkAFIO
+  :: Integer
+  -> (forall eff . Ivory eff ())
+  -> (forall eff . Ivory eff ())
+  -> AFIO
 mkAFIO base rccen rccdis = AFIO
   { afioRegEVCR    = reg 0x0 "evcr"
   , afioRegMAPR    = reg 0x4 "mapr"
@@ -37,9 +38,9 @@ mkAFIO base rccen rccdis = AFIO
   , afioRegEXTICR3 = reg 0x10 "exticr3"
   , afioRegEXTICR4 = reg 0x14 "exticr4"
   , afioRegMAPR2   = reg 0x1c "mapr2"
-    , afioRCCEnable      = rccen
-    , afioRCCDisable     = rccdis
-    }
+  , afioRCCEnable      = rccen
+  , afioRCCDisable     = rccdis
+  }
   where
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d
   reg offs name = mkBitDataRegNamed (base + offs) ("afio->" ++ name)

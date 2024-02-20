@@ -10,6 +10,9 @@ module Ivory.BSP.STM32L4A6 (
   , module Ivory.BSP.STM32L4A6.LPUART
   , module Ivory.BSP.STM32L4A6.IWDG
   , module Ivory.BSP.STM32L4A6.EXTI
+  , module Ivory.BSP.STM32L4A6.SYSCFG
+  , module Ivory.BSP.STM32L4A6.ATIM
+  , module Ivory.BSP.STM32L4A6.GTIM
   ) where
 
 import Ivory.BSP.STM32L4A6.UART
@@ -23,3 +26,6 @@ import Ivory.BSP.STM32L4A6.USART
 import Ivory.BSP.STM32L4A6.LPUART
 import Ivory.BSP.STM32L4A6.IWDG
 import Ivory.BSP.STM32L4A6.EXTI
+import Ivory.BSP.STM32L4A6.SYSCFG
+import Ivory.BSP.STM32L4A6.ATIM
+import Ivory.BSP.STM32L4A6.GTIM

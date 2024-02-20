@@ -36,13 +36,15 @@ pwr_reg_cr = mkBitDataRegNamed (pwr_periph_base + 0x0) "cr"
 --  | address: 0x40007004
 [ivory|
  bitdata PWR_CSR :: Bits 32 = pwr_csr
-  { _            :: Bits 22  -- (Reserved)
-  , pwr_csr_ewup2  :: Bit      -- Enable WKUP2 pin
-  , pwr_csr_ewup1  :: Bit      -- Enable WKUP1 pin
-  , _            :: Bits 5   -- (Reserved)
-  , pwr_csr_pvdo   :: Bit      -- PVD output
-  , pwr_csr_sbf    :: Bit      -- Standby flag
-  , pwr_csr_wuf    :: Bit      -- Wakeup flag
+  { _                  :: Bits 21  -- (Reserved)
+  , pwr_csr_ewup3        :: Bit      -- Enable WKUP3 pin
+  , pwr_csr_ewup2        :: Bit      -- Enable WKUP2 pin
+  , pwr_csr_ewup1        :: Bit      -- Enable WKUP1 pin
+  , _                  :: Bits 4   -- (Reserved)
+  , pwr_csr_vrefintrdyf  :: Bit      -- Internal voltage reference ready flag
+  , pwr_csr_pvdo         :: Bit      -- PVD output
+  , pwr_csr_sbf          :: Bit      -- Standby flag
+  , pwr_csr_wuf          :: Bit      -- Wakeup flag
   }
 |]
 pwr_reg_csr :: BitDataReg PWR_CSR

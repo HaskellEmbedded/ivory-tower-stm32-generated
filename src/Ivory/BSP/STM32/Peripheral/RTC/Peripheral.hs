@@ -9,7 +9,7 @@ import Ivory.Language
 
 import Ivory.HW
 
-import Ivory.BSP.STM32.Interrupt
+--import Ivory.BSP.STM32.Interrupt
 import Ivory.BSP.STM32.Peripheral.RTC.Regs
 
 -- Convenience type synonyms
@@ -42,12 +42,12 @@ data RTC = RTC
 -- | Create an RTC given the base register address.
 --mkRTC  :: (STM32Interrupt i)
 --       => Integer
-mkRTC  ::
-          Integer
-       -> (forall eff . Ivory eff ())
-       -> (forall eff . Ivory eff ())
-       -- -> i
-       -> RTC
+mkRTC
+  :: Integer
+  -> (forall eff . Ivory eff ())
+  -> (forall eff . Ivory eff ())
+  -- -> i
+  -> RTC
 mkRTC base rccen rccdis = RTC
   { rtcRegTR       = reg 0x0 "tr"
   , rtcRegDR       = reg 0x4 "dr"
@@ -70,9 +70,9 @@ mkRTC base rccen rccdis = RTC
   , rtcRegBKP3R    = reg 0x5c "bkp3r"
   , rtcRegBKP4R    = reg 0x60 "bkp4r"
 --    , rtcInterrupt      = HasSTM32Interrupt interrupt
-    , rtcRCCEnable      = rccen
-    , rtcRCCDisable     = rccdis
-    }
+  , rtcRCCEnable      = rccen
+  , rtcRCCDisable     = rccdis
+  }
   where
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d
   reg offs name = mkBitDataRegNamed (base + offs) ("rtc->" ++ name)

@@ -31,7 +31,9 @@ import Ivory.Language
 [ivory|
  bitdata SYSCFG_PMC :: Bits 32 = syscfg_pmc
   { _                  :: Bits 13  -- (Reserved)
-  , syscfg_pmc_adcdc2    :: Bits 3   -- ADC3DC2
+  , syscfg_pmc_adc3dc2   :: Bit      -- ADC3DC2
+  , syscfg_pmc_adc2dc2   :: Bit      -- ADC2DC2
+  , syscfg_pmc_adc1dc2   :: Bit      -- ADC3DC2
   , _                  :: Bits 8   -- (Reserved)
   , syscfg_pmc_pb9_fmp   :: Bit      -- Fast Mode + Enable
   , syscfg_pmc_pb8_fmp   :: Bit      -- PB8_FMP Fast Mode + Enable

@@ -8,6 +8,13 @@ module Ivory.BSP.STM32F768 (
   , module Ivory.BSP.STM32F768.USART
   , module Ivory.BSP.STM32F768.IWDG
   , module Ivory.BSP.STM32F768.EXTI
+  , module Ivory.BSP.STM32F768.SYSCFG
+  , module Ivory.BSP.STM32F768.ADC
+  , module Ivory.BSP.STM32F768.DMA
+  , module Ivory.BSP.STM32F768.UART.DMA
+  , module Ivory.BSP.STM32F768.USART.DMA
+  , module Ivory.BSP.STM32F768.ATIM
+  , module Ivory.BSP.STM32F768.GTIM
   ) where
 
 import Ivory.BSP.STM32F768.UART
@@ -19,3 +26,10 @@ import Ivory.BSP.STM32F768.SPI
 import Ivory.BSP.STM32F768.USART
 import Ivory.BSP.STM32F768.IWDG
 import Ivory.BSP.STM32F768.EXTI
+import Ivory.BSP.STM32F768.SYSCFG
+import Ivory.BSP.STM32F768.ADC
+import Ivory.BSP.STM32F768.DMA
+import Ivory.BSP.STM32F768.UART.DMA
+import Ivory.BSP.STM32F768.USART.DMA
+import Ivory.BSP.STM32F768.ATIM
+import Ivory.BSP.STM32F768.GTIM

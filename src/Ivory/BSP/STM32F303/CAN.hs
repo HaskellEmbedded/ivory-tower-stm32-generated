@@ -6,10 +6,13 @@ module Ivory.BSP.STM32F303.CAN (
 import Ivory.Language
 import Ivory.HW
 
-import Ivory.BSP.STM32.Peripheral.CAN
+import Ivory.BSP.STM32F303.AF
 import Ivory.BSP.STM32F303.RCC
 import Ivory.BSP.STM32F303.MemoryMap
 import qualified Ivory.BSP.STM32F303.Interrupt as F303
+
+import Ivory.BSP.STM32.AF
+import Ivory.BSP.STM32.Peripheral.CAN
 
 canFilters :: CANPeriphFilters
 canFilters = mkCANPeriphFilters can_periph_base
@@ -22,6 +25,7 @@ can :: CANPeriph
 can = mkCANPeriph can_periph_base
                 rccenable rccdisable
                 F303.USB_HP_CAN_TX F303.USB_LP_CAN_RX0 F303.CAN_RX1 F303.CAN_SCE
+               (\pin -> findAFByPin pin "can" afDB)
                "can"
   where
   rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_canen

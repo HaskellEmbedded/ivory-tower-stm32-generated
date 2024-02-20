@@ -1,6 +1,7 @@
 module Ivory.BSP.STM32F302.USART (
     usart1
   , usart2
+  , usart3
   ) where
 
 import Ivory.Language
@@ -20,7 +21,7 @@ usart1 :: UART
 usart1 = mkUARTVersion V3 usart1_periph_base
                 rccenable rccdisable
                 F302.USART1_EXTI25
-                PClk1
+                PClk2
                 (\pin -> findAFByPin pin "usart1" afDB)
                 "usart1"
   where
@@ -37,4 +38,15 @@ usart2 = mkUARTVersion V3 usart2_periph_base
   where
   rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_usart2en
   rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_usart2en
+
+usart3 :: UART
+usart3 = mkUARTVersion V3 usart3_periph_base
+                rccenable rccdisable
+                F302.USART3_EXTI28
+                PClk1
+                (\pin -> findAFByPin pin "usart3" afDB)
+                "usart3"
+  where
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_usart3en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_usart3en
 

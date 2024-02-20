@@ -9,6 +9,9 @@ module Ivory.BSP.STM32L432 (
   , module Ivory.BSP.STM32L432.LPUART
   , module Ivory.BSP.STM32L432.IWDG
   , module Ivory.BSP.STM32L432.EXTI
+  , module Ivory.BSP.STM32L432.SYSCFG
+  , module Ivory.BSP.STM32L432.ATIM
+  , module Ivory.BSP.STM32L432.GTIM
   ) where
 
 import Ivory.BSP.STM32L432.CAN
@@ -21,3 +24,6 @@ import Ivory.BSP.STM32L432.USART
 import Ivory.BSP.STM32L432.LPUART
 import Ivory.BSP.STM32L432.IWDG
 import Ivory.BSP.STM32L432.EXTI
+import Ivory.BSP.STM32L432.SYSCFG
+import Ivory.BSP.STM32L432.ATIM
+import Ivory.BSP.STM32L432.GTIM

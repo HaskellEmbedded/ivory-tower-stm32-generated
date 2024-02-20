@@ -42,12 +42,12 @@ rcc_reg_cr = mkBitDataRegNamed (rcc_periph_base + 0x0) "cr"
 --  | address: 0x40021004
 [ivory|
  bitdata RCC_CFGR :: Bits 32 = rcc_cfgr
-  { _                :: Bits 3   -- (Reserved)
-  , rcc_cfgr_mcof      :: Bit      -- Microcontroller Clock Output Flag
+  { rcc_cfgr_pllnodiv  :: Bit      -- Do not divide PLL to MCO
+  , rcc_cfgr_mcopre    :: RCC_MCOxPre  -- Microcontroller Clock Output Prescaler
   , _                :: Bit      -- (Reserved)
   , rcc_cfgr_mco       :: Bits 3   -- Microcontroller clock output
   , rcc_cfgr_i2ssrc    :: Bit      -- I2S external clock source selection
-  , rcc_cfgr_usbpres   :: Bit      -- USB prescaler
+  , rcc_cfgr_usbpre    :: Bit      -- USB prescaler
   , rcc_cfgr_pllmul    :: Bits 4   -- PLL Multiplication Factor
   , rcc_cfgr_pllxtpre  :: Bit      -- HSE divider for PLL entry
   , rcc_cfgr_pllsrc    :: Bits 2   -- PLL entry clock source
@@ -98,11 +98,13 @@ rcc_reg_cir = mkBitDataRegNamed (rcc_periph_base + 0x8) "cir"
 --  | address: 0x4002100c
 [ivory|
  bitdata RCC_APB2RSTR :: Bits 32 = rcc_apb2rstr
-  { _                     :: Bits 13  -- (Reserved)
+  { _                     :: Bits 11  -- (Reserved)
+  , rcc_apb2rstr_tim20rst   :: Bit      -- TIM20 timer reset
+  , _                     :: Bit      -- (Reserved)
   , rcc_apb2rstr_tim17rst   :: Bit      -- TIM17 timer reset
   , rcc_apb2rstr_tim16rst   :: Bit      -- TIM16 timer reset
   , rcc_apb2rstr_tim15rst   :: Bit      -- TIM15 timer reset
-  , _                     :: Bit      -- (Reserved)
+  , rcc_apb2rstr_spi4rst    :: Bit      -- SPI4 reset
   , rcc_apb2rstr_usart1rst  :: Bit      -- USART1 reset
   , rcc_apb2rstr_tim8rst    :: Bit      -- TIM8 timer reset
   , rcc_apb2rstr_spi1rst    :: Bit      -- SPI 1 reset
@@ -121,9 +123,10 @@ rcc_reg_apb2rstr = mkBitDataRegNamed (rcc_periph_base + 0xc) "apb2rstr"
  bitdata RCC_APB1RSTR :: Bits 32 = rcc_apb1rstr
   { _                     :: Bit      -- (Reserved)
   , rcc_apb1rstr_i2c3rst    :: Bit      -- I2C3 reset
-  , rcc_apb1rstr_dacrst     :: Bit      -- DAC interface reset
+  , rcc_apb1rstr_dac1rst    :: Bit      -- DAC interface reset
   , rcc_apb1rstr_pwrrst     :: Bit      -- Power interface reset
-  , _                     :: Bits 2   -- (Reserved)
+  , _                     :: Bit      -- (Reserved)
+  , rcc_apb1rstr_dac2rst    :: Bit      -- DAC2 interface reset
   , rcc_apb1rstr_canrst     :: Bit      -- CAN reset
   , _                     :: Bit      -- (Reserved)
   , rcc_apb1rstr_usbrst     :: Bit      -- USB reset
@@ -175,7 +178,7 @@ rcc_reg_apb1rstr = mkBitDataRegNamed (rcc_periph_base + 0x10) "apb1rstr"
   , _                 :: Bit      -- (Reserved)
   , rcc_ahbenr_sramen   :: Bit      -- SRAM interface clock enable
   , rcc_ahbenr_dma2en   :: Bit      -- DMA2 clock enable
-  , rcc_ahbenr_dmaen    :: Bit      -- DMA1 clock enable
+  , rcc_ahbenr_dma1en   :: Bit      -- DMA1 clock enable
   }
 |]
 rcc_reg_ahbenr :: BitDataReg RCC_AHBENR
@@ -186,11 +189,13 @@ rcc_reg_ahbenr = mkBitDataRegNamed (rcc_periph_base + 0x14) "ahbenr"
 --  | address: 0x40021018
 [ivory|
  bitdata RCC_APB2ENR :: Bits 32 = rcc_apb2enr
-  { _                   :: Bits 13  -- (Reserved)
+  { _                   :: Bits 11  -- (Reserved)
+  , rcc_apb2enr_tim20en   :: Bit      -- TIM20 timer clock enable
+  , _                   :: Bit      -- (Reserved)
   , rcc_apb2enr_tim17en   :: Bit      -- TIM17 timer clock enable
   , rcc_apb2enr_tim16en   :: Bit      -- TIM16 timer clock enable
   , rcc_apb2enr_tim15en   :: Bit      -- TIM15 timer clock enable
-  , _                   :: Bit      -- (Reserved)
+  , rcc_apb2enr_spi4en    :: Bit      -- SPI4 clock enable
   , rcc_apb2enr_usart1en  :: Bit      -- USART1 clock enable
   , rcc_apb2enr_tim8en    :: Bit      -- TIM8 Timer clock enable
   , rcc_apb2enr_spi1en    :: Bit      -- SPI 1 clock enable
@@ -209,7 +214,7 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x18) "apb2enr"
  bitdata RCC_APB1ENR :: Bits 32 = rcc_apb1enr
   { _                   :: Bit      -- (Reserved)
   , rcc_apb1enr_i2c3en    :: Bit      -- I2C3 clock enable
-  , rcc_apb1enr_dacen     :: Bit      -- DAC interface clock enable
+  , rcc_apb1enr_dac1en    :: Bit      -- DAC interface clock enable
   , rcc_apb1enr_pwren     :: Bit      -- Power interface clock enable
   , _                   :: Bit      -- (Reserved)
   , rcc_apb1enr_dac2en    :: Bit      -- DAC2 interface clock enable
@@ -218,8 +223,8 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x18) "apb2enr"
   , rcc_apb1enr_usben     :: Bit      -- USB clock enable
   , rcc_apb1enr_i2c2en    :: Bit      -- I2C 2 clock enable
   , rcc_apb1enr_i2c1en    :: Bit      -- I2C 1 clock enable
-  , rcc_apb1enr_usart5en  :: Bit      -- USART 5 clock enable
-  , rcc_apb1enr_usart4en  :: Bit      -- USART 4 clock enable
+  , rcc_apb1enr_uart5en   :: Bit      -- USART 5 clock enable
+  , rcc_apb1enr_uart4en   :: Bit      -- USART 4 clock enable
   , rcc_apb1enr_usart3en  :: Bit      -- USART 3 clock enable
   , rcc_apb1enr_usart2en  :: Bit      -- USART 2 clock enable
   , _                   :: Bit      -- (Reserved)
@@ -264,17 +269,18 @@ rcc_reg_bdcr = mkBitDataRegNamed (rcc_periph_base + 0x20) "bdcr"
 --  | address: 0x40021024
 [ivory|
  bitdata RCC_CSR :: Bits 32 = rcc_csr
-  { rcc_csr_lpwrrstf  :: Bit      -- Low-power reset flag
-  , rcc_csr_wwdgrstf  :: Bit      -- Window watchdog reset flag
-  , rcc_csr_iwdgrstf  :: Bit      -- Independent watchdog reset flag
-  , rcc_csr_sftrstf   :: Bit      -- Software reset flag
-  , rcc_csr_porrstf   :: Bit      -- POR/PDR reset flag
-  , rcc_csr_pinrstf   :: Bit      -- PIN reset flag
-  , rcc_csr_oblrstf   :: Bit      -- Option byte loader reset flag
-  , rcc_csr_rmvf      :: Bit      -- Remove reset flag
-  , _               :: Bits 22  -- (Reserved)
-  , rcc_csr_lsirdy    :: Bit      -- Internal low speed oscillator ready
-  , rcc_csr_lsion     :: Bit      -- Internal low speed oscillator enable
+  { rcc_csr_lpwrrstf    :: Bit      -- Low-power reset flag
+  , rcc_csr_wwdgrstf    :: Bit      -- Window watchdog reset flag
+  , rcc_csr_iwdgrstf    :: Bit      -- Independent watchdog reset flag
+  , rcc_csr_sftrstf     :: Bit      -- Software reset flag
+  , rcc_csr_porrstf     :: Bit      -- POR/PDR reset flag
+  , rcc_csr_pinrstf     :: Bit      -- PIN reset flag
+  , rcc_csr_oblrstf     :: Bit      -- Option byte loader reset flag
+  , rcc_csr_rmvf        :: Bit      -- Remove reset flag
+  , rcc_csr_v18pwrrstf  :: Bit      -- Reset flag of the 1.8 V domain
+  , _                 :: Bits 21  -- (Reserved)
+  , rcc_csr_lsirdy      :: Bit      -- Internal low speed oscillator ready
+  , rcc_csr_lsion       :: Bit      -- Internal low speed oscillator enable
   }
 |]
 rcc_reg_csr :: BitDataReg RCC_CSR
@@ -325,12 +331,19 @@ rcc_reg_cfgr2 = mkBitDataRegNamed (rcc_periph_base + 0x2c) "cfgr2"
 --  | address: 0x40021030
 [ivory|
  bitdata RCC_CFGR3 :: Bits 32 = rcc_cfgr3
-  { _                 :: Bits 8   -- (Reserved)
+  { _                 :: Bits 6   -- (Reserved)
+  , rcc_cfgr3_tim34sw   :: Bit      -- Timer34 clock source selection
+  , rcc_cfgr3_tim2sw    :: Bit      -- Timer2 clock source selection
   , rcc_cfgr3_uart5sw   :: Bits 2   -- UART5 clock source selection
   , rcc_cfgr3_uart4sw   :: Bits 2   -- UART4 clock source selection
   , rcc_cfgr3_usart3sw  :: Bits 2   -- USART3 clock source selection
   , rcc_cfgr3_usart2sw  :: Bits 2   -- USART2 clock source selection
-  , _                 :: Bits 6   -- (Reserved)
+  , rcc_cfgr3_tim20sw   :: Bit      -- Timer20 clock source selection
+  , _                 :: Bit      -- (Reserved)
+  , rcc_cfgr3_tim17sw   :: Bit      -- Timer17 clock source selection
+  , _                 :: Bit      -- (Reserved)
+  , rcc_cfgr3_tim16sw   :: Bit      -- Timer16 clock source selection
+  , rcc_cfgr3_tim15sw   :: Bit      -- Timer15 clock source selection
   , rcc_cfgr3_tim8sw    :: Bit      -- Timer8 clock source selection
   , rcc_cfgr3_tim1sw    :: Bit      -- Timer1 clock source selection
   , _                 :: Bit      -- (Reserved)

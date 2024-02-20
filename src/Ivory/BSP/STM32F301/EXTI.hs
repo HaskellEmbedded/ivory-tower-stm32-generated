@@ -20,9 +20,9 @@ exti = mkEXTIVersion
   [
       (0, 0, F301.EXTI0)
     , (1, 1, F301.EXTI1)
-    , (2, 2, F301.EXTI2_RI)
+    , (2, 2, F301.EXTI2_TSC)
     , (3, 3, F301.EXTI3)
     , (4, 4, F301.EXTI4)
-    , (5, 9, F301.EXTI5_9)
+    , (5, 9, F301.EXTI9_5)
     , (10, 15, F301.EXTI15_10)
   ]

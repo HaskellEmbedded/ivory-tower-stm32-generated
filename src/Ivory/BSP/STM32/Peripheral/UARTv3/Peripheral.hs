@@ -13,9 +13,8 @@ module Ivory.BSP.STM32.Peripheral.UARTv3.Peripheral where
 
 import qualified Data.List as L
 
-import Ivory.Language
-
 import Ivory.HW
+import Ivory.Language
 
 import Ivory.BSP.STM32.Interrupt
 import Ivory.BSP.STM32.ClockConfig
@@ -45,15 +44,16 @@ data UART = UART
   , uartName       :: String
   }
 
-mkUART :: (STM32Interrupt i)
-       => Integer
-       -> (forall eff . Ivory eff ())
-       -> (forall eff . Ivory eff ())
-       -> i
-       -> PClk
-       -> (GPIOPin -> GPIO_AF)
-       -> String
-       -> UART
+mkUART
+  :: (STM32Interrupt i)
+  => Integer
+  -> (forall eff . Ivory eff ())
+  -> (forall eff . Ivory eff ())
+  -> i
+  -> PClk
+  -> (GPIOPin -> GPIO_AF)
+  -> String
+  -> UART
 mkUART base rccen rccdis interrupt pclk afLookup n = UART
   { uartRegCR1     = reg 0x0 "cr1"
   , uartRegCR2     = reg 0x4 "cr2"
@@ -76,7 +76,6 @@ mkUART base rccen rccdis interrupt pclk afLookup n = UART
   where
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d
   reg offs name = mkBitDataRegNamed (base + offs) (n ++ "->" ++ name)
-
 
 -- | Initialize GPIO pins for a UART.
 initPin :: UART -> GPIOPin -> Ivory eff ()

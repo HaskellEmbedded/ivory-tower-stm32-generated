@@ -38,10 +38,9 @@ pwr_reg_cr1 = mkBitDataRegNamed (pwr_periph_base + 0x0) "cr1"
 --  | address: 0x40007004
 [ivory|
  bitdata PWR_CR2 :: Bits 32 = pwr_cr2
-  { _            :: Bits 25  -- (Reserved)
-  , pwr_cr2_pvdrt  :: Bits 3   -- Power voltage detector rising threshold selection
-  , pwr_cr2_pvdft  :: Bits 3   -- Power voltage detector falling threshold selection
-  , pwr_cr2_pvde   :: Bit      -- Power voltage detector enable
+  { _          :: Bits 21  -- (Reserved)
+  , pwr_cr2_usv  :: Bit      -- USV
+  , _          :: Bits 10  -- (Reserved)
   }
 |]
 pwr_reg_cr2 :: BitDataReg PWR_CR2
@@ -56,13 +55,11 @@ pwr_reg_cr2 = mkBitDataRegNamed (pwr_periph_base + 0x4) "cr2"
   , pwr_cr3_eiwul  :: Bit      -- Enable internal wakeup line
   , _            :: Bits 4   -- (Reserved)
   , pwr_cr3_apc    :: Bit      -- Apply pull-up and pull-down configuration
-  , pwr_cr3_ulpen  :: Bit      -- Enable the periodical sampling mode for PDR detection
-  , pwr_cr3_rrs    :: Bit      -- SRAM retention in Standby mode
-  , _            :: Bits 2   -- (Reserved)
+  , _            :: Bits 4   -- (Reserved)
   , pwr_cr3_ewup6  :: Bit      -- Enable WKUP6 wakeup pin
   , pwr_cr3_ewup5  :: Bit      -- Enable WKUP5 wakeup pin
   , pwr_cr3_ewup4  :: Bit      -- Enable Wakeup pin WKUP4
-  , _            :: Bit      -- (Reserved)
+  , pwr_cr3_ewup3  :: Bit      -- Enable Wakeup pin WKUP3
   , pwr_cr3_ewup2  :: Bit      -- Enable Wakeup pin WKUP2
   , pwr_cr3_ewup1  :: Bit      -- Enable Wakeup pin WKUP1
   }
@@ -82,7 +79,7 @@ pwr_reg_cr3 = mkBitDataRegNamed (pwr_periph_base + 0x8) "cr3"
   , pwr_cr4_wp6   :: Bit      -- WKUP6 wakeup pin polarity
   , pwr_cr4_wp5   :: Bit      -- Wakeup pin WKUP5 polarity
   , pwr_cr4_wp4   :: Bit      -- Wakeup pin WKUP4 polarity
-  , _           :: Bit      -- (Reserved)
+  , pwr_cr4_wp3   :: Bit      -- Wakeup pin WKUP3 polarity
   , pwr_cr4_wp2   :: Bit      -- Wakeup pin WKUP2 polarity
   , pwr_cr4_wp1   :: Bit      -- Wakeup pin WKUP1 polarity
   }
@@ -103,7 +100,7 @@ pwr_reg_cr4 = mkBitDataRegNamed (pwr_periph_base + 0xc) "cr4"
   , pwr_sr1_wuf6  :: Bit      -- Wakeup flag 6
   , pwr_sr1_wuf5  :: Bit      -- Wakeup flag 5
   , pwr_sr1_wuf4  :: Bit      -- Wakeup flag 4
-  , _           :: Bit      -- (Reserved)
+  , pwr_sr1_wuf3  :: Bit      -- Wakeup flag 3
   , pwr_sr1_wuf2  :: Bit      -- Wakeup flag 2
   , pwr_sr1_wuf1  :: Bit      -- Wakeup flag 1
   }
@@ -116,8 +113,7 @@ pwr_reg_sr1 = mkBitDataRegNamed (pwr_periph_base + 0x10) "sr1"
 --  | address: 0x40007014
 [ivory|
  bitdata PWR_SR2 :: Bits 32 = pwr_sr2
-  { _                :: Bits 20  -- (Reserved)
-  , pwr_sr2_pvdo       :: Bit      -- Power voltage detector output
+  { _                :: Bits 21  -- (Reserved)
   , pwr_sr2_vosf       :: Bit      -- Voltage scaling flag
   , pwr_sr2_reglpf     :: Bit      -- Low-power regulator flag
   , pwr_sr2_reglps     :: Bit      -- Low-power regulator started
@@ -139,7 +135,7 @@ pwr_reg_sr2 = mkBitDataRegNamed (pwr_periph_base + 0x14) "sr2"
   , pwr_scr_cwuf6  :: Bit      -- Clear wakeup flag 6
   , pwr_scr_cwuf5  :: Bit      -- Clear wakeup flag 5
   , pwr_scr_cwuf4  :: Bit      -- Clear wakeup flag 4
-  , _            :: Bit      -- (Reserved)
+  , pwr_scr_cwuf3  :: Bit      -- Clear wakeup flag 3
   , pwr_scr_cwuf2  :: Bit      -- Clear wakeup flag 2
   , pwr_scr_cwuf1  :: Bit      -- Clear wakeup flag 1
   }
@@ -264,10 +260,19 @@ pwr_reg_pdcrb = mkBitDataRegNamed (pwr_periph_base + 0x2c) "pdcrb"
   , pwr_pucrc_pu15  :: Bit      -- Port C pull-up bit y (y=0..15)
   , pwr_pucrc_pu14  :: Bit      -- Port C pull-up bit y (y=0..15)
   , pwr_pucrc_pu13  :: Bit      -- Port C pull-up bit y (y=0..15)
-  , _             :: Bits 5   -- (Reserved)
+  , pwr_pucrc_pu12  :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu11  :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu10  :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu9   :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu8   :: Bit      -- Port C pull-up bit y (y=0..15)
   , pwr_pucrc_pu7   :: Bit      -- Port C pull-up bit y (y=0..15)
   , pwr_pucrc_pu6   :: Bit      -- Port C pull-up bit y (y=0..15)
-  , _             :: Bits 6   -- (Reserved)
+  , pwr_pucrc_pu5   :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu4   :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu3   :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu2   :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu1   :: Bit      -- Port C pull-up bit y (y=0..15)
+  , pwr_pucrc_pu0   :: Bit      -- Port C pull-up bit y (y=0..15)
   }
 |]
 pwr_reg_pucrc :: BitDataReg PWR_PUCRC
@@ -305,11 +310,23 @@ pwr_reg_pdcrc = mkBitDataRegNamed (pwr_periph_base + 0x34) "pdcrc"
 --  | address: 0x40007038
 [ivory|
  bitdata PWR_PUCRD :: Bits 32 = pwr_pucrd
-  { _            :: Bits 28  -- (Reserved)
-  , pwr_pucrd_pu3  :: Bit      -- Port D pull-up bit y (y=0..15)
-  , pwr_pucrd_pu2  :: Bit      -- Port D pull-up bit y (y=0..15)
-  , pwr_pucrd_pu1  :: Bit      -- Port D pull-up bit y (y=0..15)
-  , pwr_pucrd_pu0  :: Bit      -- Port D pull-up bit y (y=0..15)
+  { _             :: Bits 16  -- (Reserved)
+  , pwr_pucrd_pu15  :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu14  :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu13  :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu12  :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu11  :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu10  :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu9   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu8   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu7   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu6   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu5   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu4   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu3   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu2   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu1   :: Bit      -- Port D pull-up bit y (y=0..15)
+  , pwr_pucrd_pu0   :: Bit      -- Port D pull-up bit y (y=0..15)
   }
 |]
 pwr_reg_pucrd :: BitDataReg PWR_PUCRD
@@ -320,31 +337,102 @@ pwr_reg_pucrd = mkBitDataRegNamed (pwr_periph_base + 0x38) "pucrd"
 --  | address: 0x4000703c
 [ivory|
  bitdata PWR_PDCRD :: Bits 32 = pwr_pdcrd
-  { _            :: Bits 22  -- (Reserved)
-  , pwr_pdcrd_pd9  :: Bit      -- Port D pull-down bit y (y=0..15)
-  , pwr_pdcrd_pd8  :: Bit      -- Port D pull-down bit y (y=0..15)
-  , _            :: Bit      -- (Reserved)
-  , pwr_pdcrd_pd6  :: Bit      -- Port D pull-down bit y (y=0..15)
-  , pwr_pdcrd_pd5  :: Bit      -- Port D pull-down bit y (y=0..15)
-  , pwr_pdcrd_pd4  :: Bit      -- Port D pull-down bit y (y=0..15)
-  , pwr_pdcrd_pd3  :: Bit      -- Port D pull-down bit y (y=0..15)
-  , pwr_pdcrd_pd2  :: Bit      -- Port D pull-down bit y (y=0..15)
-  , pwr_pdcrd_pd1  :: Bit      -- Port D pull-down bit y (y=0..15)
-  , pwr_pdcrd_pd0  :: Bit      -- Port D pull-down bit y (y=0..15)
+  { _             :: Bits 16  -- (Reserved)
+  , pwr_pdcrd_pd15  :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd14  :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd13  :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd12  :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd11  :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd10  :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd9   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd8   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd7   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd6   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd5   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd4   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd3   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd2   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd1   :: Bit      -- Port D pull-down bit y (y=0..15)
+  , pwr_pdcrd_pd0   :: Bit      -- Port D pull-down bit y (y=0..15)
   }
 |]
 pwr_reg_pdcrd :: BitDataReg PWR_PDCRD
 pwr_reg_pdcrd = mkBitDataRegNamed (pwr_periph_base + 0x3c) "pdcrd"
+
+-- Power Port E pull-UP control register
+--  | offset : 0x40
+--  | address: 0x40007040
+[ivory|
+ bitdata PWR_PUCRE :: Bits 32 = pwr_pucre
+  { _             :: Bits 16  -- (Reserved)
+  , pwr_pucre_pu15  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu14  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu13  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu12  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu11  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu10  :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu9   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu8   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu7   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu6   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu5   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu4   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu3   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu2   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu1   :: Bit      -- Port E pull-up bit y (y=0..15)
+  , pwr_pucre_pu0   :: Bit      -- Port E pull-up bit y (y=0..15)
+  }
+|]
+pwr_reg_pucre :: BitDataReg PWR_PUCRE
+pwr_reg_pucre = mkBitDataRegNamed (pwr_periph_base + 0x40) "pucre"
+
+-- Power Port E pull-down control register
+--  | offset : 0x44
+--  | address: 0x40007044
+[ivory|
+ bitdata PWR_PDCRE :: Bits 32 = pwr_pdcre
+  { _             :: Bits 16  -- (Reserved)
+  , pwr_pdcre_pd15  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd14  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd13  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd12  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd11  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd10  :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd9   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd8   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd7   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd6   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd5   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd4   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd3   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd2   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd1   :: Bit      -- Port E pull-down bit y (y=0..15)
+  , pwr_pdcre_pd0   :: Bit      -- Port E pull-down bit y (y=0..15)
+  }
+|]
+pwr_reg_pdcre :: BitDataReg PWR_PDCRE
+pwr_reg_pdcre = mkBitDataRegNamed (pwr_periph_base + 0x44) "pdcre"
 
 -- Power Port F pull-up control register
 --  | offset : 0x48
 --  | address: 0x40007048
 [ivory|
  bitdata PWR_PUCRF :: Bits 32 = pwr_pucrf
-  { _            :: Bits 29  -- (Reserved)
-  , pwr_pucrf_pu2  :: Bit      -- Port F pull-up bit y (y=0..15)
-  , pwr_pucrf_pu1  :: Bit      -- Port F pull-up bit y (y=0..15)
-  , pwr_pucrf_pu0  :: Bit      -- Port F pull-up bit y (y=0..15)
+  { _             :: Bits 18  -- (Reserved)
+  , pwr_pucrf_pu13  :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu12  :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu11  :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu10  :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu9   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu8   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu7   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu6   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu5   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu4   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu3   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu2   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu1   :: Bit      -- Port F pull-up bit y (y=0..15)
+  , pwr_pucrf_pu0   :: Bit      -- Port F pull-up bit y (y=0..15)
   }
 |]
 pwr_reg_pucrf :: BitDataReg PWR_PUCRF
@@ -355,10 +443,21 @@ pwr_reg_pucrf = mkBitDataRegNamed (pwr_periph_base + 0x48) "pucrf"
 --  | address: 0x4000704c
 [ivory|
  bitdata PWR_PDCRF :: Bits 32 = pwr_pdcrf
-  { _            :: Bits 29  -- (Reserved)
-  , pwr_pdcrf_pd2  :: Bit      -- Port F pull-down bit y (y=0..15)
-  , pwr_pdcrf_pd1  :: Bit      -- Port F pull-down bit y (y=0..15)
-  , pwr_pdcrf_pd0  :: Bit      -- Port F pull-down bit y (y=0..15)
+  { _             :: Bits 18  -- (Reserved)
+  , pwr_pdcrf_pd13  :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd12  :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd11  :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd10  :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd9   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd8   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd7   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd6   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd5   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd4   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd3   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd2   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd1   :: Bit      -- Port F pull-down bit y (y=0..15)
+  , pwr_pdcrf_pd0   :: Bit      -- Port F pull-down bit y (y=0..15)
   }
 |]
 pwr_reg_pdcrf :: BitDataReg PWR_PDCRF

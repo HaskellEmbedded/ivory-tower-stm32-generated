@@ -8,6 +8,14 @@ module Ivory.BSP.STM32F745 (
   , module Ivory.BSP.STM32F745.USART
   , module Ivory.BSP.STM32F745.IWDG
   , module Ivory.BSP.STM32F745.EXTI
+  , module Ivory.BSP.STM32F745.SYSCFG
+  , module Ivory.BSP.STM32F745.ADC
+  , module Ivory.BSP.STM32F745.DMA
+  , module Ivory.BSP.STM32F745.ETH
+  , module Ivory.BSP.STM32F745.UART.DMA
+  , module Ivory.BSP.STM32F745.USART.DMA
+  , module Ivory.BSP.STM32F745.ATIM
+  , module Ivory.BSP.STM32F745.GTIM
   ) where
 
 import Ivory.BSP.STM32F745.UART
@@ -19,3 +27,11 @@ import Ivory.BSP.STM32F745.SPI
 import Ivory.BSP.STM32F745.USART
 import Ivory.BSP.STM32F745.IWDG
 import Ivory.BSP.STM32F745.EXTI
+import Ivory.BSP.STM32F745.SYSCFG
+import Ivory.BSP.STM32F745.ADC
+import Ivory.BSP.STM32F745.DMA
+import Ivory.BSP.STM32F745.ETH
+import Ivory.BSP.STM32F745.UART.DMA
+import Ivory.BSP.STM32F745.USART.DMA
+import Ivory.BSP.STM32F745.ATIM
+import Ivory.BSP.STM32F745.GTIM

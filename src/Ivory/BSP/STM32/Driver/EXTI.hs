@@ -20,6 +20,5 @@ extiTower :: EXTI
           -> [EXTIPin]
           -> Tower e [ChanOutput ('Stored IBool)]
 extiTower exti ePins = case exti of
-    (WrappedV1 x) -> V1.extiTower x ePins
-    (WrappedV2 x) -> V2.extiTower x ePins
-  
+  (WrappedV1 x) -> V1.extiTower x ePins
+  (WrappedV2 x) -> V2.extiTower x ePins

@@ -11,6 +11,8 @@ module Ivory.BSP.STM32F429.GPIO.Ports (
   , gpioG
   , gpioH
   , gpioI
+  , gpioJ
+  , gpioK
   ) where
 
 import Ivory.Language
@@ -74,4 +76,16 @@ gpioI = mkGPIOPort gpioi_periph_base rccenable rccdisable 8
   where
   rccenable  = modifyReg rcc_reg_ahb1enr $ setBit   rcc_ahb1enr_gpioien
   rccdisable = modifyReg rcc_reg_ahb1enr $ clearBit rcc_ahb1enr_gpioien
+
+gpioJ :: GPIOPort
+gpioJ = mkGPIOPort gpioj_periph_base rccenable rccdisable 9
+  where
+  rccenable  = modifyReg rcc_reg_ahb1enr $ setBit   rcc_ahb1enr_gpiojen
+  rccdisable = modifyReg rcc_reg_ahb1enr $ clearBit rcc_ahb1enr_gpiojen
+
+gpioK :: GPIOPort
+gpioK = mkGPIOPort gpiok_periph_base rccenable rccdisable 10
+  where
+  rccenable  = modifyReg rcc_reg_ahb1enr $ setBit   rcc_ahb1enr_gpioken
+  rccdisable = modifyReg rcc_reg_ahb1enr $ clearBit rcc_ahb1enr_gpioken
 

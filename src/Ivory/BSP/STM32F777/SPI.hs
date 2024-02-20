@@ -2,6 +2,9 @@ module Ivory.BSP.STM32F777.SPI (
     spi1
   , spi2
   , spi3
+  , spi4
+  , spi5
+  , spi6
   ) where
 
 
@@ -22,7 +25,7 @@ spi1 :: SPI
 spi1 = mkSPI spi1_periph_base
           rccenable rccdisable
           F777.SPI1
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi1" afDB)
           3
           "spi1"
@@ -53,4 +56,40 @@ spi3 = mkSPI spi3_periph_base
   where
   rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_spi3en
   rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_spi3en
+
+spi4 :: SPI
+spi4 = mkSPI spi4_periph_base
+          rccenable rccdisable
+          F777.SPI4
+          PClk2
+          (\pin -> findAFByPin pin "spi4" afDB)
+          3
+          "spi4"
+  where
+  rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_spi4en
+  rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_spi4en
+
+spi5 :: SPI
+spi5 = mkSPI spi5_periph_base
+          rccenable rccdisable
+          F777.SPI5
+          PClk2
+          (\pin -> findAFByPin pin "spi5" afDB)
+          3
+          "spi5"
+  where
+  rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_spi5en
+  rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_spi5en
+
+spi6 :: SPI
+spi6 = mkSPI spi6_periph_base
+          rccenable rccdisable
+          F777.SPI6
+          PClk2
+          (\pin -> findAFByPin pin "spi6" afDB)
+          3
+          "spi6"
+  where
+  rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_spi6en
+  rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_spi6en
 

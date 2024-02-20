@@ -24,8 +24,8 @@ import Ivory.BSP.STM32F410.MemoryMap (flash_periph_base)
   , flash_acr_dcen     :: Bit      -- Data cache enable
   , flash_acr_icen     :: Bit      -- Instruction cache enable
   , flash_acr_prften   :: Bit      -- Prefetch enable
-  , _                :: Bits 5   -- (Reserved)
-  , flash_acr_latency  :: Bits 3   -- Latency
+  , _                :: Bits 4   -- (Reserved)
+  , flash_acr_latency  :: Bits 4   -- Latency
   }
 |]
 flash_reg_acr :: BitDataReg FLASH_ACR

@@ -21,7 +21,7 @@ usart1 :: UART
 usart1 = mkUARTVersion V2 usart1_periph_base
                 rccenable rccdisable
                 F401.USART1
-                PClk1
+                PClk2
                 (\pin -> findAFByPin pin "usart1" afDB)
                 "usart1"
   where
@@ -43,7 +43,7 @@ usart6 :: UART
 usart6 = mkUARTVersion V2 usart6_periph_base
                 rccenable rccdisable
                 F401.USART6
-                PClk1
+                PClk2
                 (\pin -> findAFByPin pin "usart6" afDB)
                 "usart6"
   where

@@ -22,7 +22,7 @@ data Interrupt
   | DMA1_CH5 -- 15 DMA1 Channel5 interrupt
   | DMA1_CH6 -- 16 DMA1 Channel6 interrupt
   | DMA1_CH7 -- 17 DMA1 Channel 7 interrupt
-  | ADC1 -- 18 ADC1 and ADC2 global interrupt
+  | ADC1_2 -- 18 ADC1 and ADC2 global interrupt
   | CAN1_TX -- 19 CAN1 TX interrupts
   | CAN1_RX0 -- 20 CAN1 RX0 interrupts
   | CAN1_RX1 -- 21 CAN1 RX1 interrupts

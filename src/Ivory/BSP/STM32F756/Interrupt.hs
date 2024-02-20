@@ -5,7 +5,7 @@ import Ivory.BSP.STM32.Interrupt
 
 data Interrupt
   = WWDG -- 0 Window Watchdog interrupt
-  | PVD -- 1 PVD through EXTI line detection INTERRUPT
+  | PVD -- 1 PVD through EXTI line detection interrupt
   | TAMP_STAMP -- 2 Tamper and TimeStamp interrupts through the EXTI line
   | RTC_WKUP -- 3 RTC Tamper or TimeStamp /CSS on LSE through EXTI line 19 interrupts
   | FLASH -- 4 Flash global interrupt
@@ -92,15 +92,15 @@ data Interrupt
   | SPI5 -- 85 SPI 5 global interrupt
   | SPI6 -- 86 SPI 6 global interrupt
   | SAI1 -- 87 SAI1 global interrupt
-  | LCD_TFT -- 88 LTDC global interrupt
-  | LTDC_ER -- 89 LTDC Error global interrupt
+  | LTDC -- 88 LTDC global interrupt
+  | LTDC_ER -- 89 LTDC global error interrupt
   | DMA2D -- 90 DMA2D global interrupt
   | SAI2 -- 91 SAI2 global interrupt
   | QUADSPI -- 92 QuadSPI global interrupt
-  | LPTIMER1 -- 93 LP Timer1 global interrupt
+  | LP_TIMER1 -- 93 LP Timer1 global interrupt
   | HDMI_CEC -- 94 HDMI-CEC global interrupt
   | I2C4_EV -- 95 I2C4 event interrupt
-  | I2C4_ER -- 96 I2C4 Error interrupt
+  | I2C4_ER -- 96 I2C4 error interrupt
   | SPDIFRX -- 97 SPDIFRX global interrupt
   deriving (Eq, Show, Enum)
 

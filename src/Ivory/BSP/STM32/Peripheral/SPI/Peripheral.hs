@@ -8,9 +8,8 @@
 module Ivory.BSP.STM32.Peripheral.SPI.Peripheral where
 
 import Control.Monad (when)
-import Ivory.Language
-
 import Ivory.HW
+import Ivory.Language
 
 import Ivory.BSP.STM32.Interrupt
 import Ivory.BSP.STM32.ClockConfig
@@ -41,16 +40,17 @@ data SPI = SPI
   , spiName        :: String
   }
 
-mkSPI :: (STM32Interrupt i)
-            => Integer
-            -> (forall eff . Ivory eff ())
-            -> (forall eff . Ivory eff ())
-            -> i
-            -> PClk
-            -> (GPIOPin -> GPIO_AF)
-            -> Int
-            -> String
-            -> SPI
+mkSPI
+  :: (STM32Interrupt i)
+  => Integer
+  -> (forall eff . Ivory eff ())
+  -> (forall eff . Ivory eff ())
+  -> i
+  -> PClk
+  -> (GPIOPin -> GPIO_AF)
+  -> Int
+  -> String
+  -> SPI
 mkSPI base rccen rccdis inter pclk afLookup version n = SPI
   { spiRegCR1     = reg 0x0 "cr1"
   , spiRegCR2     = reg 0x4 "cr2"
@@ -62,18 +62,17 @@ mkSPI base rccen rccdis inter pclk afLookup version n = SPI
   , spiRegI2SCFGR = reg 0x1c "i2scfgr"
   , spiRegI2SPR   = reg 0x20 "i2spr"
   , spiRegDR16    = reg 0xc "dr16"
-    , spiRCCEnable   = rccen
-    , spiRCCDisable  = rccdis
-    , spiInterrupt   = HasSTM32Interrupt inter
-    , spiPClk        = pclk
-    , spiAFLookup    = afLookup
-    , spiVersion     = version
-    , spiName        = n
-    }
+  , spiRCCEnable   = rccen
+  , spiRCCDisable  = rccdis
+  , spiInterrupt   = HasSTM32Interrupt inter
+  , spiPClk        = pclk
+  , spiAFLookup    = afLookup
+  , spiVersion     = version
+  , spiName        = n
+  }
   where
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d
   reg offs name = mkBitDataRegNamed (base + offs) (n ++ "->" ++ name)
-
 
 initInPin :: SPI -> GPIOPin -> Ivory eff ()
 initInPin periph pin = do
@@ -251,7 +250,7 @@ spiClearCr1 periph = modifyReg (spiRegCR1 periph) $ do
   clearBit spi_cr1_bidioe
   clearBit spi_cr1_crcen
   clearBit spi_cr1_crcnext
-  clearBit spi_cr1_dff
+  clearBit spi_cr1_crcl
   clearBit spi_cr1_rxonly
   clearBit spi_cr1_ssm
   clearBit spi_cr1_ssi
@@ -290,4 +289,3 @@ spiSetBitOrder periph bitorder =
   modifyReg (spiRegCR1 periph) $ case bitorder of
     LSBFirst -> setBit   spi_cr1_lsbfirst
     MSBFirst -> clearBit spi_cr1_lsbfirst
-

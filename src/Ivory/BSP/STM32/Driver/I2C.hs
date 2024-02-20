@@ -38,7 +38,7 @@ i2cTowerFrequency :: (e -> ClockConfig)
 i2cTowerFrequency tocc i2c pins freq = case i2c of
     (WrappedV1 x) -> V1.i2cTower tocc x pins freq
     (WrappedV2 x) -> V2.i2cTower tocc x pins freq
-  
+
 -- 400khz I2C (for compatibility)
 i2cTower :: (e -> ClockConfig)
          -> I2C

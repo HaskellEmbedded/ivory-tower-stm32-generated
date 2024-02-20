@@ -151,6 +151,23 @@ rcc_reg_cifr = mkBitDataRegNamed (rcc_periph_base + 0x1c) "cifr"
 rcc_reg_cicr :: BitDataReg RCC_CICR
 rcc_reg_cicr = mkBitDataRegNamed (rcc_periph_base + 0x20) "cicr"
 
+-- GPIO reset register
+--  | offset : 0x24
+--  | address: 0x40021024
+[ivory|
+ bitdata RCC_IOPRSTR :: Bits 32 = rcc_ioprstr
+  { _                   :: Bits 26  -- (Reserved)
+  , rcc_ioprstr_gpiofrst  :: Bit      -- I/O port F reset
+  , _                   :: Bit      -- (Reserved)
+  , rcc_ioprstr_gpiodrst  :: Bit      -- I/O port D reset
+  , rcc_ioprstr_gpiocrst  :: Bit      -- I/O port C reset
+  , rcc_ioprstr_gpiobrst  :: Bit      -- I/O port B reset
+  , rcc_ioprstr_gpioarst  :: Bit      -- I/O port A reset
+  }
+|]
+rcc_reg_ioprstr :: BitDataReg RCC_IOPRSTR
+rcc_reg_ioprstr = mkBitDataRegNamed (rcc_periph_base + 0x24) "ioprstr"
+
 -- AHB peripheral reset register
 --  | offset : 0x28
 --  | address: 0x40021028
@@ -170,23 +187,6 @@ rcc_reg_cicr = mkBitDataRegNamed (rcc_periph_base + 0x20) "cicr"
 |]
 rcc_reg_ahbrstr :: BitDataReg RCC_AHBRSTR
 rcc_reg_ahbrstr = mkBitDataRegNamed (rcc_periph_base + 0x28) "ahbrstr"
-
--- GPIO reset register
---  | offset : 0x24
---  | address: 0x40021024
-[ivory|
- bitdata RCC_IOPRSTR :: Bits 32 = rcc_ioprstr
-  { _                   :: Bits 26  -- (Reserved)
-  , rcc_ioprstr_gpiofrst  :: Bit      -- I/O port F reset
-  , _                   :: Bit      -- (Reserved)
-  , rcc_ioprstr_gpiodrst  :: Bit      -- I/O port D reset
-  , rcc_ioprstr_gpiocrst  :: Bit      -- I/O port C reset
-  , rcc_ioprstr_gpiobrst  :: Bit      -- I/O port B reset
-  , rcc_ioprstr_gpioarst  :: Bit      -- I/O port A reset
-  }
-|]
-rcc_reg_ioprstr :: BitDataReg RCC_IOPRSTR
-rcc_reg_ioprstr = mkBitDataRegNamed (rcc_periph_base + 0x24) "ioprstr"
 
 -- APB peripheral reset register 1
 --  | offset : 0x2c

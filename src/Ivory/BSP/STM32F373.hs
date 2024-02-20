@@ -7,6 +7,8 @@ module Ivory.BSP.STM32F373 (
   , module Ivory.BSP.STM32F373.USART
   , module Ivory.BSP.STM32F373.IWDG
   , module Ivory.BSP.STM32F373.EXTI
+  , module Ivory.BSP.STM32F373.SYSCFG
+  , module Ivory.BSP.STM32F373.GTIM
   ) where
 
 import Ivory.BSP.STM32F373.CAN
@@ -17,3 +19,5 @@ import Ivory.BSP.STM32F373.SPI
 import Ivory.BSP.STM32F373.USART
 import Ivory.BSP.STM32F373.IWDG
 import Ivory.BSP.STM32F373.EXTI
+import Ivory.BSP.STM32F373.SYSCFG
+import Ivory.BSP.STM32F373.GTIM

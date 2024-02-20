@@ -11,9 +11,8 @@
 
 module Ivory.BSP.STM32.Peripheral.UARTv1.Peripheral where
 
-import Ivory.Language
-
 import Ivory.HW
+import Ivory.Language
 
 import Ivory.BSP.STM32.Interrupt
 import Ivory.BSP.STM32.ClockConfig
@@ -30,7 +29,6 @@ data UART = UART
   , uartRegCR1     :: BitDataReg UART_CR1
   , uartRegCR2     :: BitDataReg UART_CR2
   , uartRegCR3     :: BitDataReg UART_CR3
-  , uartRegGTPR    :: BitDataReg UART_GTPR
   , uartRCCEnable  :: forall eff . Ivory eff ()
   , uartRCCDisable :: forall eff . Ivory eff ()
   , uartInterrupt  :: HasSTM32Interrupt
@@ -39,15 +37,16 @@ data UART = UART
   , uartName       :: String
   }
 
-mkUART :: (STM32Interrupt i)
-       => Integer
-       -> (forall eff . Ivory eff ())
-       -> (forall eff . Ivory eff ())
-       -> i
-       -> PClk
-       -> (GPIOPin -> GPIO_AF)
-       -> String
-       -> UART
+mkUART
+  :: (STM32Interrupt i)
+  => Integer
+  -> (forall eff . Ivory eff ())
+  -> (forall eff . Ivory eff ())
+  -> i
+  -> PClk
+  -> (GPIOPin -> GPIO_AF)
+  -> String
+  -> UART
 mkUART base rccen rccdis interrupt pclk afLookup n = UART
   { uartRegSR      = reg 0x0 "sr"
   , uartRegDR      = reg 0x4 "dr"
@@ -55,7 +54,6 @@ mkUART base rccen rccdis interrupt pclk afLookup n = UART
   , uartRegCR1     = reg 0xc "cr1"
   , uartRegCR2     = reg 0x10 "cr2"
   , uartRegCR3     = reg 0x14 "cr3"
-  , uartRegGTPR    = reg 0x18 "gtpr"
   , uartRCCEnable  = rccen
   , uartRCCDisable = rccdis
   , uartInterrupt  = HasSTM32Interrupt interrupt

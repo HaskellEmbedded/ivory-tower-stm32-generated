@@ -15,9 +15,8 @@
 
 module Ivory.BSP.STM32.Peripheral.GPIOv2.Peripheral where
 
-import Ivory.Language
-
 import Ivory.HW
+import Ivory.Language
 
 import Ivory.BSP.STM32.Peripheral.GPIOv2.Regs
 import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
@@ -43,11 +42,12 @@ data GPIOPort = GPIOPort
   }
 
 -- | Create a GPIO port given the base register address.
-mkGPIOPort :: Integer
-           -> (forall eff . Ivory eff ())
-           -> (forall eff . Ivory eff ())
-           -> Int
-           -> GPIOPort
+mkGPIOPort
+  :: Integer
+  -> (forall eff . Ivory eff ())
+  -> (forall eff . Ivory eff ())
+  -> Int
+  -> GPIOPort
 mkGPIOPort base rccen rccdis idx = GPIOPort
   { gpioPortMODER  = reg 0x0 "moder"
   , gpioPortOTYPER = reg 0x4 "otyper"
@@ -60,11 +60,11 @@ mkGPIOPort base rccen rccdis idx = GPIOPort
   , gpioPortAFRL   = reg 0x20 "afrl"
   , gpioPortAFRH   = reg 0x24 "afrh"
   , gpioPortBRR    = reg 0x28 "brr"
-    , gpioPortRCCEnable      = rccen
-    , gpioPortRCCDisable     = rccdis
-    , gpioPortNumber         = idx
-    , gpioPortName           = n
-    }
+  , gpioPortRCCEnable      = rccen
+  , gpioPortRCCDisable     = rccdis
+  , gpioPortNumber         = idx
+  , gpioPortName           = n
+  }
   where
   n = "gpio" ++ [toEnum (fromEnum 'A' + idx)]
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d

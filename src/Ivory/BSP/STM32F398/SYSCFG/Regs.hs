@@ -42,6 +42,24 @@ import Ivory.Language
 |]
 
 
+-- CCM SRAM protection register
+--  | offset : 0x4
+--  | address: 0x40010004
+[ivory|
+ bitdata SYSCFG_RCR :: Bits 32 = syscfg_rcr
+  { _                  :: Bits 24  -- (Reserved)
+  , syscfg_rcr_page7_wp  :: Bit      -- CCM SRAM page write protection bit
+  , syscfg_rcr_page6_wp  :: Bit      -- CCM SRAM page write protection bit
+  , syscfg_rcr_page5_wp  :: Bit      -- CCM SRAM page write protection bit
+  , syscfg_rcr_page4_wp  :: Bit      -- CCM SRAM page write protection bit
+  , syscfg_rcr_page3_wp  :: Bit      -- CCM SRAM page write protection bit
+  , syscfg_rcr_page2_wp  :: Bit      -- CCM SRAM page write protection bit
+  , syscfg_rcr_page1_wp  :: Bit      -- CCM SRAM page write protection bit
+  , syscfg_rcr_page0_wp  :: Bit      -- CCM SRAM page write protection bit
+  }
+|]
+
+
 -- external interrupt configuration register 1
 --  | offset : 0x8
 --  | address: 0x40010008
@@ -115,69 +133,6 @@ import Ivory.Language
 |]
 
 
--- CCM SRAM protection register
---  | offset : 0x4
---  | address: 0x40010004
-[ivory|
- bitdata SYSCFG_RCR :: Bits 32 = syscfg_rcr
-  { _                  :: Bits 24  -- (Reserved)
-  , syscfg_rcr_page7_wp  :: Bit      -- CCM SRAM page write protection bit
-  , syscfg_rcr_page6_wp  :: Bit      -- CCM SRAM page write protection bit
-  , syscfg_rcr_page5_wp  :: Bit      -- CCM SRAM page write protection bit
-  , syscfg_rcr_page4_wp  :: Bit      -- CCM SRAM page write protection bit
-  , syscfg_rcr_page3_wp  :: Bit      -- CCM SRAM page write protection bit
-  , syscfg_rcr_page2_wp  :: Bit      -- CCM SRAM page write protection bit
-  , syscfg_rcr_page1_wp  :: Bit      -- CCM SRAM page write protection bit
-  , syscfg_rcr_page0_wp  :: Bit      -- CCM SRAM page write protection bit
-  }
-|]
-
-
--- configuration register 3
---  | offset : 0x50
---  | address: 0x40010050
-[ivory|
- bitdata SYSCFG_CFGR3 :: Bits 32 = syscfg_cfgr3
-  { _                           :: Bits 14  -- (Reserved)
-  , syscfg_cfgr3_dac1_trig5_rmp   :: Bit      -- DAC1_CH1 / DAC1_CH2 Trigger remap
-  , syscfg_cfgr3_dac1_trig3_rmp   :: Bit      -- DAC1_CH1 / DAC1_CH2 Trigger remap
-  , _                           :: Bits 6   -- (Reserved)
-  , syscfg_cfgr3_adc2_dma_rmp_1   :: Bit      -- ADC2 DMA controller remapping bit
-  , _                           :: Bit      -- (Reserved)
-  , syscfg_cfgr3_adc2_dma_rmp_0   :: Bits 2   -- ADC2 DMA channel remapping bit
-  , syscfg_cfgr3_i2c1_rx_dma_rmp  :: Bits 2   -- I2C1_RX DMA remapping bit
-  , syscfg_cfgr3_spi1_tx_dma_rmp  :: Bits 2   -- SPI1_TX DMA remapping bit
-  , syscfg_cfgr3_spi1_rx_dma_rmp  :: Bits 2   -- SPI1_RX DMA remapping bit
-  }
-|]
-
-
--- OPAMP2 control register
---  | offset : 0x3c
---  | address: 0x4001003c
-[ivory|
- bitdata SYSCFG_OPAMP2_CSR :: Bits 32 = syscfg_opamp2_csr
-  { syscfg_opamp2_csr_lock         :: Bit      -- OPAMP 2 lock
-  , syscfg_opamp2_csr_outcal       :: Bit      -- OPAMP 2 ouput status flag
-  , syscfg_opamp2_csr_tstref       :: Bit      -- TSTREF
-  , syscfg_opamp2_csr_trimoffsetn  :: Bits 5   -- Offset trimming value (NMOS)
-  , syscfg_opamp2_csr_trimoffsetp  :: Bits 5   -- Offset trimming value (PMOS)
-  , syscfg_opamp2_csr_user_trim    :: Bit      -- User trimming enable
-  , syscfg_opamp2_csr_pga_gain     :: Bits 4   -- Gain in PGA mode
-  , syscfg_opamp2_csr_cal_sel      :: Bits 2   -- Calibration selection
-  , syscfg_opamp2_csr_calon        :: Bit      -- Calibration mode enable
-  , syscfg_opamp2_csr_vps_sel      :: Bits 2   -- OPAMP2 Non inverting input secondary selection
-  , syscfg_opamp2_csr_vms_sel      :: Bit      -- OPAMP2 inverting input secondary selection
-  , syscfg_opamp2_csr_tcm_en       :: Bit      -- Timer controlled Mux mode enable
-  , syscfg_opamp2_csr_vm_sel       :: Bits 2   -- OPAMP2 inverting input selection
-  , _                            :: Bit      -- (Reserved)
-  , syscfg_opamp2_csr_vp_sel       :: Bits 2   -- OPAMP2 Non inverting input selection
-  , syscfg_opamp2_csr_force_vp     :: Bit      -- FORCE_VP
-  , syscfg_opamp2_csr_opamp2en     :: Bit      -- OPAMP2 enable
-  }
-|]
-
-
 -- control and status register
 --  | offset : 0x20
 --  | address: 0x40010020
@@ -246,6 +201,51 @@ import Ivory.Language
   , syscfg_comp6_csr_comp6mode       :: Bits 2   -- Comparator 6 mode
   , _                              :: Bit      -- (Reserved)
   , syscfg_comp6_csr_comp6en         :: Bit      -- Comparator 6 enable
+  }
+|]
+
+
+-- OPAMP2 control register
+--  | offset : 0x3c
+--  | address: 0x4001003c
+[ivory|
+ bitdata SYSCFG_OPAMP2_CSR :: Bits 32 = syscfg_opamp2_csr
+  { syscfg_opamp2_csr_lock         :: Bit      -- OPAMP 2 lock
+  , syscfg_opamp2_csr_outcal       :: Bit      -- OPAMP 2 ouput status flag
+  , syscfg_opamp2_csr_tstref       :: Bit      -- TSTREF
+  , syscfg_opamp2_csr_trimoffsetn  :: Bits 5   -- Offset trimming value (NMOS)
+  , syscfg_opamp2_csr_trimoffsetp  :: Bits 5   -- Offset trimming value (PMOS)
+  , syscfg_opamp2_csr_user_trim    :: Bit      -- User trimming enable
+  , syscfg_opamp2_csr_pga_gain     :: Bits 4   -- Gain in PGA mode
+  , syscfg_opamp2_csr_cal_sel      :: Bits 2   -- Calibration selection
+  , syscfg_opamp2_csr_calon        :: Bit      -- Calibration mode enable
+  , syscfg_opamp2_csr_vps_sel      :: Bits 2   -- OPAMP2 Non inverting input secondary selection
+  , syscfg_opamp2_csr_vms_sel      :: Bit      -- OPAMP2 inverting input secondary selection
+  , syscfg_opamp2_csr_tcm_en       :: Bit      -- Timer controlled Mux mode enable
+  , syscfg_opamp2_csr_vm_sel       :: Bits 2   -- OPAMP2 inverting input selection
+  , _                            :: Bit      -- (Reserved)
+  , syscfg_opamp2_csr_vp_sel       :: Bits 2   -- OPAMP2 Non inverting input selection
+  , syscfg_opamp2_csr_force_vp     :: Bit      -- FORCE_VP
+  , syscfg_opamp2_csr_opamp2en     :: Bit      -- OPAMP2 enable
+  }
+|]
+
+
+-- configuration register 3
+--  | offset : 0x50
+--  | address: 0x40010050
+[ivory|
+ bitdata SYSCFG_CFGR3 :: Bits 32 = syscfg_cfgr3
+  { _                           :: Bits 14  -- (Reserved)
+  , syscfg_cfgr3_dac1_trig5_rmp   :: Bit      -- DAC1_CH1 / DAC1_CH2 Trigger remap
+  , syscfg_cfgr3_dac1_trig3_rmp   :: Bit      -- DAC1_CH1 / DAC1_CH2 Trigger remap
+  , _                           :: Bits 6   -- (Reserved)
+  , syscfg_cfgr3_adc2_dma_rmp_1   :: Bit      -- ADC2 DMA controller remapping bit
+  , _                           :: Bit      -- (Reserved)
+  , syscfg_cfgr3_adc2_dma_rmp_0   :: Bits 2   -- ADC2 DMA channel remapping bit
+  , syscfg_cfgr3_i2c1_rx_dma_rmp  :: Bits 2   -- I2C1_RX DMA remapping bit
+  , syscfg_cfgr3_spi1_tx_dma_rmp  :: Bits 2   -- SPI1_TX DMA remapping bit
+  , syscfg_cfgr3_spi1_rx_dma_rmp  :: Bits 2   -- SPI1_RX DMA remapping bit
   }
 |]
 

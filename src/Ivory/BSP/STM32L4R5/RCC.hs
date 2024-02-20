@@ -68,8 +68,7 @@ rcc_reg_icscr = mkBitDataRegNamed (rcc_periph_base + 0x4) "icscr"
  bitdata RCC_CFGR :: Bits 32 = rcc_cfgr
   { _                :: Bit      -- (Reserved)
   , rcc_cfgr_mcopre    :: RCC_MCOxPre  -- Microcontroller clock output prescaler
-  , _                :: Bit      -- (Reserved)
-  , rcc_cfgr_mcosel    :: Bits 3   -- Microcontroller clock output
+  , rcc_cfgr_mcosel    :: Bits 4   -- Microcontroller clock output
   , _                :: Bits 8   -- (Reserved)
   , rcc_cfgr_stopwuck  :: Bit      -- Wakeup from Stop and CSS backup clock selection
   , _                :: Bit      -- (Reserved)
@@ -280,7 +279,8 @@ rcc_reg_ahb2rstr = mkBitDataRegNamed (rcc_periph_base + 0x2c) "ahb2rstr"
  bitdata RCC_AHB3RSTR :: Bits 32 = rcc_ahb3rstr
   { _                    :: Bits 22  -- (Reserved)
   , rcc_ahb3rstr_ospi2rst  :: Bit      -- OctOSPI2 memory interface reset
-  , _                    :: Bits 8   -- (Reserved)
+  , rcc_ahb3rstr_ospi1rst  :: Bit      -- OSPI1 memory interface reset
+  , _                    :: Bits 7   -- (Reserved)
   , rcc_ahb3rstr_fmcrst    :: Bit      -- Flexible memory controller reset
   }
 |]
@@ -426,7 +426,8 @@ rcc_reg_ahb2enr = mkBitDataRegNamed (rcc_periph_base + 0x4c) "ahb2enr"
  bitdata RCC_AHB3ENR :: Bits 32 = rcc_ahb3enr
   { _                  :: Bits 22  -- (Reserved)
   , rcc_ahb3enr_ospi2en  :: Bit      -- OSPI2EN memory interface clock enable
-  , _                  :: Bits 8   -- (Reserved)
+  , rcc_ahb3enr_ospi1en  :: Bit      -- OSPI1 memory interface clock enable
+  , _                  :: Bits 7   -- (Reserved)
   , rcc_ahb3enr_fmcen    :: Bit      -- Flexible memory controller clock enable
   }
 |]
@@ -453,7 +454,7 @@ rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x50) "ahb3enr"
   , rcc_apb1enr1_usart3en  :: Bit      -- USART3 clock enable
   , rcc_apb1enr1_usart2en  :: Bit      -- USART2 clock enable
   , _                    :: Bit      -- (Reserved)
-  , rcc_apb1enr1_sp3en     :: Bit      -- SPI3 clock enable
+  , rcc_apb1enr1_spi3en    :: Bit      -- SPI peripheral 3 clock enable
   , rcc_apb1enr1_spi2en    :: Bit      -- SPI2 clock enable
   , _                    :: Bits 2   -- (Reserved)
   , rcc_apb1enr1_wwdgen    :: Bit      -- Window watchdog clock enable
@@ -578,10 +579,11 @@ rcc_reg_ahb2smenr = mkBitDataRegNamed (rcc_periph_base + 0x6c) "ahb2smenr"
 --  | address: 0x40021070
 [ivory|
  bitdata RCC_AHB3SMENR :: Bits 32 = rcc_ahb3smenr
-  { _                     :: Bits 22  -- (Reserved)
-  , rcc_ahb3smenr_octospi2  :: Bit      -- OctoSPI2 memory interface clocks enable during Sleep and Stop modes
-  , _                     :: Bits 8   -- (Reserved)
-  , rcc_ahb3smenr_fmcsmen   :: Bit      -- Flexible memory controller clocks enable during Sleep and Stop modes
+  { _                      :: Bits 22  -- (Reserved)
+  , rcc_ahb3smenr_octospi2   :: Bit      -- OctoSPI2 memory interface clocks enable during Sleep and Stop modes
+  , rcc_ahb3smenr_ospi1smen  :: Bit      -- OSPI1 memory interface clock enable during Sleep and Stop modes
+  , _                      :: Bits 7   -- (Reserved)
+  , rcc_ahb3smenr_fmcsmen    :: Bit      -- Flexible memory controller clocks enable during Sleep and Stop modes
   }
 |]
 rcc_reg_ahb3smenr :: BitDataReg RCC_AHB3SMENR
@@ -781,4 +783,17 @@ rcc_reg_crrcr = mkBitDataRegNamed (rcc_periph_base + 0x98) "crrcr"
 |]
 rcc_reg_ccipr2 :: BitDataReg RCC_CCIPR2
 rcc_reg_ccipr2 = mkBitDataRegNamed (rcc_periph_base + 0x9c) "ccipr2"
+
+-- Delay configuration register
+--  | offset : 0xa4
+--  | address: 0x400210a4
+[ivory|
+ bitdata RCC_DLYCFGR :: Bits 32 = rcc_dlycfgr
+  { _                       :: Bits 24  -- (Reserved)
+  , rcc_dlycfgr_octospi2_dly  :: Bits 4   -- Delay sampling configuration on OCTOSPI2
+  , rcc_dlycfgr_octospi1_dly  :: Bits 4   -- Delay sampling configuration on OCTOSPI1
+  }
+|]
+rcc_reg_dlycfgr :: BitDataReg RCC_DLYCFGR
+rcc_reg_dlycfgr = mkBitDataRegNamed (rcc_periph_base + 0xa4) "dlycfgr"
 

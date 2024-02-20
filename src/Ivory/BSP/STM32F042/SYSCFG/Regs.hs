@@ -25,20 +25,26 @@ import Ivory.Language
   , syscfg_cfgr1_usart3_dma_rmp     :: Bit      -- USART3 DMA request remapping bit
   , syscfg_cfgr1_usart2_dma_rmp     :: Bit      -- USART2 DMA request remapping bit
   , syscfg_cfgr1_spi2_dma_rmp       :: Bit      -- SPI2 DMA request remapping bit
-  , _                             :: Bits 2   -- (Reserved)
-  , syscfg_cfgr1_i2c2_fm_plus       :: Bit      -- FM+ driving capability activation for I2C2
-  , syscfg_cfgr1_i2c1_fm_plus       :: Bit      -- FM+ driving capability activation for I2C1
-  , syscfg_cfgr1_i2c_pb9_fm         :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
-  , syscfg_cfgr1_i2c_pb8_fm         :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
-  , syscfg_cfgr1_i2c_pb7_fm         :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
-  , syscfg_cfgr1_i2c_pb6_fm         :: Bit      -- Fast Mode Plus (FM plus) driving capability activation bits.
-  , _                             :: Bits 3   -- (Reserved)
+  , syscfg_cfgr1_i2c_pa10_fmp       :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits
+  , syscfg_cfgr1_i2c_pa9_fmp        :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits
+  , syscfg_cfgr1_i2c2_fmp           :: Bit      -- FM+ driving capability activation for I2C2
+  , syscfg_cfgr1_i2c1_fmp           :: Bit      -- FM+ driving capability activation for I2C1
+  , syscfg_cfgr1_i2c_pb9_fmp        :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
+  , syscfg_cfgr1_i2c_pb8_fmp        :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
+  , syscfg_cfgr1_i2c_pb7_fmp        :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
+  , syscfg_cfgr1_i2c_pb6_fmp        :: Bit      -- Fast Mode Plus (FM plus) driving capability activation bits.
+  , _                             :: Bit      -- (Reserved)
+  , syscfg_cfgr1_tim17_dma_rmp2     :: Bit      -- TIM17 alternate DMA request remapping bit
+  , syscfg_cfgr1_tim16_dma_rmp2     :: Bit      -- TIM16 alternate DMA request remapping bit
   , syscfg_cfgr1_tim17_dma_rmp      :: Bit      -- TIM17 DMA request remapping bit
   , syscfg_cfgr1_tim16_dma_rmp      :: Bit      -- TIM16 DMA request remapping bit
   , syscfg_cfgr1_usart1_rx_dma_rmp  :: Bit      -- USART1_RX DMA request remapping bit
   , syscfg_cfgr1_usart1_tx_dma_rmp  :: Bit      -- USART1_TX DMA remapping bit
   , syscfg_cfgr1_adc_dma_rmp        :: Bit      -- ADC DMA remapping bit
-  , _                             :: Bits 6   -- (Reserved)
+  , syscfg_cfgr1_ir_mod             :: Bits 2   -- IR Modulation Envelope signal selection
+  , _                             :: Bit      -- (Reserved)
+  , syscfg_cfgr1_pa11_pa12_rmp      :: Bit      -- PA11 and PA12 remapping bit for small packages (28 and 20 pins)
+  , _                             :: Bits 2   -- (Reserved)
   , syscfg_cfgr1_mem_mode           :: Bits 2   -- Memory mapping selection bits
   }
 |]
@@ -110,36 +116,7 @@ import Ivory.Language
   , _                            :: Bits 5   -- (Reserved)
   , syscfg_cfgr2_pvd_lock          :: Bit      -- PVD lock enable bit
   , syscfg_cfgr2_sram_parity_lock  :: Bit      -- SRAM parity lock bit
-  , syscfg_cfgr2_locup_lock        :: Bit      -- Cortex-M0 LOCKUP bit enable bit
-  }
-|]
-
-
--- control and status register
---  | offset : 0x1c
---  | address: 0x4001001c
-[ivory|
- bitdata SYSCFG_COMP_CSR :: Bits 32 = syscfg_comp_csr
-  { syscfg_comp_csr_comp2lock      :: Bit      -- Comparator 2 lock
-  , syscfg_comp_csr_comp2out       :: Bit      -- Comparator 2 output
-  , syscfg_comp_csr_comp2hyst      :: Bits 2   -- Comparator 2 hysteresis
-  , syscfg_comp_csr_comp2pol       :: Bit      -- Comparator 2 output polarity
-  , syscfg_comp_csr_comp2outsel    :: Bits 3   -- Comparator 2 output selection
-  , syscfg_comp_csr_wndwen         :: Bit      -- Window mode enable
-  , syscfg_comp_csr_comp2insel     :: Bits 3   -- Comparator 2 inverting input selection
-  , syscfg_comp_csr_comp2mode      :: Bits 2   -- Comparator 2 mode
-  , _                            :: Bit      -- (Reserved)
-  , syscfg_comp_csr_comp2en        :: Bit      -- Comparator 2 enable
-  , syscfg_comp_csr_comp1lock      :: Bit      -- Comparator 1 lock
-  , syscfg_comp_csr_comp1out       :: Bit      -- Comparator 1 output
-  , syscfg_comp_csr_comp1hyst      :: Bits 2   -- Comparator 1 hysteresis
-  , syscfg_comp_csr_comp1pol       :: Bit      -- Comparator 1 output polarity
-  , syscfg_comp_csr_comp1outsel    :: Bits 3   -- Comparator 1 output selection
-  , _                            :: Bit      -- (Reserved)
-  , syscfg_comp_csr_comp1insel     :: Bits 3   -- Comparator 1 inverting input selection
-  , syscfg_comp_csr_comp1mode      :: Bits 2   -- Comparator 1 mode
-  , syscfg_comp_csr_comp1_inp_dac  :: Bit      -- COMP1_INP_DAC
-  , syscfg_comp_csr_comp1en        :: Bit      -- Comparator 1 enable
+  , syscfg_cfgr2_lockup_lock       :: Bit      -- Cortex-M0 LOCKUP bit enable bit
   }
 |]
 

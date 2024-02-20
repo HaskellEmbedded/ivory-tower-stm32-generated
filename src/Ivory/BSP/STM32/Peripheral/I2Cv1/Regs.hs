@@ -64,9 +64,7 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   { _               :: Bits 16  -- (Reserved)
   , i2c_oar1_addmode  :: Bit      -- Addressing mode (slave mode)
   , _               :: Bits 5   -- (Reserved)
-  , i2c_oar1_add10    :: Bits 2   -- Interface address
-  , i2c_oar1_add7     :: Bits 7   -- Interface address
-  , i2c_oar1_add0     :: Bit      -- Interface address
+  , i2c_oar1_add      :: Bits 10  -- Interface address
   }
 |]
 

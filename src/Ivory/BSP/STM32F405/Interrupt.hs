@@ -65,8 +65,8 @@ data Interrupt
   | DMA2_STREAM2 -- 58 DMA2 Stream2 global interrupt
   | DMA2_STREAM3 -- 59 DMA2 Stream3 global interrupt
   | DMA2_STREAM4 -- 60 DMA2 Stream4 global interrupt
-  | ETH -- 61 Ethernet global interrupt
-  | ETH_WKUP -- 62 Ethernet Wakeup through EXTI line interrupt
+  | Undefined61 -- 61 Undefined interrupt (padding only)
+  | Undefined62 -- 62 Undefined interrupt (padding only)
   | CAN2_TX -- 63 CAN2 TX interrupts
   | CAN2_RX0 -- 64 CAN2 RX0 interrupts
   | CAN2_RX1 -- 65 CAN2 RX1 interrupts
@@ -92,8 +92,8 @@ data Interrupt
   | Undefined85 -- 85 Undefined interrupt (padding only)
   | Undefined86 -- 86 Undefined interrupt (padding only)
   | Undefined87 -- 87 Undefined interrupt (padding only)
-  | LCD_TFT -- 88 LTDC global interrupt
-  | LCD_TFT_1 -- 89 LTDC global error interrupt
+  | LTDC -- 88 LTDC global interrupt
+  | LTDC_ER -- 89 LTDC global error interrupt
   deriving (Eq, Show, Enum)
 
 instance STM32Interrupt Interrupt where

@@ -97,9 +97,9 @@ rcc_reg_cir = mkBitDataRegNamed (rcc_periph_base + 0x8) "cir"
 [ivory|
  bitdata RCC_APB2RSTR :: Bits 32 = rcc_apb2rstr
   { _                     :: Bits 5   -- (Reserved)
-  , rcc_apb2rstr_sdad3rst   :: Bit      -- SDADC3 (Sigma delta ADC 3) reset
-  , rcc_apb2rstr_sdad2rst   :: Bit      -- SDADC2 (Sigma delta ADC 2) reset
-  , rcc_apb2rstr_sdad1rst   :: Bit      -- SDADC1 (Sigma delta ADC 1) reset
+  , rcc_apb2rstr_sdadc3rst  :: Bit      -- SDADC3 (Sigma delta ADC 3) reset
+  , rcc_apb2rstr_sdadc2rst  :: Bit      -- SDADC2 (Sigma delta ADC 2) reset
+  , rcc_apb2rstr_sdadc1rst  :: Bit      -- SDADC1 (Sigma delta ADC 1) reset
   , _                     :: Bits 4   -- (Reserved)
   , rcc_apb2rstr_tim19rst   :: Bit      -- TIM19 timer reset
   , rcc_apb2rstr_tim17rst   :: Bit      -- TIM17 timer reset
@@ -125,10 +125,10 @@ rcc_reg_apb2rstr = mkBitDataRegNamed (rcc_periph_base + 0xc) "apb2rstr"
  bitdata RCC_APB1RSTR :: Bits 32 = rcc_apb1rstr
   { _                     :: Bit      -- (Reserved)
   , rcc_apb1rstr_cecrst     :: Bit      -- HDMI CEC reset
-  , rcc_apb1rstr_dacrst     :: Bit      -- DAC interface reset
+  , rcc_apb1rstr_dac1rst    :: Bit      -- DAC interface reset
   , rcc_apb1rstr_pwrrst     :: Bit      -- Power interface reset
   , _                     :: Bit      -- (Reserved)
-  , rcc_apb1rstr_dac3rst    :: Bit      -- DAC3 reset
+  , rcc_apb1rstr_dac2rst    :: Bit      -- DAC3 reset
   , rcc_apb1rstr_canrst     :: Bit      -- CAN reset
   , _                     :: Bit      -- (Reserved)
   , rcc_apb1rstr_usbrst     :: Bit      -- USB reset
@@ -179,7 +179,7 @@ rcc_reg_apb1rstr = mkBitDataRegNamed (rcc_periph_base + 0x10) "apb1rstr"
   , _                 :: Bit      -- (Reserved)
   , rcc_ahbenr_sramen   :: Bit      -- SRAM interface clock enable
   , rcc_ahbenr_dma2en   :: Bit      -- DMA2 clock enable
-  , rcc_ahbenr_dmaen    :: Bit      -- DMA1 clock enable
+  , rcc_ahbenr_dma1en   :: Bit      -- DMA1 clock enable
   }
 |]
 rcc_reg_ahbenr :: BitDataReg RCC_AHBENR
@@ -191,9 +191,9 @@ rcc_reg_ahbenr = mkBitDataRegNamed (rcc_periph_base + 0x14) "ahbenr"
 [ivory|
  bitdata RCC_APB2ENR :: Bits 32 = rcc_apb2enr
   { _                   :: Bits 5   -- (Reserved)
-  , rcc_apb2enr_sdad3en   :: Bit      -- SDADC3 (Sigma Delta ADC 3) clock enable
-  , rcc_apb2enr_sdad2en   :: Bit      -- SDADC2 (Sigma Delta ADC 2) clock enable
-  , rcc_apb2enr_sdad1en   :: Bit      -- SDADC1 (Sigma Delta ADC 1) clock enable
+  , rcc_apb2enr_sdadc3en  :: Bit      -- SDADC3 (Sigma Delta ADC 3) clock enable
+  , rcc_apb2enr_sdadc2en  :: Bit      -- SDADC2 (Sigma Delta ADC 2) clock enable
+  , rcc_apb2enr_sdadc1en  :: Bit      -- SDADC1 (Sigma Delta ADC 1) clock enable
   , _                   :: Bit      -- (Reserved)
   , rcc_apb2enr_dbgmcuen  :: Bit      -- MCU debug module clock enable
   , _                   :: Bits 2   -- (Reserved)
@@ -205,8 +205,7 @@ rcc_reg_ahbenr = mkBitDataRegNamed (rcc_periph_base + 0x14) "ahbenr"
   , rcc_apb2enr_usart1en  :: Bit      -- USART1 clock enable
   , _                   :: Bit      -- (Reserved)
   , rcc_apb2enr_spi1en    :: Bit      -- SPI 1 clock enable
-  , rcc_apb2enr_tim1en    :: Bit      -- TIM1 Timer clock enable
-  , _                   :: Bit      -- (Reserved)
+  , _                   :: Bits 2   -- (Reserved)
   , rcc_apb2enr_adcen     :: Bit      -- ADC 1 interface clock enable
   , _                   :: Bits 8   -- (Reserved)
   , rcc_apb2enr_syscfgen  :: Bit      -- SYSCFG clock enable
@@ -222,10 +221,10 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x18) "apb2enr"
  bitdata RCC_APB1ENR :: Bits 32 = rcc_apb1enr
   { _                   :: Bit      -- (Reserved)
   , rcc_apb1enr_cecen     :: Bit      -- HDMI CEC interface clock enable
-  , rcc_apb1enr_dacen     :: Bit      -- DAC interface clock enable
+  , rcc_apb1enr_dac1en    :: Bit      -- DAC interface clock enable
   , rcc_apb1enr_pwren     :: Bit      -- Power interface clock enable
   , _                   :: Bit      -- (Reserved)
-  , rcc_apb1enr_dac3en    :: Bit      -- DAC3 interface clock enable
+  , rcc_apb1enr_dac2en    :: Bit      -- DAC3 interface clock enable
   , rcc_apb1enr_canen     :: Bit      -- CAN clock enable
   , _                   :: Bit      -- (Reserved)
   , rcc_apb1enr_usben     :: Bit      -- USB clock enable
@@ -280,17 +279,18 @@ rcc_reg_bdcr = mkBitDataRegNamed (rcc_periph_base + 0x20) "bdcr"
 --  | address: 0x40021024
 [ivory|
  bitdata RCC_CSR :: Bits 32 = rcc_csr
-  { rcc_csr_lpwrrstf  :: Bit      -- Low-power reset flag
-  , rcc_csr_wwdgrstf  :: Bit      -- Window watchdog reset flag
-  , rcc_csr_iwdgrstf  :: Bit      -- Independent watchdog reset flag
-  , rcc_csr_sftrstf   :: Bit      -- Software reset flag
-  , rcc_csr_porrstf   :: Bit      -- POR/PDR reset flag
-  , rcc_csr_pinrstf   :: Bit      -- PIN reset flag
-  , rcc_csr_oblrstf   :: Bit      -- Option byte loader reset flag
-  , rcc_csr_rmvf      :: Bit      -- Remove reset flag
-  , _               :: Bits 22  -- (Reserved)
-  , rcc_csr_lsirdy    :: Bit      -- Internal low speed oscillator ready
-  , rcc_csr_lsion     :: Bit      -- Internal low speed oscillator enable
+  { rcc_csr_lpwrrstf    :: Bit      -- Low-power reset flag
+  , rcc_csr_wwdgrstf    :: Bit      -- Window watchdog reset flag
+  , rcc_csr_iwdgrstf    :: Bit      -- Independent watchdog reset flag
+  , rcc_csr_sftrstf     :: Bit      -- Software reset flag
+  , rcc_csr_porrstf     :: Bit      -- POR/PDR reset flag
+  , rcc_csr_pinrstf     :: Bit      -- PIN reset flag
+  , rcc_csr_oblrstf     :: Bit      -- Option byte loader reset flag
+  , rcc_csr_rmvf        :: Bit      -- Remove reset flag
+  , rcc_csr_v18pwrrstf  :: Bit      -- Reset flag of the 1.8 V domain
+  , _                 :: Bits 21  -- (Reserved)
+  , rcc_csr_lsirdy      :: Bit      -- Internal low speed oscillator ready
+  , rcc_csr_lsion       :: Bit      -- Internal low speed oscillator enable
   }
 |]
 rcc_reg_csr :: BitDataReg RCC_CSR

@@ -108,19 +108,19 @@ flash_reg_ar = mkBitDataRegNamed (flash_periph_base + 0x14) "ar"
 --  | address: 0x4002201c
 [ivory|
  bitdata FLASH_OBR :: Bits 32 = flash_obr
-  { flash_obr_data1              :: Bits 8   -- Data1
-  , flash_obr_data0              :: Bits 8   -- Data0
-  , _                          :: Bit      -- (Reserved)
-  , flash_obr_ram_parity_check_  :: Bit      -- RAM_PARITY_CHECK
-  , flash_obr_vdda_monitor       :: Bit      -- VDDA_MONITOR
-  , flash_obr_nboot1             :: Bit      -- BOOT1
-  , _                          :: Bit      -- (Reserved)
-  , flash_obr_nrst_stdby         :: Bit      -- nRST_STDBY
-  , flash_obr_nrst_stop          :: Bit      -- nRST_STOP
-  , flash_obr_wdg_sw             :: Bit      -- WDG_SW
-  , _                          :: Bits 5   -- (Reserved)
-  , flash_obr_rdprt              :: Bits 2   -- Read protection level status
-  , flash_obr_opterr             :: Bit      -- Option byte error
+  { flash_obr_data1             :: Bits 8   -- Data1
+  , flash_obr_data0             :: Bits 8   -- Data0
+  , _                         :: Bit      -- (Reserved)
+  , flash_obr_ram_parity_check  :: Bit      -- RAM_PARITY_CHECK
+  , flash_obr_vdda_monitor      :: Bit      -- VDDA_MONITOR
+  , flash_obr_nboot1            :: Bit      -- BOOT1
+  , _                         :: Bit      -- (Reserved)
+  , flash_obr_nrst_stdby        :: Bit      -- nRST_STDBY
+  , flash_obr_nrst_stop         :: Bit      -- nRST_STOP
+  , flash_obr_wdg_sw            :: Bit      -- WDG_SW
+  , _                         :: Bits 5   -- (Reserved)
+  , flash_obr_rdprt             :: Bits 2   -- Read protection level status
+  , flash_obr_opterr            :: Bit      -- Option byte error
   }
 |]
 flash_reg_obr :: BitDataReg FLASH_OBR

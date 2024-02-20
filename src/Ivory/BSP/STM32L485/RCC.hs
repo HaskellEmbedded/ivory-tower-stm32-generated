@@ -219,9 +219,9 @@ rcc_reg_cicr = mkBitDataRegNamed (rcc_periph_base + 0x20) "cicr"
  bitdata RCC_AHB1RSTR :: Bits 32 = rcc_ahb1rstr
   { _                    :: Bits 15  -- (Reserved)
   , rcc_ahb1rstr_tscrst    :: Bit      -- Touch Sensing Controller reset
-  , _                    :: Bits 4   -- (Reserved)
+  , _                    :: Bits 3   -- (Reserved)
   , rcc_ahb1rstr_crcrst    :: Bit      -- CRC reset
-  , _                    :: Bits 2   -- (Reserved)
+  , _                    :: Bits 3   -- (Reserved)
   , rcc_ahb1rstr_flashrst  :: Bit      -- Flash memory interface reset
   , _                    :: Bits 6   -- (Reserved)
   , rcc_ahb1rstr_dma2rst   :: Bit      -- DMA2 reset
@@ -357,9 +357,9 @@ rcc_reg_apb2rstr = mkBitDataRegNamed (rcc_periph_base + 0x40) "apb2rstr"
  bitdata RCC_AHB1ENR :: Bits 32 = rcc_ahb1enr
   { _                  :: Bits 15  -- (Reserved)
   , rcc_ahb1enr_tscen    :: Bit      -- Touch Sensing Controller clock enable
-  , _                  :: Bits 4   -- (Reserved)
+  , _                  :: Bits 3   -- (Reserved)
   , rcc_ahb1enr_crcen    :: Bit      -- CRC clock enable
-  , _                  :: Bits 2   -- (Reserved)
+  , _                  :: Bits 3   -- (Reserved)
   , rcc_ahb1enr_flashen  :: Bit      -- Flash memory interface clock enable
   , _                  :: Bits 6   -- (Reserved)
   , rcc_ahb1enr_dma2en   :: Bit      -- DMA2 clock enable
@@ -420,7 +420,7 @@ rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x50) "ahb3enr"
   , rcc_apb1enr1_pwren     :: Bit      -- Power interface clock enable
   , _                    :: Bits 2   -- (Reserved)
   , rcc_apb1enr1_can1en    :: Bit      -- CAN1 clock enable
-  , _                    :: Bit      -- (Reserved)
+  , rcc_apb1enr1_crsen     :: Bit      -- Clock Recovery System clock enable (this bit is reserved for STM32L47x/L48x devices)
   , rcc_apb1enr1_i2c3en    :: Bit      -- I2C3 clock enable
   , rcc_apb1enr1_i2c2en    :: Bit      -- I2C2 clock enable
   , rcc_apb1enr1_i2c1en    :: Bit      -- I2C1 clock enable
@@ -429,11 +429,11 @@ rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x50) "ahb3enr"
   , rcc_apb1enr1_usart3en  :: Bit      -- USART3 clock enable
   , rcc_apb1enr1_usart2en  :: Bit      -- USART2 clock enable
   , _                    :: Bit      -- (Reserved)
-  , rcc_apb1enr1_sp3en     :: Bit      -- SPI3 clock enable
+  , rcc_apb1enr1_spi3en    :: Bit      -- SPI peripheral 3 clock enable
   , rcc_apb1enr1_spi2en    :: Bit      -- SPI2 clock enable
   , _                    :: Bits 2   -- (Reserved)
   , rcc_apb1enr1_wwdgen    :: Bit      -- Window watchdog clock enable
-  , _                    :: Bit      -- (Reserved)
+  , rcc_apb1enr1_rtcapben  :: Bit      -- Enables the real time clock (RTC) peripheral
   , rcc_apb1enr1_lcden     :: Bit      -- LCD clock enable
   , _                    :: Bits 3   -- (Reserved)
   , rcc_apb1enr1_tim7en    :: Bit      -- TIM7 timer clock enable
@@ -499,9 +499,9 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x60) "apb2enr"
  bitdata RCC_AHB1SMENR :: Bits 32 = rcc_ahb1smenr
   { _                      :: Bits 15  -- (Reserved)
   , rcc_ahb1smenr_tscsmen    :: Bit      -- Touch Sensing Controller clocks enable during Sleep and Stop modes
-  , _                      :: Bits 4   -- (Reserved)
+  , _                      :: Bits 3   -- (Reserved)
   , rcc_ahb1smenr_crcsmen    :: Bit      -- CRCSMEN
-  , _                      :: Bit      -- (Reserved)
+  , _                      :: Bits 2   -- (Reserved)
   , rcc_ahb1smenr_sram1smen  :: Bit      -- SRAM1 interface clocks enable during Sleep and Stop modes
   , rcc_ahb1smenr_flashsmen  :: Bit      -- Flash memory interface clocks enable during Sleep and Stop modes
   , _                      :: Bits 6   -- (Reserved)
@@ -578,7 +578,7 @@ rcc_reg_ahb3smenr = mkBitDataRegNamed (rcc_periph_base + 0x70) "ahb3smenr"
   , rcc_apb1smenr1_spi2smen    :: Bit      -- SPI2 clocks enable during Sleep and Stop modes
   , _                        :: Bits 2   -- (Reserved)
   , rcc_apb1smenr1_wwdgsmen    :: Bit      -- Window watchdog clocks enable during Sleep and Stop modes
-  , _                        :: Bit      -- (Reserved)
+  , rcc_apb1smenr1_rtcapbsmen  :: Bit      -- RTC APB clock enable during Sleep and Stop modes
   , rcc_apb1smenr1_lcdsmen     :: Bit      -- LCD clocks enable during Sleep and Stop modes
   , _                        :: Bits 3   -- (Reserved)
   , rcc_apb1smenr1_tim7smen    :: Bit      -- TIM7 timer clocks enable during Sleep and Stop modes

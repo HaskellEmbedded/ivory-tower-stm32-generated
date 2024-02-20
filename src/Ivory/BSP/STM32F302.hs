@@ -8,6 +8,9 @@ module Ivory.BSP.STM32F302 (
   , module Ivory.BSP.STM32F302.USART
   , module Ivory.BSP.STM32F302.IWDG
   , module Ivory.BSP.STM32F302.EXTI
+  , module Ivory.BSP.STM32F302.SYSCFG
+  , module Ivory.BSP.STM32F302.ATIM
+  , module Ivory.BSP.STM32F302.GTIM
   ) where
 
 import Ivory.BSP.STM32F302.UART
@@ -19,3 +22,6 @@ import Ivory.BSP.STM32F302.SPI
 import Ivory.BSP.STM32F302.USART
 import Ivory.BSP.STM32F302.IWDG
 import Ivory.BSP.STM32F302.EXTI
+import Ivory.BSP.STM32F302.SYSCFG
+import Ivory.BSP.STM32F302.ATIM
+import Ivory.BSP.STM32F302.GTIM

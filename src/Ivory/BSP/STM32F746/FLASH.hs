@@ -46,7 +46,7 @@ flash_reg_keyr = mkBitDataRegNamed (flash_periph_base + 0x4) "keyr"
 --  | address: 0x40023c08
 [ivory|
  bitdata FLASH_OPTKEYR :: Bits 32 = flash_optkeyr
-  { flash_optkeyr_optkey  :: Bits 32  -- Option byte key
+  { flash_optkeyr_optkeyr  :: Bits 32  -- Option byte key
   }
 |]
 flash_reg_optkeyr :: BitDataReg FLASH_OPTKEYR

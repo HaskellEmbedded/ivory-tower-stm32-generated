@@ -104,14 +104,14 @@ import Ivory.Language
 |]
 
 
--- I2C_BUFOUT
+-- Configuration register
 --  | offset : 0x2c
 --  | address: 0x4001382c
 [ivory|
- bitdata SYSCFG_I2C_BUFOUT :: Bits 32 = syscfg_i2c_bufout
-  { _                        :: Bits 30  -- (Reserved)
-  , syscfg_i2c_bufout_i2c4sda  :: Bit      -- I2C4SDA
-  , syscfg_i2c_bufout_i2c4scl  :: Bit      -- I2C4SCL
+ bitdata SYSCFG_CFGR :: Bits 32 = syscfg_cfgr
+  { _                      :: Bits 30  -- (Reserved)
+  , syscfg_cfgr_fmpi2c1_sda  :: Bit      -- Forces FM+ drive capability on I2CFMP1_SCL pin
+  , syscfg_cfgr_fmpi2c1_scl  :: Bit      -- Forces FM+ drive capability on I2CFMP1_SCL pin
   }
 |]
 

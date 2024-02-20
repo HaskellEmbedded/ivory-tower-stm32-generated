@@ -111,3 +111,15 @@ import Ivory.Language
   }
 |]
 
+
+-- Configuration register
+--  | offset : 0x2c
+--  | address: 0x4001382c
+[ivory|
+ bitdata SYSCFG_CFGR :: Bits 32 = syscfg_cfgr
+  { _                      :: Bits 30  -- (Reserved)
+  , syscfg_cfgr_fmpi2c1_sda  :: Bit      -- Forces FM+ drive capability on I2CFMP1_SCL pin
+  , syscfg_cfgr_fmpi2c1_scl  :: Bit      -- Forces FM+ drive capability on I2CFMP1_SCL pin
+  }
+|]
+

@@ -13,18 +13,18 @@ data Interrupt
   | EXTI2_3 -- 6 EXTI line 2 & 3 interrupt
   | EXTI4_15 -- 7 EXTI line 4 to 15 interrupt
   | UCPD1_UCPD2 -- 8 UCPD global interrupt
-  | DMA_CHANNEL1 -- 9 DMA channel 1 interrupt
-  | DMA_CHANNEL2_3 -- 10 DMA channel 2 & 3 interrupts
-  | DMA_CHANNEL4_5_6_7 -- 11 DMA channel 4, 5, 6 & 7 and DMAMUX
+  | DMA1_CHANNEL1 -- 9 DMA channel 1 interrupt
+  | DMA1_CHANNEL2_3 -- 10 DMA channel 2 and 3 interrupts
+  | DMA1_CHANNEL4_5_6_7_DMAMUX -- 11 interrupts for DMA1 channels 4-7 and DMAMUX
   | ADC_COMP -- 12 ADC and COMP interrupts
-  | TIM1_BRK_UP_TRG_COMP -- 13 TIM1 break, update, trigger
+  | TIM1_BRK_UP_TRG_COM -- 13 TIM1 break, update, trigger and commutation interrupts
   | TIM1_CC -- 14 TIM1 Capture Compare interrupt
   | TIM2 -- 15 TIM2 global interrupt
   | TIM3 -- 16 TIM3 global interrupt
   | TIM6_DAC_LPTIM1 -- 17 TIM6 + LPTIM1 and DAC global interrupt
   | TIM7_LPTIM2 -- 18 TIM7 + LPTIM2 global interrupt
   | TIM14 -- 19 TIM14 global interrupt
-  | TIM15 -- 20 TIM15 global interrupt
+  | TIM15 -- 20 Timer 15 global interrupt
   | TIM16 -- 21 TIM16 global interrupt
   | TIM17 -- 22 TIM17 global interrupt
   | I2C1 -- 23 I2C1 global interrupt

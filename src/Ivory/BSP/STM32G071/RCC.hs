@@ -151,26 +151,6 @@ rcc_reg_cifr = mkBitDataRegNamed (rcc_periph_base + 0x1c) "cifr"
 rcc_reg_cicr :: BitDataReg RCC_CICR
 rcc_reg_cicr = mkBitDataRegNamed (rcc_periph_base + 0x20) "cicr"
 
--- AHB peripheral reset register
---  | offset : 0x28
---  | address: 0x40021028
-[ivory|
- bitdata RCC_AHBRSTR :: Bits 32 = rcc_ahbrstr
-  { _                   :: Bits 13  -- (Reserved)
-  , rcc_ahbrstr_rngrst    :: Bit      -- Random number generator reset
-  , _                   :: Bit      -- (Reserved)
-  , rcc_ahbrstr_aesrst    :: Bit      -- AES hardware accelerator reset
-  , _                   :: Bits 3   -- (Reserved)
-  , rcc_ahbrstr_crcrst    :: Bit      -- CRC reset
-  , _                   :: Bits 3   -- (Reserved)
-  , rcc_ahbrstr_flashrst  :: Bit      -- FLITF reset
-  , _                   :: Bits 7   -- (Reserved)
-  , rcc_ahbrstr_dmarst    :: Bit      -- DMA1 reset
-  }
-|]
-rcc_reg_ahbrstr :: BitDataReg RCC_AHBRSTR
-rcc_reg_ahbrstr = mkBitDataRegNamed (rcc_periph_base + 0x28) "ahbrstr"
-
 -- GPIO reset register
 --  | offset : 0x24
 --  | address: 0x40021024
@@ -187,6 +167,22 @@ rcc_reg_ahbrstr = mkBitDataRegNamed (rcc_periph_base + 0x28) "ahbrstr"
 |]
 rcc_reg_ioprstr :: BitDataReg RCC_IOPRSTR
 rcc_reg_ioprstr = mkBitDataRegNamed (rcc_periph_base + 0x24) "ioprstr"
+
+-- AHB peripheral reset register
+--  | offset : 0x28
+--  | address: 0x40021028
+[ivory|
+ bitdata RCC_AHBRSTR :: Bits 32 = rcc_ahbrstr
+  { _                   :: Bits 19  -- (Reserved)
+  , rcc_ahbrstr_crcrst    :: Bit      -- CRC reset
+  , _                   :: Bits 3   -- (Reserved)
+  , rcc_ahbrstr_flashrst  :: Bit      -- FLITF reset
+  , _                   :: Bits 7   -- (Reserved)
+  , rcc_ahbrstr_dmarst    :: Bit      -- DMA1 reset
+  }
+|]
+rcc_reg_ahbrstr :: BitDataReg RCC_AHBRSTR
+rcc_reg_ahbrstr = mkBitDataRegNamed (rcc_periph_base + 0x28) "ahbrstr"
 
 -- APB peripheral reset register 1
 --  | offset : 0x2c
@@ -266,11 +262,7 @@ rcc_reg_iopenr = mkBitDataRegNamed (rcc_periph_base + 0x34) "iopenr"
 --  | address: 0x40021038
 [ivory|
  bitdata RCC_AHBENR :: Bits 32 = rcc_ahbenr
-  { _                 :: Bits 13  -- (Reserved)
-  , rcc_ahbenr_rngen    :: Bit      -- Random number generator clock enable
-  , _                 :: Bit      -- (Reserved)
-  , rcc_ahbenr_aesen    :: Bit      -- AES hardware accelerator
-  , _                 :: Bits 3   -- (Reserved)
+  { _                 :: Bits 19  -- (Reserved)
   , rcc_ahbenr_crcen    :: Bit      -- CRC clock enable
   , _                 :: Bits 3   -- (Reserved)
   , rcc_ahbenr_flashen  :: Bit      -- Flash memory interface clock enable
@@ -362,11 +354,7 @@ rcc_reg_iopsmenr = mkBitDataRegNamed (rcc_periph_base + 0x44) "iopsmenr"
 --  | address: 0x40021048
 [ivory|
  bitdata RCC_AHBSMENR :: Bits 32 = rcc_ahbsmenr
-  { _                     :: Bits 13  -- (Reserved)
-  , rcc_ahbsmenr_rngsmen    :: Bit      -- Random number generator clock enable during Sleep mode
-  , _                     :: Bit      -- (Reserved)
-  , rcc_ahbsmenr_aessmen    :: Bit      -- AES hardware accelerator clock enable during Sleep mode
-  , _                     :: Bits 3   -- (Reserved)
+  { _                     :: Bits 19  -- (Reserved)
   , rcc_ahbsmenr_crcsmen    :: Bit      -- CRC clock enable during Sleep mode
   , _                     :: Bits 2   -- (Reserved)
   , rcc_ahbsmenr_sramsmen   :: Bit      -- SRAM clock enable during Sleep mode
@@ -443,9 +431,7 @@ rcc_reg_apbsmenr2 = mkBitDataRegNamed (rcc_periph_base + 0x50) "apbsmenr2"
 [ivory|
  bitdata RCC_CCIPR :: Bits 32 = rcc_ccipr
   { rcc_ccipr_adcsel      :: Bits 2   -- ADCs clock source selection
-  , rcc_ccipr_rngdiv      :: Bits 2   -- Division factor of RNG clock divider
-  , rcc_ccipr_rngsel      :: Bits 2   -- RNG clock source selection
-  , _                   :: Bit      -- (Reserved)
+  , _                   :: Bits 5   -- (Reserved)
   , rcc_ccipr_tim15sel    :: Bit      -- TIM15 clock source selection
   , _                   :: Bit      -- (Reserved)
   , rcc_ccipr_tim1sel     :: Bit      -- TIM1 clock source selection

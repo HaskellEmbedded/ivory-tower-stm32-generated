@@ -73,9 +73,14 @@ import qualified Ivory.BSP.STM32F779.Interrupt as F779
 import qualified Ivory.BSP.STM32G030.Interrupt as G030
 import qualified Ivory.BSP.STM32G031.Interrupt as G031
 import qualified Ivory.BSP.STM32G041.Interrupt as G041
+import qualified Ivory.BSP.STM32G050.Interrupt as G050
+import qualified Ivory.BSP.STM32G051.Interrupt as G051
 import qualified Ivory.BSP.STM32G070.Interrupt as G070
 import qualified Ivory.BSP.STM32G071.Interrupt as G071
 import qualified Ivory.BSP.STM32G081.Interrupt as G081
+import qualified Ivory.BSP.STM32G0B0.Interrupt as G0B0
+import qualified Ivory.BSP.STM32G0B1.Interrupt as G0B1
+import qualified Ivory.BSP.STM32G0C1.Interrupt as G0C1
 import qualified Ivory.BSP.STM32G431.Interrupt as G431
 import qualified Ivory.BSP.STM32G441.Interrupt as G441
 import qualified Ivory.BSP.STM32G471.Interrupt as G471
@@ -83,6 +88,8 @@ import qualified Ivory.BSP.STM32G473.Interrupt as G473
 import qualified Ivory.BSP.STM32G474.Interrupt as G474
 import qualified Ivory.BSP.STM32G483.Interrupt as G483
 import qualified Ivory.BSP.STM32G484.Interrupt as G484
+import qualified Ivory.BSP.STM32G491.Interrupt as G491
+import qualified Ivory.BSP.STM32G4A1.Interrupt as G4A1
 import qualified Ivory.BSP.STM32L412.Interrupt as L412
 import qualified Ivory.BSP.STM32L422.Interrupt as L422
 import qualified Ivory.BSP.STM32L431.Interrupt as L431
@@ -166,9 +173,14 @@ byDevice (n, _d) | shortName n == "F779" = attrs F779.WWDG
 byDevice (n, _d) | shortName n == "G030" = attrs G030.WWDG
 byDevice (n, _d) | shortName n == "G031" = attrs G031.WWDG
 byDevice (n, _d) | shortName n == "G041" = attrs G041.WWDG
+byDevice (n, _d) | shortName n == "G050" = attrs G050.WWDG
+byDevice (n, _d) | shortName n == "G051" = attrs G051.WWDG
 byDevice (n, _d) | shortName n == "G070" = attrs G070.WWDG
 byDevice (n, _d) | shortName n == "G071" = attrs G071.WWDG
 byDevice (n, _d) | shortName n == "G081" = attrs G081.WWDG
+byDevice (n, _d) | shortName n == "G0B0" = attrs G0B0.WWDG
+byDevice (n, _d) | shortName n == "G0B1" = attrs G0B1.WWDG
+byDevice (n, _d) | shortName n == "G0C1" = attrs G0C1.WWDG
 byDevice (n, _d) | shortName n == "G431" = attrs G431.WWDG
 byDevice (n, _d) | shortName n == "G441" = attrs G441.WWDG
 byDevice (n, _d) | shortName n == "G471" = attrs G471.WWDG
@@ -176,6 +188,8 @@ byDevice (n, _d) | shortName n == "G473" = attrs G473.WWDG
 byDevice (n, _d) | shortName n == "G474" = attrs G474.WWDG
 byDevice (n, _d) | shortName n == "G483" = attrs G483.WWDG
 byDevice (n, _d) | shortName n == "G484" = attrs G484.WWDG
+byDevice (n, _d) | shortName n == "G491" = attrs G491.WWDG
+byDevice (n, _d) | shortName n == "G4A1" = attrs G4A1.WWDG
 byDevice (n, _d) | shortName n == "L412" = attrs L412.WWDG
 byDevice (n, _d) | shortName n == "L422" = attrs L422.WWDG
 byDevice (n, _d) | shortName n == "L431" = attrs L431.WWDG

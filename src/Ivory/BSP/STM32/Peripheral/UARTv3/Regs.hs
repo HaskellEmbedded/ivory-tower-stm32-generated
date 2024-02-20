@@ -11,27 +11,19 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- UART Universal synchronous asynchronous receiver transmitter
 
--- Base address: 0x40004800
+-- Base address: 0x40011000
 
 -- Control register 1
 --  | offset : 0x0
---  | address: 0x40004800
+--  | address: 0x40011000
 [ivory|
  bitdata UART_CR1 :: Bits 32 = uart_cr1
   { _              :: Bits 3   -- (Reserved)
   , uart_cr1_m1      :: UART_WordLen  -- Word length
   , uart_cr1_eobie   :: Bit      -- End of Block interrupt enable
   , uart_cr1_rtoie   :: Bit      -- Receiver timeout interrupt enable
-  , uart_cr1_deat4   :: Bit      -- Driver Enable assertion time
-  , uart_cr1_deat3   :: Bit      -- DEAT3
-  , uart_cr1_deat2   :: Bit      -- DEAT2
-  , uart_cr1_deat1   :: Bit      -- DEAT1
-  , uart_cr1_deat0   :: Bit      -- DEAT0
-  , uart_cr1_dedt4   :: Bit      -- Driver Enable de-assertion time
-  , uart_cr1_dedt3   :: Bit      -- DEDT3
-  , uart_cr1_dedt2   :: Bit      -- DEDT2
-  , uart_cr1_dedt1   :: Bit      -- DEDT1
-  , uart_cr1_dedt0   :: Bit      -- DEDT0
+  , uart_cr1_deat    :: Bits 5   -- Driver Enable assertion time
+  , uart_cr1_dedt    :: Bits 5   -- Driver Enable de-assertion time
   , uart_cr1_over8   :: Bit      -- Oversampling mode
   , uart_cr1_cmie    :: Bit      -- Character match interrupt enable
   , uart_cr1_mme     :: Bit      -- Mute mode enable
@@ -54,17 +46,15 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Control register 2
 --  | offset : 0x4
---  | address: 0x40004804
+--  | address: 0x40011004
 [ivory|
  bitdata UART_CR2 :: Bits 32 = uart_cr2
-  { uart_cr2_add4_7    :: Bits 4   -- Address of the USART node
-  , uart_cr2_add0_3    :: Bits 4   -- Address of the USART node
+  { uart_cr2_add       :: Bits 8   -- Address of the USART node
   , uart_cr2_rtoen     :: Bit      -- Receiver timeout enable
-  , uart_cr2_abrmod1   :: Bit      -- Auto baud rate mode
-  , uart_cr2_abrmod0   :: Bit      -- ABRMOD0
+  , uart_cr2_abrmod    :: Bits 2   -- Auto baud rate mode
   , uart_cr2_abren     :: Bit      -- Auto baud rate enable
   , uart_cr2_msbfirst  :: Bit      -- Most significant bit first
-  , uart_cr2_tainv     :: Bit      -- Binary data inversion
+  , uart_cr2_datainv   :: Bit      -- Binary data inversion
   , uart_cr2_txinv     :: Bit      -- TX pin active level inversion
   , uart_cr2_rxinv     :: Bit      -- RX pin active level inversion
   , uart_cr2_swap      :: Bit      -- Swap TX/RX pins
@@ -85,7 +75,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Control register 3
 --  | offset : 0x8
---  | address: 0x40004808
+--  | address: 0x40011008
 [ivory|
  bitdata UART_CR3 :: Bits 32 = uart_cr3
   { _               :: Bits 7   -- (Reserved)
@@ -115,7 +105,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Baud rate register
 --  | offset : 0xc
---  | address: 0x4000480c
+--  | address: 0x4001100c
 [ivory|
  bitdata UART_BRR :: Bits 32 = uart_brr
   { _           :: Bits 12  -- (Reserved)
@@ -126,7 +116,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Guard time and prescaler register
 --  | offset : 0x10
---  | address: 0x40004810
+--  | address: 0x40011010
 [ivory|
  bitdata UART_GTPR :: Bits 32 = uart_gtpr
   { _            :: Bits 16  -- (Reserved)
@@ -138,7 +128,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Receiver timeout register
 --  | offset : 0x14
---  | address: 0x40004814
+--  | address: 0x40011014
 [ivory|
  bitdata UART_RTOR :: Bits 32 = uart_rtor
   { uart_rtor_blen  :: Bits 8   -- Block Length
@@ -149,7 +139,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Request register
 --  | offset : 0x18
---  | address: 0x40004818
+--  | address: 0x40011018
 [ivory|
  bitdata UART_RQR :: Bits 32 = uart_rqr
   { _             :: Bits 27  -- (Reserved)
@@ -164,7 +154,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Interrupt & status register
 --  | offset : 0x1c
---  | address: 0x4000481c
+--  | address: 0x4001101c
 [ivory|
  bitdata UART_ISR :: Bits 32 = uart_isr
   { _             :: Bits 6   -- (Reserved)
@@ -197,7 +187,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Interrupt flag clear register
 --  | offset : 0x20
---  | address: 0x40004820
+--  | address: 0x40011020
 [ivory|
  bitdata UART_ICR :: Bits 32 = uart_icr
   { _               :: Bits 14  -- (Reserved)
@@ -222,7 +212,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Receive data register
 --  | offset : 0x24
---  | address: 0x40004824
+--  | address: 0x40011024
 [ivory|
  bitdata UART_RDR :: Bits 32 = uart_rdr
   { _           :: Bits 24  -- (Reserved)
@@ -233,7 +223,7 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
 
 -- Transmit data register
 --  | offset : 0x28
---  | address: 0x40004828
+--  | address: 0x40011028
 [ivory|
  bitdata UART_TDR :: Bits 32 = uart_tdr
   { _           :: Bits 24  -- (Reserved)

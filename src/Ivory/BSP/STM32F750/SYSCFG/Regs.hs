@@ -16,13 +16,11 @@ import Ivory.Language
 --  | offset : 0x0
 --  | address: 0x40013800
 [ivory|
- bitdata SYSCFG_MEMRM :: Bits 32 = syscfg_memrm
-  { _                    :: Bits 20  -- (Reserved)
-  , syscfg_memrm_swp_fmc   :: Bits 2   -- FMC memory mapping swap
-  , _                    :: Bit      -- (Reserved)
-  , syscfg_memrm_fb_mode   :: Bit      -- Flash bank mode selection
-  , _                    :: Bits 5   -- (Reserved)
-  , syscfg_memrm_mem_mode  :: Bits 3   -- Memory mapping selection
+ bitdata SYSCFG_MEMRMP :: Bits 32 = syscfg_memrmp
+  { _                     :: Bits 20  -- (Reserved)
+  , syscfg_memrmp_swp_fmc   :: Bits 2   -- FMC memory mapping swap
+  , _                     :: Bits 9   -- (Reserved)
+  , syscfg_memrmp_mem_boot  :: Bit      -- Memory mapping selection
   }
 |]
 

@@ -1,6 +1,7 @@
 module Ivory.BSP.STM32G484.SPI (
     spi1
   , spi2
+  , spi3
   , spi4
   ) where
 
@@ -22,7 +23,7 @@ spi1 :: SPI
 spi1 = mkSPI spi1_periph_base
           rccenable rccdisable
           G484.SPI1
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi1" afDB)
           3
           "spi1"
@@ -42,11 +43,23 @@ spi2 = mkSPI spi2_periph_base
   rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_spi2en
   rccdisable = modifyReg rcc_reg_apb1enr1 $ clearBit rcc_apb1enr1_spi2en
 
+spi3 :: SPI
+spi3 = mkSPI spi3_periph_base
+          rccenable rccdisable
+          G484.SPI3
+          PClk1
+          (\pin -> findAFByPin pin "spi3" afDB)
+          3
+          "spi3"
+  where
+  rccenable  = modifyReg rcc_reg_apb1enr1 $ setBit   rcc_apb1enr1_spi3en
+  rccdisable = modifyReg rcc_reg_apb1enr1 $ clearBit rcc_apb1enr1_spi3en
+
 spi4 :: SPI
 spi4 = mkSPI spi4_periph_base
           rccenable rccdisable
           G484.SPI4
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi4" afDB)
           3
           "spi4"

@@ -45,7 +45,7 @@ rcc_reg_cr = mkBitDataRegNamed (rcc_periph_base + 0x0) "cr"
   { _                :: Bits 5   -- (Reserved)
   , rcc_cfgr_mco       :: Bits 3   -- Microcontroller clock output
   , _                :: Bit      -- (Reserved)
-  , rcc_cfgr_otgfspre  :: Bit      -- USB OTG FS prescaler
+  , rcc_cfgr_usbpre    :: Bit      -- USB prescaler
   , rcc_cfgr_pllmul    :: Bits 4   -- PLL Multiplication Factor
   , rcc_cfgr_pllxtpre  :: Bit      -- HSE divider for PLL entry
   , rcc_cfgr_pllsrc    :: Bit      -- PLL entry clock source

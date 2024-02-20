@@ -60,9 +60,7 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_cr2_head10r  :: Bit      -- 10-bit address header only read direction (master receiver mode)
   , i2c_cr2_add10    :: Bit      -- 10-bit addressing mode (master mode)
   , i2c_cr2_rd_wrn   :: Bit      -- Transfer direction (master mode)
-  , i2c_cr2_sadd8    :: Bits 2   -- Slave address bit 9:8 (master mode)
-  , i2c_cr2_sadd1    :: Bits 7   -- Slave address bit 7:1 (master mode)
-  , i2c_cr2_sadd0    :: Bit      -- Slave address bit 0 (master mode)
+  , i2c_cr2_sadd     :: Bits 10  -- Slave address bit 9:8 (master mode)
   }
 |]
 
@@ -76,9 +74,7 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_oar1_oa1en    :: Bit      -- Own Address 1 enable
   , _               :: Bits 4   -- (Reserved)
   , i2c_oar1_oa1mode  :: Bit      -- Own Address 1 10-bit mode
-  , i2c_oar1_oa1_8    :: Bits 2   -- Interface address
-  , i2c_oar1_oa1_1    :: Bits 7   -- Interface address
-  , i2c_oar1_oa1_0    :: Bit      -- Interface address
+  , i2c_oar1_oa1      :: Bits 10  -- Interface address
   }
 |]
 

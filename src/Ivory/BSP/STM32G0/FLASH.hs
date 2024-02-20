@@ -39,7 +39,7 @@ flash_reg_acr = mkBitDataRegNamed (flash_periph_base + 0x0) "acr"
 --  | address: 0x40022008
 [ivory|
  bitdata FLASH_KEYR :: Bits 32 = flash_keyr
-  { flash_keyr_keyr  :: Bits 32  -- KEYR
+  { flash_keyr_key  :: Bits 32  -- KEYR
   }
 |]
 flash_reg_keyr :: BitDataReg FLASH_KEYR
@@ -50,7 +50,7 @@ flash_reg_keyr = mkBitDataRegNamed (flash_periph_base + 0x8) "keyr"
 --  | address: 0x4002200c
 [ivory|
  bitdata FLASH_OPTKEYR :: Bits 32 = flash_optkeyr
-  { flash_optkeyr_optkeyr  :: Bits 32  -- Option byte key
+  { flash_optkeyr_optkey  :: Bits 32  -- Option byte key
   }
 |]
 flash_reg_optkeyr :: BitDataReg FLASH_OPTKEYR
@@ -69,7 +69,7 @@ flash_reg_optkeyr = mkBitDataRegNamed (flash_periph_base + 0xc) "optkeyr"
   , flash_sr_rderr    :: Bit      -- PCROP read error
   , _               :: Bits 4   -- (Reserved)
   , flash_sr_fasterr  :: Bit      -- Fast programming error
-  , flash_sr_miserr   :: Bit      -- Fast programming data miss error
+  , flash_sr_misserr  :: Bit      -- Fast programming data miss error
   , flash_sr_pgserr   :: Bit      -- Programming sequence error
   , flash_sr_sizerr   :: Bit      -- Size error
   , flash_sr_pgaerr   :: Bit      -- Programming alignment error
@@ -121,12 +121,30 @@ flash_reg_cr = mkBitDataRegNamed (flash_periph_base + 0x14) "cr"
   , flash_eccr_eccie     :: Bit      -- ECC correction interrupt enable
   , _                  :: Bits 3   -- (Reserved)
   , flash_eccr_sysf_ecc  :: Bit      -- ECC fail for Corrected ECC Error or Double ECC Error in info block
-  , _                  :: Bits 6   -- (Reserved)
-  , flash_eccr_addr_ecc  :: Bits 14  -- ECC fail address
+  , _                  :: Bits 5   -- (Reserved)
+  , flash_eccr_addr_ecc  :: Bits 15  -- ECC fail address
   }
 |]
 flash_reg_eccr :: BitDataReg FLASH_ECCR
 flash_reg_eccr = mkBitDataRegNamed (flash_periph_base + 0x18) "eccr"
+
+-- Flash ECC register 2
+--  | offset : 0x1c
+--  | address: 0x4002201c
+[ivory|
+ bitdata FLASH_ECCR2 :: Bits 32 = flash_eccr2
+  { flash_eccr2_eccd      :: Bit      -- ECC detection
+  , flash_eccr2_eccc      :: Bit      -- ECC correction
+  , _                   :: Bits 5   -- (Reserved)
+  , flash_eccr2_eccie     :: Bit      -- ECC correction interrupt enable
+  , _                   :: Bits 3   -- (Reserved)
+  , flash_eccr2_sysf_ecc  :: Bit      -- ECC fail for Corrected ECC Error or Double ECC Error in info block
+  , _                   :: Bits 5   -- (Reserved)
+  , flash_eccr2_addr_ecc  :: Bits 15  -- ECC fail address
+  }
+|]
+flash_reg_eccr2 :: BitDataReg FLASH_ECCR2
+flash_reg_eccr2 = mkBitDataRegNamed (flash_periph_base + 0x1c) "eccr2"
 
 -- Flash option register
 --  | offset : 0x20
@@ -145,7 +163,7 @@ flash_reg_eccr = mkBitDataRegNamed (flash_periph_base + 0x18) "eccr"
   , flash_optr_wwdg_sw           :: Bit      -- Window watchdog selection
   , flash_optr_iwdg_stdby        :: Bit      -- Independent watchdog counter freeze in Standby mode
   , flash_optr_iwdg_stop         :: Bit      -- Independent watchdog counter freeze in Stop mode
-  , flash_optr_idwg_sw           :: Bit      -- Independent watchdog selection
+  , flash_optr_iwdg_sw           :: Bit      -- Independent watchdog selection
   , flash_optr_nrsts_hdw         :: Bit      -- nRSTS_HDW
   , flash_optr_nrst_stdby        :: Bit      -- nRST_STDBY
   , flash_optr_nrst_stop         :: Bit      -- nRST_STOP
@@ -223,27 +241,105 @@ flash_reg_wrp1br = mkBitDataRegNamed (flash_periph_base + 0x30) "wrp1br"
 flash_reg_pcrop1bsr :: BitDataReg FLASH_PCROP1BSR
 flash_reg_pcrop1bsr = mkBitDataRegNamed (flash_periph_base + 0x34) "pcrop1bsr"
 
--- Flash PCROP zone B End address register
+-- Flash PCROP area B End address register
 --  | offset : 0x38
 --  | address: 0x40022038
 [ivory|
  bitdata FLASH_PCROP1BER :: Bits 32 = flash_pcrop1ber
-  { _                          :: Bits 24  -- (Reserved)
-  , flash_pcrop1ber_pcrop1b_end  :: Bits 8   -- PCROP1B area end offset
+  { _                          :: Bits 23  -- (Reserved)
+  , flash_pcrop1ber_pcrop1b_end  :: Bits 9   -- PCROP1B area end offset
   }
 |]
 flash_reg_pcrop1ber :: BitDataReg FLASH_PCROP1BER
 flash_reg_pcrop1ber = mkBitDataRegNamed (flash_periph_base + 0x38) "pcrop1ber"
+
+-- Flash PCROP2 area A start address register
+--  | offset : 0x44
+--  | address: 0x40022044
+[ivory|
+ bitdata FLASH_PCROP2ASR :: Bits 32 = flash_pcrop2asr
+  { _                           :: Bits 23  -- (Reserved)
+  , flash_pcrop2asr_pcrop2a_strt  :: Bits 9   -- PCROP2A area start offset, bank2
+  }
+|]
+flash_reg_pcrop2asr :: BitDataReg FLASH_PCROP2ASR
+flash_reg_pcrop2asr = mkBitDataRegNamed (flash_periph_base + 0x44) "pcrop2asr"
+
+-- Flash PCROP2 area A end address register
+--  | offset : 0x48
+--  | address: 0x40022048
+[ivory|
+ bitdata FLASH_PCROP2AER :: Bits 32 = flash_pcrop2aer
+  { _                          :: Bits 23  -- (Reserved)
+  , flash_pcrop2aer_pcrop2a_end  :: Bits 9   -- PCROP2A area end offset, bank2
+  }
+|]
+flash_reg_pcrop2aer :: BitDataReg FLASH_PCROP2AER
+flash_reg_pcrop2aer = mkBitDataRegNamed (flash_periph_base + 0x48) "pcrop2aer"
+
+-- Flash WRP2 area A address register
+--  | offset : 0x4c
+--  | address: 0x4002204c
+[ivory|
+ bitdata FLASH_WRP2AR :: Bits 32 = flash_wrp2ar
+  { _                      :: Bits 9   -- (Reserved)
+  , flash_wrp2ar_wrp2a_end   :: Bits 7   -- WRP area A end offset, Bank 2
+  , _                      :: Bits 9   -- (Reserved)
+  , flash_wrp2ar_wrp2a_strt  :: Bits 7   -- WRP area A start offset, Bank 2
+  }
+|]
+flash_reg_wrp2ar :: BitDataReg FLASH_WRP2AR
+flash_reg_wrp2ar = mkBitDataRegNamed (flash_periph_base + 0x4c) "wrp2ar"
+
+-- Flash WRP2 area B address register
+--  | offset : 0x50
+--  | address: 0x40022050
+[ivory|
+ bitdata FLASH_WRP2BR :: Bits 32 = flash_wrp2br
+  { _                      :: Bits 9   -- (Reserved)
+  , flash_wrp2br_wrp2b_end   :: Bits 7   -- WRP area B end offset, Bank 2
+  , _                      :: Bits 9   -- (Reserved)
+  , flash_wrp2br_wrp2b_strt  :: Bits 7   -- WRP area B start offset, Bank 2
+  }
+|]
+flash_reg_wrp2br :: BitDataReg FLASH_WRP2BR
+flash_reg_wrp2br = mkBitDataRegNamed (flash_periph_base + 0x50) "wrp2br"
+
+-- FLASH PCROP2 area B start address register
+--  | offset : 0x54
+--  | address: 0x40022054
+[ivory|
+ bitdata FLASH_PCROP2BSR :: Bits 32 = flash_pcrop2bsr
+  { _                           :: Bits 23  -- (Reserved)
+  , flash_pcrop2bsr_pcrop2b_strt  :: Bits 9   -- PCROP2B area start offset, Bank 2
+  }
+|]
+flash_reg_pcrop2bsr :: BitDataReg FLASH_PCROP2BSR
+flash_reg_pcrop2bsr = mkBitDataRegNamed (flash_periph_base + 0x54) "pcrop2bsr"
+
+-- FLASH PCROP2 area B end address register
+--  | offset : 0x58
+--  | address: 0x40022058
+[ivory|
+ bitdata FLASH_PCROP2BER :: Bits 32 = flash_pcrop2ber
+  { _                          :: Bits 23  -- (Reserved)
+  , flash_pcrop2ber_pcrop2b_end  :: Bits 9   -- PCROP2B area end offset, Bank 2
+  }
+|]
+flash_reg_pcrop2ber :: BitDataReg FLASH_PCROP2BER
+flash_reg_pcrop2ber = mkBitDataRegNamed (flash_periph_base + 0x58) "pcrop2ber"
 
 -- Flash Security register
 --  | offset : 0x80
 --  | address: 0x40022080
 [ivory|
  bitdata FLASH_SECR :: Bits 32 = flash_secr
-  { _                   :: Bits 15  -- (Reserved)
+  { _                   :: Bits 4   -- (Reserved)
+  , flash_secr_sec_size2  :: Bits 8   -- Securable memory area size
+  , _                   :: Bits 3   -- (Reserved)
   , flash_secr_boot_lock  :: Bit      -- used to force boot from user area
-  , _                   :: Bits 9   -- (Reserved)
-  , flash_secr_sec_size   :: Bits 7   -- Securable memory area size
+  , _                   :: Bits 8   -- (Reserved)
+  , flash_secr_sec_size   :: Bits 8   -- Securable memory area size
   }
 |]
 flash_reg_secr :: BitDataReg FLASH_SECR

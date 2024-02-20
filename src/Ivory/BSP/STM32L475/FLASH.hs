@@ -142,7 +142,9 @@ flash_reg_eccr = mkBitDataRegNamed (flash_periph_base + 0x18) "eccr"
 --  | address: 0x40022020
 [ivory|
  bitdata FLASH_OPTR :: Bits 32 = flash_optr
-  { _                    :: Bits 6   -- (Reserved)
+  { _                    :: Bits 4   -- (Reserved)
+  , flash_optr_nboot0      :: Bit      -- nBOOT0 option bit
+  , flash_optr_nswboot0    :: Bit      -- Software BOOT0
   , flash_optr_sram2_rst   :: Bit      -- SRAM2 Erase when system reset
   , flash_optr_sram2_pe    :: Bit      -- SRAM2 parity check enable
   , flash_optr_nboot1      :: Bit      -- Boot configuration

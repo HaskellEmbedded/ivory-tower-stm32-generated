@@ -209,9 +209,9 @@ flash_reg_wrp1ar = mkBitDataRegNamed (flash_periph_base + 0x2c) "wrp1ar"
 [ivory|
  bitdata FLASH_WRP1BR :: Bits 32 = flash_wrp1br
   { _                      :: Bits 8   -- (Reserved)
-  , flash_wrp1br_wrp1b_strt  :: Bits 8   -- Bank 1 WRP second area B end offset
+  , flash_wrp1br_wrp1b_end   :: Bits 8   -- Bank 1 WRP second area B end offset
   , _                      :: Bits 8   -- (Reserved)
-  , flash_wrp1br_wrp1b_end   :: Bits 8   -- Bank 1 WRP second area B start offset
+  , flash_wrp1br_wrp1b_strt  :: Bits 8   -- Bank 1 WRP second area B start offset
   }
 |]
 flash_reg_wrp1br :: BitDataReg FLASH_WRP1BR

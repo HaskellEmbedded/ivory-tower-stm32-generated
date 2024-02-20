@@ -43,7 +43,7 @@ usart2 = mkUARTVersion V3 usart2_periph_base
 usart3 :: UART
 usart3 = mkUARTVersion V3 usart3_periph_base
                 rccenable rccdisable
-                G070.USART3_USART4_LPUART1
+                G070.USART3_USART4
                 PClk1
                 (\pin -> findAFByPin pin "usart3" afDB)
                 "usart3"
@@ -54,7 +54,7 @@ usart3 = mkUARTVersion V3 usart3_periph_base
 usart4 :: UART
 usart4 = mkUARTVersion V3 usart4_periph_base
                 rccenable rccdisable
-                G070.USART3_USART4_LPUART1
+                G070.USART3_USART4
                 PClk1
                 (\pin -> findAFByPin pin "usart4" afDB)
                 "usart4"

@@ -119,8 +119,8 @@ rcc_reg_apb2rstr = mkBitDataRegNamed (rcc_periph_base + 0xc) "apb2rstr"
 [ivory|
  bitdata RCC_APB1RSTR :: Bits 32 = rcc_apb1rstr
   { _                     :: Bit      -- (Reserved)
-  , rcc_apb1rstr_cecrst     :: Bit      -- HDMI CEC reset
-  , rcc_apb1rstr_dacrst     :: Bit      -- DAC interface reset
+  , rcc_apb1rstr_i2c3rst    :: Bit      -- I2C3 reset
+  , rcc_apb1rstr_dac1rst    :: Bit      -- DAC interface reset
   , rcc_apb1rstr_pwrrst     :: Bit      -- Power interface reset
   , _                     :: Bits 5   -- (Reserved)
   , rcc_apb1rstr_i2c2rst    :: Bit      -- I2C2 reset
@@ -165,7 +165,7 @@ rcc_reg_apb1rstr = mkBitDataRegNamed (rcc_periph_base + 0x10) "apb1rstr"
   , _                 :: Bit      -- (Reserved)
   , rcc_ahbenr_sramen   :: Bit      -- SRAM interface clock enable
   , _                 :: Bit      -- (Reserved)
-  , rcc_ahbenr_dmaen    :: Bit      -- DMA1 clock enable
+  , rcc_ahbenr_dma1en   :: Bit      -- DMA1 clock enable
   }
 |]
 rcc_reg_ahbenr :: BitDataReg RCC_AHBENR
@@ -197,8 +197,8 @@ rcc_reg_apb2enr = mkBitDataRegNamed (rcc_periph_base + 0x18) "apb2enr"
 [ivory|
  bitdata RCC_APB1ENR :: Bits 32 = rcc_apb1enr
   { _                   :: Bit      -- (Reserved)
-  , rcc_apb1enr_cecen     :: Bit      -- HDMI CEC interface clock enable
-  , rcc_apb1enr_dacen     :: Bit      -- DAC interface clock enable
+  , rcc_apb1enr_i2c3en    :: Bit      -- I2C3 clock enable
+  , rcc_apb1enr_dac1en    :: Bit      -- DAC interface clock enable
   , rcc_apb1enr_pwren     :: Bit      -- Power interface clock enable
   , _                   :: Bits 5   -- (Reserved)
   , rcc_apb1enr_i2c2en    :: Bit      -- I2C 2 clock enable
@@ -245,17 +245,18 @@ rcc_reg_bdcr = mkBitDataRegNamed (rcc_periph_base + 0x20) "bdcr"
 --  | address: 0x40021024
 [ivory|
  bitdata RCC_CSR :: Bits 32 = rcc_csr
-  { rcc_csr_lpwrrstf  :: Bit      -- Low-power reset flag
-  , rcc_csr_wwdgrstf  :: Bit      -- Window watchdog reset flag
-  , rcc_csr_iwdgrstf  :: Bit      -- Independent watchdog reset flag
-  , rcc_csr_sftrstf   :: Bit      -- Software reset flag
-  , rcc_csr_porrstf   :: Bit      -- POR/PDR reset flag
-  , rcc_csr_pinrstf   :: Bit      -- PIN reset flag
-  , rcc_csr_oblrstf   :: Bit      -- Option byte loader reset flag
-  , rcc_csr_rmvf      :: Bit      -- Remove reset flag
-  , _               :: Bits 22  -- (Reserved)
-  , rcc_csr_lsirdy    :: Bit      -- Internal low speed oscillator ready
-  , rcc_csr_lsion     :: Bit      -- Internal low speed oscillator enable
+  { rcc_csr_lpwrrstf    :: Bit      -- Low-power reset flag
+  , rcc_csr_wwdgrstf    :: Bit      -- Window watchdog reset flag
+  , rcc_csr_iwdgrstf    :: Bit      -- Independent watchdog reset flag
+  , rcc_csr_sftrstf     :: Bit      -- Software reset flag
+  , rcc_csr_porrstf     :: Bit      -- POR/PDR reset flag
+  , rcc_csr_pinrstf     :: Bit      -- PIN reset flag
+  , rcc_csr_oblrstf     :: Bit      -- Option byte loader reset flag
+  , rcc_csr_rmvf        :: Bit      -- Remove reset flag
+  , rcc_csr_v18pwrrstf  :: Bit      -- Reset flag of the 1.8 V domain
+  , _                 :: Bits 21  -- (Reserved)
+  , rcc_csr_lsirdy      :: Bit      -- Internal low speed oscillator ready
+  , rcc_csr_lsion       :: Bit      -- Internal low speed oscillator enable
   }
 |]
 rcc_reg_csr :: BitDataReg RCC_CSR
@@ -288,8 +289,8 @@ rcc_reg_ahbrstr = mkBitDataRegNamed (rcc_periph_base + 0x28) "ahbrstr"
 --  | address: 0x4002102c
 [ivory|
  bitdata RCC_CFGR2 :: Bits 32 = rcc_cfgr2
-  { _                 :: Bits 24  -- (Reserved)
-  , rcc_cfgr2_adc1pres  :: Bits 4   -- ADC1 prescaler
+  { _                 :: Bits 23  -- (Reserved)
+  , rcc_cfgr2_adc1pres  :: Bits 5   -- ADC1 prescaler
   , rcc_cfgr2_prediv    :: Bits 4   -- PREDIV division factor
   }
 |]
@@ -301,15 +302,15 @@ rcc_reg_cfgr2 = mkBitDataRegNamed (rcc_periph_base + 0x2c) "cfgr2"
 --  | address: 0x40021030
 [ivory|
  bitdata RCC_CFGR3 :: Bits 32 = rcc_cfgr3
-  { _                 :: Bits 17  -- (Reserved)
-  , rcc_cfgr3_tim17sw   :: Bits 2   -- Timer17 clock source selection
+  { _                 :: Bits 18  -- (Reserved)
+  , rcc_cfgr3_tim17sw   :: Bit      -- Timer17 clock source selection
   , _                 :: Bit      -- (Reserved)
   , rcc_cfgr3_tim16sw   :: Bit      -- Timer16 clock source selection
   , rcc_cfgr3_tim15sw   :: Bit      -- Timer15 clock source selection
   , _                 :: Bit      -- (Reserved)
   , rcc_cfgr3_tim1sw    :: Bit      -- Timer1 clock source selection
   , _                 :: Bit      -- (Reserved)
-  , rcc_cfgr3_cecsw     :: Bit      -- HDMI CEC clock source selection
+  , rcc_cfgr3_i2c3sw    :: Bit      -- I2C3 clock source selection
   , rcc_cfgr3_i2c2sw    :: Bit      -- I2C2 clock source selection
   , rcc_cfgr3_i2c1sw    :: Bit      -- I2C1 clock source selection
   , _                 :: Bits 2   -- (Reserved)

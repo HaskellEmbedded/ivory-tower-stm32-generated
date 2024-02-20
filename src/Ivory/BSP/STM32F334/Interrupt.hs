@@ -68,16 +68,16 @@ data Interrupt
   | Undefined61 -- 61 Undefined interrupt (padding only)
   | Undefined62 -- 62 Undefined interrupt (padding only)
   | Undefined63 -- 63 Undefined interrupt (padding only)
-  | Undefined64 -- 64 Undefined interrupt (padding only)
-  | Undefined65 -- 65 Undefined interrupt (padding only)
+  | COMP1_2_3 -- 64 COMP1_2_3 interrupt combined with EXTI lines 21, 22, 29
+  | COMP4_5_6 -- 65 COMP4_5_6 interrupt combined with EXTI lines 30, 31, 32
   | Undefined66 -- 66 Undefined interrupt (padding only)
-  | Undefined67 -- 67 Undefined interrupt (padding only)
-  | Undefined68 -- 68 Undefined interrupt (padding only)
-  | Undefined69 -- 69 Undefined interrupt (padding only)
-  | Undefined70 -- 70 Undefined interrupt (padding only)
-  | Undefined71 -- 71 Undefined interrupt (padding only)
-  | Undefined72 -- 72 Undefined interrupt (padding only)
-  | Undefined73 -- 73 Undefined interrupt (padding only)
+  | HRTIM_MST -- 67 HRTIM1 master timer interrupt
+  | HRTIM_TIMA -- 68 HRTIM1 timer A interrupt
+  | HRTIM_TIMB -- 69 HRTIM1 timer B interrupt
+  | HRTIM_TIMC -- 70 HRTIM1 timer C interrupt
+  | HRTIM_TIMD -- 71 HRTIM1 timer D interrupt
+  | HRTIM_TIME -- 72 HRTIM1 timer E interrupt
+  | HRTIM_FLT -- 73 HRTIM1 fault interrupt
   | Undefined74 -- 74 Undefined interrupt (padding only)
   | Undefined75 -- 75 Undefined interrupt (padding only)
   | Undefined76 -- 76 Undefined interrupt (padding only)
@@ -86,34 +86,6 @@ data Interrupt
   | Undefined79 -- 79 Undefined interrupt (padding only)
   | Undefined80 -- 80 Undefined interrupt (padding only)
   | FPU -- 81 Floating point unit interrupt
-  | Undefined82 -- 82 Undefined interrupt (padding only)
-  | Undefined83 -- 83 Undefined interrupt (padding only)
-  | Undefined84 -- 84 Undefined interrupt (padding only)
-  | Undefined85 -- 85 Undefined interrupt (padding only)
-  | Undefined86 -- 86 Undefined interrupt (padding only)
-  | Undefined87 -- 87 Undefined interrupt (padding only)
-  | Undefined88 -- 88 Undefined interrupt (padding only)
-  | Undefined89 -- 89 Undefined interrupt (padding only)
-  | Undefined90 -- 90 Undefined interrupt (padding only)
-  | Undefined91 -- 91 Undefined interrupt (padding only)
-  | Undefined92 -- 92 Undefined interrupt (padding only)
-  | Undefined93 -- 93 Undefined interrupt (padding only)
-  | Undefined94 -- 94 Undefined interrupt (padding only)
-  | Undefined95 -- 95 Undefined interrupt (padding only)
-  | Undefined96 -- 96 Undefined interrupt (padding only)
-  | Undefined97 -- 97 Undefined interrupt (padding only)
-  | Undefined98 -- 98 Undefined interrupt (padding only)
-  | Undefined99 -- 99 Undefined interrupt (padding only)
-  | Undefined100 -- 100 Undefined interrupt (padding only)
-  | Undefined101 -- 101 Undefined interrupt (padding only)
-  | Undefined102 -- 102 Undefined interrupt (padding only)
-  | HRTIM1_MST -- 103 HRTIM1 master timer interrupt
-  | HRTIM1_TIMA -- 104 HRTIM1 timer A interrupt
-  | HRTIM_TIMB -- 105 HRTIM1 timer B interrupt
-  | HRTIM1_TIMC -- 106 HRTIM1 timer C interrupt
-  | HRTIM1_TIMD -- 107 HRTIM1 timer D interrupt
-  | HRTIM_TIME -- 108 HRTIM1 timer E interrupt
-  | HRTIM1_FLT -- 109 HRTIM1 fault interrupt
   deriving (Eq, Show, Enum)
 
 instance STM32Interrupt Interrupt where

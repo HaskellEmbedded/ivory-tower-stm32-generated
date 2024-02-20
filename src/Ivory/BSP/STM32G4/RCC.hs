@@ -23,7 +23,7 @@ import Ivory.BSP.STM32.Peripheral.RCC.RegTypes
   , rcc_cr_pllrdy    :: Bit      -- Main PLL clock ready flag
   , rcc_cr_pllon     :: Bit      -- Main PLL enable
   , _              :: Bits 4   -- (Reserved)
-  , rcc_cr_hsecsson  :: Bit      -- Clock security system enable
+  , rcc_cr_csson     :: Bit      -- Clock security system enable
   , rcc_cr_hsebyp    :: Bit      -- HSE crystal oscillator bypass
   , rcc_cr_hserdy    :: Bit      -- HSE clock ready flag
   , rcc_cr_hseon     :: Bit      -- HSE clock enable
@@ -99,16 +99,16 @@ rcc_reg_pllcfgr = mkBitDataRegNamed (rcc_periph_base + 0xc) "pllcfgr"
 --  | address: 0x40021018
 [ivory|
  bitdata RCC_CIR :: Bits 32 = rcc_cir
-  { _                :: Bits 21  -- (Reserved)
-  , rcc_cir_rc48rdyie  :: Bit      -- HSI48 ready interrupt enable
-  , rcc_cir_lsecssie   :: Bit      -- LSE clock security system interrupt enable
-  , _                :: Bits 3   -- (Reserved)
-  , rcc_cir_pllrdyie   :: Bit      -- PLL ready interrupt enable
-  , rcc_cir_hserdyie   :: Bit      -- HSE ready interrupt enable
-  , rcc_cir_hsirdyie   :: Bit      -- HSI ready interrupt enable
-  , _                :: Bit      -- (Reserved)
-  , rcc_cir_lserdyie   :: Bit      -- LSE ready interrupt enable
-  , rcc_cir_lsirdyie   :: Bit      -- LSI ready interrupt enable
+  { _                 :: Bits 21  -- (Reserved)
+  , rcc_cir_hsi48rdyie  :: Bit      -- HSI48 ready interrupt enable
+  , rcc_cir_lsecssie    :: Bit      -- LSE clock security system interrupt enable
+  , _                 :: Bits 3   -- (Reserved)
+  , rcc_cir_pllrdyie    :: Bit      -- PLL ready interrupt enable
+  , rcc_cir_hserdyie    :: Bit      -- HSE ready interrupt enable
+  , rcc_cir_hsirdyie    :: Bit      -- HSI ready interrupt enable
+  , _                 :: Bit      -- (Reserved)
+  , rcc_cir_lserdyie    :: Bit      -- LSE ready interrupt enable
+  , rcc_cir_lsirdyie    :: Bit      -- LSI ready interrupt enable
   }
 |]
 rcc_reg_cir :: BitDataReg RCC_CIR
@@ -119,17 +119,17 @@ rcc_reg_cir = mkBitDataRegNamed (rcc_periph_base + 0x18) "cir"
 --  | address: 0x4002101c
 [ivory|
  bitdata RCC_CIFR :: Bits 32 = rcc_cifr
-  { _                :: Bits 21  -- (Reserved)
-  , rcc_cifr_rc48rdyf  :: Bit      -- HSI48 ready interrupt flag
-  , rcc_cifr_lsecssf   :: Bit      -- LSE Clock security system interrupt flag
-  , rcc_cifr_hsecssf   :: Bit      -- Clock security system interrupt flag
-  , _                :: Bits 2   -- (Reserved)
-  , rcc_cifr_pllrdyf   :: Bit      -- PLL ready interrupt flag
-  , rcc_cifr_hserdyf   :: Bit      -- HSE ready interrupt flag
-  , rcc_cifr_hsirdyf   :: Bit      -- HSI ready interrupt flag
-  , _                :: Bit      -- (Reserved)
-  , rcc_cifr_lserdyf   :: Bit      -- LSE ready interrupt flag
-  , rcc_cifr_lsirdyf   :: Bit      -- LSI ready interrupt flag
+  { _                 :: Bits 21  -- (Reserved)
+  , rcc_cifr_hsi48rdyf  :: Bit      -- HSI48 ready interrupt flag
+  , rcc_cifr_lsecssf    :: Bit      -- LSE Clock security system interrupt flag
+  , rcc_cifr_cssf       :: Bit      -- Clock security system interrupt flag
+  , _                 :: Bits 2   -- (Reserved)
+  , rcc_cifr_pllrdyf    :: Bit      -- PLL ready interrupt flag
+  , rcc_cifr_hserdyf    :: Bit      -- HSE ready interrupt flag
+  , rcc_cifr_hsirdyf    :: Bit      -- HSI ready interrupt flag
+  , _                 :: Bit      -- (Reserved)
+  , rcc_cifr_lserdyf    :: Bit      -- LSE ready interrupt flag
+  , rcc_cifr_lsirdyf    :: Bit      -- LSI ready interrupt flag
   }
 |]
 rcc_reg_cifr :: BitDataReg RCC_CIFR
@@ -140,17 +140,17 @@ rcc_reg_cifr = mkBitDataRegNamed (rcc_periph_base + 0x1c) "cifr"
 --  | address: 0x40021020
 [ivory|
  bitdata RCC_CICR :: Bits 32 = rcc_cicr
-  { _                :: Bits 21  -- (Reserved)
-  , rcc_cicr_rc48rdyc  :: Bit      -- HSI48 oscillator ready interrupt clear
-  , rcc_cicr_lsecssc   :: Bit      -- LSE Clock security system interrupt clear
-  , rcc_cicr_hsecssc   :: Bit      -- Clock security system interrupt clear
-  , _                :: Bits 2   -- (Reserved)
-  , rcc_cicr_pllrdyc   :: Bit      -- PLL ready interrupt clear
-  , rcc_cicr_hserdyc   :: Bit      -- HSE ready interrupt clear
-  , rcc_cicr_hsirdyc   :: Bit      -- HSI ready interrupt clear
-  , _                :: Bit      -- (Reserved)
-  , rcc_cicr_lserdyc   :: Bit      -- LSE ready interrupt clear
-  , rcc_cicr_lsirdyc   :: Bit      -- LSI ready interrupt clear
+  { _                 :: Bits 21  -- (Reserved)
+  , rcc_cicr_hsi48rdyc  :: Bit      -- HSI48 oscillator ready interrupt clear
+  , rcc_cicr_lsecssc    :: Bit      -- LSE Clock security system interrupt clear
+  , rcc_cicr_cssc       :: Bit      -- Clock security system interrupt clear
+  , _                 :: Bits 2   -- (Reserved)
+  , rcc_cicr_pllrdyc    :: Bit      -- PLL ready interrupt clear
+  , rcc_cicr_hserdyc    :: Bit      -- HSE ready interrupt clear
+  , rcc_cicr_hsirdyc    :: Bit      -- HSI ready interrupt clear
+  , _                 :: Bit      -- (Reserved)
+  , rcc_cicr_lserdyc    :: Bit      -- LSE ready interrupt clear
+  , rcc_cicr_lsirdyc    :: Bit      -- LSI ready interrupt clear
   }
 |]
 rcc_reg_cicr :: BitDataReg RCC_CICR
@@ -164,9 +164,9 @@ rcc_reg_cicr = mkBitDataRegNamed (rcc_periph_base + 0x20) "cicr"
   { _                      :: Bits 19  -- (Reserved)
   , rcc_ahb1rstr_crcrst      :: Bit      -- CRC reset
   , _                      :: Bits 3   -- (Reserved)
-  , rcc_ahb1rstr_flitfrst_   :: Bit      -- FLITF reset
+  , rcc_ahb1rstr_flashrst    :: Bit      -- Flash memory interface reset
   , _                      :: Bits 3   -- (Reserved)
-  , rcc_ahb1rstr_matrixrst   :: Bit      -- MATRIX reset
+  , rcc_ahb1rstr_fmacrst     :: Bit      -- FMAC reset
   , rcc_ahb1rstr_cordicrst   :: Bit      -- CORDIC reset
   , rcc_ahb1rstr_dmamux1rst  :: Bit      -- DMAMUXRST
   , rcc_ahb1rstr_dma2rst     :: Bit      -- DMA2 reset
@@ -181,26 +181,26 @@ rcc_reg_ahb1rstr = mkBitDataRegNamed (rcc_periph_base + 0x28) "ahb1rstr"
 --  | address: 0x4002102c
 [ivory|
  bitdata RCC_AHB2RSTR :: Bits 32 = rcc_ahb2rstr
-  { _                      :: Bits 5   -- (Reserved)
-  , rcc_ahb2rstr_rngrst      :: Bit      -- Random Number Generator module reset
-  , _                      :: Bit      -- (Reserved)
-  , rcc_ahb2rstr_cryptrst    :: Bit      -- Cryptography module reset
-  , _                      :: Bits 4   -- (Reserved)
-  , rcc_ahb2rstr_dac4rst     :: Bit      -- DAC4 interface reset
-  , rcc_ahb2rstr_dac3rst     :: Bit      -- DAC3 interface reset
-  , rcc_ahb2rstr_dac2rst     :: Bit      -- DAC2 interface reset
-  , rcc_ahb2rstr_dac1rst_    :: Bit      -- DAC1 interface reset
-  , _                      :: Bit      -- (Reserved)
-  , rcc_ahb2rstr_adc345rst_  :: Bit      -- SAR ADC345 interface reset
-  , rcc_ahb2rstr_adc12rst    :: Bit      -- ADC reset
-  , _                      :: Bits 6   -- (Reserved)
-  , rcc_ahb2rstr_gpiogrst    :: Bit      -- IO port G reset
-  , rcc_ahb2rstr_gpiofrst    :: Bit      -- IO port F reset
-  , rcc_ahb2rstr_gpioerst    :: Bit      -- IO port E reset
-  , rcc_ahb2rstr_gpiodrst    :: Bit      -- IO port D reset
-  , rcc_ahb2rstr_gpiocrst    :: Bit      -- IO port C reset
-  , rcc_ahb2rstr_gpiobrst    :: Bit      -- IO port B reset
-  , rcc_ahb2rstr_gpioarst    :: Bit      -- IO port A reset
+  { _                     :: Bits 5   -- (Reserved)
+  , rcc_ahb2rstr_rngrst     :: Bit      -- Random Number Generator module reset
+  , _                     :: Bit      -- (Reserved)
+  , rcc_ahb2rstr_aesrst     :: Bit      -- Cryptography module reset
+  , _                     :: Bits 4   -- (Reserved)
+  , rcc_ahb2rstr_dac4rst    :: Bit      -- DAC4 interface reset
+  , rcc_ahb2rstr_dac3rst    :: Bit      -- DAC3 interface reset
+  , rcc_ahb2rstr_dac2rst    :: Bit      -- DAC2 interface reset
+  , rcc_ahb2rstr_dac1rst    :: Bit      -- DAC1 interface reset
+  , _                     :: Bit      -- (Reserved)
+  , rcc_ahb2rstr_adc345rst  :: Bit      -- SAR ADC345 interface reset
+  , rcc_ahb2rstr_adc12rst   :: Bit      -- ADC reset
+  , _                     :: Bits 6   -- (Reserved)
+  , rcc_ahb2rstr_gpiogrst   :: Bit      -- IO port G reset
+  , rcc_ahb2rstr_gpiofrst   :: Bit      -- IO port F reset
+  , rcc_ahb2rstr_gpioerst   :: Bit      -- IO port E reset
+  , rcc_ahb2rstr_gpiodrst   :: Bit      -- IO port D reset
+  , rcc_ahb2rstr_gpiocrst   :: Bit      -- IO port C reset
+  , rcc_ahb2rstr_gpiobrst   :: Bit      -- IO port B reset
+  , rcc_ahb2rstr_gpioarst   :: Bit      -- IO port A reset
   }
 |]
 rcc_reg_ahb2rstr :: BitDataReg RCC_AHB2RSTR
@@ -211,10 +211,10 @@ rcc_reg_ahb2rstr = mkBitDataRegNamed (rcc_periph_base + 0x2c) "ahb2rstr"
 --  | address: 0x40021030
 [ivory|
  bitdata RCC_AHB3RSTR :: Bits 32 = rcc_ahb3rstr
-  { _                       :: Bits 23  -- (Reserved)
-  , rcc_ahb3rstr_quadspi1rst  :: Bit      -- Quad SPI 1 module reset
-  , _                       :: Bits 7   -- (Reserved)
-  , rcc_ahb3rstr_fmcrst       :: Bit      -- Flexible memory controller reset
+  { _                   :: Bits 23  -- (Reserved)
+  , rcc_ahb3rstr_qspirst  :: Bit      -- Quad SPI 1 module reset
+  , _                   :: Bits 7   -- (Reserved)
+  , rcc_ahb3rstr_fmcrst   :: Bit      -- Flexible memory controller reset
   }
 |]
 rcc_reg_ahb3rstr :: BitDataReg RCC_AHB3RSTR
@@ -226,13 +226,13 @@ rcc_reg_ahb3rstr = mkBitDataRegNamed (rcc_periph_base + 0x30) "ahb3rstr"
 [ivory|
  bitdata RCC_APB1RSTR1 :: Bits 32 = rcc_apb1rstr1
   { rcc_apb1rstr1_lptim1rst  :: Bit      -- Low Power Timer 1 reset
-  , rcc_apb1rstr1_i2c3rst    :: Bit      -- I2C3 clock enable
+  , rcc_apb1rstr1_i2c3rst    :: Bit      -- I2C3 interface reset
   , _                      :: Bit      -- (Reserved)
   , rcc_apb1rstr1_pwrrst     :: Bit      -- Power interface reset
   , _                      :: Bits 2   -- (Reserved)
   , rcc_apb1rstr1_fdcanrst   :: Bit      -- FDCAN reset
   , _                      :: Bit      -- (Reserved)
-  , rcc_apb1rstr1_usbdrst    :: Bit      -- USBD reset
+  , rcc_apb1rstr1_usbrst     :: Bit      -- USBD reset
   , rcc_apb1rstr1_i2c2rst    :: Bit      -- I2C2 reset
   , rcc_apb1rstr1_i2c1rst    :: Bit      -- I2C1 reset
   , rcc_apb1rstr1_uart5rst   :: Bit      -- UART5 reset
@@ -262,7 +262,7 @@ rcc_reg_apb1rstr1 = mkBitDataRegNamed (rcc_periph_base + 0x38) "apb1rstr1"
 [ivory|
  bitdata RCC_APB1RSTR2 :: Bits 32 = rcc_apb1rstr2
   { _                       :: Bits 23  -- (Reserved)
-  , rcc_apb1rstr2_usbpdrst    :: Bit      -- USBPD reset
+  , rcc_apb1rstr2_ucpd1rst    :: Bit      -- UCPD1 reset
   , _                       :: Bits 6   -- (Reserved)
   , rcc_apb1rstr2_i2c4rst     :: Bit      -- I2C4 reset
   , rcc_apb1rstr2_lpuart1rst  :: Bit      -- Low-power UART 1 reset
@@ -305,7 +305,7 @@ rcc_reg_apb2rstr = mkBitDataRegNamed (rcc_periph_base + 0x40) "apb2rstr"
   { _                   :: Bits 19  -- (Reserved)
   , rcc_ahb1enr_crcen     :: Bit      -- CRC clock enable
   , _                   :: Bits 3   -- (Reserved)
-  , rcc_ahb1enr_flitfen   :: Bit      -- FLITF clock enable
+  , rcc_ahb1enr_flashen   :: Bit      -- Flash memory interface clock enable
   , _                   :: Bits 3   -- (Reserved)
   , rcc_ahb1enr_fmacen    :: Bit      -- FMAC clock enable
   , rcc_ahb1enr_cordicen  :: Bit      -- CORDIC clock enable
@@ -325,12 +325,12 @@ rcc_reg_ahb1enr = mkBitDataRegNamed (rcc_periph_base + 0x48) "ahb1enr"
   { _                   :: Bits 5   -- (Reserved)
   , rcc_ahb2enr_rngen     :: Bit      -- Random Number Generator clock enable
   , _                   :: Bit      -- (Reserved)
-  , rcc_ahb2enr_crypten   :: Bit      -- Cryptography clock enable
+  , rcc_ahb2enr_aesen     :: Bit      -- AES clock enable
   , _                   :: Bits 4   -- (Reserved)
-  , rcc_ahb2enr_dac4      :: Bit      -- DAC4 clock enable
-  , rcc_ahb2enr_dac3      :: Bit      -- Random Number Generator clock enable
-  , rcc_ahb2enr_dac2      :: Bit      -- HASH clock enable
-  , rcc_ahb2enr_dac1      :: Bit      -- AES accelerator clock enable
+  , rcc_ahb2enr_dac4en    :: Bit      -- DAC4 clock enable
+  , rcc_ahb2enr_dac3en    :: Bit      -- Random Number Generator clock enable
+  , rcc_ahb2enr_dac2en    :: Bit      -- HASH clock enable
+  , rcc_ahb2enr_dac1en    :: Bit      -- AES accelerator clock enable
   , _                   :: Bit      -- (Reserved)
   , rcc_ahb2enr_adc345en  :: Bit      -- DCMI clock enable
   , rcc_ahb2enr_adc12en   :: Bit      -- ADC clock enable
@@ -352,10 +352,10 @@ rcc_reg_ahb2enr = mkBitDataRegNamed (rcc_periph_base + 0x4c) "ahb2enr"
 --  | address: 0x40021050
 [ivory|
  bitdata RCC_AHB3ENR :: Bits 32 = rcc_ahb3enr
-  { _                     :: Bits 23  -- (Reserved)
-  , rcc_ahb3enr_quadspi1en  :: Bit      -- Quad SPI 1 module clock enable
-  , _                     :: Bits 7   -- (Reserved)
-  , rcc_ahb3enr_fmcen       :: Bit      -- Flexible memory controller clock enable
+  { _                 :: Bits 23  -- (Reserved)
+  , rcc_ahb3enr_qspien  :: Bit      -- QUADSPI memory interface clock enable
+  , _                 :: Bits 7   -- (Reserved)
+  , rcc_ahb3enr_fmcen   :: Bit      -- Flexible memory controller clock enable
   }
 |]
 rcc_reg_ahb3enr :: BitDataReg RCC_AHB3ENR
@@ -373,7 +373,7 @@ rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x50) "ahb3enr"
   , _                    :: Bits 2   -- (Reserved)
   , rcc_apb1enr1_fdcanen   :: Bit      -- FDCAN clock enable
   , _                    :: Bit      -- (Reserved)
-  , rcc_apb1enr1_usbden    :: Bit      -- USBDclock enable
+  , rcc_apb1enr1_usben     :: Bit      -- USB device clock enable
   , rcc_apb1enr1_i2c2en    :: Bit      -- I2C2 clock enable
   , rcc_apb1enr1_i2c1en    :: Bit      -- I2C1 clock enable
   , rcc_apb1enr1_uart5en   :: Bit      -- UART5 clock enable
@@ -381,7 +381,7 @@ rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x50) "ahb3enr"
   , rcc_apb1enr1_usart3en  :: Bit      -- USART3 clock enable
   , rcc_apb1enr1_usart2en  :: Bit      -- USART2 clock enable
   , _                    :: Bit      -- (Reserved)
-  , rcc_apb1enr1_sp3en     :: Bit      -- SPI3 clock enable
+  , rcc_apb1enr1_spi3en    :: Bit      -- SPI3 clock enable
   , rcc_apb1enr1_spi2en    :: Bit      -- SPI2 clock enable
   , _                    :: Bits 2   -- (Reserved)
   , rcc_apb1enr1_wwdgen    :: Bit      -- Window watchdog clock enable
@@ -406,7 +406,7 @@ rcc_reg_apb1enr1 = mkBitDataRegNamed (rcc_periph_base + 0x58) "apb1enr1"
 [ivory|
  bitdata RCC_APB1ENR2 :: Bits 32 = rcc_apb1enr2
   { _                     :: Bits 23  -- (Reserved)
-  , rcc_apb1enr2_usbpden    :: Bit      -- USBPD clock enable
+  , rcc_apb1enr2_ucpd1en    :: Bit      -- UCPD1 clock enable
   , _                     :: Bits 6   -- (Reserved)
   , rcc_apb1enr2_i2c4en     :: Bit      -- I2C4 clock enable
   , rcc_apb1enr2_lpuart1en  :: Bit      -- Low power UART 1 clock enable
@@ -420,22 +420,22 @@ rcc_reg_apb1enr2 = mkBitDataRegNamed (rcc_periph_base + 0x5c) "apb1enr2"
 --  | address: 0x40021060
 [ivory|
  bitdata RCC_APB2ENR :: Bits 32 = rcc_apb2enr
-  { _                    :: Bits 5   -- (Reserved)
-  , rcc_apb2enr_hrtimeren  :: Bit      -- HRTIMER clock enable
-  , _                    :: Bits 4   -- (Reserved)
-  , rcc_apb2enr_sai1en     :: Bit      -- SAI1 clock enable
-  , rcc_apb2enr_tim20en    :: Bit      -- Timer 20 clock enable
-  , _                    :: Bit      -- (Reserved)
-  , rcc_apb2enr_tim17en    :: Bit      -- TIM17 timer clock enable
-  , rcc_apb2enr_tim16en    :: Bit      -- TIM16 timer clock enable
-  , rcc_apb2enr_tim15en    :: Bit      -- TIM15 timer clock enable
-  , rcc_apb2enr_spi4en     :: Bit      -- SPI 4 clock enable
-  , rcc_apb2enr_usart1en   :: Bit      -- USART1clock enable
-  , rcc_apb2enr_tim8en     :: Bit      -- TIM8 timer clock enable
-  , rcc_apb2enr_spi1en     :: Bit      -- SPI1 clock enable
-  , rcc_apb2enr_tim1en     :: Bit      -- TIM1 timer clock enable
-  , _                    :: Bits 10  -- (Reserved)
-  , rcc_apb2enr_syscfgen   :: Bit      -- SYSCFG clock enable
+  { _                   :: Bits 5   -- (Reserved)
+  , rcc_apb2enr_hrtim1en  :: Bit      -- HRTIMER clock enable
+  , _                   :: Bits 4   -- (Reserved)
+  , rcc_apb2enr_sai1en    :: Bit      -- SAI1 clock enable
+  , rcc_apb2enr_tim20en   :: Bit      -- Timer 20 clock enable
+  , _                   :: Bit      -- (Reserved)
+  , rcc_apb2enr_tim17en   :: Bit      -- TIM17 timer clock enable
+  , rcc_apb2enr_tim16en   :: Bit      -- TIM16 timer clock enable
+  , rcc_apb2enr_tim15en   :: Bit      -- TIM15 timer clock enable
+  , rcc_apb2enr_spi4en    :: Bit      -- SPI 4 clock enable
+  , rcc_apb2enr_usart1en  :: Bit      -- USART1clock enable
+  , rcc_apb2enr_tim8en    :: Bit      -- TIM8 timer clock enable
+  , rcc_apb2enr_spi1en    :: Bit      -- SPI1 clock enable
+  , rcc_apb2enr_tim1en    :: Bit      -- TIM1 timer clock enable
+  , _                   :: Bits 10  -- (Reserved)
+  , rcc_apb2enr_syscfgen  :: Bit      -- SYSCFG clock enable
   }
 |]
 rcc_reg_apb2enr :: BitDataReg RCC_APB2ENR
@@ -467,29 +467,29 @@ rcc_reg_ahb1smenr = mkBitDataRegNamed (rcc_periph_base + 0x68) "ahb1smenr"
 --  | address: 0x4002106c
 [ivory|
  bitdata RCC_AHB2SMENR :: Bits 32 = rcc_ahb2smenr
-  { _                       :: Bits 5   -- (Reserved)
-  , rcc_ahb2smenr_rngsmen     :: Bit      -- Random Number Generator clock enable during sleep mode
-  , _                       :: Bit      -- (Reserved)
-  , rcc_ahb2smenr_cryptsmen   :: Bit      -- Cryptography clock enable during sleep mode
-  , _                       :: Bits 4   -- (Reserved)
-  , rcc_ahb2smenr_dac4smen    :: Bit      -- DAC4 clock enable during sleep mode
-  , rcc_ahb2smenr_dac3smen    :: Bit      -- DAC3 clock enable during sleep mode
-  , rcc_ahb2smenr_dac2smen    :: Bit      -- HASH clock enable during Sleep and Stop modes
-  , rcc_ahb2smenr_dac1smen    :: Bit      -- AES accelerator clocks enable during Sleep and Stop modes
-  , _                       :: Bit      -- (Reserved)
-  , rcc_ahb2smenr_adc345smen  :: Bit      -- DCMI clock enable during Sleep and Stop modes
-  , rcc_ahb2smenr_ad12csmen   :: Bit      -- ADC clocks enable during Sleep and Stop modes
-  , _                       :: Bits 2   -- (Reserved)
-  , rcc_ahb2smenr_sram3smen   :: Bit      -- SRAM2 interface clocks enable during Sleep and Stop modes
-  , rcc_ahb2smenr_sram2smen   :: Bit      -- SRAM2 interface clocks enable during Sleep and Stop modes
-  , _                       :: Bits 2   -- (Reserved)
-  , rcc_ahb2smenr_gpiogsmen   :: Bit      -- IO port G clocks enable during Sleep and Stop modes
-  , rcc_ahb2smenr_gpiofsmen   :: Bit      -- IO port F clocks enable during Sleep and Stop modes
-  , rcc_ahb2smenr_gpioesmen   :: Bit      -- IO port E clocks enable during Sleep and Stop modes
-  , rcc_ahb2smenr_gpiodsmen   :: Bit      -- IO port D clocks enable during Sleep and Stop modes
-  , rcc_ahb2smenr_gpiocsmen   :: Bit      -- IO port C clocks enable during Sleep and Stop modes
-  , rcc_ahb2smenr_gpiobsmen   :: Bit      -- IO port B clocks enable during Sleep and Stop modes
-  , rcc_ahb2smenr_gpioasmen   :: Bit      -- IO port A clocks enable during Sleep and Stop modes
+  { _                        :: Bits 5   -- (Reserved)
+  , rcc_ahb2smenr_rngsmen      :: Bit      -- Random Number Generator clock enable during sleep mode
+  , _                        :: Bit      -- (Reserved)
+  , rcc_ahb2smenr_aesmen       :: Bit      -- Cryptography clock enable during sleep mode
+  , _                        :: Bits 4   -- (Reserved)
+  , rcc_ahb2smenr_dac4smen     :: Bit      -- DAC4 clock enable during sleep mode
+  , rcc_ahb2smenr_dac3smen     :: Bit      -- DAC3 clock enable during sleep mode
+  , rcc_ahb2smenr_dac2smen     :: Bit      -- HASH clock enable during Sleep and Stop modes
+  , rcc_ahb2smenr_dac1smen     :: Bit      -- AES accelerator clocks enable during Sleep and Stop modes
+  , _                        :: Bit      -- (Reserved)
+  , rcc_ahb2smenr_adc345smen   :: Bit      -- DCMI clock enable during Sleep and Stop modes
+  , rcc_ahb2smenr_adc12smen    :: Bit      -- ADC clocks enable during Sleep and Stop modes
+  , _                        :: Bits 2   -- (Reserved)
+  , rcc_ahb2smenr_sram2smen    :: Bit      -- SRAM2 interface clocks enable during Sleep and Stop modes
+  , rcc_ahb2smenr_ccmsramsmen  :: Bit      -- CCM SRAM interface clocks enable during Sleep and Stop modes
+  , _                        :: Bits 2   -- (Reserved)
+  , rcc_ahb2smenr_gpiogsmen    :: Bit      -- IO port G clocks enable during Sleep and Stop modes
+  , rcc_ahb2smenr_gpiofsmen    :: Bit      -- IO port F clocks enable during Sleep and Stop modes
+  , rcc_ahb2smenr_gpioesmen    :: Bit      -- IO port E clocks enable during Sleep and Stop modes
+  , rcc_ahb2smenr_gpiodsmen    :: Bit      -- IO port D clocks enable during Sleep and Stop modes
+  , rcc_ahb2smenr_gpiocsmen    :: Bit      -- IO port C clocks enable during Sleep and Stop modes
+  , rcc_ahb2smenr_gpiobsmen    :: Bit      -- IO port B clocks enable during Sleep and Stop modes
+  , rcc_ahb2smenr_gpioasmen    :: Bit      -- IO port A clocks enable during Sleep and Stop modes
   }
 |]
 rcc_reg_ahb2smenr :: BitDataReg RCC_AHB2SMENR
@@ -500,10 +500,10 @@ rcc_reg_ahb2smenr = mkBitDataRegNamed (rcc_periph_base + 0x6c) "ahb2smenr"
 --  | address: 0x40021070
 [ivory|
  bitdata RCC_AHB3SMENR :: Bits 32 = rcc_ahb3smenr
-  { _                         :: Bits 23  -- (Reserved)
-  , rcc_ahb3smenr_quadspi1smen  :: Bit      -- QUAD SPI 1 module clock enable during sleep mode
-  , _                         :: Bits 7   -- (Reserved)
-  , rcc_ahb3smenr_fmcsmen       :: Bit      -- Flexible memory controller clocks enable during Sleep and Stop modes
+  { _                     :: Bits 23  -- (Reserved)
+  , rcc_ahb3smenr_qspismen  :: Bit      -- QUADSPI memory interface clock enable during Sleep and Stop modes
+  , _                     :: Bits 7   -- (Reserved)
+  , rcc_ahb3smenr_fmcsmen   :: Bit      -- Flexible memory controller clocks enable during Sleep and Stop modes
   }
 |]
 rcc_reg_ahb3smenr :: BitDataReg RCC_AHB3SMENR
@@ -515,13 +515,13 @@ rcc_reg_ahb3smenr = mkBitDataRegNamed (rcc_periph_base + 0x70) "ahb3smenr"
 [ivory|
  bitdata RCC_APB1SMENR1 :: Bits 32 = rcc_apb1smenr1
   { rcc_apb1smenr1_lptim1smen  :: Bit      -- Low Power Timer1 clock enable during sleep mode
-  , rcc_apb1smenr1_i2c3smen_3  :: Bit      -- I2C 3 interface clock enable during sleep mode
+  , rcc_apb1smenr1_i2c3smen    :: Bit      -- I2C3 clocks enable during Sleep and Stop modes
   , _                        :: Bit      -- (Reserved)
   , rcc_apb1smenr1_pwrsmen     :: Bit      -- Power interface clocks enable during Sleep and Stop modes
   , _                        :: Bits 2   -- (Reserved)
   , rcc_apb1smenr1_fdcansmen   :: Bit      -- FDCAN clock enable during sleep mode
   , _                        :: Bit      -- (Reserved)
-  , rcc_apb1smenr1_i2c3smen    :: Bit      -- I2C3 clocks enable during Sleep and Stop modes
+  , rcc_apb1smenr1_usbsmen     :: Bit      -- USB device clocks enable during Sleep and Stop modes
   , rcc_apb1smenr1_i2c2smen    :: Bit      -- I2C2 clocks enable during Sleep and Stop modes
   , rcc_apb1smenr1_i2c1smen    :: Bit      -- I2C1 clocks enable during Sleep and Stop modes
   , rcc_apb1smenr1_uart5smen   :: Bit      -- UART5 clocks enable during Sleep and Stop modes
@@ -554,7 +554,7 @@ rcc_reg_apb1smenr1 = mkBitDataRegNamed (rcc_periph_base + 0x78) "apb1smenr1"
 [ivory|
  bitdata RCC_APB1SMENR2 :: Bits 32 = rcc_apb1smenr2
   { _                         :: Bits 23  -- (Reserved)
-  , rcc_apb1smenr2_usbpdsmen    :: Bit      -- USB PD clock enable during sleep mode
+  , rcc_apb1smenr2_ucpd1smen    :: Bit      -- UCPD1 clocks enable during Sleep and Stop modes
   , _                         :: Bits 6   -- (Reserved)
   , rcc_apb1smenr2_i2c4smen     :: Bit      -- I2C4 clocks enable during Sleep and Stop modes
   , rcc_apb1smenr2_lpuart1smen  :: Bit      -- Low power UART 1 clocks enable during Sleep and Stop modes
@@ -568,22 +568,22 @@ rcc_reg_apb1smenr2 = mkBitDataRegNamed (rcc_periph_base + 0x7c) "apb1smenr2"
 --  | address: 0x40021080
 [ivory|
  bitdata RCC_APB2SMENR :: Bits 32 = rcc_apb2smenr
-  { _                        :: Bits 5   -- (Reserved)
-  , rcc_apb2smenr_hrtimersmen  :: Bit      -- HRTIMER clock enable during sleep mode
-  , _                        :: Bits 4   -- (Reserved)
-  , rcc_apb2smenr_sai1smen     :: Bit      -- SAI1 clock enable during sleep mode
-  , rcc_apb2smenr_tim20smen    :: Bit      -- Timer 20clock enable during sleep mode
-  , _                        :: Bit      -- (Reserved)
-  , rcc_apb2smenr_tim17smen    :: Bit      -- TIM17 timer clocks enable during Sleep and Stop modes
-  , rcc_apb2smenr_tim16smen    :: Bit      -- TIM16 timer clocks enable during Sleep and Stop modes
-  , rcc_apb2smenr_tim15smen    :: Bit      -- TIM15 timer clocks enable during Sleep and Stop modes
-  , rcc_apb2smenr_spi4smen     :: Bit      -- SPI4 timer clocks enable during Sleep and Stop modes
-  , rcc_apb2smenr_usart1smen   :: Bit      -- USART1clocks enable during Sleep and Stop modes
-  , rcc_apb2smenr_tim8smen     :: Bit      -- TIM8 timer clocks enable during Sleep and Stop modes
-  , rcc_apb2smenr_spi1smen     :: Bit      -- SPI1 clocks enable during Sleep and Stop modes
-  , rcc_apb2smenr_tim1smen     :: Bit      -- TIM1 timer clocks enable during Sleep and Stop modes
-  , _                        :: Bits 10  -- (Reserved)
-  , rcc_apb2smenr_syscfgsmen   :: Bit      -- SYSCFG clocks enable during Sleep and Stop modes
+  { _                       :: Bits 5   -- (Reserved)
+  , rcc_apb2smenr_hrtim1smen  :: Bit      -- HRTIMER clock enable during sleep mode
+  , _                       :: Bits 4   -- (Reserved)
+  , rcc_apb2smenr_sai1smen    :: Bit      -- SAI1 clock enable during sleep mode
+  , rcc_apb2smenr_tim20smen   :: Bit      -- Timer 20clock enable during sleep mode
+  , _                       :: Bit      -- (Reserved)
+  , rcc_apb2smenr_tim17smen   :: Bit      -- TIM17 timer clocks enable during Sleep and Stop modes
+  , rcc_apb2smenr_tim16smen   :: Bit      -- TIM16 timer clocks enable during Sleep and Stop modes
+  , rcc_apb2smenr_tim15smen   :: Bit      -- TIM15 timer clocks enable during Sleep and Stop modes
+  , rcc_apb2smenr_spi4smen    :: Bit      -- SPI4 timer clocks enable during Sleep and Stop modes
+  , rcc_apb2smenr_usart1smen  :: Bit      -- USART1clocks enable during Sleep and Stop modes
+  , rcc_apb2smenr_tim8smen    :: Bit      -- TIM8 timer clocks enable during Sleep and Stop modes
+  , rcc_apb2smenr_spi1smen    :: Bit      -- SPI1 clocks enable during Sleep and Stop modes
+  , rcc_apb2smenr_tim1smen    :: Bit      -- TIM1 timer clocks enable during Sleep and Stop modes
+  , _                       :: Bits 10  -- (Reserved)
+  , rcc_apb2smenr_syscfgsmen  :: Bit      -- SYSCFG clocks enable during Sleep and Stop modes
   }
 |]
 rcc_reg_apb2smenr :: BitDataReg RCC_APB2SMENR
@@ -593,27 +593,27 @@ rcc_reg_apb2smenr = mkBitDataRegNamed (rcc_periph_base + 0x80) "apb2smenr"
 --  | offset : 0x88
 --  | address: 0x40021088
 [ivory|
- bitdata RCC_CCIPR1 :: Bits 32 = rcc_ccipr1
-  { rcc_ccipr1_adc345sel   :: Bits 2   -- ADC3/4/5 clock source selection
-  , rcc_ccipr1_adcsel      :: Bits 2   -- ADCs clock source selection
-  , rcc_ccipr1_clk48sel    :: Bits 2   -- 48 MHz clock source selection
-  , rcc_ccipr1_fdcansel    :: Bits 2   -- SAI2 clock source selection
-  , rcc_ccipr1_spisel_     :: Bits 2   -- SAI1 clock source selection
-  , rcc_ccipr1_saisel      :: Bits 2   -- Low power timer 2 clock source selection
-  , rcc_ccipr1_lptim1sel   :: Bits 2   -- Low power timer 1 clock source selection
-  , rcc_ccipr1_i2c3sel     :: Bits 2   -- I2C3 clock source selection
-  , rcc_ccipr1_i2c2sel     :: Bits 2   -- I2C2 clock source selection
-  , rcc_ccipr1_i2c1sel     :: Bits 2   -- I2C1 clock source selection
-  , rcc_ccipr1_lpuart1sel  :: Bits 2   -- LPUART1 clock source selection
-  , rcc_ccipr1_uart5sel    :: Bits 2   -- UART5 clock source selection
-  , rcc_ccipr1_uart4sel    :: Bits 2   -- UART4 clock source selection
-  , rcc_ccipr1_usart3sel   :: Bits 2   -- USART3 clock source selection
-  , rcc_ccipr1_usart2sel   :: Bits 2   -- USART2 clock source selection
-  , rcc_ccipr1_usart1sel   :: Bits 2   -- USART1 clock source selection
+ bitdata RCC_CCIPR :: Bits 32 = rcc_ccipr
+  { rcc_ccipr_adc345sel   :: Bits 2   -- ADC3/4/5 clock source selection
+  , rcc_ccipr_adc12sel    :: Bits 2   -- ADCs clock source selection
+  , rcc_ccipr_clk48sel    :: Bits 2   -- 48 MHz clock source selection
+  , rcc_ccipr_fdcansel    :: Bits 2   -- SAI2 clock source selection
+  , rcc_ccipr_i2s23sel    :: Bits 2   -- SAI1 clock source selection
+  , rcc_ccipr_sai1sel     :: Bits 2   -- Low power timer 2 clock source selection
+  , rcc_ccipr_lptim1sel   :: Bits 2   -- Low power timer 1 clock source selection
+  , rcc_ccipr_i2c3sel     :: Bits 2   -- I2C3 clock source selection
+  , rcc_ccipr_i2c2sel     :: Bits 2   -- I2C2 clock source selection
+  , rcc_ccipr_i2c1sel     :: Bits 2   -- I2C1 clock source selection
+  , rcc_ccipr_lpuart1sel  :: Bits 2   -- LPUART1 clock source selection
+  , rcc_ccipr_uart5sel    :: Bits 2   -- UART5 clock source selection
+  , rcc_ccipr_uart4sel    :: Bits 2   -- UART4 clock source selection
+  , rcc_ccipr_usart3sel   :: Bits 2   -- USART3 clock source selection
+  , rcc_ccipr_usart2sel   :: Bits 2   -- USART2 clock source selection
+  , rcc_ccipr_usart1sel   :: Bits 2   -- USART1 clock source selection
   }
 |]
-rcc_reg_ccipr1 :: BitDataReg RCC_CCIPR1
-rcc_reg_ccipr1 = mkBitDataRegNamed (rcc_periph_base + 0x88) "ccipr1"
+rcc_reg_ccipr :: BitDataReg RCC_CCIPR
+rcc_reg_ccipr = mkBitDataRegNamed (rcc_periph_base + 0x88) "ccipr"
 
 -- BDCR
 --  | offset : 0x90
@@ -622,9 +622,9 @@ rcc_reg_ccipr1 = mkBitDataRegNamed (rcc_periph_base + 0x88) "ccipr1"
  bitdata RCC_BDCR :: Bits 32 = rcc_bdcr
   { _                :: Bits 6   -- (Reserved)
   , rcc_bdcr_lscosel   :: Bit      -- Low speed clock output selection
-  , rcc_bdcr_lsccoen   :: Bit      -- Low speed clock output enable
+  , rcc_bdcr_lscoen    :: Bit      -- Low speed clock output enable
   , _                :: Bits 7   -- (Reserved)
-  , rcc_bdcr_vswrst    :: Bit      -- Vswitch domain software reset
+  , rcc_bdcr_bdrst     :: Bit      -- RTC domain software reset
   , rcc_bdcr_rtcen     :: Bit      -- RTC clock enable
   , _                :: Bits 5   -- (Reserved)
   , rcc_bdcr_rtcsel    :: Bits 2   -- RTC clock source selection
@@ -647,10 +647,10 @@ rcc_reg_bdcr = mkBitDataRegNamed (rcc_periph_base + 0x90) "bdcr"
  bitdata RCC_CSR :: Bits 32 = rcc_csr
   { rcc_csr_lpwrstf   :: Bit      -- Low-power reset flag
   , rcc_csr_wwdgrstf  :: Bit      -- Window watchdog reset flag
-  , rcc_csr_wdgrstf   :: Bit      -- Independent window watchdog reset flag
+  , rcc_csr_iwdgrstf  :: Bit      -- Independent window watchdog reset flag
   , rcc_csr_sftrstf   :: Bit      -- Software reset flag
   , rcc_csr_borrstf   :: Bit      -- BOR flag
-  , rcc_csr_padrstf   :: Bit      -- Pad reset flag
+  , rcc_csr_pinrstf   :: Bit      -- Pad reset flag
   , rcc_csr_oblrstf   :: Bit      -- Option byte loader reset flag
   , _               :: Bit      -- (Reserved)
   , rcc_csr_rmvf      :: Bit      -- Remove reset flag
@@ -667,11 +667,11 @@ rcc_reg_csr = mkBitDataRegNamed (rcc_periph_base + 0x94) "csr"
 --  | address: 0x40021098
 [ivory|
  bitdata RCC_CRRCR :: Bits 32 = rcc_crrcr
-  { _                :: Bits 16  -- (Reserved)
-  , rcc_crrcr_rc48cal  :: Bits 9   -- HSI48 clock calibration
-  , _                :: Bits 5   -- (Reserved)
-  , rcc_crrcr_rc48rdy  :: Bit      -- HSI48 clock ready flag
-  , rcc_crrcr_rc48on   :: Bit      -- HSI48 clock enable
+  { _                 :: Bits 16  -- (Reserved)
+  , rcc_crrcr_hsi48cal  :: Bits 9   -- HSI48 clock calibration
+  , _                 :: Bits 5   -- (Reserved)
+  , rcc_crrcr_hsi48rdy  :: Bit      -- HSI48 clock ready flag
+  , rcc_crrcr_hsi48on   :: Bit      -- HSI48 clock enable
   }
 |]
 rcc_reg_crrcr :: BitDataReg RCC_CRRCR
@@ -682,10 +682,10 @@ rcc_reg_crrcr = mkBitDataRegNamed (rcc_periph_base + 0x98) "crrcr"
 --  | address: 0x4002109c
 [ivory|
  bitdata RCC_CCIPR2 :: Bits 32 = rcc_ccipr2
-  { _                    :: Bits 10  -- (Reserved)
-  , rcc_ccipr2_quadspisel  :: Bits 2   -- Octospi clock source selection
-  , _                    :: Bits 18  -- (Reserved)
-  , rcc_ccipr2_i2c4sel     :: Bits 2   -- I2C4 clock source selection
+  { _                 :: Bits 10  -- (Reserved)
+  , rcc_ccipr2_qspisel  :: Bits 2   -- Octospi clock source selection
+  , _                 :: Bits 18  -- (Reserved)
+  , rcc_ccipr2_i2c4sel  :: Bits 2   -- I2C4 clock source selection
   }
 |]
 rcc_reg_ccipr2 :: BitDataReg RCC_CCIPR2

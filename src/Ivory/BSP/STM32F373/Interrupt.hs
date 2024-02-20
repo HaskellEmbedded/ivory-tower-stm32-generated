@@ -68,7 +68,7 @@ data Interrupt
   | SDADC1 -- 61 ADC sigma delta 1 (SDADC1) global interrupt
   | SDADC2 -- 62 ADC sigma delta 2 (SDADC2) global interrupt
   | SDADC3 -- 63 ADC sigma delta 3 (SDADC3) global interrupt
-  | COMP1_2 -- 64 Comparator 1/comparator 2 global
+  | COMP1_2_3 -- 64 COMP1_2_3 interrupt combined with EXTI lines 21, 22
   | Undefined65 -- 65 Undefined interrupt (padding only)
   | Undefined66 -- 66 Undefined interrupt (padding only)
   | Undefined67 -- 67 Undefined interrupt (padding only)

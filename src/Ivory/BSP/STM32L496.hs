@@ -10,6 +10,9 @@ module Ivory.BSP.STM32L496 (
   , module Ivory.BSP.STM32L496.LPUART
   , module Ivory.BSP.STM32L496.IWDG
   , module Ivory.BSP.STM32L496.EXTI
+  , module Ivory.BSP.STM32L496.SYSCFG
+  , module Ivory.BSP.STM32L496.ATIM
+  , module Ivory.BSP.STM32L496.GTIM
   ) where
 
 import Ivory.BSP.STM32L496.UART
@@ -23,3 +26,6 @@ import Ivory.BSP.STM32L496.USART
 import Ivory.BSP.STM32L496.LPUART
 import Ivory.BSP.STM32L496.IWDG
 import Ivory.BSP.STM32L496.EXTI
+import Ivory.BSP.STM32L496.SYSCFG
+import Ivory.BSP.STM32L496.ATIM
+import Ivory.BSP.STM32L496.GTIM

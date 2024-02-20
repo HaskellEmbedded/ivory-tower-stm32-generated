@@ -17,28 +17,26 @@ import Ivory.Language
 --  | address: 0x40010000
 [ivory|
  bitdata SYSCFG_CFGR1 :: Bits 32 = syscfg_cfgr1
-  { _                             :: Bit      -- (Reserved)
-  , syscfg_cfgr1_tim3_dma_rmp       :: Bit      -- TIM3 DMA request remapping bit
-  , syscfg_cfgr1_tim2_dma_rmp       :: Bit      -- TIM2 DMA request remapping bit
-  , syscfg_cfgr1_tim1_dma_rmp       :: Bit      -- TIM1 DMA request remapping bit
-  , syscfg_cfgr1_i2c1_dma_rmp       :: Bit      -- I2C1 DMA request remapping bit
+  { _                             :: Bits 5   -- (Reserved)
   , syscfg_cfgr1_usart3_dma_rmp     :: Bit      -- USART3 DMA request remapping bit
-  , syscfg_cfgr1_usart2_dma_rmp     :: Bit      -- USART2 DMA request remapping bit
-  , syscfg_cfgr1_spi2_dma_rmp       :: Bit      -- SPI2 DMA request remapping bit
   , _                             :: Bits 2   -- (Reserved)
-  , syscfg_cfgr1_i2c2_fm_plus       :: Bit      -- FM+ driving capability activation for I2C2
-  , syscfg_cfgr1_i2c1_fm_plus       :: Bit      -- FM+ driving capability activation for I2C1
-  , syscfg_cfgr1_i2c_pb9_fm         :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
-  , syscfg_cfgr1_i2c_pb8_fm         :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
-  , syscfg_cfgr1_i2c_pb7_fm         :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
-  , syscfg_cfgr1_i2c_pb6_fm         :: Bit      -- Fast Mode Plus (FM plus) driving capability activation bits.
+  , syscfg_cfgr1_i2c_pa10_fmp       :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits
+  , syscfg_cfgr1_i2c_pa9_fmp        :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits
+  , _                             :: Bit      -- (Reserved)
+  , syscfg_cfgr1_i2c1_fmp           :: Bit      -- FM+ driving capability activation for I2C1
+  , syscfg_cfgr1_i2c_pb9_fmp        :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
+  , syscfg_cfgr1_i2c_pb8_fmp        :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
+  , syscfg_cfgr1_i2c_pb7_fmp        :: Bit      -- Fast Mode Plus (FM+) driving capability activation bits.
+  , syscfg_cfgr1_i2c_pb6_fmp        :: Bit      -- Fast Mode Plus (FM plus) driving capability activation bits.
   , _                             :: Bits 3   -- (Reserved)
   , syscfg_cfgr1_tim17_dma_rmp      :: Bit      -- TIM17 DMA request remapping bit
   , syscfg_cfgr1_tim16_dma_rmp      :: Bit      -- TIM16 DMA request remapping bit
   , syscfg_cfgr1_usart1_rx_dma_rmp  :: Bit      -- USART1_RX DMA request remapping bit
   , syscfg_cfgr1_usart1_tx_dma_rmp  :: Bit      -- USART1_TX DMA remapping bit
   , syscfg_cfgr1_adc_dma_rmp        :: Bit      -- ADC DMA remapping bit
-  , _                             :: Bits 6   -- (Reserved)
+  , _                             :: Bits 3   -- (Reserved)
+  , syscfg_cfgr1_pa11_pa12_rmp      :: Bit      -- PA11 and PA12 remapping bit for small packages (28 and 20 pins)
+  , _                             :: Bits 2   -- (Reserved)
   , syscfg_cfgr1_mem_mode           :: Bits 2   -- Memory mapping selection bits
   }
 |]
@@ -107,10 +105,9 @@ import Ivory.Language
  bitdata SYSCFG_CFGR2 :: Bits 32 = syscfg_cfgr2
   { _                            :: Bits 23  -- (Reserved)
   , syscfg_cfgr2_sram_pef          :: Bit      -- SRAM parity flag
-  , _                            :: Bits 5   -- (Reserved)
-  , syscfg_cfgr2_pvd_lock          :: Bit      -- PVD lock enable bit
+  , _                            :: Bits 6   -- (Reserved)
   , syscfg_cfgr2_sram_parity_lock  :: Bit      -- SRAM parity lock bit
-  , syscfg_cfgr2_locup_lock        :: Bit      -- Cortex-M0 LOCKUP bit enable bit
+  , syscfg_cfgr2_lockup_lock       :: Bit      -- Cortex-M0 LOCKUP bit enable bit
   }
 |]
 

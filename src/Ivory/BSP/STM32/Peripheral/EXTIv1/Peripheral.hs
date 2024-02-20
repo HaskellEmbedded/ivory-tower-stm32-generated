@@ -31,16 +31,17 @@ data EXTI = EXTI
   }
 
 -- | Create an EXTI given the base register address.
-mkEXTI  :: (STM32Interrupt i)
-       => Integer
-       -> (forall eff . Ivory eff ())
-       -> (forall eff . Ivory eff ())
-       -> BitDataReg (EXTI_EXTICR)
-       -> BitDataReg (EXTI_EXTICR)
-       -> BitDataReg (EXTI_EXTICR)
-       -> BitDataReg (EXTI_EXTICR)
-       -> [(Int, Int, i)]
-       -> EXTI
+mkEXTI
+  :: (STM32Interrupt i)
+  => Integer
+  -> (forall eff . Ivory eff ())
+  -> (forall eff . Ivory eff ())
+  -> BitDataReg (EXTI_EXTICR)
+  -> BitDataReg (EXTI_EXTICR)
+  -> BitDataReg (EXTI_EXTICR)
+  -> BitDataReg (EXTI_EXTICR)
+  -> [(Int, Int, i)]
+  -> EXTI
 mkEXTI base syscfgrccen syscfgrccdis r1 r2 r3 r4 isrs = EXTI
   { extiRegIMR     = reg 0x0 "imr"
   , extiRegEMR     = reg 0x4 "emr"
@@ -48,14 +49,14 @@ mkEXTI base syscfgrccen syscfgrccdis r1 r2 r3 r4 isrs = EXTI
   , extiRegFTSR    = reg 0xc "ftsr"
   , extiRegSWIER   = reg 0x10 "swier"
   , extiRegPR      = reg 0x14 "pr"
-    , extiInterrupts = map (\(s, e, i) -> (s, e, HasSTM32Interrupt i)) isrs
-    , extiEnable = syscfgrccen
-    , extiDisable = syscfgrccdis
-    , extiCR1 = r1
-    , extiCR2 = r2
-    , extiCR3 = r3
-    , extiCR4 = r4
-    }
+  , extiInterrupts = map (\(s, e, i) -> (s, e, HasSTM32Interrupt i)) isrs
+  , extiEnable = syscfgrccen
+  , extiDisable = syscfgrccdis
+  , extiCR1 = r1
+  , extiCR2 = r2
+  , extiCR3 = r3
+  , extiCR4 = r4
+  }
   where
   reg :: (IvoryIOReg (BitDataRep d)) => Integer -> String -> BitDataReg d
   reg offs name = mkBitDataRegNamed (base + offs) ("exti->" ++ name)

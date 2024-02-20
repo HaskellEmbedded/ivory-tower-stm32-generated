@@ -19,7 +19,9 @@ import Ivory.BSP.STM32.Peripheral.RCC.RegTypes
 --  | address: 0x40023800
 [ivory|
  bitdata RCC_CR :: Bits 32 = rcc_cr
-  { _               :: Bits 4   -- (Reserved)
+  { _               :: Bits 2   -- (Reserved)
+  , rcc_cr_pllsairdy  :: Bit      -- PLLSAI clock ready flag
+  , rcc_cr_pllsaion   :: Bit      -- PLLSAI enable
   , rcc_cr_plli2srdy  :: Bit      -- PLLI2S clock ready flag
   , rcc_cr_plli2son   :: Bit      -- PLLI2S enable
   , rcc_cr_pllrdy     :: Bit      -- Main PLL (PLL) clock ready flag
@@ -44,7 +46,8 @@ rcc_reg_cr = mkBitDataRegNamed (rcc_periph_base + 0x0) "cr"
 --  | address: 0x40023804
 [ivory|
  bitdata RCC_PLLCFGR :: Bits 32 = rcc_pllcfgr
-  { _                 :: Bits 4   -- (Reserved)
+  { _                 :: Bit      -- (Reserved)
+  , rcc_pllcfgr_pllr    :: Bits 3   -- Main PLL division factor for I2Ss, SAIs, SYSTEM and SPDIF-Rx clocks
   , rcc_pllcfgr_pllq    :: Bits 4   -- Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks
   , _                 :: Bit      -- (Reserved)
   , rcc_pllcfgr_pllsrc  :: Bit      -- Main PLL(PLL) and audio PLL (PLLI2S) entry clock source
@@ -179,14 +182,14 @@ rcc_reg_ahb3rstr = mkBitDataRegNamed (rcc_periph_base + 0x18) "ahb3rstr"
   , _                      :: Bit      -- (Reserved)
   , rcc_apb1rstr_can2rst     :: Bit      -- CAN2 reset
   , rcc_apb1rstr_can1rst     :: Bit      -- CAN1 reset
-  , rcc_apb1rstr_i2cfmp1rst  :: Bit      -- I2CFMP1 reset
+  , rcc_apb1rstr_fmpi2c1rst  :: Bit      -- FMPI2C1 reset
   , rcc_apb1rstr_i2c3rst     :: Bit      -- I2C3 reset
   , rcc_apb1rstr_i2c2rst     :: Bit      -- I2C 2 reset
   , rcc_apb1rstr_i2c1rst     :: Bit      -- I2C 1 reset
   , rcc_apb1rstr_uart5rst    :: Bit      -- USART 5 reset
   , rcc_apb1rstr_uart4rst    :: Bit      -- USART 4 reset
-  , rcc_apb1rstr_uart3rst    :: Bit      -- USART 3 reset
-  , rcc_apb1rstr_uart2rst    :: Bit      -- USART 2 reset
+  , rcc_apb1rstr_usart3rst   :: Bit      -- USART 3 reset
+  , rcc_apb1rstr_usart2rst   :: Bit      -- USART 2 reset
   , rcc_apb1rstr_spdifrst    :: Bit      -- SPDIF-IN reset
   , rcc_apb1rstr_spi3rst     :: Bit      -- SPI 3 reset
   , rcc_apb1rstr_spi2rst     :: Bit      -- SPI 2 reset
@@ -301,10 +304,10 @@ rcc_reg_ahb3enr = mkBitDataRegNamed (rcc_periph_base + 0x38) "ahb3enr"
   { _                    :: Bits 2   -- (Reserved)
   , rcc_apb1enr_dacen      :: Bit      -- DAC interface clock enable
   , rcc_apb1enr_pwren      :: Bit      -- Power interface clock enable
-  , rcc_apb1enr_cec        :: Bit      -- CEC interface clock enable
+  , rcc_apb1enr_cecen      :: Bit      -- CEC interface clock enable
   , rcc_apb1enr_can2en     :: Bit      -- CAN 2 clock enable
   , rcc_apb1enr_can1en     :: Bit      -- CAN 1 clock enable
-  , rcc_apb1enr_i2cfmp1en  :: Bit      -- I2CFMP1 clock enable
+  , rcc_apb1enr_fmpi2c1en  :: Bit      -- FMPI2C1 clock enable
   , rcc_apb1enr_i2c3en     :: Bit      -- I2C3 clock enable
   , rcc_apb1enr_i2c2en     :: Bit      -- I2C2 clock enable
   , rcc_apb1enr_i2c1en     :: Bit      -- I2C1 clock enable
@@ -346,7 +349,7 @@ rcc_reg_apb1enr = mkBitDataRegNamed (rcc_periph_base + 0x40) "apb1enr"
   , rcc_apb2enr_tim9en    :: Bit      -- TIM9 clock enable
   , _                   :: Bit      -- (Reserved)
   , rcc_apb2enr_syscfgen  :: Bit      -- System configuration controller clock enable
-  , rcc_apb2enr_spi4enr   :: Bit      -- SPI4 clock enable
+  , rcc_apb2enr_spi4en    :: Bit      -- SPI4 clock enable
   , rcc_apb2enr_spi1en    :: Bit      -- SPI1 clock enable
   , rcc_apb2enr_sdioen    :: Bit      -- SDIO clock enable
   , rcc_apb2enr_adc3en    :: Bit      -- ADC3 clock enable
@@ -433,7 +436,7 @@ rcc_reg_ahb3lpenr = mkBitDataRegNamed (rcc_periph_base + 0x58) "ahb3lpenr"
   , rcc_apb1lpenr_ceclpen      :: Bit      -- CEC clock enable during Sleep mode
   , rcc_apb1lpenr_can2lpen     :: Bit      -- CAN 2 clock enable during Sleep mode
   , rcc_apb1lpenr_can1lpen     :: Bit      -- CAN 1 clock enable during Sleep mode
-  , rcc_apb1lpenr_i2cfmp1lpen  :: Bit      -- I2CFMP1 clock enable during Sleep mode
+  , rcc_apb1lpenr_fmpi2c1lpen  :: Bit      -- FMPI2C1 clock enable during Sleep
   , rcc_apb1lpenr_i2c3lpen     :: Bit      -- I2C3 clock enable during Sleep mode
   , rcc_apb1lpenr_i2c2lpen     :: Bit      -- I2C2 clock enable during Sleep mode
   , rcc_apb1lpenr_i2c1lpen     :: Bit      -- I2C1 clock enable during Sleep mode
@@ -627,7 +630,7 @@ rcc_reg_ckgatenr = mkBitDataRegNamed (rcc_periph_base + 0x90) "ckgatenr"
 [ivory|
  bitdata RCC_DCKCFGR2 :: Bits 32 = rcc_dckcfgr2
   { _                      :: Bits 2   -- (Reserved)
-  , rcc_dckcfgr2_spdifsel    :: Bit      -- SPDIF clock selection
+  , rcc_dckcfgr2_spdifrxsel  :: Bit      -- SPDIF clock selection
   , rcc_dckcfgr2_sdiosel     :: Bit      -- SDIO clock selection
   , rcc_dckcfgr2_ck48msel    :: Bit      -- SDIO/USBFS/HS clock selection
   , rcc_dckcfgr2_cecsel      :: Bit      -- HDMI CEC clock source selection

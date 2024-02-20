@@ -21,7 +21,7 @@ spi1 :: SPI
 spi1 = mkSPI spi1_periph_base
           rccenable rccdisable
           L4S7.SPI1
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi1" afDB)
           3
           "spi1"

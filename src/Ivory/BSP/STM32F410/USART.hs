@@ -20,7 +20,7 @@ usart1 :: UART
 usart1 = mkUARTVersion V2 usart1_periph_base
                 rccenable rccdisable
                 F410.USART1
-                PClk1
+                PClk2
                 (\pin -> findAFByPin pin "usart1" afDB)
                 "usart1"
   where

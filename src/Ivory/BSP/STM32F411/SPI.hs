@@ -3,6 +3,7 @@ module Ivory.BSP.STM32F411.SPI (
   , spi2
   , spi3
   , spi4
+  , spi5
   ) where
 
 
@@ -23,7 +24,7 @@ spi1 :: SPI
 spi1 = mkSPI spi1_periph_base
           rccenable rccdisable
           F411.SPI1
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi1" afDB)
           2
           "spi1"
@@ -59,11 +60,23 @@ spi4 :: SPI
 spi4 = mkSPI spi4_periph_base
           rccenable rccdisable
           F411.SPI4
-          PClk1
+          PClk2
           (\pin -> findAFByPin pin "spi4" afDB)
           2
           "spi4"
   where
   rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_spi4en
   rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_spi4en
+
+spi5 :: SPI
+spi5 = mkSPI spi5_periph_base
+          rccenable rccdisable
+          F411.SPI5
+          PClk2
+          (\pin -> findAFByPin pin "spi5" afDB)
+          2
+          "spi5"
+  where
+  rccenable  = modifyReg rcc_reg_apb2enr $ setBit   rcc_apb2enr_spi5en
+  rccdisable = modifyReg rcc_reg_apb2enr $ clearBit rcc_apb2enr_spi5en
 

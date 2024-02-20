@@ -7,7 +7,8 @@ import Ivory.HW
 
 import Ivory.BSP.STM32F303.RCC
 import Ivory.BSP.STM32F303.MemoryMap
-import qualified Ivory.BSP.STM32F303.Interrupt as F303
+-- we don't use RTC interrupts for now
+--import qualified Ivory.BSP.STM32F303.Interrupt as F303
 
 import Ivory.BSP.STM32.Peripheral.RTC
 

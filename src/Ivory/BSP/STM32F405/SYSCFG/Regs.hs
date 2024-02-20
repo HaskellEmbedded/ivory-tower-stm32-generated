@@ -23,18 +23,6 @@ import Ivory.Language
 |]
 
 
--- peripheral mode configuration register
---  | offset : 0x4
---  | address: 0x40013804
-[ivory|
- bitdata SYSCFG_PMC :: Bits 32 = syscfg_pmc
-  { _                      :: Bits 8   -- (Reserved)
-  , syscfg_pmc_mii_rmii_sel  :: Bit      -- Ethernet PHY interface selection
-  , _                      :: Bits 23  -- (Reserved)
-  }
-|]
-
-
 -- external interrupt configuration register 1
 --  | offset : 0x8
 --  | address: 0x40013808
