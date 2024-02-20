@@ -37,7 +37,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   }
 |]
 
-
 -- GPIO port output type register
 --  | offset : 0x4
 --  | address: 0x40020004
@@ -63,7 +62,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   }
 |]
 
-
 -- GPIO port output speed register
 --  | offset : 0x8
 --  | address: 0x40020008
@@ -88,7 +86,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   }
 |]
 
-
 -- GPIO port pull-up/pull-down register
 --  | offset : 0xc
 --  | address: 0x4002000c
@@ -112,7 +109,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   , gpio_pupdr_pupdr0   :: GPIO_PUPD  -- Port x configuration pin 0
   }
 |]
-
 
 -- GPIO port input data register
 --  | offset : 0x10
@@ -139,7 +135,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   }
 |]
 
-
 -- GPIO port output data register
 --  | offset : 0x14
 --  | address: 0x40020014
@@ -164,7 +159,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   , gpio_odr_odr0   :: Bit      -- Port output data pin 0
   }
 |]
-
 
 -- GPIO port bit set/reset register
 --  | offset : 0x18
@@ -206,7 +200,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   }
 |]
 
-
 -- GPIO port configuration lock register
 --  | offset : 0x1c
 --  | address: 0x4002001c
@@ -233,7 +226,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   }
 |]
 
-
 -- GPIO alternate function low register
 --  | offset : 0x20
 --  | address: 0x40020020
@@ -250,7 +242,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   }
 |]
 
-
 -- GPIO alternate function high register
 --  | offset : 0x24
 --  | address: 0x40020024
@@ -266,7 +257,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   , gpio_afrh_afrh8   :: GPIO_AF  -- Alternate function selection for port x bit y (y = 8..15)
   }
 |]
-
 
 -- GPIO port bit reset register
 --  | offset : 0x28
@@ -292,4 +282,4 @@ import Ivory.BSP.STM32.Peripheral.GPIOv2.RegTypes
   , gpio_brr_br0   :: Bit      -- Port x reset pin 0
   }
 |]
-
+ 

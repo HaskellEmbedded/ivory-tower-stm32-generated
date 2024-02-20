@@ -116,4 +116,4 @@ flash_reg_cr = mkBitDataRegNamed (flash_periph_base + 0x10) "cr"
 |]
 flash_reg_optcr :: BitDataReg FLASH_OPTCR
 flash_reg_optcr = mkBitDataRegNamed (flash_periph_base + 0x14) "optcr"
-
+ 

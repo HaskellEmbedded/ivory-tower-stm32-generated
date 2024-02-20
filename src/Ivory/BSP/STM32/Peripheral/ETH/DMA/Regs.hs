@@ -34,7 +34,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA transmit poll demand register
 --  | offset : 0x4
 --  | address: 0x40029004
@@ -43,7 +42,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   { eth_dmatpdr_tpd  :: Bits 32  -- Transmit poll demand
   }
 |]
-
 
 -- EHERNET DMA receive poll demand register
 --  | offset : 0x8
@@ -54,7 +52,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA receive descriptor list address register
 --  | offset : 0xc
 --  | address: 0x4002900c
@@ -64,7 +61,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA transmit descriptor list address register
 --  | offset : 0x10
 --  | address: 0x40029010
@@ -73,7 +69,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   { eth_dmatdlar_stl  :: Bits 32  -- Start of transmit list
   }
 |]
-
 
 -- Ethernet DMA status register
 --  | offset : 0x14
@@ -107,7 +102,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA operation mode register
 --  | offset : 0x18
 --  | address: 0x40029018
@@ -134,7 +128,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA interrupt enable register
 --  | offset : 0x1c
 --  | address: 0x4002901c
@@ -160,7 +153,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA missed frame and buffer overflow counter register
 --  | offset : 0x20
 --  | address: 0x40029020
@@ -174,7 +166,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA receive status watchdog timer register
 --  | offset : 0x24
 --  | address: 0x40029024
@@ -185,7 +176,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA current host transmit descriptor register
 --  | offset : 0x48
 --  | address: 0x40029048
@@ -194,7 +184,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   { eth_dmachtdr_htdap  :: Bits 32  -- Host transmit descriptor address pointer
   }
 |]
-
 
 -- Ethernet DMA current host receive descriptor register
 --  | offset : 0x4c
@@ -205,7 +194,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA current host transmit buffer address register
 --  | offset : 0x50
 --  | address: 0x40029050
@@ -215,7 +203,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   }
 |]
 
-
 -- Ethernet DMA current host receive buffer address register
 --  | offset : 0x54
 --  | address: 0x40029054
@@ -224,4 +211,4 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
   { eth_dmachrbar_hrbap  :: Bits 32  -- Host receive buffer address pointer
   }
 |]
-
+ 

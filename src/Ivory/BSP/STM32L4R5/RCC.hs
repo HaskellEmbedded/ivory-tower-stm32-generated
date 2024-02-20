@@ -796,4 +796,4 @@ rcc_reg_ccipr2 = mkBitDataRegNamed (rcc_periph_base + 0x9c) "ccipr2"
 |]
 rcc_reg_dlycfgr :: BitDataReg RCC_DLYCFGR
 rcc_reg_dlycfgr = mkBitDataRegNamed (rcc_periph_base + 0xa4) "dlycfgr"
-
+ 

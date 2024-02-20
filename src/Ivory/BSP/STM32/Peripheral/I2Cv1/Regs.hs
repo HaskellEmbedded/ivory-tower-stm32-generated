@@ -38,7 +38,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Control register 2
 --  | offset : 0x4
 --  | address: 0x40005404
@@ -55,7 +54,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Own address register 1
 --  | offset : 0x8
 --  | address: 0x40005408
@@ -68,7 +66,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Own address register 2
 --  | offset : 0xc
 --  | address: 0x4000540c
@@ -80,7 +77,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Data register
 --  | offset : 0x10
 --  | address: 0x40005410
@@ -90,7 +86,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_dr_dr  :: Bits 8   -- 8-bit data register
   }
 |]
-
 
 -- Status register 1
 --  | offset : 0x14
@@ -117,7 +112,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Status register 2
 --  | offset : 0x18
 --  | address: 0x40005418
@@ -136,7 +130,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Clock control register
 --  | offset : 0x1c
 --  | address: 0x4000541c
@@ -150,7 +143,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- TRISE register
 --  | offset : 0x20
 --  | address: 0x40005420
@@ -160,4 +152,4 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_trise_trise  :: Bits 6   -- Maximum rise time in Fast/Standard mode (Master mode)
   }
 |]
-
+ 

@@ -22,7 +22,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- EXTI falling trigger selection register
 --  | offset : 0x4
 --  | address: 0x40021804
@@ -31,7 +30,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   { exti_ftsr1_data  :: Bits 32  -- Data
   }
 |]
-
 
 -- EXTI software interrupt event register
 --  | offset : 0x8
@@ -42,7 +40,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- EXTI rising edge pending register
 --  | offset : 0xc
 --  | address: 0x4002180c
@@ -51,7 +48,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   { exti_rpr1_data  :: Bits 32  -- Data
   }
 |]
-
 
 -- EXTI falling edge pending register
 --  | offset : 0x10
@@ -62,7 +58,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- EXTI external interrupt selection register
 --  | offset : 0x60
 --  | address: 0x40021860
@@ -71,7 +66,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   { exti_exticr1_data  :: Bits 32  -- Data
   }
 |]
-
 
 -- EXTI external interrupt selection register
 --  | offset : 0x64
@@ -82,7 +76,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- EXTI external interrupt selection register
 --  | offset : 0x68
 --  | address: 0x40021868
@@ -91,7 +84,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   { exti_exticr3_data  :: Bits 32  -- Data
   }
 |]
-
 
 -- EXTI external interrupt selection register
 --  | offset : 0x6c
@@ -102,7 +94,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- EXTI CPU wakeup with interrupt mask register
 --  | offset : 0x80
 --  | address: 0x40021880
@@ -112,7 +103,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- EXTI CPU wakeup with event mask register
 --  | offset : 0x84
 --  | address: 0x40021884
@@ -121,4 +111,4 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   { exti_emr1_data  :: Bits 32  -- Data
   }
 |]
-
+ 

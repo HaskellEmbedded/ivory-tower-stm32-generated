@@ -344,4 +344,4 @@ flash_reg_pcrop2ber = mkBitDataRegNamed (flash_periph_base + 0x58) "pcrop2ber"
 |]
 flash_reg_secr :: BitDataReg FLASH_SECR
 flash_reg_secr = mkBitDataRegNamed (flash_periph_base + 0x80) "secr"
-
+ 

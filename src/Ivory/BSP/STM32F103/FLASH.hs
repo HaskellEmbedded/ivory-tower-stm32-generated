@@ -131,4 +131,4 @@ flash_reg_obr = mkBitDataRegNamed (flash_periph_base + 0x1c) "obr"
 |]
 flash_reg_wrpr :: BitDataReg FLASH_WRPR
 flash_reg_wrpr = mkBitDataRegNamed (flash_periph_base + 0x20) "wrpr"
-
+ 

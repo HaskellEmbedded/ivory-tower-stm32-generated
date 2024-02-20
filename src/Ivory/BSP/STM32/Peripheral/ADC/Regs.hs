@@ -28,7 +28,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- control register 1
 --  | offset : 0x4
 --  | address: 0x40012004
@@ -52,7 +51,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_cr1_awdch    :: Bits 5   -- Analog watchdog channel select bits
   }
 |]
-
 
 -- control register 2
 --  | offset : 0x8
@@ -78,7 +76,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- sample time register 1
 --  | offset : 0xc
 --  | address: 0x4001200c
@@ -96,7 +93,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_smpr1_smp10  :: Bits 3   -- Channel 10 sampling time selection
   }
 |]
-
 
 -- sample time register 2
 --  | offset : 0x10
@@ -117,7 +113,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- injected channel data offset register x
 --  | offset : 0x14
 --  | address: 0x40012014
@@ -127,7 +122,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_jofr1_joffset  :: Bits 12  -- Data offset for injected channel x
   }
 |]
-
 
 -- injected channel data offset register x
 --  | offset : 0x18
@@ -139,7 +133,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- injected channel data offset register x
 --  | offset : 0x1c
 --  | address: 0x4001201c
@@ -149,7 +142,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_jofr3_joffset  :: Bits 12  -- Data offset for injected channel x
   }
 |]
-
 
 -- injected channel data offset register x
 --  | offset : 0x20
@@ -161,7 +153,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- watchdog higher threshold register
 --  | offset : 0x24
 --  | address: 0x40012024
@@ -172,7 +163,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- watchdog lower threshold register
 --  | offset : 0x28
 --  | address: 0x40012028
@@ -182,7 +172,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_ltr_lt  :: Bits 12  -- Analog watchdog lower threshold
   }
 |]
-
 
 -- regular sequence register 1
 --  | offset : 0x2c
@@ -197,7 +186,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_sqr1_sq13  :: Bits 5   -- 13th conversion in regular sequence
   }
 |]
-
 
 -- regular sequence register 2
 --  | offset : 0x30
@@ -214,7 +202,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- regular sequence register 3
 --  | offset : 0x34
 --  | address: 0x40012034
@@ -230,7 +217,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- injected sequence register
 --  | offset : 0x38
 --  | address: 0x40012038
@@ -245,7 +231,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- injected data register x
 --  | offset : 0x3c
 --  | address: 0x4001203c
@@ -255,7 +240,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_jdr1_jdata  :: Bits 16  -- Injected data
   }
 |]
-
 
 -- injected data register x
 --  | offset : 0x40
@@ -267,7 +251,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- injected data register x
 --  | offset : 0x44
 --  | address: 0x40012044
@@ -277,7 +260,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_jdr3_jdata  :: Bits 16  -- Injected data
   }
 |]
-
 
 -- injected data register x
 --  | offset : 0x48
@@ -289,7 +271,6 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   }
 |]
 
-
 -- regular data register
 --  | offset : 0x4c
 --  | address: 0x4001204c
@@ -299,4 +280,4 @@ import Ivory.BSP.STM32.Peripheral.ADC.RegTypes
   , adc_dr_data  :: Bits 16  -- Regular data
   }
 |]
-
+ 

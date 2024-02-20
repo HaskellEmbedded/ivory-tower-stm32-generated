@@ -43,7 +43,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Control register 2
 --  | offset : 0x4
 --  | address: 0x40011004
@@ -71,7 +70,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , _                :: Bits 4   -- (Reserved)
   }
 |]
-
 
 -- Control register 3
 --  | offset : 0x8
@@ -102,7 +100,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Baud rate register
 --  | offset : 0xc
 --  | address: 0x4001100c
@@ -112,7 +109,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_brr_brr  :: Bits 20  -- brr divider
   }
 |]
-
 
 -- Guard time and prescaler register
 --  | offset : 0x10
@@ -125,7 +121,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Receiver timeout register
 --  | offset : 0x14
 --  | address: 0x40011014
@@ -135,7 +130,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_rtor_rto   :: Bits 24  -- Receiver timeout value
   }
 |]
-
 
 -- Request register
 --  | offset : 0x18
@@ -150,7 +144,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_rqr_abrrq  :: Bit      -- Auto baud rate request
   }
 |]
-
 
 -- Interrupt & status register
 --  | offset : 0x1c
@@ -184,7 +177,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Interrupt flag clear register
 --  | offset : 0x20
 --  | address: 0x40011020
@@ -209,7 +201,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Receive data register
 --  | offset : 0x24
 --  | address: 0x40011024
@@ -220,7 +211,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Transmit data register
 --  | offset : 0x28
 --  | address: 0x40011028
@@ -230,4 +220,4 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_tdr_tdr  :: Bits 8   -- Transmit data value
   }
 |]
-
+ 

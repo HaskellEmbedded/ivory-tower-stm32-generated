@@ -31,7 +31,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- UART4_DR
 --  | offset : 0x4
 --  | address: 0x40004c04
@@ -42,7 +41,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- UART4_BRR
 --  | offset : 0x8
 --  | address: 0x40004c08
@@ -52,7 +50,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_brr_div  :: Bits 16  -- divider
   }
 |]
-
 
 -- UART4_CR1
 --  | offset : 0xc
@@ -77,7 +74,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- UART4_CR2
 --  | offset : 0x10
 --  | address: 0x40004c10
@@ -94,7 +90,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- UART4_CR3
 --  | offset : 0x14
 --  | address: 0x40004c14
@@ -110,4 +105,4 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_cr3_eie    :: Bit      -- Error interrupt enable
   }
 |]
-
+ 

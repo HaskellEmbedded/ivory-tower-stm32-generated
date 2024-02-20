@@ -688,4 +688,4 @@ rcc_reg_csr = mkBitDataRegNamed (rcc_periph_base + 0x94) "csr"
 |]
 rcc_reg_crrcr :: BitDataReg RCC_CRRCR
 rcc_reg_crrcr = mkBitDataRegNamed (rcc_periph_base + 0x98) "crrcr"
-
+ 

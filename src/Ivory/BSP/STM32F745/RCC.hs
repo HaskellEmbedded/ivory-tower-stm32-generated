@@ -684,4 +684,4 @@ rcc_reg_dckcfgr1 = mkBitDataRegNamed (rcc_periph_base + 0x8c) "dckcfgr1"
 |]
 rcc_reg_dckcfgr2 :: BitDataReg RCC_DCKCFGR2
 rcc_reg_dckcfgr2 = mkBitDataRegNamed (rcc_periph_base + 0x90) "dckcfgr2"
-
+ 

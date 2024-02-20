@@ -469,4 +469,4 @@ rcc_reg_plli2scfgr = mkBitDataRegNamed (rcc_periph_base + 0x84) "plli2scfgr"
 |]
 rcc_reg_dckcfgr :: BitDataReg RCC_DCKCFGR
 rcc_reg_dckcfgr = mkBitDataRegNamed (rcc_periph_base + 0x8c) "dckcfgr"
-
+ 

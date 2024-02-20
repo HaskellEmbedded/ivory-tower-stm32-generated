@@ -36,7 +36,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   }
 |]
 
-
 -- control register 2
 --  | offset : 0x4
 --  | address: 0x40013004
@@ -58,7 +57,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   }
 |]
 
-
 -- status register
 --  | offset : 0x8
 --  | address: 0x40013008
@@ -78,7 +76,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   }
 |]
 
-
 -- data register
 --  | offset : 0xc
 --  | address: 0x4001300c
@@ -87,7 +84,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   { spi_dr_dr  :: Bits 8   -- Data register
   }
 |]
-
 
 -- CRC polynomial register
 --  | offset : 0x10
@@ -99,7 +95,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   }
 |]
 
-
 -- RX CRC register
 --  | offset : 0x14
 --  | address: 0x40013014
@@ -110,7 +105,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   }
 |]
 
-
 -- TX CRC register
 --  | offset : 0x18
 --  | address: 0x40013018
@@ -120,7 +114,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   , spi_txcrcr_txcrc  :: Bits 16  -- Tx CRC register
   }
 |]
-
 
 -- I2S configuration register
 --  | offset : 0x1c
@@ -140,7 +133,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   }
 |]
 
-
 -- I2S prescaler register
 --  | offset : 0x20
 --  | address: 0x40013020
@@ -153,7 +145,6 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   }
 |]
 
-
 -- DR register with 16 bit DR field
 --  | offset : 0xc
 --  | address: 0x4001300c
@@ -163,4 +154,4 @@ import Ivory.BSP.STM32.Peripheral.SPI.RegTypes
   , spi_dr16_dr  :: Bits 16  -- Data register
   }
 |]
-
+ 

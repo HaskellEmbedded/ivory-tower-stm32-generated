@@ -37,7 +37,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   }
 |]
 
-
 -- Port configuration register high (GPIOn_CRL)
 --  | offset : 0x4
 --  | address: 0x40010804
@@ -61,7 +60,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   , gpio_crh_mode8   :: GPIOF1_Mode  -- Port n.8 mode bits
   }
 |]
-
 
 -- Port input data register (GPIOn_IDR)
 --  | offset : 0x8
@@ -88,7 +86,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   }
 |]
 
-
 -- Port output data register (GPIOn_ODR)
 --  | offset : 0xc
 --  | address: 0x4001080c
@@ -113,7 +110,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   , gpio_odr_odr0   :: Bit      -- Port output data
   }
 |]
-
 
 -- Port bit set/reset register (GPIOn_BSRR)
 --  | offset : 0x10
@@ -155,7 +151,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   }
 |]
 
-
 -- Port bit reset register (GPIOn_BRR)
 --  | offset : 0x14
 --  | address: 0x40010814
@@ -180,7 +175,6 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   , gpio_brr_br0   :: Bit      -- Reset bit 0
   }
 |]
-
 
 -- Port configuration lock register
 --  | offset : 0x18
@@ -207,4 +201,4 @@ import Ivory.BSP.STM32.Peripheral.GPIOv1.RegTypes
   , gpio_lckr_lck0   :: Bit      -- Port A Lock bit 0
   }
 |]
-
+ 

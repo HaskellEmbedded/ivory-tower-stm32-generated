@@ -47,4 +47,4 @@ pwr_reg_cr = mkBitDataRegNamed (pwr_periph_base + 0x0) "cr"
 |]
 pwr_reg_csr :: BitDataReg PWR_CSR
 pwr_reg_csr = mkBitDataRegNamed (pwr_periph_base + 0x4) "csr"
-
+ 

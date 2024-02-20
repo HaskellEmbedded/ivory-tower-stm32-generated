@@ -268,4 +268,4 @@ flash_reg_wrp2ar = mkBitDataRegNamed (flash_periph_base + 0x4c) "wrp2ar"
 |]
 flash_reg_wrp2br :: BitDataReg FLASH_WRP2BR
 flash_reg_wrp2br = mkBitDataRegNamed (flash_periph_base + 0x50) "wrp2br"
-
+ 

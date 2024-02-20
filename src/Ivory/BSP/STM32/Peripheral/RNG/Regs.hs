@@ -34,7 +34,6 @@ import Ivory.Language
   }
 |]
 
-
 -- status register
 --  | offset : 0x4
 --  | address: 0x50060804
@@ -50,7 +49,6 @@ import Ivory.Language
   }
 |]
 
-
 -- data register
 --  | offset : 0x8
 --  | address: 0x50060808
@@ -59,4 +57,4 @@ import Ivory.Language
   { rng_dr_rndata  :: Bits 32  -- Random data
   }
 |]
-
+ 

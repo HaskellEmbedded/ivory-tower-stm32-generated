@@ -22,7 +22,6 @@ import Ivory.Language
   }
 |]
 
-
 -- Prescaler register
 --  | offset : 0x4
 --  | address: 0x40003004
@@ -33,7 +32,6 @@ import Ivory.Language
   }
 |]
 
-
 -- Reload register
 --  | offset : 0x8
 --  | address: 0x40003008
@@ -43,7 +41,6 @@ import Ivory.Language
   , iwdg_rlr_rl  :: Bits 12  -- Watchdog counter reload value
   }
 |]
-
 
 -- Status register
 --  | offset : 0xc
@@ -57,7 +54,6 @@ import Ivory.Language
   }
 |]
 
-
 -- Window register
 --  | offset : 0x10
 --  | address: 0x40003010
@@ -67,4 +63,4 @@ import Ivory.Language
   , iwdg_winr_win  :: Bits 12  -- Watchdog counter window value
   }
 |]
-
+ 

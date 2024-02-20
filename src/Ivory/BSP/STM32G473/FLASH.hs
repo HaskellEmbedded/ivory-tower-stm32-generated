@@ -237,4 +237,4 @@ flash_reg_wrp1br = mkBitDataRegNamed (flash_periph_base + 0x30) "wrp1br"
 |]
 flash_reg_sec1r :: BitDataReg FLASH_SEC1R
 flash_reg_sec1r = mkBitDataRegNamed (flash_periph_base + 0x70) "sec1r"
-
+ 

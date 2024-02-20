@@ -44,7 +44,6 @@ import Ivory.Language
   }
 |]
 
-
 -- CCM SRAM protection register
 --  | offset : 0x4
 --  | address: 0x40010004
@@ -57,7 +56,6 @@ import Ivory.Language
   , syscfg_rcr_page0_wp  :: Bit      -- CCM SRAM page write protection bit
   }
 |]
-
 
 -- external interrupt configuration register 1
 --  | offset : 0x8
@@ -72,7 +70,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 2
 --  | offset : 0xc
 --  | address: 0x4001000c
@@ -85,7 +82,6 @@ import Ivory.Language
   , syscfg_exticr2_exti4  :: Bits 4   -- EXTI 4 configuration bits
   }
 |]
-
 
 -- external interrupt configuration register 3
 --  | offset : 0x10
@@ -100,7 +96,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 4
 --  | offset : 0x14
 --  | address: 0x40010014
@@ -113,7 +108,6 @@ import Ivory.Language
   , syscfg_exticr4_exti12  :: Bits 4   -- EXTI 12 configuration bits
   }
 |]
-
 
 -- configuration register 2
 --  | offset : 0x18
@@ -131,7 +125,6 @@ import Ivory.Language
   }
 |]
 
-
 -- configuration register 3
 --  | offset : 0x50
 --  | address: 0x40010050
@@ -148,4 +141,4 @@ import Ivory.Language
   , syscfg_cfgr3_spi1_rx_dma_rmp  :: Bits 2   -- SPI1_RX DMA remapping bit
   }
 |]
-
+ 

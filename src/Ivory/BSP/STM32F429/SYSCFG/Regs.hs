@@ -26,7 +26,6 @@ import Ivory.Language
   }
 |]
 
-
 -- peripheral mode configuration register
 --  | offset : 0x4
 --  | address: 0x40013804
@@ -42,7 +41,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 1
 --  | offset : 0x8
 --  | address: 0x40013808
@@ -55,7 +53,6 @@ import Ivory.Language
   , syscfg_exticr1_exti0  :: Bits 4   -- EXTI x configuration (x = 0 to 3)
   }
 |]
-
 
 -- external interrupt configuration register 2
 --  | offset : 0xc
@@ -70,7 +67,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 3
 --  | offset : 0x10
 --  | address: 0x40013810
@@ -83,7 +79,6 @@ import Ivory.Language
   , syscfg_exticr3_exti8   :: Bits 4   -- EXTI x configuration (x = 8 to 11)
   }
 |]
-
 
 -- external interrupt configuration register 4
 --  | offset : 0x14
@@ -98,7 +93,6 @@ import Ivory.Language
   }
 |]
 
-
 -- Compensation cell control register
 --  | offset : 0x20
 --  | address: 0x40013820
@@ -110,4 +104,4 @@ import Ivory.Language
   , syscfg_cmpcr_cmp_pd  :: Bit      -- Compensation cell power-down
   }
 |]
-
+ 

@@ -43,7 +43,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC frame filter register
 --  | offset : 0x4
 --  | address: 0x40028004
@@ -64,7 +63,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC hash table high register
 --  | offset : 0x8
 --  | address: 0x40028008
@@ -74,7 +72,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC hash table low register
 --  | offset : 0xc
 --  | address: 0x4002800c
@@ -83,7 +80,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   { eth_machtlr_htl  :: Bits 32  -- Lower 32 bits of hash table
   }
 |]
-
 
 -- Ethernet MAC MII address register
 --  | offset : 0x10
@@ -100,7 +96,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC MII data register
 --  | offset : 0x14
 --  | address: 0x40028014
@@ -110,7 +105,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   , eth_macmiidr_md  :: Bits 16  -- MII data read from/written to the PHY
   }
 |]
-
 
 -- Ethernet MAC flow control register
 --  | offset : 0x18
@@ -129,7 +123,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC VLAN tag register
 --  | offset : 0x1c
 --  | address: 0x4002801c
@@ -140,7 +133,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   , eth_macvlantr_vlanti  :: Bits 16  -- VLAN tag identifier (for receive frames)
   }
 |]
-
 
 -- Ethernet MAC PMT control and status register
 --  | offset : 0x2c
@@ -159,7 +151,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   , eth_macpmtcsr_pd      :: Bit      -- Power down
   }
 |]
-
 
 -- Ethernet MAC debug register
 --  | offset : 0x34
@@ -186,7 +177,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC interrupt status register
 --  | offset : 0x38
 --  | address: 0x40028038
@@ -203,7 +193,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC interrupt mask register
 --  | offset : 0x3c
 --  | address: 0x4002803c
@@ -217,7 +206,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC address 0 high register
 --  | offset : 0x40
 --  | address: 0x40028040
@@ -229,7 +217,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC address 0 low register
 --  | offset : 0x44
 --  | address: 0x40028044
@@ -238,7 +225,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   { eth_maca0lr_maca0l  :: Bits 32  -- 0
   }
 |]
-
 
 -- Ethernet MAC address 1 high register
 --  | offset : 0x48
@@ -253,7 +239,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC address1 low register
 --  | offset : 0x4c
 --  | address: 0x4002804c
@@ -262,7 +247,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   { eth_maca1lr_maca1l  :: Bits 32  -- MACA1LR
   }
 |]
-
 
 -- Ethernet MAC address 2 high register
 --  | offset : 0x50
@@ -277,7 +261,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC address 2 low register
 --  | offset : 0x54
 --  | address: 0x40028054
@@ -286,7 +269,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   { eth_maca2lr_maca2l  :: Bits 32  -- MACA2L
   }
 |]
-
 
 -- Ethernet MAC address 3 high register
 --  | offset : 0x58
@@ -301,7 +283,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC address 3 low register
 --  | offset : 0x5c
 --  | address: 0x4002805c
@@ -311,7 +292,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   }
 |]
 
-
 -- Ethernet MAC remote wakeup frame filter register
 --  | offset : 0x60
 --  | address: 0x40028060
@@ -320,4 +300,4 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
   { eth_macrwuffer_data  :: Bits 32  -- (Reserved)
   }
 |]
-
+ 

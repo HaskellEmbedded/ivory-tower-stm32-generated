@@ -22,7 +22,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- Event mask register (EXTI_EMR)
 --  | offset : 0x4
 --  | address: 0x40013c04
@@ -31,7 +30,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   { exti_emr_data  :: Bits 32  -- Data
   }
 |]
-
 
 -- Rising Trigger selection register (EXTI_RTSR)
 --  | offset : 0x8
@@ -42,7 +40,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- Falling Trigger selection register (EXTI_FTSR)
 --  | offset : 0xc
 --  | address: 0x40013c0c
@@ -51,7 +48,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   { exti_ftsr_data  :: Bits 32  -- Data
   }
 |]
-
 
 -- Software interrupt event register (EXTI_SWIER)
 --  | offset : 0x10
@@ -62,7 +58,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   }
 |]
 
-
 -- Pending register (EXTI_PR)
 --  | offset : 0x14
 --  | address: 0x40013c14
@@ -71,4 +66,4 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
   { exti_pr_data  :: Bits 32  -- Data
   }
 |]
-
+ 

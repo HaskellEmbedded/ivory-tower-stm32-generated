@@ -28,7 +28,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   }
 |]
 
-
 -- Ethernet MMC receive interrupt register
 --  | offset : 0x4
 --  | address: 0x40028104
@@ -42,7 +41,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   , _               :: Bits 5   -- (Reserved)
   }
 |]
-
 
 -- Ethernet MMC transmit interrupt register
 --  | offset : 0x8
@@ -58,7 +56,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   }
 |]
 
-
 -- Ethernet MMC receive interrupt mask register
 --  | offset : 0xc
 --  | address: 0x4002810c
@@ -72,7 +69,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   , _                :: Bits 5   -- (Reserved)
   }
 |]
-
 
 -- Ethernet MMC transmit interrupt mask register
 --  | offset : 0x10
@@ -88,7 +84,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   }
 |]
 
-
 -- Ethernet MMC transmitted good frames after a single collision counter
 --  | offset : 0x4c
 --  | address: 0x4002814c
@@ -97,7 +92,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   { eth_mmctgfsccr_tgfscc  :: Bits 32  -- Transmitted good frames single collision counter
   }
 |]
-
 
 -- Ethernet MMC transmitted good frames after more than a single collision
 --  | offset : 0x50
@@ -108,7 +102,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   }
 |]
 
-
 -- Ethernet MMC transmitted good frames counter register
 --  | offset : 0x68
 --  | address: 0x40028168
@@ -117,7 +110,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   { eth_mmctgfcr_tgfc  :: Bits 32  -- HTL
   }
 |]
-
 
 -- Ethernet MMC received frames with CRC error counter register
 --  | offset : 0x94
@@ -128,7 +120,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   }
 |]
 
-
 -- Ethernet MMC received frames with alignment error counter register
 --  | offset : 0x98
 --  | address: 0x40028198
@@ -138,7 +129,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   }
 |]
 
-
 -- MMC received good unicast frames counter register
 --  | offset : 0xc4
 --  | address: 0x400281c4
@@ -147,4 +137,4 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
   { eth_mmcrgufcr_rgufc  :: Bits 32  -- RGUFC
   }
 |]
-
+ 

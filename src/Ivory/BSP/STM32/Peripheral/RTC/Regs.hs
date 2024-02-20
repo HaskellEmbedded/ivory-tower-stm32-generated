@@ -30,7 +30,6 @@ import Ivory.Language
   }
 |]
 
-
 -- date register
 --  | offset : 0x4
 --  | address: 0x40002804
@@ -47,7 +46,6 @@ import Ivory.Language
   , rtc_dr_du   :: Bits 4   -- Date units in BCD format
   }
 |]
-
 
 -- control register
 --  | offset : 0x8
@@ -77,7 +75,6 @@ import Ivory.Language
   }
 |]
 
-
 -- initialization and status register
 --  | offset : 0xc
 --  | address: 0x4000280c
@@ -102,7 +99,6 @@ import Ivory.Language
   }
 |]
 
-
 -- prescaler register
 --  | offset : 0x10
 --  | address: 0x40002810
@@ -114,7 +110,6 @@ import Ivory.Language
   , rtc_prer_prediv_s  :: Bits 15  -- Synchronous prescaler factor
   }
 |]
-
 
 -- alarm A register
 --  | offset : 0x1c
@@ -138,7 +133,6 @@ import Ivory.Language
   }
 |]
 
-
 -- write protection register
 --  | offset : 0x24
 --  | address: 0x40002824
@@ -148,7 +142,6 @@ import Ivory.Language
   , rtc_wpr_key  :: Bits 8   -- Write protection key
   }
 |]
-
 
 -- sub second register
 --  | offset : 0x28
@@ -160,7 +153,6 @@ import Ivory.Language
   }
 |]
 
-
 -- shift control register
 --  | offset : 0x2c
 --  | address: 0x4000282c
@@ -171,7 +163,6 @@ import Ivory.Language
   , rtc_shiftr_subfs  :: Bits 15  -- Subtract a fraction of a second
   }
 |]
-
 
 -- timestamp time register
 --  | offset : 0x30
@@ -191,7 +182,6 @@ import Ivory.Language
   }
 |]
 
-
 -- timestamp date register
 --  | offset : 0x34
 --  | address: 0x40002834
@@ -207,7 +197,6 @@ import Ivory.Language
   }
 |]
 
-
 -- time-stamp sub second register
 --  | offset : 0x38
 --  | address: 0x40002838
@@ -217,7 +206,6 @@ import Ivory.Language
   , rtc_tsssr_ss  :: Bits 16  -- Sub second value
   }
 |]
-
 
 -- calibration register
 --  | offset : 0x3c
@@ -232,7 +220,6 @@ import Ivory.Language
   , rtc_calr_calm    :: Bits 9   -- Calibration minus
   }
 |]
-
 
 -- tamper and alternate function configuration register
 --  | offset : 0x40
@@ -261,7 +248,6 @@ import Ivory.Language
   }
 |]
 
-
 -- alarm A sub second register
 --  | offset : 0x44
 --  | address: 0x40002844
@@ -274,7 +260,6 @@ import Ivory.Language
   }
 |]
 
-
 -- backup register
 --  | offset : 0x50
 --  | address: 0x40002850
@@ -283,7 +268,6 @@ import Ivory.Language
   { rtc_bkp0r_bkp  :: Bits 32  -- BKP
   }
 |]
-
 
 -- backup register
 --  | offset : 0x54
@@ -294,7 +278,6 @@ import Ivory.Language
   }
 |]
 
-
 -- backup register
 --  | offset : 0x58
 --  | address: 0x40002858
@@ -303,7 +286,6 @@ import Ivory.Language
   { rtc_bkp2r_bkp  :: Bits 32  -- BKP
   }
 |]
-
 
 -- backup register
 --  | offset : 0x5c
@@ -314,7 +296,6 @@ import Ivory.Language
   }
 |]
 
-
 -- backup register
 --  | offset : 0x60
 --  | address: 0x40002860
@@ -323,4 +304,4 @@ import Ivory.Language
   { rtc_bkp4r_bkp  :: Bits 32  -- BKP
   }
 |]
-
+ 

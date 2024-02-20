@@ -25,7 +25,6 @@ import Ivory.Language
   }
 |]
 
-
 -- configuration register 1
 --  | offset : 0x4
 --  | address: 0x40010004
@@ -47,7 +46,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 1
 --  | offset : 0x8
 --  | address: 0x40010008
@@ -63,7 +61,6 @@ import Ivory.Language
   , syscfg_exticr1_exti0  :: Bits 3   -- EXTI 0 configuration bits
   }
 |]
-
 
 -- external interrupt configuration register 2
 --  | offset : 0xc
@@ -81,7 +78,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 3
 --  | offset : 0x10
 --  | address: 0x40010010
@@ -97,7 +93,6 @@ import Ivory.Language
   , syscfg_exticr3_exti8   :: Bits 3   -- EXTI 8 configuration bits
   }
 |]
-
 
 -- external interrupt configuration register 4
 --  | offset : 0x14
@@ -115,7 +110,6 @@ import Ivory.Language
   }
 |]
 
-
 -- SCSR
 --  | offset : 0x18
 --  | address: 0x40010018
@@ -126,7 +120,6 @@ import Ivory.Language
   , syscfg_scsr_sram2er   :: Bit      -- SRAM2 Erase
   }
 |]
-
 
 -- CFGR2
 --  | offset : 0x1c
@@ -142,7 +135,6 @@ import Ivory.Language
   , syscfg_cfgr2_cll   :: Bit      -- Cortex LOCKUP (Hardfault) output enable bit
   }
 |]
-
 
 -- SWPR
 --  | offset : 0x20
@@ -184,7 +176,6 @@ import Ivory.Language
   }
 |]
 
-
 -- SKR
 --  | offset : 0x24
 --  | address: 0x40010024
@@ -194,4 +185,4 @@ import Ivory.Language
   , syscfg_skr_key  :: Bits 8   -- SRAM2 write protection key for software erase
   }
 |]
-
+ 

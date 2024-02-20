@@ -43,7 +43,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Control register 2
 --  | offset : 0x4
 --  | address: 0x40005404
@@ -64,7 +63,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Own address register 1
 --  | offset : 0x8
 --  | address: 0x40005408
@@ -77,7 +75,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_oar1_oa1      :: Bits 10  -- Interface address
   }
 |]
-
 
 -- Own address register 2
 --  | offset : 0xc
@@ -93,7 +90,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Timing register
 --  | offset : 0x10
 --  | address: 0x40005410
@@ -107,7 +103,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_timingr_scll    :: Bits 8   -- SCL low period (master mode)
   }
 |]
-
 
 -- Status register 1
 --  | offset : 0x14
@@ -123,7 +118,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_timeoutr_timeouta  :: Bits 12  -- Bus timeout A
   }
 |]
-
 
 -- Interrupt and Status register
 --  | offset : 0x18
@@ -152,7 +146,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Interrupt clear register
 --  | offset : 0x1c
 --  | address: 0x4000541c
@@ -173,7 +166,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- PEC register
 --  | offset : 0x20
 --  | address: 0x40005420
@@ -183,7 +175,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_pecr_pec  :: Bits 8   -- Packet error checking register
   }
 |]
-
 
 -- Receive data register
 --  | offset : 0x24
@@ -195,7 +186,6 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   }
 |]
 
-
 -- Transmit data register
 --  | offset : 0x28
 --  | address: 0x40005428
@@ -205,4 +195,4 @@ import Ivory.BSP.STM32.Peripheral.I2C.RegTypes
   , i2c_txdr_txdata  :: Bits 8   -- 8-bit transmit data
   }
 |]
-
+ 

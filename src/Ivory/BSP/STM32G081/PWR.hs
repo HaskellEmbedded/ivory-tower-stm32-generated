@@ -473,4 +473,4 @@ pwr_reg_pucrf = mkBitDataRegNamed (pwr_periph_base + 0x48) "pucrf"
 |]
 pwr_reg_pdcrf :: BitDataReg PWR_PDCRF
 pwr_reg_pdcrf = mkBitDataRegNamed (pwr_periph_base + 0x4c) "pdcrf"
-
+ 

@@ -22,7 +22,6 @@ import Ivory.Language
   }
 |]
 
-
 -- peripheral mode configuration register
 --  | offset : 0x4
 --  | address: 0x40013804
@@ -33,7 +32,6 @@ import Ivory.Language
   , _                 :: Bits 16  -- (Reserved)
   }
 |]
-
 
 -- external interrupt configuration register 1
 --  | offset : 0x8
@@ -48,7 +46,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 2
 --  | offset : 0xc
 --  | address: 0x4001380c
@@ -61,7 +58,6 @@ import Ivory.Language
   , syscfg_exticr2_exti4  :: Bits 4   -- EXTI x configuration (x = 4 to 7)
   }
 |]
-
 
 -- external interrupt configuration register 3
 --  | offset : 0x10
@@ -76,7 +72,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 4
 --  | offset : 0x14
 --  | address: 0x40013814
@@ -90,7 +85,6 @@ import Ivory.Language
   }
 |]
 
-
 -- Compensation cell control register
 --  | offset : 0x20
 --  | address: 0x40013820
@@ -103,7 +97,6 @@ import Ivory.Language
   }
 |]
 
-
 -- Configuration register
 --  | offset : 0x2c
 --  | address: 0x4001382c
@@ -114,4 +107,4 @@ import Ivory.Language
   , syscfg_cfgr_fmpi2c1_scl  :: Bit      -- Forces FM+ drive capability on I2CFMP1_SCL pin
   }
 |]
-
+ 

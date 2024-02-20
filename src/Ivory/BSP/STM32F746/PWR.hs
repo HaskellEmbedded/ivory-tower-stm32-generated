@@ -110,4 +110,4 @@ pwr_reg_cr2 = mkBitDataRegNamed (pwr_periph_base + 0x8) "cr2"
 |]
 pwr_reg_csr2 :: BitDataReg PWR_CSR2
 pwr_reg_csr2 = mkBitDataRegNamed (pwr_periph_base + 0xc) "csr2"
-
+ 

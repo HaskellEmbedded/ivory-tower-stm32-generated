@@ -40,7 +40,6 @@ import Ivory.Language
   }
 |]
 
-
 -- SYSCFG configuration register 1
 --  | offset : 0x18
 --  | address: 0x40010018
@@ -56,7 +55,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 0 status register
 --  | offset : 0x80
 --  | address: 0x40010080
@@ -66,7 +64,6 @@ import Ivory.Language
   , syscfg_itline0_wwdg  :: Bit      -- Window watchdog interrupt pending flag
   }
 |]
-
 
 -- interrupt line 2 status register
 --  | offset : 0x88
@@ -79,7 +76,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 3 status register
 --  | offset : 0x8c
 --  | address: 0x4001008c
@@ -91,7 +87,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 4 status register
 --  | offset : 0x90
 --  | address: 0x40010090
@@ -101,7 +96,6 @@ import Ivory.Language
   , syscfg_itline4_rcc  :: Bit      -- RCC
   }
 |]
-
 
 -- interrupt line 5 status register
 --  | offset : 0x94
@@ -114,7 +108,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 6 status register
 --  | offset : 0x98
 --  | address: 0x40010098
@@ -125,7 +118,6 @@ import Ivory.Language
   , syscfg_itline6_exti2  :: Bit      -- EXTI2
   }
 |]
-
 
 -- interrupt line 7 status register
 --  | offset : 0x9c
@@ -148,7 +140,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 8 status register
 --  | offset : 0xa0
 --  | address: 0x400100a0
@@ -160,7 +151,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 9 status register
 --  | offset : 0xa4
 --  | address: 0x400100a4
@@ -170,7 +160,6 @@ import Ivory.Language
   , syscfg_itline9_dma1_ch1  :: Bit      -- DMA1_CH1
   }
 |]
-
 
 -- interrupt line 10 status register
 --  | offset : 0xa8
@@ -182,7 +171,6 @@ import Ivory.Language
   , syscfg_itline10_dma1_ch2  :: Bit      -- DMA1_CH1
   }
 |]
-
 
 -- interrupt line 11 status register
 --  | offset : 0xac
@@ -196,7 +184,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 12 status register
 --  | offset : 0xb0
 --  | address: 0x400100b0
@@ -206,7 +193,6 @@ import Ivory.Language
   , syscfg_itline12_adc  :: Bit      -- ADC
   }
 |]
-
 
 -- interrupt line 13 status register
 --  | offset : 0xb4
@@ -221,7 +207,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 14 status register
 --  | offset : 0xb8
 --  | address: 0x400100b8
@@ -231,7 +216,6 @@ import Ivory.Language
   , syscfg_itline14_tim1_cc  :: Bit      -- TIM1_CC
   }
 |]
-
 
 -- interrupt line 16 status register
 --  | offset : 0xc0
@@ -244,7 +228,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 17 status register
 --  | offset : 0xc4
 --  | address: 0x400100c4
@@ -254,7 +237,6 @@ import Ivory.Language
   , syscfg_itline17_tim6  :: Bit      -- TIM6
   }
 |]
-
 
 -- interrupt line 18 status register
 --  | offset : 0xc8
@@ -266,7 +248,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 19 status register
 --  | offset : 0xcc
 --  | address: 0x400100cc
@@ -276,7 +257,6 @@ import Ivory.Language
   , syscfg_itline19_tim14  :: Bit      -- TIM14
   }
 |]
-
 
 -- interrupt line 20 status register
 --  | offset : 0xd0
@@ -288,7 +268,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 21 status register
 --  | offset : 0xd4
 --  | address: 0x400100d4
@@ -298,7 +277,6 @@ import Ivory.Language
   , syscfg_itline21_tim16  :: Bit      -- TIM16
   }
 |]
-
 
 -- interrupt line 22 status register
 --  | offset : 0xd8
@@ -310,7 +288,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 23 status register
 --  | offset : 0xdc
 --  | address: 0x400100dc
@@ -320,7 +297,6 @@ import Ivory.Language
   , syscfg_itline23_i2c1  :: Bit      -- I2C1
   }
 |]
-
 
 -- interrupt line 24 status register
 --  | offset : 0xe0
@@ -333,7 +309,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 25 status register
 --  | offset : 0xe4
 --  | address: 0x400100e4
@@ -343,7 +318,6 @@ import Ivory.Language
   , syscfg_itline25_spi1  :: Bit      -- SPI1
   }
 |]
-
 
 -- interrupt line 26 status register
 --  | offset : 0xe8
@@ -357,7 +331,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 27 status register
 --  | offset : 0xec
 --  | address: 0x400100ec
@@ -368,7 +341,6 @@ import Ivory.Language
   }
 |]
 
-
 -- interrupt line 28 status register
 --  | offset : 0xf0
 --  | address: 0x400100f0
@@ -378,7 +350,6 @@ import Ivory.Language
   , syscfg_itline28_usart2  :: Bit      -- USART2
   }
 |]
-
 
 -- interrupt line 29 status register
 --  | offset : 0xf4
@@ -393,4 +364,4 @@ import Ivory.Language
   , syscfg_itline29_usart3  :: Bit      -- USART3
   }
 |]
-
+ 

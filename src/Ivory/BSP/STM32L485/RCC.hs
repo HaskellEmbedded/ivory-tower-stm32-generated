@@ -710,4 +710,4 @@ rcc_reg_bdcr = mkBitDataRegNamed (rcc_periph_base + 0x90) "bdcr"
 |]
 rcc_reg_csr :: BitDataReg RCC_CSR
 rcc_reg_csr = mkBitDataRegNamed (rcc_periph_base + 0x94) "csr"
-
+ 

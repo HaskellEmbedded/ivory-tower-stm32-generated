@@ -24,7 +24,6 @@ import Ivory.Language
   }
 |]
 
-
 -- AF remap and debug I/O configuration register (AFIO_MAPR)
 --  | offset : 0x4
 --  | address: 0x40010004
@@ -48,7 +47,6 @@ import Ivory.Language
   }
 |]
 
-
 -- External interrupt configuration register 1 (AFIO_EXTICR1)
 --  | offset : 0x8
 --  | address: 0x40010008
@@ -61,7 +59,6 @@ import Ivory.Language
   , afio_exticr1_exti0  :: Bits 4   -- EXTI0 configuration
   }
 |]
-
 
 -- External interrupt configuration register 2 (AFIO_EXTICR2)
 --  | offset : 0xc
@@ -76,7 +73,6 @@ import Ivory.Language
   }
 |]
 
-
 -- External interrupt configuration register 3 (AFIO_EXTICR3)
 --  | offset : 0x10
 --  | address: 0x40010010
@@ -90,7 +86,6 @@ import Ivory.Language
   }
 |]
 
-
 -- External interrupt configuration register 4 (AFIO_EXTICR4)
 --  | offset : 0x14
 --  | address: 0x40010014
@@ -103,7 +98,6 @@ import Ivory.Language
   , afio_exticr4_exti12  :: Bits 4   -- EXTI12 configuration
   }
 |]
-
 
 -- AF remap and debug I/O configuration register
 --  | offset : 0x1c
@@ -125,4 +119,4 @@ import Ivory.Language
   , afio_mapr2_tim15_remap          :: Bit      -- TIM15 remapping
   }
 |]
-
+ 

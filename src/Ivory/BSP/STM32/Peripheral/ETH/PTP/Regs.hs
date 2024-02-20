@@ -39,7 +39,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   }
 |]
 
-
 -- Ethernet PTP subsecond increment register
 --  | offset : 0x4
 --  | address: 0x40028704
@@ -50,7 +49,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   }
 |]
 
-
 -- Ethernet PTP time stamp high register
 --  | offset : 0x8
 --  | address: 0x40028708
@@ -59,7 +57,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   { eth_ptptshr_sts  :: Bits 32  -- STS
   }
 |]
-
 
 -- Ethernet PTP time stamp low register
 --  | offset : 0xc
@@ -71,7 +68,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   }
 |]
 
-
 -- Ethernet PTP time stamp high update register
 --  | offset : 0x10
 --  | address: 0x40028710
@@ -80,7 +76,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   { eth_ptptshur_tsus  :: Bits 32  -- TSUS
   }
 |]
-
 
 -- Ethernet PTP time stamp low update register
 --  | offset : 0x14
@@ -92,7 +87,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   }
 |]
 
-
 -- Ethernet PTP time stamp addend register
 --  | offset : 0x18
 --  | address: 0x40028718
@@ -101,7 +95,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   { eth_ptptsar_tsa  :: Bits 32  -- TSA
   }
 |]
-
 
 -- Ethernet PTP target time high register
 --  | offset : 0x1c
@@ -112,7 +105,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   }
 |]
 
-
 -- Ethernet PTP target time low register
 --  | offset : 0x20
 --  | address: 0x40028720
@@ -121,7 +113,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   { eth_ptpttlr_ttsl  :: Bits 32  -- TTSL
   }
 |]
-
 
 -- Ethernet PTP time stamp status register
 --  | offset : 0x28
@@ -134,7 +125,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   }
 |]
 
-
 -- Ethernet PTP PPS control register
 --  | offset : 0x2c
 --  | address: 0x4002872c
@@ -144,4 +134,4 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
   , eth_ptpppscr_ppsfreq  :: Bits 4   -- PPS frequency selection
   }
 |]
-
+ 

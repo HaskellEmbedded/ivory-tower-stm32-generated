@@ -143,4 +143,4 @@ flash_reg_optcr1 = mkBitDataRegNamed (flash_periph_base + 0x18) "optcr1"
 |]
 flash_reg_optcr2 :: BitDataReg FLASH_OPTCR2
 flash_reg_optcr2 = mkBitDataRegNamed (flash_periph_base + 0x1c) "optcr2"
-
+ 

@@ -41,7 +41,6 @@ import Ivory.Language
   }
 |]
 
-
 -- CCM SRAM protection register
 --  | offset : 0x4
 --  | address: 0x40010004
@@ -59,7 +58,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 1
 --  | offset : 0x8
 --  | address: 0x40010008
@@ -72,7 +70,6 @@ import Ivory.Language
   , syscfg_exticr1_exti0  :: Bits 4   -- EXTI 0 configuration bits
   }
 |]
-
 
 -- external interrupt configuration register 2
 --  | offset : 0xc
@@ -87,7 +84,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 3
 --  | offset : 0x10
 --  | address: 0x40010010
@@ -101,7 +97,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 4
 --  | offset : 0x14
 --  | address: 0x40010014
@@ -114,7 +109,6 @@ import Ivory.Language
   , syscfg_exticr4_exti12  :: Bits 4   -- EXTI 12 configuration bits
   }
 |]
-
 
 -- configuration register 2
 --  | offset : 0x18
@@ -131,7 +125,6 @@ import Ivory.Language
   , syscfg_cfgr2_locup_lock        :: Bit      -- Cortex-M0 LOCKUP bit enable bit
   }
 |]
-
 
 -- control and status register
 --  | offset : 0x20
@@ -156,7 +149,6 @@ import Ivory.Language
   }
 |]
 
-
 -- control and status register
 --  | offset : 0x28
 --  | address: 0x40010028
@@ -180,7 +172,6 @@ import Ivory.Language
   }
 |]
 
-
 -- control and status register
 --  | offset : 0x30
 --  | address: 0x40010030
@@ -203,7 +194,6 @@ import Ivory.Language
   , syscfg_comp6_csr_comp6en         :: Bit      -- Comparator 6 enable
   }
 |]
-
 
 -- OPAMP2 control register
 --  | offset : 0x3c
@@ -230,7 +220,6 @@ import Ivory.Language
   }
 |]
 
-
 -- configuration register 3
 --  | offset : 0x50
 --  | address: 0x40010050
@@ -248,4 +237,4 @@ import Ivory.Language
   , syscfg_cfgr3_spi1_rx_dma_rmp  :: Bits 2   -- SPI1_RX DMA remapping bit
   }
 |]
-
+ 

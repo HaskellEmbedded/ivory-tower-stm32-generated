@@ -42,7 +42,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 1
 --  | offset : 0x8
 --  | address: 0x40010008
@@ -55,7 +54,6 @@ import Ivory.Language
   , syscfg_exticr1_exti0  :: Bits 4   -- EXTI 0 configuration bits
   }
 |]
-
 
 -- external interrupt configuration register 2
 --  | offset : 0xc
@@ -70,7 +68,6 @@ import Ivory.Language
   }
 |]
 
-
 -- external interrupt configuration register 3
 --  | offset : 0x10
 --  | address: 0x40010010
@@ -83,7 +80,6 @@ import Ivory.Language
   , syscfg_exticr3_exti8   :: Bits 4   -- EXTI 8 configuration bits
   }
 |]
-
 
 -- external interrupt configuration register 4
 --  | offset : 0x14
@@ -98,7 +94,6 @@ import Ivory.Language
   }
 |]
 
-
 -- configuration register 2
 --  | offset : 0x18
 --  | address: 0x40010018
@@ -112,4 +107,4 @@ import Ivory.Language
   , syscfg_cfgr2_lockup_lock       :: Bit      -- Cortex-M0 LOCKUP bit enable bit
   }
 |]
-
+ 

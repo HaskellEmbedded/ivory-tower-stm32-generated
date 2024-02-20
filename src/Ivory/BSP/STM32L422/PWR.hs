@@ -552,4 +552,4 @@ pwr_reg_pucrh = mkBitDataRegNamed (pwr_periph_base + 0x58) "pucrh"
 |]
 pwr_reg_pdcrh :: BitDataReg PWR_PDCRH
 pwr_reg_pdcrh = mkBitDataRegNamed (pwr_periph_base + 0x5c) "pdcrh"
-
+ 

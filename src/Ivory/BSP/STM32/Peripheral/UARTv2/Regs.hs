@@ -32,7 +32,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Data register
 --  | offset : 0x4
 --  | address: 0x40011004
@@ -43,7 +42,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Baud rate register
 --  | offset : 0x8
 --  | address: 0x40011008
@@ -53,7 +51,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_brr_div  :: Bits 16  -- divider
   }
 |]
-
 
 -- Control register 1
 --  | offset : 0xc
@@ -80,7 +77,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Control register 2
 --  | offset : 0x10
 --  | address: 0x40011010
@@ -100,7 +96,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_cr2_add    :: Bits 4   -- Address of the USART node
   }
 |]
-
 
 -- Control register 3
 --  | offset : 0x14
@@ -123,7 +118,6 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   }
 |]
 
-
 -- Guard time and prescaler register
 --  | offset : 0x18
 --  | address: 0x40011018
@@ -134,4 +128,4 @@ import Ivory.BSP.STM32.Peripheral.UART.RegTypes
   , uart_gtpr_psc  :: Bits 8   -- Prescaler value
   }
 |]
-
+ 

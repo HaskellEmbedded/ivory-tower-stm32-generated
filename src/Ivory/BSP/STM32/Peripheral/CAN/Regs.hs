@@ -33,7 +33,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_MSR
 --  | offset : 0x4
 --  | address: 0x40006404
@@ -52,7 +51,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , can_msr_inak   :: Bit      -- INAK
   }
 |]
-
 
 -- CAN_TSR
 --  | offset : 0x8
@@ -87,7 +85,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_RF0R
 --  | offset : 0xc
 --  | address: 0x4000640c
@@ -101,7 +98,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , can_rfr_fmp   :: Bits 2   -- FMP0
   }
 |]
-
 
 -- CAN_IER
 --  | offset : 0x14
@@ -128,7 +124,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_ESR
 --  | offset : 0x18
 --  | address: 0x40006418
@@ -144,7 +139,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , can_esr_ewgf  :: Bit      -- EWGF
   }
 |]
-
 
 -- CAN BTR
 --  | offset : 0x1c
@@ -163,7 +157,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_TI0R
 --  | offset : 0x180
 --  | address: 0x40006580
@@ -175,7 +168,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , can_tir_txrq  :: Bit      -- TXRQ
   }
 |]
-
 
 -- CAN_TDT0R
 --  | offset : 0x184
@@ -190,7 +182,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_TDL0R
 --  | offset : 0x188
 --  | address: 0x40006588
@@ -202,7 +193,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , can_tdlr_data0  :: Bits 8   -- DATA0
   }
 |]
-
 
 -- CAN_TDH0R
 --  | offset : 0x18c
@@ -216,7 +206,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_RI0R
 --  | offset : 0x1b0
 --  | address: 0x400065b0
@@ -228,7 +217,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , _          :: Bit      -- (Reserved)
   }
 |]
-
 
 -- CAN_RDT0R
 --  | offset : 0x1b4
@@ -242,7 +230,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_RDL0R
 --  | offset : 0x1b8
 --  | address: 0x400065b8
@@ -254,7 +241,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , can_rdlr_data0  :: Bits 8   -- DATA0
   }
 |]
-
 
 -- CAN_RDH0R
 --  | offset : 0x1bc
@@ -268,7 +254,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_FMR
 --  | offset : 0x200
 --  | address: 0x40006600
@@ -281,7 +266,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_FM1R
 --  | offset : 0x204
 --  | address: 0x40006604
@@ -291,7 +275,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , can_fm1r_fbm  :: BitArray 28 Bit  -- Filter mode
   }
 |]
-
 
 -- CAN_FS1R
 --  | offset : 0x20c
@@ -303,7 +286,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- CAN_FFA1R
 --  | offset : 0x214
 --  | address: 0x40006614
@@ -313,7 +295,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , can_ffa1r_ffa  :: BitArray 28 Bit  -- Filter FIFO assignment for filter 0
   }
 |]
-
 
 -- CAN_FA1R
 --  | offset : 0x21c
@@ -325,7 +306,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- Filter bank x register 1
 --  | offset : 0x240
 --  | address: 0x40006640
@@ -335,7 +315,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- Filter bank x register 2
 --  | offset : 0x244
 --  | address: 0x40006644
@@ -344,7 +323,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   { can_fr2_fb  :: Bits 32  -- Filter bits
   }
 |]
-
 
 -- 
 --  | offset : 0x0
@@ -362,7 +340,6 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   }
 |]
 
-
 -- 
 --  | offset : 0x0
 --  | address: 0x40006400
@@ -375,4 +352,4 @@ import Ivory.BSP.STM32.Peripheral.CAN.RegTypes
   , reserved       :: Bit      -- 
   }
 |]
-
+ 
