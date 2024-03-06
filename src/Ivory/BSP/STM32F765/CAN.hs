@@ -3,6 +3,7 @@ module Ivory.BSP.STM32F765.CAN (
   , can2
   , can3
   , canFilters
+  , can3Filters
   ) where
 
 import Ivory.Language
@@ -15,13 +16,6 @@ import qualified Ivory.BSP.STM32F765.Interrupt as F765
 
 import Ivory.BSP.STM32.AF
 import Ivory.BSP.STM32.Peripheral.CAN
-
-canFilters :: CANPeriphFilters
-canFilters = mkCANPeriphFilters can1_periph_base
-                rccenable rccdisable
-  where
-  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_can1en
-  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_can1en
 
 can1 :: CANPeriph
 can1 = mkCANPeriph can1_periph_base
@@ -49,6 +43,27 @@ can3 = mkCANPeriph can3_periph_base
                 F765.CAN3_TX F765.CAN3_RX0 F765.CAN3_RX1 F765.CAN3_SCE
                (\pin -> findAFByPin pin "can3" afDB)
                "can3"
+  where
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_can3en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_can3en
+
+
+canFilters :: CANPeriphFilters
+canFilters =
+  mkCANPeriphFilters
+    can1_periph_base
+    rccenable
+    rccdisable
+  where
+  rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_can1en
+  rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_can1en
+
+can3Filters :: CANPeriphFilters
+can3Filters =
+  mkCANPeriphFilters
+    can3_periph_base
+    rccenable
+    rccdisable
   where
   rccenable  = modifyReg rcc_reg_apb1enr $ setBit   rcc_apb1enr_can3en
   rccdisable = modifyReg rcc_reg_apb1enr $ clearBit rcc_apb1enr_can3en
