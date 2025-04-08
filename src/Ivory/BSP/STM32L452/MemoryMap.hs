@@ -40,8 +40,8 @@ usb_periph_base :: Integer
 usb_periph_base = 0x40006800
 pwr_periph_base :: Integer
 pwr_periph_base = 0x40007000
-dac_periph_base :: Integer
-dac_periph_base = 0x40007400
+dac1_periph_base :: Integer
+dac1_periph_base = 0x40007400
 opamp_periph_base :: Integer
 opamp_periph_base = 0x40007800
 lptim1_periph_base :: Integer
