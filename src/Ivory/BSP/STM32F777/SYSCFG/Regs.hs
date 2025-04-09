@@ -17,12 +17,12 @@ import Ivory.Language
 --  | address: 0x40013800
 [ivory|
  bitdata SYSCFG_MEMRMP :: Bits 32 = syscfg_memrmp
-  { _                     :: Bits 20  -- (Reserved)
-  , syscfg_memrmp_swp_fmc   :: Bits 2   -- FMC memory mapping swap
-  , _                     :: Bit      -- (Reserved)
-  , syscfg_memrmp_fb_mode   :: Bit      -- Flash bank mode selection
-  , _                     :: Bits 7   -- (Reserved)
-  , syscfg_memrmp_mem_boot  :: Bit      -- Memory mapping selection
+  { _                      :: Bits 20 -- (Reserved)
+  , syscfg_memrmp_swp_fmc  :: Bits 2  -- FMC memory mapping swap
+  , _                      :: Bit     -- (Reserved)
+  , syscfg_memrmp_fb_mode  :: Bit     -- Flash bank mode selection
+  , _                      :: Bits 7  -- (Reserved)
+  , syscfg_memrmp_mem_boot :: Bit     -- Memory mapping selection
   }
 |]
 
@@ -31,21 +31,21 @@ import Ivory.Language
 --  | address: 0x40013804
 [ivory|
  bitdata SYSCFG_PMC :: Bits 32 = syscfg_pmc
-  { _                      :: Bits 8   -- (Reserved)
-  , syscfg_pmc_mii_rmii_sel  :: Bit      -- Ethernet PHY interface selection
-  , _                      :: Bits 4   -- (Reserved)
-  , syscfg_pmc_adc3dc2       :: Bit      -- ADC3DC2
-  , syscfg_pmc_adc2dc2       :: Bit      -- ADC2DC2
-  , syscfg_pmc_adc1dc2       :: Bit      -- ADC1DC2
-  , _                      :: Bits 8   -- (Reserved)
-  , syscfg_pmc_pb9_fmp       :: Bit      -- PB9_FMP Fast Mode + Enable
-  , syscfg_pmc_pb8_fmp       :: Bit      -- PB8_FMP Fast Mode + Enable
-  , syscfg_pmc_pb7_fmp       :: Bit      -- PB7_FMP Fast Mode + Enable
-  , syscfg_pmc_pb6_fmp       :: Bit      -- PB6_FMP Fast Mode + Enable
-  , syscfg_pmc_i2c4_fmp      :: Bit      -- I2C4 Fast Mode + Enable
-  , syscfg_pmc_i2c3_fmp      :: Bit      -- I2C3 Fast Mode + Enable
-  , syscfg_pmc_i2c2_fmp      :: Bit      -- I2C2 Fast Mode + Enable
-  , syscfg_pmc_i2c1_fmp      :: Bit      -- I2C1 Fast Mode + Enable
+  { _                       :: Bits 8 -- (Reserved)
+  , syscfg_pmc_mii_rmii_sel :: Bit    -- Ethernet PHY interface selection
+  , _                       :: Bits 4 -- (Reserved)
+  , syscfg_pmc_adc3dc2      :: Bit    -- ADC3DC2
+  , syscfg_pmc_adc2dc2      :: Bit    -- ADC2DC2
+  , syscfg_pmc_adc1dc2      :: Bit    -- ADC1DC2
+  , _                       :: Bits 8 -- (Reserved)
+  , syscfg_pmc_pb9_fmp      :: Bit    -- PB9_FMP Fast Mode + Enable
+  , syscfg_pmc_pb8_fmp      :: Bit    -- PB8_FMP Fast Mode + Enable
+  , syscfg_pmc_pb7_fmp      :: Bit    -- PB7_FMP Fast Mode + Enable
+  , syscfg_pmc_pb6_fmp      :: Bit    -- PB6_FMP Fast Mode + Enable
+  , syscfg_pmc_i2c4_fmp     :: Bit    -- I2C4 Fast Mode + Enable
+  , syscfg_pmc_i2c3_fmp     :: Bit    -- I2C3 Fast Mode + Enable
+  , syscfg_pmc_i2c2_fmp     :: Bit    -- I2C2 Fast Mode + Enable
+  , syscfg_pmc_i2c1_fmp     :: Bit    -- I2C1 Fast Mode + Enable
   }
 |]
 
@@ -54,11 +54,11 @@ import Ivory.Language
 --  | address: 0x40013808
 [ivory|
  bitdata SYSCFG_EXTICR1 :: Bits 32 = syscfg_exticr1
-  { _                   :: Bits 16  -- (Reserved)
-  , syscfg_exticr1_exti3  :: Bits 4   -- EXTI x configuration (x = 0 to 3)
-  , syscfg_exticr1_exti2  :: Bits 4   -- EXTI x configuration (x = 0 to 3)
-  , syscfg_exticr1_exti1  :: Bits 4   -- EXTI x configuration (x = 0 to 3)
-  , syscfg_exticr1_exti0  :: Bits 4   -- EXTI x configuration (x = 0 to 3)
+  { _                    :: Bits 16 -- (Reserved)
+  , syscfg_exticr1_exti3 :: Bits 4  -- EXTI x configuration (x = 0 to 3)
+  , syscfg_exticr1_exti2 :: Bits 4  -- EXTI x configuration (x = 0 to 3)
+  , syscfg_exticr1_exti1 :: Bits 4  -- EXTI x configuration (x = 0 to 3)
+  , syscfg_exticr1_exti0 :: Bits 4  -- EXTI x configuration (x = 0 to 3)
   }
 |]
 
@@ -67,11 +67,11 @@ import Ivory.Language
 --  | address: 0x4001380c
 [ivory|
  bitdata SYSCFG_EXTICR2 :: Bits 32 = syscfg_exticr2
-  { _                   :: Bits 16  -- (Reserved)
-  , syscfg_exticr2_exti7  :: Bits 4   -- EXTI x configuration (x = 4 to 7)
-  , syscfg_exticr2_exti6  :: Bits 4   -- EXTI x configuration (x = 4 to 7)
-  , syscfg_exticr2_exti5  :: Bits 4   -- EXTI x configuration (x = 4 to 7)
-  , syscfg_exticr2_exti4  :: Bits 4   -- EXTI x configuration (x = 4 to 7)
+  { _                    :: Bits 16 -- (Reserved)
+  , syscfg_exticr2_exti7 :: Bits 4  -- EXTI x configuration (x = 4 to 7)
+  , syscfg_exticr2_exti6 :: Bits 4  -- EXTI x configuration (x = 4 to 7)
+  , syscfg_exticr2_exti5 :: Bits 4  -- EXTI x configuration (x = 4 to 7)
+  , syscfg_exticr2_exti4 :: Bits 4  -- EXTI x configuration (x = 4 to 7)
   }
 |]
 
@@ -80,11 +80,11 @@ import Ivory.Language
 --  | address: 0x40013810
 [ivory|
  bitdata SYSCFG_EXTICR3 :: Bits 32 = syscfg_exticr3
-  { _                    :: Bits 16  -- (Reserved)
-  , syscfg_exticr3_exti11  :: Bits 4   -- EXTI x configuration (x = 8 to 11)
-  , syscfg_exticr3_exti10  :: Bits 4   -- EXTI10
-  , syscfg_exticr3_exti9   :: Bits 4   -- EXTI x configuration (x = 8 to 11)
-  , syscfg_exticr3_exti8   :: Bits 4   -- EXTI x configuration (x = 8 to 11)
+  { _                     :: Bits 16 -- (Reserved)
+  , syscfg_exticr3_exti11 :: Bits 4  -- EXTI x configuration (x = 8 to 11)
+  , syscfg_exticr3_exti10 :: Bits 4  -- EXTI10
+  , syscfg_exticr3_exti9  :: Bits 4  -- EXTI x configuration (x = 8 to 11)
+  , syscfg_exticr3_exti8  :: Bits 4  -- EXTI x configuration (x = 8 to 11)
   }
 |]
 
@@ -93,11 +93,11 @@ import Ivory.Language
 --  | address: 0x40013814
 [ivory|
  bitdata SYSCFG_EXTICR4 :: Bits 32 = syscfg_exticr4
-  { _                    :: Bits 16  -- (Reserved)
-  , syscfg_exticr4_exti15  :: Bits 4   -- EXTI x configuration (x = 12 to 15)
-  , syscfg_exticr4_exti14  :: Bits 4   -- EXTI x configuration (x = 12 to 15)
-  , syscfg_exticr4_exti13  :: Bits 4   -- EXTI x configuration (x = 12 to 15)
-  , syscfg_exticr4_exti12  :: Bits 4   -- EXTI x configuration (x = 12 to 15)
+  { _                     :: Bits 16 -- (Reserved)
+  , syscfg_exticr4_exti15 :: Bits 4  -- EXTI x configuration (x = 12 to 15)
+  , syscfg_exticr4_exti14 :: Bits 4  -- EXTI x configuration (x = 12 to 15)
+  , syscfg_exticr4_exti13 :: Bits 4  -- EXTI x configuration (x = 12 to 15)
+  , syscfg_exticr4_exti12 :: Bits 4  -- EXTI x configuration (x = 12 to 15)
   }
 |]
 
@@ -106,10 +106,9 @@ import Ivory.Language
 --  | address: 0x40013820
 [ivory|
  bitdata SYSCFG_CMPCR :: Bits 32 = syscfg_cmpcr
-  { _                  :: Bits 23  -- (Reserved)
-  , syscfg_cmpcr_ready   :: Bit      -- READY
-  , _                  :: Bits 7   -- (Reserved)
-  , syscfg_cmpcr_cmp_pd  :: Bit      -- Compensation cell power-down
+  { _                   :: Bits 23 -- (Reserved)
+  , syscfg_cmpcr_ready  :: Bit     -- READY
+  , _                   :: Bits 7  -- (Reserved)
+  , syscfg_cmpcr_cmp_pd :: Bit     -- Compensation cell power-down
   }
 |]
- 

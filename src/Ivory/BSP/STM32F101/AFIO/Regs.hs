@@ -17,10 +17,10 @@ import Ivory.Language
 --  | address: 0x40010000
 [ivory|
  bitdata AFIO_EVCR :: Bits 32 = afio_evcr
-  { _             :: Bits 24  -- (Reserved)
-  , afio_evcr_evoe  :: Bit      -- Event Output Enable
-  , afio_evcr_port  :: Bits 3   -- Port selection
-  , afio_evcr_pin   :: Bits 4   -- Pin selection
+  { _              :: Bits 24 -- (Reserved)
+  , afio_evcr_evoe :: Bit     -- Event Output Enable
+  , afio_evcr_port :: Bits 3  -- Port selection
+  , afio_evcr_pin  :: Bits 4  -- Pin selection
   }
 |]
 
@@ -29,25 +29,25 @@ import Ivory.Language
 --  | address: 0x40010004
 [ivory|
  bitdata AFIO_MAPR :: Bits 32 = afio_mapr
-  { _                           :: Bits 5   -- (Reserved)
-  , afio_mapr_swj_cfg             :: Bits 3   -- Serial wire JTAG configuration
-  , _                           :: Bits 3   -- (Reserved)
-  , afio_mapr_adc2_etrgreg_remap  :: Bit      -- ADC 2 external trigger regular conversion remapping
-  , afio_mapr_adc2_etrginj_remap  :: Bit      -- ADC 2 external trigger injected conversion remapping
-  , afio_mapr_adc1_etrgreg_remap  :: Bit      -- ADC 1 external trigger regular conversion remapping
-  , afio_mapr_adc1_etrginj_remap  :: Bit      -- ADC 1 External trigger injected conversion remapping
-  , afio_mapr_tim5ch4_iremap      :: Bit      -- Set and cleared by software
-  , afio_mapr_pd01_remap          :: Bit      -- Port D0/Port D1 mapping on OSCIN/OSCOUT
-  , afio_mapr_can_remap           :: Bits 2   -- CAN1 remapping
-  , afio_mapr_tim4_remap          :: Bit      -- TIM4 remapping
-  , afio_mapr_tim3_remap          :: Bits 2   -- TIM3 remapping
-  , afio_mapr_tim2_remap          :: Bits 2   -- TIM2 remapping
-  , afio_mapr_tim1_remap          :: Bits 2   -- TIM1 remapping
-  , afio_mapr_usart3_remap        :: Bits 2   -- USART3 remapping
-  , afio_mapr_usart2_remap        :: Bit      -- USART2 remapping
-  , afio_mapr_usart1_remap        :: Bit      -- USART1 remapping
-  , afio_mapr_i2c1_remap          :: Bit      -- I2C1 remapping
-  , afio_mapr_spi1_remap          :: Bit      -- SPI1 remapping
+  { _                            :: Bits 5 -- (Reserved)
+  , afio_mapr_swj_cfg            :: Bits 3 -- Serial wire JTAG configuration
+  , _                            :: Bits 3 -- (Reserved)
+  , afio_mapr_adc2_etrgreg_remap :: Bit    -- ADC 2 external trigger regular conversion remapping
+  , afio_mapr_adc2_etrginj_remap :: Bit    -- ADC 2 external trigger injected conversion remapping
+  , afio_mapr_adc1_etrgreg_remap :: Bit    -- ADC 1 external trigger regular conversion remapping
+  , afio_mapr_adc1_etrginj_remap :: Bit    -- ADC 1 External trigger injected conversion remapping
+  , afio_mapr_tim5ch4_iremap     :: Bit    -- Set and cleared by software
+  , afio_mapr_pd01_remap         :: Bit    -- Port D0/Port D1 mapping on OSCIN/OSCOUT
+  , afio_mapr_can_remap          :: Bits 2 -- CAN1 remapping
+  , afio_mapr_tim4_remap         :: Bit    -- TIM4 remapping
+  , afio_mapr_tim3_remap         :: Bits 2 -- TIM3 remapping
+  , afio_mapr_tim2_remap         :: Bits 2 -- TIM2 remapping
+  , afio_mapr_tim1_remap         :: Bits 2 -- TIM1 remapping
+  , afio_mapr_usart3_remap       :: Bits 2 -- USART3 remapping
+  , afio_mapr_usart2_remap       :: Bit    -- USART2 remapping
+  , afio_mapr_usart1_remap       :: Bit    -- USART1 remapping
+  , afio_mapr_i2c1_remap         :: Bit    -- I2C1 remapping
+  , afio_mapr_spi1_remap         :: Bit    -- SPI1 remapping
   }
 |]
 
@@ -56,11 +56,11 @@ import Ivory.Language
 --  | address: 0x40010008
 [ivory|
  bitdata AFIO_EXTICR1 :: Bits 32 = afio_exticr1
-  { _                 :: Bits 16  -- (Reserved)
-  , afio_exticr1_exti3  :: Bits 4   -- EXTI3 configuration
-  , afio_exticr1_exti2  :: Bits 4   -- EXTI2 configuration
-  , afio_exticr1_exti1  :: Bits 4   -- EXTI1 configuration
-  , afio_exticr1_exti0  :: Bits 4   -- EXTI0 configuration
+  { _                  :: Bits 16 -- (Reserved)
+  , afio_exticr1_exti3 :: Bits 4  -- EXTI3 configuration
+  , afio_exticr1_exti2 :: Bits 4  -- EXTI2 configuration
+  , afio_exticr1_exti1 :: Bits 4  -- EXTI1 configuration
+  , afio_exticr1_exti0 :: Bits 4  -- EXTI0 configuration
   }
 |]
 
@@ -69,11 +69,11 @@ import Ivory.Language
 --  | address: 0x4001000c
 [ivory|
  bitdata AFIO_EXTICR2 :: Bits 32 = afio_exticr2
-  { _                 :: Bits 16  -- (Reserved)
-  , afio_exticr2_exti7  :: Bits 4   -- EXTI7 configuration
-  , afio_exticr2_exti6  :: Bits 4   -- EXTI6 configuration
-  , afio_exticr2_exti5  :: Bits 4   -- EXTI5 configuration
-  , afio_exticr2_exti4  :: Bits 4   -- EXTI4 configuration
+  { _                  :: Bits 16 -- (Reserved)
+  , afio_exticr2_exti7 :: Bits 4  -- EXTI7 configuration
+  , afio_exticr2_exti6 :: Bits 4  -- EXTI6 configuration
+  , afio_exticr2_exti5 :: Bits 4  -- EXTI5 configuration
+  , afio_exticr2_exti4 :: Bits 4  -- EXTI4 configuration
   }
 |]
 
@@ -82,11 +82,11 @@ import Ivory.Language
 --  | address: 0x40010010
 [ivory|
  bitdata AFIO_EXTICR3 :: Bits 32 = afio_exticr3
-  { _                  :: Bits 16  -- (Reserved)
-  , afio_exticr3_exti11  :: Bits 4   -- EXTI11 configuration
-  , afio_exticr3_exti10  :: Bits 4   -- EXTI10 configuration
-  , afio_exticr3_exti9   :: Bits 4   -- EXTI9 configuration
-  , afio_exticr3_exti8   :: Bits 4   -- EXTI8 configuration
+  { _                   :: Bits 16 -- (Reserved)
+  , afio_exticr3_exti11 :: Bits 4  -- EXTI11 configuration
+  , afio_exticr3_exti10 :: Bits 4  -- EXTI10 configuration
+  , afio_exticr3_exti9  :: Bits 4  -- EXTI9 configuration
+  , afio_exticr3_exti8  :: Bits 4  -- EXTI8 configuration
   }
 |]
 
@@ -95,11 +95,11 @@ import Ivory.Language
 --  | address: 0x40010014
 [ivory|
  bitdata AFIO_EXTICR4 :: Bits 32 = afio_exticr4
-  { _                  :: Bits 16  -- (Reserved)
-  , afio_exticr4_exti15  :: Bits 4   -- EXTI15 configuration
-  , afio_exticr4_exti14  :: Bits 4   -- EXTI14 configuration
-  , afio_exticr4_exti13  :: Bits 4   -- EXTI13 configuration
-  , afio_exticr4_exti12  :: Bits 4   -- EXTI12 configuration
+  { _                   :: Bits 16 -- (Reserved)
+  , afio_exticr4_exti15 :: Bits 4  -- EXTI15 configuration
+  , afio_exticr4_exti14 :: Bits 4  -- EXTI14 configuration
+  , afio_exticr4_exti13 :: Bits 4  -- EXTI13 configuration
+  , afio_exticr4_exti12 :: Bits 4  -- EXTI12 configuration
   }
 |]
 
@@ -108,14 +108,13 @@ import Ivory.Language
 --  | address: 0x4001001c
 [ivory|
  bitdata AFIO_MAPR2 :: Bits 32 = afio_mapr2
-  { _                     :: Bits 21  -- (Reserved)
-  , afio_mapr2_fsmc_nadv    :: Bit      -- NADV connect/disconnect
-  , afio_mapr2_tim14_remap  :: Bit      -- TIM14 remapping
-  , afio_mapr2_tim13_remap  :: Bit      -- TIM13 remapping
-  , afio_mapr2_tim11_remap  :: Bit      -- TIM11 remapping
-  , afio_mapr2_tim10_remap  :: Bit      -- TIM10 remapping
-  , afio_mapr2_tim9_remap   :: Bit      -- TIM9 remapping
-  , _                     :: Bits 5   -- (Reserved)
+  { _                      :: Bits 21 -- (Reserved)
+  , afio_mapr2_fsmc_nadv   :: Bit     -- NADV connect/disconnect
+  , afio_mapr2_tim14_remap :: Bit     -- TIM14 remapping
+  , afio_mapr2_tim13_remap :: Bit     -- TIM13 remapping
+  , afio_mapr2_tim11_remap :: Bit     -- TIM11 remapping
+  , afio_mapr2_tim10_remap :: Bit     -- TIM10 remapping
+  , afio_mapr2_tim9_remap  :: Bit     -- TIM9 remapping
+  , _                      :: Bits 5  -- (Reserved)
   }
 |]
- 

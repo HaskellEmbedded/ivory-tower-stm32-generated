@@ -18,24 +18,24 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x40028700
 [ivory|
  bitdata ETH_PTPTSCR :: Bits 32 = eth_ptptscr
-  { _                     :: Bits 13  -- (Reserved)
-  , eth_ptptscr_tspffmae    :: Bit      -- TSPFFMAE
-  , eth_ptptscr_tscnt       :: Bits 2   -- TSCNT
-  , eth_ptptscr_tssmrme     :: Bit      -- TSSMRME
-  , eth_ptptscr_tsseme      :: Bit      -- TSSEME
-  , eth_ptptscr_tssipv4fe   :: Bit      -- TSSIPV4FE
-  , eth_ptptscr_tssipv6fe   :: Bit      -- TSSIPV6FE
-  , eth_ptptscr_tssptpoefe  :: Bit      -- TSSPTPOEFE
-  , eth_ptptscr_tsptppsv2e  :: Bit      -- TSPTPPSV2E
-  , eth_ptptscr_tsssr       :: Bit      -- TSSSR
-  , eth_ptptscr_tssarfe     :: Bit      -- TSSARFE
-  , _                     :: Bits 2   -- (Reserved)
-  , eth_ptptscr_ttsaru      :: Bit      -- TTSARU
-  , eth_ptptscr_tsite       :: Bit      -- TSITE
-  , eth_ptptscr_tsstu       :: Bit      -- TSSTU
-  , eth_ptptscr_tssti       :: Bit      -- TSSTI
-  , eth_ptptscr_tsfcu       :: Bit      -- TSFCU
-  , eth_ptptscr_tse         :: Bit      -- TSE
+  { _                      :: Bits 13 -- (Reserved)
+  , eth_ptptscr_tspffmae   :: Bit     -- TSPFFMAE
+  , eth_ptptscr_tscnt      :: Bits 2  -- TSCNT
+  , eth_ptptscr_tssmrme    :: Bit     -- TSSMRME
+  , eth_ptptscr_tsseme     :: Bit     -- TSSEME
+  , eth_ptptscr_tssipv4fe  :: Bit     -- TSSIPV4FE
+  , eth_ptptscr_tssipv6fe  :: Bit     -- TSSIPV6FE
+  , eth_ptptscr_tssptpoefe :: Bit     -- TSSPTPOEFE
+  , eth_ptptscr_tsptppsv2e :: Bit     -- TSPTPPSV2E
+  , eth_ptptscr_tsssr      :: Bit     -- TSSSR
+  , eth_ptptscr_tssarfe    :: Bit     -- TSSARFE
+  , _                      :: Bits 2  -- (Reserved)
+  , eth_ptptscr_ttsaru     :: Bit     -- TTSARU
+  , eth_ptptscr_tsite      :: Bit     -- TSITE
+  , eth_ptptscr_tsstu      :: Bit     -- TSSTU
+  , eth_ptptscr_tssti      :: Bit     -- TSSTI
+  , eth_ptptscr_tsfcu      :: Bit     -- TSFCU
+  , eth_ptptscr_tse        :: Bit     -- TSE
   }
 |]
 
@@ -44,8 +44,8 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x40028704
 [ivory|
  bitdata ETH_PTPSSIR :: Bits 32 = eth_ptpssir
-  { _                :: Bits 24  -- (Reserved)
-  , eth_ptpssir_stssi  :: Bits 8   -- STSSI
+  { _                 :: Bits 24 -- (Reserved)
+  , eth_ptpssir_stssi :: Bits 8  -- STSSI
   }
 |]
 
@@ -54,7 +54,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x40028708
 [ivory|
  bitdata ETH_PTPTSHR :: Bits 32 = eth_ptptshr
-  { eth_ptptshr_sts  :: Bits 32  -- STS
+  { eth_ptptshr_sts :: Bits 32 -- STS
   }
 |]
 
@@ -63,8 +63,8 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x4002870c
 [ivory|
  bitdata ETH_PTPTSLR :: Bits 32 = eth_ptptslr
-  { eth_ptptslr_stpns  :: Bit      -- STPNS
-  , eth_ptptslr_stss   :: Bits 31  -- STSS
+  { eth_ptptslr_stpns :: Bit     -- STPNS
+  , eth_ptptslr_stss  :: Bits 31 -- STSS
   }
 |]
 
@@ -73,7 +73,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x40028710
 [ivory|
  bitdata ETH_PTPTSHUR :: Bits 32 = eth_ptptshur
-  { eth_ptptshur_tsus  :: Bits 32  -- TSUS
+  { eth_ptptshur_tsus :: Bits 32 -- TSUS
   }
 |]
 
@@ -82,8 +82,8 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x40028714
 [ivory|
  bitdata ETH_PTPTSLUR :: Bits 32 = eth_ptptslur
-  { eth_ptptslur_tsupns  :: Bit      -- TSUPNS
-  , eth_ptptslur_tsuss   :: Bits 31  -- TSUSS
+  { eth_ptptslur_tsupns :: Bit     -- TSUPNS
+  , eth_ptptslur_tsuss  :: Bits 31 -- TSUSS
   }
 |]
 
@@ -92,7 +92,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x40028718
 [ivory|
  bitdata ETH_PTPTSAR :: Bits 32 = eth_ptptsar
-  { eth_ptptsar_tsa  :: Bits 32  -- TSA
+  { eth_ptptsar_tsa :: Bits 32 -- TSA
   }
 |]
 
@@ -101,7 +101,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x4002871c
 [ivory|
  bitdata ETH_PTPTTHR :: Bits 32 = eth_ptptthr
-  { eth_ptptthr_ttsh  :: Bits 32  -- 0
+  { eth_ptptthr_ttsh :: Bits 32 -- 0
   }
 |]
 
@@ -110,7 +110,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x40028720
 [ivory|
  bitdata ETH_PTPTTLR :: Bits 32 = eth_ptpttlr
-  { eth_ptpttlr_ttsl  :: Bits 32  -- TTSL
+  { eth_ptpttlr_ttsl :: Bits 32 -- TTSL
   }
 |]
 
@@ -119,9 +119,9 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x40028728
 [ivory|
  bitdata ETH_PTPTSSR :: Bits 32 = eth_ptptssr
-  { _                :: Bits 30  -- (Reserved)
-  , eth_ptptssr_tsttr  :: Bit      -- TSSO
-  , eth_ptptssr_tsso   :: Bit      -- TSSO
+  { _                 :: Bits 30 -- (Reserved)
+  , eth_ptptssr_tsttr :: Bit     -- TSSO
+  , eth_ptptssr_tsso  :: Bit     -- TSSO
   }
 |]
 
@@ -130,8 +130,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes
 --  | address: 0x4002872c
 [ivory|
  bitdata ETH_PTPPPSCR :: Bits 32 = eth_ptpppscr
-  { _                   :: Bits 28  -- (Reserved)
-  , eth_ptpppscr_ppsfreq  :: Bits 4   -- PPS frequency selection
+  { _                    :: Bits 28 -- (Reserved)
+  , eth_ptpppscr_ppsfreq :: Bits 4  -- PPS frequency selection
   }
 |]
- 

@@ -18,7 +18,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021800
 [ivory|
  bitdata EXTI_RTSR1 :: Bits 32 = exti_rtsr1
-  { exti_rtsr1_data  :: Bits 32  -- Data
+  { exti_rtsr1_data :: Bits 32 -- Data
   }
 |]
 
@@ -27,7 +27,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021804
 [ivory|
  bitdata EXTI_FTSR1 :: Bits 32 = exti_ftsr1
-  { exti_ftsr1_data  :: Bits 32  -- Data
+  { exti_ftsr1_data :: Bits 32 -- Data
   }
 |]
 
@@ -36,7 +36,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021808
 [ivory|
  bitdata EXTI_SWIER1 :: Bits 32 = exti_swier1
-  { exti_swier1_data  :: Bits 32  -- Data
+  { exti_swier1_data :: Bits 32 -- Data
   }
 |]
 
@@ -45,7 +45,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x4002180c
 [ivory|
  bitdata EXTI_RPR1 :: Bits 32 = exti_rpr1
-  { exti_rpr1_data  :: Bits 32  -- Data
+  { exti_rpr1_data :: Bits 32 -- Data
   }
 |]
 
@@ -54,7 +54,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021810
 [ivory|
  bitdata EXTI_FPR1 :: Bits 32 = exti_fpr1
-  { exti_fpr1_data  :: Bits 32  -- Data
+  { exti_fpr1_data :: Bits 32 -- Data
   }
 |]
 
@@ -63,7 +63,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021860
 [ivory|
  bitdata EXTI_EXTICR1 :: Bits 32 = exti_exticr1
-  { exti_exticr1_data  :: Bits 32  -- Data
+  { exti_exticr1_data :: Bits 32 -- Data
   }
 |]
 
@@ -72,7 +72,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021864
 [ivory|
  bitdata EXTI_EXTICR2 :: Bits 32 = exti_exticr2
-  { exti_exticr2_data  :: Bits 32  -- Data
+  { exti_exticr2_data :: Bits 32 -- Data
   }
 |]
 
@@ -81,7 +81,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021868
 [ivory|
  bitdata EXTI_EXTICR3 :: Bits 32 = exti_exticr3
-  { exti_exticr3_data  :: Bits 32  -- Data
+  { exti_exticr3_data :: Bits 32 -- Data
   }
 |]
 
@@ -90,7 +90,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x4002186c
 [ivory|
  bitdata EXTI_EXTICR4 :: Bits 32 = exti_exticr4
-  { exti_exticr4_data  :: Bits 32  -- Data
+  { exti_exticr4_data :: Bits 32 -- Data
   }
 |]
 
@@ -99,7 +99,7 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021880
 [ivory|
  bitdata EXTI_IMR1 :: Bits 32 = exti_imr1
-  { exti_imr1_data  :: Bits 32  -- Data
+  { exti_imr1_data :: Bits 32 -- Data
   }
 |]
 
@@ -108,7 +108,6 @@ import Ivory.BSP.STM32.Peripheral.EXTI.RegTypes
 --  | address: 0x40021884
 [ivory|
  bitdata EXTI_EMR1 :: Bits 32 = exti_emr1
-  { exti_emr1_data  :: Bits 32  -- Data
+  { exti_emr1_data :: Bits 32 -- Data
   }
 |]
- 

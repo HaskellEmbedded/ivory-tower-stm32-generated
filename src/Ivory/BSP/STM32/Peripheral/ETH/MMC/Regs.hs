@@ -18,13 +18,13 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x40028100
 [ivory|
  bitdata ETH_MMCCR :: Bits 32 = eth_mmccr
-  { _              :: Bits 26  -- (Reserved)
-  , eth_mmccr_mcfhp  :: Bit      -- MMC counter Full-Half preset
-  , eth_mmccr_mcp    :: Bit      -- MMC counter preset
-  , eth_mmccr_mcf    :: Bit      -- MMC counter freeze
-  , eth_mmccr_ror    :: Bit      -- Reset on read
-  , eth_mmccr_csr    :: Bit      -- Counter stop rollover
-  , eth_mmccr_cr     :: Bit      -- Counter reset
+  { _               :: Bits 26 -- (Reserved)
+  , eth_mmccr_mcfhp :: Bit     -- MMC counter Full-Half preset
+  , eth_mmccr_mcp   :: Bit     -- MMC counter preset
+  , eth_mmccr_mcf   :: Bit     -- MMC counter freeze
+  , eth_mmccr_ror   :: Bit     -- Reset on read
+  , eth_mmccr_csr   :: Bit     -- Counter stop rollover
+  , eth_mmccr_cr    :: Bit     -- Counter reset
   }
 |]
 
@@ -33,12 +33,12 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x40028104
 [ivory|
  bitdata ETH_MMCRIR :: Bits 32 = eth_mmcrir
-  { _               :: Bits 14  -- (Reserved)
-  , eth_mmcrir_rgufs  :: Bit      -- Received good Unicast frames status
-  , _               :: Bits 10  -- (Reserved)
-  , eth_mmcrir_rfaes  :: Bit      -- Received frames alignment error status
-  , eth_mmcrir_rfces  :: Bit      -- Received frames CRC error status
-  , _               :: Bits 5   -- (Reserved)
+  { _                :: Bits 14 -- (Reserved)
+  , eth_mmcrir_rgufs :: Bit     -- Received good Unicast frames status
+  , _                :: Bits 10 -- (Reserved)
+  , eth_mmcrir_rfaes :: Bit     -- Received frames alignment error status
+  , eth_mmcrir_rfces :: Bit     -- Received frames CRC error status
+  , _                :: Bits 5  -- (Reserved)
   }
 |]
 
@@ -47,12 +47,12 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x40028108
 [ivory|
  bitdata ETH_MMCTIR :: Bits 32 = eth_mmctir
-  { _                 :: Bits 10  -- (Reserved)
-  , eth_mmctir_tgfs     :: Bit      -- Transmitted good frames status
-  , _                 :: Bits 5   -- (Reserved)
-  , eth_mmctir_tgfmscs  :: Bit      -- Transmitted good frames more than single collision status
-  , eth_mmctir_tgfscs   :: Bit      -- Transmitted good frames single collision status
-  , _                 :: Bits 14  -- (Reserved)
+  { _                  :: Bits 10 -- (Reserved)
+  , eth_mmctir_tgfs    :: Bit     -- Transmitted good frames status
+  , _                  :: Bits 5  -- (Reserved)
+  , eth_mmctir_tgfmscs :: Bit     -- Transmitted good frames more than single collision status
+  , eth_mmctir_tgfscs  :: Bit     -- Transmitted good frames single collision status
+  , _                  :: Bits 14 -- (Reserved)
   }
 |]
 
@@ -61,12 +61,12 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x4002810c
 [ivory|
  bitdata ETH_MMCRIMR :: Bits 32 = eth_mmcrimr
-  { _                :: Bits 14  -- (Reserved)
-  , eth_mmcrimr_rgufm  :: Bit      -- Received good Unicast frames mask
-  , _                :: Bits 10  -- (Reserved)
-  , eth_mmcrimr_rfaem  :: Bit      -- Received frames alignment error mask
-  , eth_mmcrimr_rfcem  :: Bit      -- Received frame CRC error mask
-  , _                :: Bits 5   -- (Reserved)
+  { _                 :: Bits 14 -- (Reserved)
+  , eth_mmcrimr_rgufm :: Bit     -- Received good Unicast frames mask
+  , _                 :: Bits 10 -- (Reserved)
+  , eth_mmcrimr_rfaem :: Bit     -- Received frames alignment error mask
+  , eth_mmcrimr_rfcem :: Bit     -- Received frame CRC error mask
+  , _                 :: Bits 5  -- (Reserved)
   }
 |]
 
@@ -75,12 +75,12 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x40028110
 [ivory|
  bitdata ETH_MMCTIMR :: Bits 32 = eth_mmctimr
-  { _                  :: Bits 10  -- (Reserved)
-  , eth_mmctimr_tgfm     :: Bit      -- Transmitted good frames mask
-  , _                  :: Bits 5   -- (Reserved)
-  , eth_mmctimr_tgfmscm  :: Bit      -- Transmitted good frames more than single collision mask
-  , eth_mmctimr_tgfscm   :: Bit      -- Transmitted good frames single collision mask
-  , _                  :: Bits 14  -- (Reserved)
+  { _                   :: Bits 10 -- (Reserved)
+  , eth_mmctimr_tgfm    :: Bit     -- Transmitted good frames mask
+  , _                   :: Bits 5  -- (Reserved)
+  , eth_mmctimr_tgfmscm :: Bit     -- Transmitted good frames more than single collision mask
+  , eth_mmctimr_tgfscm  :: Bit     -- Transmitted good frames single collision mask
+  , _                   :: Bits 14 -- (Reserved)
   }
 |]
 
@@ -89,7 +89,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x4002814c
 [ivory|
  bitdata ETH_MMCTGFSCCR :: Bits 32 = eth_mmctgfsccr
-  { eth_mmctgfsccr_tgfscc  :: Bits 32  -- Transmitted good frames single collision counter
+  { eth_mmctgfsccr_tgfscc :: Bits 32 -- Transmitted good frames single collision counter
   }
 |]
 
@@ -98,7 +98,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x40028150
 [ivory|
  bitdata ETH_MMCTGFMSCCR :: Bits 32 = eth_mmctgfmsccr
-  { eth_mmctgfmsccr_tgfmscc  :: Bits 32  -- TGFMSCC
+  { eth_mmctgfmsccr_tgfmscc :: Bits 32 -- TGFMSCC
   }
 |]
 
@@ -107,7 +107,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x40028168
 [ivory|
  bitdata ETH_MMCTGFCR :: Bits 32 = eth_mmctgfcr
-  { eth_mmctgfcr_tgfc  :: Bits 32  -- HTL
+  { eth_mmctgfcr_tgfc :: Bits 32 -- HTL
   }
 |]
 
@@ -116,7 +116,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x40028194
 [ivory|
  bitdata ETH_MMCRFCECR :: Bits 32 = eth_mmcrfcecr
-  { eth_mmcrfcecr_rfcfc  :: Bits 32  -- RFCFC
+  { eth_mmcrfcecr_rfcfc :: Bits 32 -- RFCFC
   }
 |]
 
@@ -125,7 +125,7 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x40028198
 [ivory|
  bitdata ETH_MMCRFAECR :: Bits 32 = eth_mmcrfaecr
-  { eth_mmcrfaecr_rfaec  :: Bits 32  -- RFAEC
+  { eth_mmcrfaecr_rfaec :: Bits 32 -- RFAEC
   }
 |]
 
@@ -134,7 +134,6 @@ import Ivory.BSP.STM32.Peripheral.ETH.MMC.RegTypes
 --  | address: 0x400281c4
 [ivory|
  bitdata ETH_MMCRGUFCR :: Bits 32 = eth_mmcrgufcr
-  { eth_mmcrgufcr_rgufc  :: Bits 32  -- RGUFC
+  { eth_mmcrgufcr_rgufc :: Bits 32 -- RGUFC
   }
 |]
- 
