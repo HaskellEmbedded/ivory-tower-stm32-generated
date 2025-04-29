@@ -8,6 +8,7 @@ import Ivory.HW
 import Ivory.BSP.STM32F427.AF
 import Ivory.BSP.STM32F427.RCC
 import Ivory.BSP.STM32F427.MemoryMap
+import Ivory.BSP.STM32F427.SYSCFG
 import qualified Ivory.BSP.STM32F427.Interrupt as F427
 
 import Ivory.BSP.STM32.AF
@@ -55,4 +56,10 @@ eth =
     mac
     mmc
     ptp
+    (do
+        syscfgRCCEnable syscfg
+        modifyReg (syscfgRegPMC syscfg) $
+          -- Set RMII
+          setBit syscfg_pmc_mii_rmii_sel
+    )
     (\pin -> findAFByPin pin "ETH" afDB)
