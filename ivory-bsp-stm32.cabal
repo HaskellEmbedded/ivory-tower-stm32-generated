@@ -156,6 +156,7 @@ library
                        Ivory.BSP.STM32.Peripheral.ETH.PTP.RegTypes,
                        Ivory.BSP.STM32.Peripheral.ETH.PTP.Regs,
                        Ivory.BSP.STM32.Peripheral.ETH.Peripheral,
+                       Ivory.BSP.STM32.Peripheral.ETH.Pins,
                        Ivory.BSP.STM32.Peripheral.EXTI,
                        Ivory.BSP.STM32.Peripheral.EXTI.RegTypes,
                        Ivory.BSP.STM32.Peripheral.EXTI.Types,
