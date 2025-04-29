@@ -18,28 +18,28 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
 --  | address: 0x40028000
 [ivory|
  bitdata ETH_MACCR :: Bits 32 = eth_maccr
-  { _              :: Bits 6 -- (Reserved)
-  , eth_maccr_cstf :: Bit    -- CRC stripping for type frames
-  , _              :: Bit    -- (Reserved)
-  , eth_maccr_wd   :: Bit    -- Watchdog disable
-  , eth_maccr_jd   :: Bit    -- Jabber disable
-  , _              :: Bits 2 -- (Reserved)
-  , eth_maccr_ifg  :: Bits 3 -- Interframe gap
-  , eth_maccr_csd  :: Bit    -- Carrier sense disable
-  , _              :: Bit    -- (Reserved)
-  , eth_maccr_fes  :: Bit    -- Fast Ethernet speed
-  , eth_maccr_rod  :: Bit    -- Receive own disable
-  , eth_maccr_lm   :: Bit    -- Loopback mode
-  , eth_maccr_dm   :: Bit    -- Duplex mode
-  , eth_maccr_ipco :: Bit    -- IPv4 checksum offload
-  , eth_maccr_rd   :: Bit    -- Retry disable
-  , _              :: Bit    -- (Reserved)
-  , eth_maccr_apcs :: Bit    -- Automatic pad/CRC stripping
-  , eth_maccr_bl   :: Bits 2 -- Back-off limit
-  , eth_maccr_dc   :: Bit    -- Deferral check
-  , eth_maccr_te   :: Bit    -- Transmitter enable
-  , eth_maccr_re   :: Bit    -- Receiver enable
-  , _              :: Bits 2 -- (Reserved)
+  { _              :: Bits 6        -- (Reserved)
+  , eth_maccr_cstf :: Bit           -- CRC stripping for type frames
+  , _              :: Bit           -- (Reserved)
+  , eth_maccr_wd   :: Bit           -- Watchdog disable
+  , eth_maccr_jd   :: Bit           -- Jabber disable
+  , _              :: Bits 2        -- (Reserved)
+  , eth_maccr_ifg  :: InterframeGap -- Interframe gap
+  , eth_maccr_csd  :: Bit           -- Carrier sense disable
+  , _              :: Bit           -- (Reserved)
+  , eth_maccr_fes  :: Bit           -- Fast Ethernet speed
+  , eth_maccr_rod  :: Bit           -- Receive own disable
+  , eth_maccr_lm   :: Bit           -- Loopback mode
+  , eth_maccr_dm   :: Bit           -- Duplex mode
+  , eth_maccr_ipco :: Bit           -- IPv4 checksum offload
+  , eth_maccr_rd   :: Bit           -- Retry disable
+  , _              :: Bit           -- (Reserved)
+  , eth_maccr_apcs :: Bit           -- Automatic pad/CRC stripping
+  , eth_maccr_bl   :: BackoffLimit  -- Back-off limit
+  , eth_maccr_dc   :: Bit           -- Deferral check
+  , eth_maccr_te   :: Bit           -- Transmitter enable
+  , eth_maccr_re   :: Bit           -- Receiver enable
+  , _              :: Bits 2        -- (Reserved)
   }
 |]
 
@@ -86,13 +86,13 @@ import Ivory.BSP.STM32.Peripheral.ETH.MAC.RegTypes
 --  | address: 0x40028010
 [ivory|
  bitdata ETH_MACMIIAR :: Bits 32 = eth_macmiiar
-  { _               :: Bits 16 -- (Reserved)
-  , eth_macmiiar_pa :: Bits 5  -- PHY address - select which of possible 32 PHYs is being accessed
-  , eth_macmiiar_mr :: Bits 5  -- MII register - select the desired MII register in the PHY device
-  , _               :: Bit     -- (Reserved)
-  , eth_macmiiar_cr :: Bits 3  -- Clock range
-  , eth_macmiiar_mw :: Bit     -- MII write
-  , eth_macmiiar_mb :: Bit     -- MII busy
+  { _               :: Bits 16    -- (Reserved)
+  , eth_macmiiar_pa :: Bits 5     -- PHY address - select which of possible 32 PHYs is being accessed
+  , eth_macmiiar_mr :: Bits 5     -- MII register - select the desired MII register in the PHY device
+  , _               :: Bit        -- (Reserved)
+  , eth_macmiiar_cr :: ClockRange -- Clock range
+  , eth_macmiiar_mw :: Bit        -- MII write
+  , eth_macmiiar_mb :: Bit        -- MII busy
   }
 |]
 

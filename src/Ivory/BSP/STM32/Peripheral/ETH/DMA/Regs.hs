@@ -18,19 +18,19 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
 --  | address: 0x40029000
 [ivory|
  bitdata ETH_DMABMR :: Bits 32 = eth_dmabmr
-  { _               :: Bits 5 -- (Reserved)
-  , eth_dmabmr_mb   :: Bit    -- Mixed burst
-  , eth_dmabmr_aab  :: Bit    -- Address-aligned beats
-  , eth_dmabmr_fpm  :: Bit    -- 4xPBL mode
-  , eth_dmabmr_usp  :: Bit    -- Use separate PBL
-  , eth_dmabmr_rdp  :: Bits 6 -- Rx DMA PBL
-  , eth_dmabmr_fb   :: Bit    -- Fixed burst
-  , eth_dmabmr_pm   :: Bits 2 -- Rx-Tx priority ratio
-  , eth_dmabmr_pbl  :: Bits 6 -- Programmable burst length
-  , eth_dmabmr_edfe :: Bit    -- Enhanced descriptor format enable
-  , eth_dmabmr_dsl  :: Bits 5 -- Descriptor skip length
-  , eth_dmabmr_da   :: Bit    -- DMA arbitration
-  , eth_dmabmr_sr   :: Bit    -- Software reset
+  { _               :: Bits 5    -- (Reserved)
+  , eth_dmabmr_mb   :: Bit       -- Mixed burst
+  , eth_dmabmr_aab  :: Bit       -- Address-aligned beats
+  , eth_dmabmr_fpm  :: Bit       -- 4xPBL mode
+  , eth_dmabmr_usp  :: Bit       -- Use separate PBL
+  , eth_dmabmr_rdp  :: Bits 6    -- Rx DMA PBL
+  , eth_dmabmr_fb   :: Bit       -- Fixed burst
+  , eth_dmabmr_pm   :: RxTxRatio -- Rx-Tx priority ratio
+  , eth_dmabmr_pbl  :: Bits 6    -- Programmable burst length
+  , eth_dmabmr_edfe :: Bit       -- Enhanced descriptor format enable
+  , eth_dmabmr_dsl  :: Bits 5    -- Descriptor skip length
+  , eth_dmabmr_da   :: Bit       -- DMA arbitration
+  , eth_dmabmr_sr   :: Bit       -- Software reset
   }
 |]
 
@@ -75,30 +75,30 @@ import Ivory.BSP.STM32.Peripheral.ETH.DMA.RegTypes
 --  | address: 0x40029014
 [ivory|
  bitdata ETH_DMASR :: Bits 32 = eth_dmasr
-  { _              :: Bits 2 -- (Reserved)
-  , eth_dmasr_tsts :: Bit    -- Time stamp trigger status
-  , eth_dmasr_pmts :: Bit    -- PMT status
-  , eth_dmasr_mmcs :: Bit    -- MMC status
-  , _              :: Bit    -- (Reserved)
-  , eth_dmasr_ebs  :: Bits 3 -- Error bits status
-  , eth_dmasr_tps  :: Bits 3 -- Transmit process state
-  , eth_dmasr_rps  :: Bits 3 -- Receive process state
-  , eth_dmasr_nis  :: Bit    -- Normal interrupt summary
-  , eth_dmasr_ais  :: Bit    -- Abnormal interrupt summary
-  , eth_dmasr_ers  :: Bit    -- Early receive status
-  , eth_dmasr_fbes :: Bit    -- Fatal bus error status
-  , _              :: Bits 2 -- (Reserved)
-  , eth_dmasr_ets  :: Bit    -- Early transmit status
-  , eth_dmasr_pwts :: Bit    -- PWTS
-  , eth_dmasr_rpss :: Bit    -- Receive process stopped status
-  , eth_dmasr_rbus :: Bit    -- Receive buffer unavailable status
-  , eth_dmasr_rs   :: Bit    -- Receive status
-  , eth_dmasr_tus  :: Bit    -- Transmit underflow status
-  , eth_dmasr_ros  :: Bit    -- Receive overflow status
-  , eth_dmasr_tjts :: Bit    -- Transmit jabber timeout status
-  , eth_dmasr_tbus :: Bit    -- Transmit buffer unavailable status
-  , eth_dmasr_tpss :: Bit    -- Transmit process stopped status
-  , eth_dmasr_ts   :: Bit    -- Transmit status
+  { _              :: Bits 2               -- (Reserved)
+  , eth_dmasr_tsts :: Bit                  -- Time stamp trigger status
+  , eth_dmasr_pmts :: Bit                  -- PMT status
+  , eth_dmasr_mmcs :: Bit                  -- MMC status
+  , _              :: Bit                  -- (Reserved)
+  , eth_dmasr_ebs  :: Bits 3               -- Error bits status
+  , eth_dmasr_tps  :: TransmitProcessState -- Transmit process state
+  , eth_dmasr_rps  :: ReceiveProcessState  -- Receive process state
+  , eth_dmasr_nis  :: Bit                  -- Normal interrupt summary
+  , eth_dmasr_ais  :: Bit                  -- Abnormal interrupt summary
+  , eth_dmasr_ers  :: Bit                  -- Early receive status
+  , eth_dmasr_fbes :: Bit                  -- Fatal bus error status
+  , _              :: Bits 2               -- (Reserved)
+  , eth_dmasr_ets  :: Bit                  -- Early transmit status
+  , eth_dmasr_pwts :: Bit                  -- PWTS
+  , eth_dmasr_rpss :: Bit                  -- Receive process stopped status
+  , eth_dmasr_rbus :: Bit                  -- Receive buffer unavailable status
+  , eth_dmasr_rs   :: Bit                  -- Receive status
+  , eth_dmasr_tus  :: Bit                  -- Transmit underflow status
+  , eth_dmasr_ros  :: Bit                  -- Receive overflow status
+  , eth_dmasr_tjts :: Bit                  -- Transmit jabber timeout status
+  , eth_dmasr_tbus :: Bit                  -- Transmit buffer unavailable status
+  , eth_dmasr_tpss :: Bit                  -- Transmit process stopped status
+  , eth_dmasr_ts   :: Bit                  -- Transmit status
   }
 |]
 
