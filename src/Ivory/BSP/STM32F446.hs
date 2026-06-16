@@ -8,6 +8,7 @@ module Ivory.BSP.STM32F446 (
   , module Ivory.BSP.STM32F446.EXTI
   , module Ivory.BSP.STM32F446.SYSCFG
   , module Ivory.BSP.STM32F446.ADC
+  , module Ivory.BSP.STM32F446.DAC
   , module Ivory.BSP.STM32F446.DMA
   , module Ivory.BSP.STM32F446.UART.DMA
   , module Ivory.BSP.STM32F446.USART.DMA
@@ -24,6 +25,7 @@ import Ivory.BSP.STM32F446.IWDG
 import Ivory.BSP.STM32F446.EXTI
 import Ivory.BSP.STM32F446.SYSCFG
 import Ivory.BSP.STM32F446.ADC
+import Ivory.BSP.STM32F446.DAC
 import Ivory.BSP.STM32F446.DMA
 import Ivory.BSP.STM32F446.UART.DMA
 import Ivory.BSP.STM32F446.USART.DMA

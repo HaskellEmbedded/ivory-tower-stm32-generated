@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F732 (
   , module Ivory.BSP.STM32F732.EXTI
   , module Ivory.BSP.STM32F732.SYSCFG
   , module Ivory.BSP.STM32F732.ADC
+  , module Ivory.BSP.STM32F732.DAC
   , module Ivory.BSP.STM32F732.DMA
   , module Ivory.BSP.STM32F732.UART.DMA
   , module Ivory.BSP.STM32F732.USART.DMA
@@ -28,6 +29,7 @@ import Ivory.BSP.STM32F732.IWDG
 import Ivory.BSP.STM32F732.EXTI
 import Ivory.BSP.STM32F732.SYSCFG
 import Ivory.BSP.STM32F732.ADC
+import Ivory.BSP.STM32F732.DAC
 import Ivory.BSP.STM32F732.DMA
 import Ivory.BSP.STM32F732.UART.DMA
 import Ivory.BSP.STM32F732.USART.DMA

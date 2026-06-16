@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F407 (
   , module Ivory.BSP.STM32F407.EXTI
   , module Ivory.BSP.STM32F407.SYSCFG
   , module Ivory.BSP.STM32F407.ADC
+  , module Ivory.BSP.STM32F407.DAC
   , module Ivory.BSP.STM32F407.DMA
   , module Ivory.BSP.STM32F407.ETH
   , module Ivory.BSP.STM32F407.UART.DMA
@@ -29,6 +30,7 @@ import Ivory.BSP.STM32F407.IWDG
 import Ivory.BSP.STM32F407.EXTI
 import Ivory.BSP.STM32F407.SYSCFG
 import Ivory.BSP.STM32F407.ADC
+import Ivory.BSP.STM32F407.DAC
 import Ivory.BSP.STM32F407.DMA
 import Ivory.BSP.STM32F407.ETH
 import Ivory.BSP.STM32F407.UART.DMA

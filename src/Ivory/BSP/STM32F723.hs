@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F723 (
   , module Ivory.BSP.STM32F723.EXTI
   , module Ivory.BSP.STM32F723.SYSCFG
   , module Ivory.BSP.STM32F723.ADC
+  , module Ivory.BSP.STM32F723.DAC
   , module Ivory.BSP.STM32F723.DMA
   , module Ivory.BSP.STM32F723.UART.DMA
   , module Ivory.BSP.STM32F723.USART.DMA
@@ -28,6 +29,7 @@ import Ivory.BSP.STM32F723.IWDG
 import Ivory.BSP.STM32F723.EXTI
 import Ivory.BSP.STM32F723.SYSCFG
 import Ivory.BSP.STM32F723.ADC
+import Ivory.BSP.STM32F723.DAC
 import Ivory.BSP.STM32F723.DMA
 import Ivory.BSP.STM32F723.UART.DMA
 import Ivory.BSP.STM32F723.USART.DMA

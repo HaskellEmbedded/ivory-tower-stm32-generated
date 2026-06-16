@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F756 (
   , module Ivory.BSP.STM32F756.EXTI
   , module Ivory.BSP.STM32F756.SYSCFG
   , module Ivory.BSP.STM32F756.ADC
+  , module Ivory.BSP.STM32F756.DAC
   , module Ivory.BSP.STM32F756.DMA
   , module Ivory.BSP.STM32F756.ETH
   , module Ivory.BSP.STM32F756.UART.DMA
@@ -29,6 +30,7 @@ import Ivory.BSP.STM32F756.IWDG
 import Ivory.BSP.STM32F756.EXTI
 import Ivory.BSP.STM32F756.SYSCFG
 import Ivory.BSP.STM32F756.ADC
+import Ivory.BSP.STM32F756.DAC
 import Ivory.BSP.STM32F756.DMA
 import Ivory.BSP.STM32F756.ETH
 import Ivory.BSP.STM32F756.UART.DMA

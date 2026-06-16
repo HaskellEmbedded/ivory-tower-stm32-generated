@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F778 (
   , module Ivory.BSP.STM32F778.EXTI
   , module Ivory.BSP.STM32F778.SYSCFG
   , module Ivory.BSP.STM32F778.ADC
+  , module Ivory.BSP.STM32F778.DAC
   , module Ivory.BSP.STM32F778.DMA
   , module Ivory.BSP.STM32F778.UART.DMA
   , module Ivory.BSP.STM32F778.USART.DMA
@@ -28,6 +29,7 @@ import Ivory.BSP.STM32F778.IWDG
 import Ivory.BSP.STM32F778.EXTI
 import Ivory.BSP.STM32F778.SYSCFG
 import Ivory.BSP.STM32F778.ADC
+import Ivory.BSP.STM32F778.DAC
 import Ivory.BSP.STM32F778.DMA
 import Ivory.BSP.STM32F778.UART.DMA
 import Ivory.BSP.STM32F778.USART.DMA

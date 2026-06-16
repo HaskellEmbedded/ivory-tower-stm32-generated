@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F730 (
   , module Ivory.BSP.STM32F730.EXTI
   , module Ivory.BSP.STM32F730.SYSCFG
   , module Ivory.BSP.STM32F730.ADC
+  , module Ivory.BSP.STM32F730.DAC
   , module Ivory.BSP.STM32F730.DMA
   , module Ivory.BSP.STM32F730.UART.DMA
   , module Ivory.BSP.STM32F730.USART.DMA
@@ -28,6 +29,7 @@ import Ivory.BSP.STM32F730.IWDG
 import Ivory.BSP.STM32F730.EXTI
 import Ivory.BSP.STM32F730.SYSCFG
 import Ivory.BSP.STM32F730.ADC
+import Ivory.BSP.STM32F730.DAC
 import Ivory.BSP.STM32F730.DMA
 import Ivory.BSP.STM32F730.UART.DMA
 import Ivory.BSP.STM32F730.USART.DMA

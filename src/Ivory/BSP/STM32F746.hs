@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F746 (
   , module Ivory.BSP.STM32F746.EXTI
   , module Ivory.BSP.STM32F746.SYSCFG
   , module Ivory.BSP.STM32F746.ADC
+  , module Ivory.BSP.STM32F746.DAC
   , module Ivory.BSP.STM32F746.DMA
   , module Ivory.BSP.STM32F746.ETH
   , module Ivory.BSP.STM32F746.UART.DMA
@@ -29,6 +30,7 @@ import Ivory.BSP.STM32F746.IWDG
 import Ivory.BSP.STM32F746.EXTI
 import Ivory.BSP.STM32F746.SYSCFG
 import Ivory.BSP.STM32F746.ADC
+import Ivory.BSP.STM32F746.DAC
 import Ivory.BSP.STM32F746.DMA
 import Ivory.BSP.STM32F746.ETH
 import Ivory.BSP.STM32F746.UART.DMA

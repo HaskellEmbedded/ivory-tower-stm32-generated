@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F750 (
   , module Ivory.BSP.STM32F750.EXTI
   , module Ivory.BSP.STM32F750.SYSCFG
   , module Ivory.BSP.STM32F750.ADC
+  , module Ivory.BSP.STM32F750.DAC
   , module Ivory.BSP.STM32F750.DMA
   , module Ivory.BSP.STM32F750.ETH
   , module Ivory.BSP.STM32F750.UART.DMA
@@ -29,6 +30,7 @@ import Ivory.BSP.STM32F750.IWDG
 import Ivory.BSP.STM32F750.EXTI
 import Ivory.BSP.STM32F750.SYSCFG
 import Ivory.BSP.STM32F750.ADC
+import Ivory.BSP.STM32F750.DAC
 import Ivory.BSP.STM32F750.DMA
 import Ivory.BSP.STM32F750.ETH
 import Ivory.BSP.STM32F750.UART.DMA

@@ -7,6 +7,7 @@ module Ivory.BSP.STM32F410 (
   , module Ivory.BSP.STM32F410.EXTI
   , module Ivory.BSP.STM32F410.SYSCFG
   , module Ivory.BSP.STM32F410.ADC
+  , module Ivory.BSP.STM32F410.DAC
   , module Ivory.BSP.STM32F410.DMA
   , module Ivory.BSP.STM32F410.USART.DMA
   , module Ivory.BSP.STM32F410.ATIM
@@ -21,6 +22,7 @@ import Ivory.BSP.STM32F410.IWDG
 import Ivory.BSP.STM32F410.EXTI
 import Ivory.BSP.STM32F410.SYSCFG
 import Ivory.BSP.STM32F410.ADC
+import Ivory.BSP.STM32F410.DAC
 import Ivory.BSP.STM32F410.DMA
 import Ivory.BSP.STM32F410.USART.DMA
 import Ivory.BSP.STM32F410.ATIM

@@ -10,6 +10,7 @@ module Ivory.BSP.STM32F429 (
   , module Ivory.BSP.STM32F429.EXTI
   , module Ivory.BSP.STM32F429.SYSCFG
   , module Ivory.BSP.STM32F429.ADC
+  , module Ivory.BSP.STM32F429.DAC
   , module Ivory.BSP.STM32F429.DMA
   , module Ivory.BSP.STM32F429.ETH
   , module Ivory.BSP.STM32F429.UART.DMA
@@ -29,6 +30,7 @@ import Ivory.BSP.STM32F429.IWDG
 import Ivory.BSP.STM32F429.EXTI
 import Ivory.BSP.STM32F429.SYSCFG
 import Ivory.BSP.STM32F429.ADC
+import Ivory.BSP.STM32F429.DAC
 import Ivory.BSP.STM32F429.DMA
 import Ivory.BSP.STM32F429.ETH
 import Ivory.BSP.STM32F429.UART.DMA
